@@ -1,5 +1,4 @@
 import type { UserRole } from "@/components/layout/app-shell";
-import { UploadDownloadPanel } from "@/components/shared/upload-download-panel";
 
 export interface CacSectionProps {
   readonly role: UserRole;
@@ -7,12 +6,8 @@ export interface CacSectionProps {
 
 export function CacSection({ role }: CacSectionProps) {
   return (
-    <section id="cac" className="flex flex-col gap-6">
-      <UploadDownloadPanel
-        role={role}
-        title="CAC Documentation"
-        description="Upload or download CAC reports, acquisition data, and LTV analyses."
-      />
+    <section id="cac" className="rounded-3xl border border-dashed border-white/15 bg-black/30 p-8 text-center text-sm text-gray-400">
+      CAC workspace for role <span className="text-white">{role}</span> is blank for now.
     </section>
   );
 }

@@ -10,9 +10,9 @@ export interface AppShellProps {
 
 const tabs: TabNavItem[] = [
   { id: "pitch", label: "Pitch", description: "Mission, deck, market intel" },
-  { id: "products", label: "Products", description: "Services, adoption, docs" },
-  { id: "pricing", label: "Pricing", description: "Tiers, projections, models" },
-  { id: "cac", label: "CAC", description: "Acquisition cost + trends" },
+  { id: "products", label: "Products", description: "Services + collateral" },
+  { id: "pricing", label: "Pricing", description: "Guides and models" },
+  { id: "cac", label: "CAC", description: "Acquisition metrics" },
 ];
 
 export function AppShell({ children, role = "investor" }: AppShellProps) {
