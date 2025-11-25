@@ -1,0 +1,85 @@
+---
+alwaysApply: true
+---
+Prompt for Cursor Application: Boyar Partners Dashboard Web App
+
+Build a professional dashboard web app for “Boyar Partners” for use by both investors and the internal team.
+
+App Name: Boyar Partners
+
+Core Principle: Each primary dashboard tab (Pitch, Products, Pricing, CAC) will function as a central hub for relevant data, file storage, and analytical visualizations. Users will be able to view data, download associated PDF and Excel files, and interact with analytical displays pertinent to that tab.
+
+Views/Tabs in the dashboard:
+
+
+1. 
+Pitch
+
+
+	- Content: Pitch deck slides, key market summary, business highlights, and mission statement.
+
+	- File Storage: Allows uploading and downloading of Pitch Deck PDFs and related Market Analysis Excel files.
+
+	- Analysis: Displays key summary statistics from market analysis, potentially derived from uploaded Excel data.
+
+
+2. 
+Products
+
+
+	- Content: List of firm’s services and products, with description, pricing, and status.
+
+	- File Storage: Allows uploading and downloading of Product Brochures (PDFs) and Service Comparison Sheets (Excel).
+
+	- Analysis: Visualizes product adoption rates, service status distribution, and potentially revenue per product (placeholder if needed).
+
+
+3. 
+Pricing
+
+
+	- Content: Detailed pricing breakdown for each product/service, allowing toggling between base and premium packages.
+
+	- File Storage: Allows uploading and downloading of Detailed Pricing Guides (PDFs) and Financial Model Worksheets (Excel).
+
+	- Analysis: Compares pricing tiers, shows revenue projections based on pricing models, and highlights value propositions.
+
+
+4. 
+CAC (Customer Acquisition Cost)
+
+
+	- Content: Table, charts, and key metrics showing Customer Acquisition Cost (CAC) by service and by region.
+
+	- File Storage: Allows uploading and downloading of CAC Reports (PDFs) and Raw Acquisition Data (Excel) for transparency and further analysis.
+
+	- Visualizations: Pie chart (regional CAC distribution), revenue/cost tables, LTV:CAC ratios, and potentially line charts showing CAC trends over time.
+
+
+Design Features:
+
+
+- Modern UI, professional color scheme (teal, navy, white, slate).
+
+- Responsive layout for desktop and tablet.
+
+- User authentication with roles for "Investor" and "Team".
+	- Investors: See Pitch, Products, Pricing, CAC tabs (read-only data, can download all associated files).
+
+	- Team: Can edit Products and Pricing data, upload new PDFs/Excels to any tab, update CAC inputs, and manage market summary/business highlights.
+
+
+- Charts (Pie, Bar, Line) use real business data—placeholder if needed.
+
+- Central header with logo and navigation tabs.
+
+- Footer with contact details and compliance note.
+
+Bonus Features (if supported):
+
+
+- Export PDF, Excel from any dashboard tab's displayed data (separate from file download).
+
+- Internal notifications for updates to data or uploaded files.
+
+- Settings/Account management.
