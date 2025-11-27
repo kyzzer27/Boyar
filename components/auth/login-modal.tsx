@@ -6,40 +6,42 @@ import { useRouter } from "next/navigation";
 
 interface LoginModalProps {
   isOpen: boolean;
-  onClose: () => void;
+  onClose: () => void; 
 }
 
 export function LoginModal({ isOpen, onClose }: LoginModalProps) {
-  const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-
-  // Investor credentials
-  const INVESTOR_CREDENTIALS = {
-    userId: "investor001",
-    password: "Boyar2024!",
-  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
 
-    // Simulate API call delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    try {
+      const response = await fetch("/admin-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ password }),
+      });
 
-    if (userId === INVESTOR_CREDENTIALS.userId && password === INVESTOR_CREDENTIALS.password) {
-      // Store authentication in sessionStorage
-      sessionStorage.setItem("isAuthenticated", "true");
-      sessionStorage.setItem("userId", userId);
-      
-      setIsLoading(false);
-      onClose();
-      router.push("/tools");
-    } else {
-      setError("Invalid User ID or Password. Access restricted to authorized investors only.");
+      if (response.ok) {
+        sessionStorage.setItem("isAuthenticated", "true");
+        setPassword("");
+        setIsLoading(false);
+        onClose();
+        router.push("/tools");
+        return;
+      }
+
+      const payload = await response.json().catch(() => null);
+      setError(payload?.error ?? "Invalid password. Try again.");
+    } catch (err) {
+      setError("Unable to reach authentication service. Please retry.");
+    } finally {
       setIsLoading(false);
     }
   };
@@ -77,7 +79,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                   className="text-3xl font-semibold text-white"
                   style={{ fontFamily: 'var(--font-benzin)' }}
                 >
-                  Investor Login
+                  Secure Login
                 </h2>
                 <motion.button
                   onClick={onClose}
@@ -90,37 +92,17 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
               </div>
 
               <p className="text-gray-400 mb-6 text-sm">
-                Access restricted to authorized investors only. Please enter your credentials.
+                Enter the shared access password to continue to the admin workspace.
               </p>
 
               <form onSubmit={handleLogin} className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="userId"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                    style={{ fontFamily: 'var(--font-benzin)' }}
-                  >
-                    User ID
-                  </label>
-                  <input
-                    id="userId"
-                    type="text"
-                    value={userId}
-                    onChange={(e) => setUserId(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 text-white placeholder-gray-500 focus:outline-none focus:border-white/40 focus:bg-white/10 transition"
-                    placeholder="Enter your User ID"
-                    required
-                    autoFocus
-                  />
-                </div>
-
                 <div>
                   <label
                     htmlFor="password"
                     className="block text-sm font-medium text-gray-300 mb-2"
                     style={{ fontFamily: 'var(--font-benzin)' }}
                   >
-                    Password
+                    Access Password
                   </label>
                   <input
                     id="password"
@@ -128,7 +110,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 text-white placeholder-gray-500 focus:outline-none focus:border-white/40 focus:bg-white/10 transition"
-                    placeholder="Enter your Password"
+                    placeholder="Enter the shared password"
                     required
                   />
                 </div>
