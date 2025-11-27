@@ -36,14 +36,14 @@ const tabs: Tab[] = [
   },
   {
     id: "product",
-    label: "Product",
+    label: "Services",
     icon: "",
     value: "$15.8M",
     content: {
-      title: "Product",
+      title: "Services",
       description: "Services and product offerings",
       details: [
-        "Product catalog",
+        "Service catalog",
         "Service descriptions",
         "Pricing information",
         "Status and availability"
@@ -179,6 +179,7 @@ export function CircularTabs({ role }: CircularTabsProps) {
 
   const activeTabData = tabs.find(tab => tab.id === activeTab);
   const isCacTab = activeTabData?.id === "cac";
+  const isProductTab = activeTabData?.id === "product";
 
   const centerX = dimensions.width / 2;
   const centerY = dimensions.height / 2;
@@ -200,7 +201,28 @@ export function CircularTabs({ role }: CircularTabsProps) {
     console.log(`Selected CAC action: ${action}`);
   }
 
+  function handleProductAction(action: "investor" | "admin") {
+    if (action === "investor") {
+      setActiveTab(null);
+      router.push("/products/investor");
+      return;
+    }
+    if (action === "admin") {
+      // Check if user is admin
+      if (!isAdmin) {
+        setRestrictionNotice("Admin access required. Only administrators can access this section.");
+        return;
+      }
+      // Handle admin product view
+      setActiveTab(null);
+      // router.push("/products/admin"); // Uncomment when admin page is created
+      console.log(`Selected Product action: ${action}`);
+      return;
+    }
+  }
+
   const isInvestorLite = role === "investor-lite";
+  const isAdmin = role === "admin";
 
   return (
     <div className="relative flex items-center justify-center w-full h-full p-4">
@@ -404,7 +426,7 @@ export function CircularTabs({ role }: CircularTabsProps) {
                   </motion.button>
                 </div>
 
-                {!isCacTab && (
+                {!isCacTab && !isProductTab && (
                   <>
                     <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg leading-relaxed">
                       {activeTabData.content.description}
@@ -431,6 +453,73 @@ export function CircularTabs({ role }: CircularTabsProps) {
                       ))}
                     </ul>
                   </>
+                )}
+
+                {isProductTab && (
+                  <motion.div
+                    className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 mt-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <motion.button
+                      onClick={() => handleProductAction("investor")}
+                      className="w-32 sm:w-36 aspect-square rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white hover:bg-white/10 transition text-xs sm:text-sm text-center px-4"
+                      style={{ fontFamily: 'var(--font-benzin)' }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.96 }}
+                      animate={{
+                        boxShadow: [
+                          "0 0 10px rgba(255,255,255,0.25)",
+                          "0 0 35px rgba(255,255,255,0.55)",
+                          "0 0 10px rgba(255,255,255,0.25)"
+                        ],
+                        borderColor: [
+                          "rgba(255,255,255,0.35)",
+                          "rgba(255,255,255,0.75)",
+                          "rgba(255,255,255,0.35)"
+                        ]
+                      }}
+                      transition={{ duration: 2.4, repeat: Infinity }}
+                    >
+                      Investor
+                    </motion.button>
+                    <motion.button
+                      onClick={() => handleProductAction("admin")}
+                      className={`w-32 sm:w-36 aspect-square rounded-full border border-white/20 bg-white/5 flex items-center justify-center transition text-xs sm:text-sm text-center px-4 ${
+                        isAdmin 
+                          ? "text-white hover:bg-white/10 cursor-pointer" 
+                          : "text-white/40 cursor-not-allowed opacity-60"
+                      }`}
+                      style={{ fontFamily: 'var(--font-benzin)' }}
+                      whileHover={isAdmin ? { scale: 1.05 } : {}}
+                      whileTap={isAdmin ? { scale: 0.96 } : {}}
+                      animate={isAdmin ? {
+                        boxShadow: [
+                          "0 0 10px rgba(255,255,255,0.25)",
+                          "0 0 35px rgba(255,255,255,0.55)",
+                          "0 0 10px rgba(255,255,255,0.25)"
+                        ],
+                        borderColor: [
+                          "rgba(255,255,255,0.35)",
+                          "rgba(255,255,255,0.75)",
+                          "rgba(255,255,255,0.35)"
+                        ]
+                      } : {
+                        boxShadow: [
+                          "0 0 5px rgba(255,255,255,0.1)",
+                          "0 0 5px rgba(255,255,255,0.1)"
+                        ],
+                        borderColor: [
+                          "rgba(255,255,255,0.2)",
+                          "rgba(255,255,255,0.2)"
+                        ]
+                      }}
+                      transition={{ duration: 2.4, repeat: Infinity, delay: 0.3 }}
+                    >
+                      Admin
+                    </motion.button>
+                  </motion.div>
                 )}
 
                 {isCacTab && (

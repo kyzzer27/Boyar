@@ -9,11 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "d3-geo": "^3.1.1",
     "framer-motion": "^12.23.24",
     "next": "16.0.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-pdf": "^10.2.0"
+    "react-pdf": "^10.2.0",
+    "topojson-client": "^3.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -55,10 +55,10 @@ export function AppShell({ children }: AppShellProps) {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="sticky top-0 z-30 border-b border-white/10 bg-black"
         >
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
-            <Link href="/" className="flex items-center gap-2 sm:gap-4 group">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-3 sm:px-4 sm:py-4 md:px-6 md:py-6 lg:px-8 lg:py-8 gap-2 sm:gap-4">
+            <Link href="/" className="flex items-center gap-1.5 sm:gap-2 md:gap-4 group flex-shrink-0">
               <motion.div
-                className="relative h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 flex-shrink-0 lg:h-24 lg:w-24"
+                className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 xl:h-24 xl:w-24 flex-shrink-0"
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ duration: 0.5, type: "spring" }}
@@ -73,17 +73,27 @@ export function AppShell({ children }: AppShellProps) {
                   style={{ display: 'block' }}
                 />
               </motion.div>
-              <motion.p
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-normal text-white uppercase"
-                style={{ fontFamily: 'var(--font-cinzel)' }}
+              <motion.div
+                className="flex flex-col"
                 whileHover={{ scale: 1.05, letterSpacing: "0.1em" }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                BOYAR PARTNERS
-              </motion.p>
+                <motion.p
+                  className="text-[1.0625rem] sm:text-[1.275rem] md:text-[1.59375rem] lg:text-[1.9125rem] xl:text-[2.55rem] font-normal text-white uppercase leading-tight"
+                  style={{ fontFamily: 'var(--font-cinzel)' }}
+                >
+                  BOYAR
+                </motion.p>
+                <motion.p
+                  className="text-[0.8rem] sm:text-[0.96rem] md:text-[1.2rem] lg:text-[1.44rem] xl:text-[1.92rem] font-normal text-white uppercase leading-tight"
+                  style={{ fontFamily: 'var(--font-cinzel)' }}
+                >
+                  PARTNERS
+                </motion.p>
+              </motion.div>
             </Link>
             <motion.p
-              className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-medium text-gray-300 hidden sm:block"
+              className="text-[9px] sm:text-xs md:text-sm lg:text-base xl:text-lg font-medium text-gray-300 whitespace-nowrap flex-shrink"
               style={{ fontFamily: 'var(--font-benzin)' }}
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
