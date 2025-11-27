@@ -26,7 +26,7 @@ function formatBytes(bytes: number) {
 
 export function UploadDownloadPanel({ role, title, description }: UploadDownloadPanelProps) {
   const [fileMeta, setFileMeta] = useState<FileMeta | null>(null);
-  const canUpload = role === "team";
+  const canUpload = role === "admin";
 
   useEffect(() => {
     return () => {
@@ -96,11 +96,11 @@ export function UploadDownloadPanel({ role, title, description }: UploadDownload
       </div>
       {!canUpload ? (
         <p className="mt-4 text-xs text-gray-500">
-          Investor view: waiting for the team to publish the latest document.
+          Investor view: waiting for the admin team to publish the latest document.
         </p>
       ) : (
         <p className="mt-4 text-xs text-gray-500">
-          Team view: uploading replaces the current file for all investors.
+          Admin view: uploading replaces the current file for all investor tiers.
         </p>
       )}
     </div>

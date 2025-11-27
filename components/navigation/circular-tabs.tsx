@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
+import type { UserRole } from "@/components/layout/app-shell";
 
 interface Tab {
   id: string;
@@ -131,12 +132,16 @@ const tabs: Tab[] = [
   }
 ];
 
-export function CircularTabs() {
+interface CircularTabsProps {
+  role: UserRole;
+}
+
+export function CircularTabs({ role }: CircularTabsProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [rotation, setRotation] = useState(0);
-  const [dollarCount, setDollarCount] = useState(0);
+  const [restrictionNotice, setRestrictionNotice] = useState<string | null>(null);
 
   const [dimensions, setDimensions] = useState({ width: 500, height: 500 });
 
@@ -164,14 +169,6 @@ export function CircularTabs() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    // Animate dollar counter
-    const interval = setInterval(() => {
-      setDollarCount((prev) => (prev + 1) % 100);
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
-
   const getTabPosition = (index: number, offset: number = 0) => {
     const angle = ((index * 2 * Math.PI) / tabs.length - Math.PI / 2) + (offset * Math.PI / 180);
     const x = radius * Math.cos(angle);
@@ -188,6 +185,12 @@ export function CircularTabs() {
   const centerCircleSize = dimensions.width * 0.32; // Responsive center circle
   const tabCircleSize = dimensions.width * 0.19; // Responsive tab circles
 
+  useEffect(() => {
+    if (!restrictionNotice) return;
+    const timeout = setTimeout(() => setRestrictionNotice(null), 3500);
+    return () => clearTimeout(timeout);
+  }, [restrictionNotice]);
+
   function handleCacAction(action: "marketing" | "true") {
     if (action === "marketing") {
       setActiveTab(null);
@@ -196,6 +199,8 @@ export function CircularTabs() {
     }
     console.log(`Selected CAC action: ${action}`);
   }
+
+  const isInvestorLite = role === "investor-lite";
 
   return (
     <div className="relative flex items-center justify-center w-full h-full p-4">
@@ -229,11 +234,14 @@ export function CircularTabs() {
           const { x, y } = getTabPosition(index, rotation);
           const isActive = activeTab === tab.id;
           const isHovered = hoveredTab === tab.id;
+          const isRestricted = isInvestorLite && tab.id === "documents";
 
           return (
             <motion.button
               key={tab.id}
-              className="absolute rounded-full border-2 bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-md flex flex-col items-center justify-center gap-1 text-white z-20 cursor-pointer"
+              className={`absolute rounded-full border-2 bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-md flex flex-col items-center justify-center gap-1 text-white z-20 ${
+                isRestricted ? "cursor-not-allowed opacity-70" : "cursor-pointer"
+              }`}
               style={{
                 width: tabCircleSize,
                 height: tabCircleSize,
@@ -242,7 +250,7 @@ export function CircularTabs() {
               }}
               initial={{ scale: 0, opacity: 0 }}
               animate={{
-                scale: isActive ? 1.3 : isHovered ? 1.15 : 1,
+                scale: isRestricted ? 1 : isActive ? 1.3 : isHovered ? 1.15 : 1,
                 opacity: 1,
                 borderColor: isActive 
                   ? "rgba(255, 255, 255, 0.9)" 
@@ -253,14 +261,22 @@ export function CircularTabs() {
                   ? "rgba(255, 255, 255, 0.2)" 
                   : "rgba(0, 0, 0, 0.7)",
               }}
-              whileHover={{
-                scale: 1.2,
-                borderColor: "rgba(255, 255, 255, 0.7)",
-              }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={
+                isRestricted
+                  ? undefined
+                  : {
+                      scale: 1.2,
+                      borderColor: "rgba(255, 255, 255, 0.7)",
+                    }
+              }
+              whileTap={isRestricted ? undefined : { scale: 0.9 }}
               onHoverStart={() => setHoveredTab(tab.id)}
               onHoverEnd={() => setHoveredTab(null)}
               onClick={() => {
+                if (isRestricted) {
+                  setRestrictionNotice("Investor Lite tier cannot access Company Documents.");
+                  return;
+                }
                 if (tab.id === "pitch") {
                   router.push("/pitch");
                 } else {
@@ -474,6 +490,19 @@ export function CircularTabs() {
               </motion.div>
             </motion.div>
           </>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {restrictionNotice && (
+          <motion.div
+            className="fixed bottom-6 left-1/2 z-50 w-[90%] max-w-md -translate-x-1/2 rounded-2xl border border-white/20 bg-black/80 px-6 py-4 text-center text-sm text-white/90 backdrop-blur-xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+          >
+            {restrictionNotice}
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

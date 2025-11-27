@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
+import type { UserRole } from "@/components/layout/app-shell";
 
 interface LoginModalProps {
   isOpen: boolean;
-  onClose: () => void; 
+  onClose: () => void;
 }
 
 export function LoginModal({ isOpen, onClose }: LoginModalProps) {
@@ -21,27 +22,29 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/admin-login", {
+      const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "same-origin",
         body: JSON.stringify({ password }),
       });
 
-      if (response.ok) {
-        sessionStorage.setItem("isAuthenticated", "true");
-        setPassword("");
+      const data: { success?: boolean; role?: UserRole; error?: string; redirect?: string } = await response.json();
+
+      if (!response.ok || !data.role) {
+        setError(data.error ?? "Unable to verify your credentials.");
         setIsLoading(false);
-        onClose();
-        router.push("/tools");
         return;
       }
 
-      const payload = await response.json().catch(() => null);
-      setError(payload?.error ?? "Invalid password. Try again.");
+      sessionStorage.setItem("isAuthenticated", "true");
+      sessionStorage.setItem("userRole", data.role);
+
+      setIsLoading(false);
+      onClose();
+      router.push(data.redirect ?? "/tools");
     } catch (err) {
-      setError("Unable to reach authentication service. Please retry.");
-    } finally {
+      console.error("Login error", err);
+      setError("Unexpected error verifying credentials.");
       setIsLoading(false);
     }
   };
@@ -79,7 +82,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                   className="text-3xl font-semibold text-white"
                   style={{ fontFamily: 'var(--font-benzin)' }}
                 >
-                  Secure Login
+                  Secure Portal Login
                 </h2>
                 <motion.button
                   onClick={onClose}
@@ -92,7 +95,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
               </div>
 
               <p className="text-gray-400 mb-6 text-sm">
-                Enter the shared access password to continue to the admin workspace.
+                Access restricted to authorized Admin, Investor, and Investor Lite accounts. Please enter your assigned credentials.
               </p>
 
               <form onSubmit={handleLogin} className="space-y-6">
@@ -110,8 +113,9 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 text-white placeholder-gray-500 focus:outline-none focus:border-white/40 focus:bg-white/10 transition"
-                    placeholder="Enter the shared password"
+                    placeholder="Enter your assigned password"
                     required
+                    autoFocus
                   />
                 </div>
 

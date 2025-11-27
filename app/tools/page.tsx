@@ -1,11 +1,20 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { CircularTabs } from "@/components/navigation/circular-tabs";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { CircularBackground } from "@/components/motion/circular-background";
 import Link from "next/link";
+import type { UserRole } from "@/components/layout/app-shell";
 
 export default function ToolsPage() {
+  const [role, setRole] = useState<UserRole | null>(null);
+
+  useEffect(() => {
+    const storedRole = sessionStorage.getItem("userRole") as UserRole | null;
+    setRole(storedRole);
+  }, []);
+
   return (
     <ProtectedRoute>
       <div className="min-h-screen bg-black text-white relative">
@@ -30,7 +39,11 @@ export default function ToolsPage() {
 
         {/* Main Content */}
         <main className="flex items-center justify-center min-h-[calc(100vh-80px)] relative z-10 py-4">
-          <CircularTabs />
+          {role ? (
+            <CircularTabs role={role} />
+          ) : (
+            <div className="text-white/70 text-sm">Preparing your workspace...</div>
+          )}
         </main>
       </div>
     </ProtectedRoute>

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FloatingParticles } from "@/components/motion/floating-particles";
 
-export type UserRole = "investor" | "team";
+export type UserRole = "admin" | "investor" | "investor-lite";
 
 export interface AppShellProps {
   readonly children: React.ReactNode;
