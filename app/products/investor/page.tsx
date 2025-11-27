@@ -479,29 +479,17 @@ export default function ProductsInvestorPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <motion.h1
-                  className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"
+                  className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-white"
                   style={{ fontFamily: 'var(--font-benzin)' }}
-                  animate={{
-                    backgroundPosition: ["0%", "100%", "0%"],
-                  }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                 >
-                  Our Products
+                  Our Services
                 </motion.h1>
               </motion.div>
-              <motion.p
-                className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8"
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                Comprehensive solutions for your business needs
-              </motion.p>
               <motion.div
-                className="flex items-center justify-center gap-2 text-gray-400"
+                className="flex items-center justify-center gap-2 text-white"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
@@ -509,7 +497,7 @@ export default function ProductsInvestorPage() {
                 >
                   ↓
                 </motion.div>
-                <span className="text-sm" style={{ fontFamily: 'var(--font-benzin)' }}>Scroll to explore</span>
+                <span className="text-sm" style={{ fontFamily: 'var(--font-benzin)' }}>Scroll to know more</span>
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
