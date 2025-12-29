@@ -37,3 +37,16 @@ Place PNG or JPG images in this directory with the following filenames:
 
 If an image file is not found, the application will automatically use the SVG flag component as a fallback.
 
+
+
+
+
+
+
+
+
+
+
+
+
+

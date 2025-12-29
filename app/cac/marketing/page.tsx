@@ -93,6 +93,7 @@ const revenueDistribution = [
   { service: "Corporate Services", revenue: 14000, color: "#a78bfa" },
 ];
 
+
 const CPC_BAR_COLOR = "linear-gradient(180deg,#60a5fa,#2563eb)";
 const CLICK_BAR_COLOR = "linear-gradient(180deg,#34d399,#0f766e)";
 

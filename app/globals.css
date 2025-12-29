@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -30,11 +32,55 @@
   }
 
 @layer base {
-body {
-  background: var(--background);
-  color: var(--foreground);
+  body {
+    background: var(--background);
+    color: var(--foreground);
     font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
       "Segoe UI", sans-serif;
+    /* Performance optimizations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Smooth scrolling with performance */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* GPU acceleration for animated elements */
+  [data-motion],
+  .motion-safe {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  /* Optimize rendering for motion components */
+  [data-framer-component] {
+    contain: layout style paint;
+  }
+  
+  /* Smooth scrolling with hardware acceleration */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Optimize transforms */
+  [style*="transform"] {
+    will-change: transform;
+  }
+  
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -53,4 +99,74 @@ body {
   inset: 0;
   background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.06), transparent);
   pointer-events: none;
+}
+
+/* PDF Generation Styles - Ensure proper text alignment */
+@media print {
+  * {
+    text-align: left !important;
+  }
+  
+  /* Hide header when printing */
+  header {
+    display: none !important;
+  }
+  
+  /* Ensure white background for print */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  main {
+    max-width: 100% !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  
+  ul {
+    list-style-position: outside !important;
+    padding-left: 1.5rem !important;
+  }
+  
+  li {
+    text-align: justify !important;
+  }
+  
+  p {
+    text-align: justify !important;
+  }
+  
+  /* Prevent page breaks inside important sections */
+  section {
+    page-break-inside: avoid;
+  }
+}
+
+/* Custom Scrollbar Styles for Expenditure Text Overlay */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.7) rgba(0, 0, 0, 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  backdrop-filter: blur(4px);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
 }

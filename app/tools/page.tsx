@@ -1,49 +1,72 @@
 "use client";
 
-import { DashboardLayout } from "@/components/layout/dashboard-layout";
-import { useRouter } from "next/navigation";
+import { useEffect, useState, Suspense } from "react";
+import { CircularTabs } from "@/components/navigation/circular-tabs";
+import { ProtectedRoute } from "@/components/auth/protected-route";
+import { CircularBackground } from "@/components/motion/circular-background";
+import Link from "next/link";
+import type { UserRole } from "@/components/layout/app-shell";
+import { useSearchParams } from "next/navigation";
 
-export default function ToolsPage() {
-  const router = useRouter();
+function ToolsContent() {
+  const [role, setRole] = useState<UserRole | null>(null);
+  const searchParams = useSearchParams();
+  const focus = searchParams.get("focus");
 
-  const tools = [
-    { name: "Conversion Metrics", route: "/client-acquisition/conversion-metrics" },
-    { name: "Expenditure", route: "/tools/expenditure" },
-  ];
+  const initialActiveTab = focus === "corporate-revenue" ? "revenue" : null;
+  const initialRevenueSegment = focus === "corporate-revenue" ? "Corporate Services" : null;
+  const initialShowCorporatePopup = focus === "corporate-revenue";
+
+  useEffect(() => {
+    const storedRole = sessionStorage.getItem("userRole") as UserRole | null;
+    setRole(storedRole);
+  }, []);
 
   return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">Tools</h1>
-          <p className="text-slate-600">
-            Access various tools and utilities for analysis and reporting.
-          </p>
-        </div>
+    <main className="flex items-center justify-center min-h-[calc(100vh-80px)] relative z-10 py-4">
+      {role ? (
+        <CircularTabs
+          role={role}
+          initialActiveTab={initialActiveTab}
+          initialRevenueSegment={initialRevenueSegment}
+          initialShowCorporatePopup={initialShowCorporatePopup}
+        />
+      ) : (
+        <div className="text-white/70 text-sm">Preparing your workspace...</div>
+      )}
+    </main>
+  );
+}
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tools.map((tool) => (
-            <button
-              key={tool.name}
-              onClick={() => router.push(tool.route)}
-              className="p-6 bg-white rounded-lg shadow-sm border border-slate-200 hover:border-teal-500 hover:shadow-md transition-all text-left group"
+export default function ToolsPage() {
+  return (
+    <ProtectedRoute>
+      <div className="min-h-screen bg-black text-white relative">
+        {/* Background Motion */}
+        <CircularBackground />
+        
+        {/* Simple Header */}
+        <header className="border-b border-white/10 bg-black relative z-10">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+            <Link href="/" className="text-sm sm:text-base text-white hover:text-gray-300 transition">
+              ← Back
+            </Link>
+            <h1
+              className="text-lg sm:text-xl md:text-2xl font-medium text-white"
+              style={{ fontFamily: 'var(--font-benzin)' }}
             >
-              <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-teal-200 transition-colors">
-                <span className="text-teal-600 font-semibold text-lg">
-                  {tool.name.charAt(0)}
-                </span>
-              </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                {tool.name}
-              </h3>
-              <p className="text-sm text-slate-600">
-                Click to access {tool.name.toLowerCase()}
-              </p>
-            </button>
-          ))}
-        </div>
+              Tools Dashboard
+            </h1>
+            <div className="w-12 sm:w-20" /> {/* Spacer for centering */}
+          </div>
+        </header>
+
+        {/* Main Content */}
+        <Suspense fallback={<div className="text-white/70 text-sm flex items-center justify-center min-h-[calc(100vh-80px)]">Loading...</div>}>
+          <ToolsContent />
+        </Suspense>
       </div>
-    </DashboardLayout>
+    </ProtectedRoute>
   );
 }
 

@@ -62,6 +62,7 @@ const jurisdictions: Jurisdiction[] = [
   { id: "panama", name: "Panama", lat: 8.9824, lng: -79.5199 },
   { id: "rak", name: "Ras Al Khaimah – RAK ICC", lat: 25.7889, lng: 55.9590 },
   { id: "saintkitts", name: "Saint Kitts", lat: 17.3578, lng: -62.7830 },
+  { id: "saintvincent", name: "Saint Vincent", lat: 12.9843, lng: -61.2872 },
   { id: "samoa", name: "Samoa", lat: -13.7590, lng: -172.1046 },
   { id: "seychelles", name: "Seychelles", lat: -4.6796, lng: 55.4920 },
   { id: "singapore", name: "Singapore", lat: 1.3521, lng: 103.8198 },
@@ -72,9 +73,11 @@ const jurisdictions: Jurisdiction[] = [
 
 interface WorldMapProps {
   onSearchRef?: (ref: { search: (query: string) => void }) => void;
+  isFullscreen?: boolean;
+  onFullscreenToggle?: () => void;
 }
 
-function WorldMap({ onSearchRef }: WorldMapProps) {
+function WorldMap({ onSearchRef, isFullscreen = false, onFullscreenToggle }: WorldMapProps) {
   const [worldData, setWorldData] = useState<any>(null);
   const [dimensions, setDimensions] = useState({ width: 1000, height: 500 });
   const [searchQuery, setSearchQuery] = useState("");
@@ -108,17 +111,45 @@ function WorldMap({ onSearchRef }: WorldMapProps) {
 
   useEffect(() => {
     const updateDimensions = () => {
-      const isMobile = window.innerWidth < 640;
-      const headerHeight = isMobile ? 56 : 64; // Smaller header on mobile
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight - headerHeight,
-      });
+      if (isFullscreen) {
+        // Fullscreen: use entire viewport (no header)
+        setDimensions({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      } else {
+        // Normal mode: account for header
+        const isMobile = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const headerHeight = isMobile ? 56 : 64; // Smaller header on mobile
+        setDimensions({
+          width: window.innerWidth,
+          height: window.innerHeight - headerHeight,
+        });
+      }
     };
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
-  }, []);
+    window.addEventListener('orientationchange', updateDimensions);
+    // Also listen for fullscreen changes
+    const handleFullscreenChange = () => {
+      // Multiple updates to ensure dimensions are correct
+      setTimeout(updateDimensions, 50);
+      setTimeout(updateDimensions, 200);
+      setTimeout(updateDimensions, 500);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+    return () => {
+      window.removeEventListener('resize', updateDimensions);
+      window.removeEventListener('orientationchange', updateDimensions);
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    };
+  }, [isFullscreen]);
 
   useEffect(() => {
     // Load Natural Earth 110m data from CDN
@@ -143,10 +174,11 @@ function WorldMap({ onSearchRef }: WorldMapProps) {
   }, []);
 
   // Web Mercator projection (same as Google Maps) - responsive scale for mobile
-  const isMobile = dimensions.width < 640;
-  const scaleFactor = isMobile ? 2.5 : 1.6;
-  const heightFactor = isMobile ? 1.3 : 0.8;
-  const verticalOffset = isMobile ? 40 : 80;
+  const isMobile = dimensions.width < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  // Better scaling for mobile - make map fill more of the screen
+  const scaleFactor = isMobile ? 1.8 : 1.6;
+  const heightFactor = isMobile ? 1.0 : 0.8; // Use more height on mobile
+  const verticalOffset = isMobile ? 20 : 80; // Less offset on mobile to fill screen better
   
   const projection = geoMercator()
     .scale(Math.min(dimensions.width / scaleFactor, dimensions.height / heightFactor) / (2 * Math.PI))
@@ -208,7 +240,18 @@ function WorldMap({ onSearchRef }: WorldMapProps) {
   };
 
   return (
-    <div className="relative w-full h-full bg-transparent">
+    <div 
+      className={`relative w-full h-full bg-transparent ${isFullscreen ? 'fixed inset-0 z-[100]' : ''}`}
+      style={isFullscreen ? {
+        width: '100vw',
+        height: '100vh',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+      } : {}}
+    >
       {/* Button with arrow - Top Left - Responsive */}
       <motion.button
         onClick={() => setShowJurisdictionsList(!showJurisdictionsList)}
@@ -257,12 +300,44 @@ function WorldMap({ onSearchRef }: WorldMapProps) {
         )}
       </div>
 
+      {/* Fullscreen/Exit Fullscreen Button - Bottom Right - Small Size */}
+      {onFullscreenToggle && (
+        <motion.button
+          onClick={onFullscreenToggle}
+          className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-30 px-2 py-1.5 sm:px-3 sm:py-2 rounded-full border border-white/30 bg-black/50 backdrop-blur-sm text-white hover:bg-white/10 transition-all flex items-center gap-1 sm:gap-2"
+          style={{ fontFamily: 'var(--font-benzin)' }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {isFullscreen ? (
+            <>
+              <span className="text-xs sm:text-sm font-medium">Exit Fullscreen</span>
+              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </>
+          ) : (
+            <>
+              <span className="text-xs sm:text-sm font-medium">Fullscreen</span>
+              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+            </>
+          )}
+        </motion.button>
+      )}
+
       {/* World Map SVG */}
       <svg
+        key={`map-${isFullscreen ? 'fullscreen' : 'normal'}-${dimensions.width}-${dimensions.height}`}
         ref={svgRef}
         className="absolute inset-0 w-full h-full"
         viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
         preserveAspectRatio="xMidYMid meet"
+        style={{
+          width: '100%',
+          height: '100%'
+        }}
       >
         {/* World map with white boundaries only - transparent, no fill, remove Antarctica - Responsive stroke */}
         {worldData && (
@@ -332,19 +407,23 @@ function WorldMap({ onSearchRef }: WorldMapProps) {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.5 + index * 0.1 }}
           >
-            {/* Blinking Red Dot - subtle blink, no shadow */}
+            {/* Blinking Red Dot - subtle blink, no shadow - Optimized */}
             <motion.div
               className="relative"
-              style={{ filter: 'none' }}
+              style={{ filter: 'none', willChange: 'transform, opacity' }}
             >
-              {/* Main dot with blinking glow effect - no shadow, green if highlighted - Responsive size */}
+              {/* Main dot with blinking glow effect - no shadow, green if highlighted - Responsive size - Larger on mobile for touch */}
               <motion.div
-                className={`relative w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${
+                className={`relative ${isMobile ? 'w-4 h-4' : 'w-2.5 h-2.5 sm:w-3 sm:h-3'} rounded-full ${
                   highlightedJurisdiction === jurisdiction.id ? 'bg-green-500' : 'bg-red-500'
                 }`}
                 style={{ 
                   boxShadow: 'none',
-                  filter: 'none'
+                  filter: 'none',
+                  touchAction: 'manipulation',
+                  willChange: 'transform, opacity',
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden',
                 }}
                 animate={{
                   opacity: [0.5, 0.9, 0.5],
@@ -358,8 +437,10 @@ function WorldMap({ onSearchRef }: WorldMapProps) {
               />
             </motion.div>
             
-            {/* Tooltip - Responsive */}
-            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 sm:mb-3 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-black/90 backdrop-blur-sm text-white text-[10px] sm:text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-30 border border-white/20 max-w-[150px] sm:max-w-none">
+            {/* Tooltip - Responsive - Show on hover (desktop) and tap (mobile) */}
+            <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 sm:mb-3 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-black/90 backdrop-blur-sm text-white text-[10px] sm:text-xs whitespace-nowrap transition-opacity pointer-events-none z-30 border border-white/20 max-w-[150px] sm:max-w-none ${
+              isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+            }`}>
               {jurisdiction.name}
               <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90"></div>
             </div>
@@ -445,7 +526,64 @@ export default function CorporateServicesPage() {
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [selectedJurisdiction, setSelectedJurisdiction] = useState<string | null>(null);
   const [mapSearchQuery, setMapSearchQuery] = useState<string>("");
+  const [isMapFullscreen, setIsMapFullscreen] = useState(false);
   const mapSearchRef = useRef<{ search: (query: string) => void } | null>(null);
+
+  // Handle browser fullscreen API
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsMapFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    };
+  }, []);
+
+  const enterFullscreen = async () => {
+    const element = document.documentElement;
+    try {
+      if (element.requestFullscreen) {
+        await element.requestFullscreen();
+      } else if ((element as any).webkitRequestFullscreen) {
+        await (element as any).webkitRequestFullscreen();
+      } else if ((element as any).mozRequestFullScreen) {
+        await (element as any).mozRequestFullScreen();
+      } else if ((element as any).msRequestFullscreen) {
+        await (element as any).msRequestFullscreen();
+      }
+      // Force dimension update after entering fullscreen
+      setTimeout(() => {
+        setIsMapFullscreen(true);
+      }, 100);
+    } catch (error) {
+      console.error('Error entering fullscreen:', error);
+    }
+  };
+
+  const exitFullscreen = async () => {
+    try {
+      if (document.exitFullscreen) {
+        await document.exitFullscreen();
+      } else if ((document as any).webkitExitFullscreen) {
+        await (document as any).webkitExitFullscreen();
+      } else if ((document as any).mozCancelFullScreen) {
+        await (document as any).mozCancelFullScreen();
+      } else if ((document as any).msExitFullscreen) {
+        await (document as any).msExitFullscreen();
+      }
+    } catch (error) {
+      console.error('Error exiting fullscreen:', error);
+    }
+  };
 
   const tabs = [
     { id: "company-formation", label: "Company Formation" },
@@ -464,33 +602,54 @@ export default function CorporateServicesPage() {
       <div className="relative min-h-screen bg-black text-white">
         <CircularBackground />
         
-        {/* Header - Mobile Responsive */}
-        <header className="fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 backdrop-blur-md z-30">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2 sm:px-4 sm:py-4 lg:px-8">
-            <Link href="/products/investor" className="text-xs sm:text-sm md:text-base text-white hover:text-gray-300 transition flex items-center gap-1 sm:gap-2">
-              ← <span className="hidden sm:inline">Back</span>
-            </Link>
-            <h1
-              className="text-sm sm:text-lg md:text-xl lg:text-2xl font-medium text-white"
-              style={{ fontFamily: 'var(--font-benzin)' }}
-            >
-              Corporate Services
-            </h1>
-            <div className="w-8 sm:w-16" /> {/* Spacer */}
-          </div>
-        </header>
+        {/* Header - Mobile Responsive - Hidden in fullscreen */}
+        {!isMapFullscreen && (
+          <header className="fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 backdrop-blur-md z-30">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2 sm:px-4 sm:py-4 lg:px-8">
+              <Link href="/products/investor" className="text-xs sm:text-sm md:text-base text-white hover:text-gray-300 transition flex items-center gap-1 sm:gap-2">
+                ← <span className="hidden sm:inline">Back</span>
+              </Link>
+              <h1
+                className="text-sm sm:text-lg md:text-xl lg:text-2xl font-medium text-white"
+                style={{ fontFamily: 'var(--font-benzin)' }}
+              >
+                Corporate Services
+              </h1>
+              <div className="w-8 sm:w-16" /> {/* Spacer */}
+            </div>
+          </header>
+        )}
 
         {/* Main Content */}
         <main className="relative z-10">
           {/* Map Section - First section only, full viewport height, transparent - Mobile Responsive */}
-          <section className="relative h-screen pt-14 sm:pt-16 bg-transparent">
-            <div className="w-full h-full relative z-10">
-              <WorldMap onSearchRef={(ref) => { mapSearchRef.current = ref; }} />
+          <section 
+            className={`relative bg-transparent ${isMapFullscreen ? 'fixed inset-0 z-[100] pt-0' : 'h-screen pt-14 sm:pt-16'}`}
+            style={isMapFullscreen ? {
+              width: '100vw',
+              height: '100vh',
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0
+            } : {
+              height: '100vh',
+              minHeight: '-webkit-fill-available' // For mobile browsers
+            }}
+          >
+            <div className="w-full h-full relative z-10" style={isMapFullscreen ? { width: '100%', height: '100%' } : {}}>
+              <WorldMap 
+                onSearchRef={(ref) => { mapSearchRef.current = ref; }} 
+                isFullscreen={isMapFullscreen}
+                onFullscreenToggle={isMapFullscreen ? exitFullscreen : enterFullscreen}
+              />
             </div>
           </section>
 
-          {/* Tabs Section - Scrollable, appears after map section - Mobile Responsive */}
-          <section className="relative z-20 bg-black/90 backdrop-blur-md border-t border-white/10 min-h-screen">
+          {/* Tabs Section - Scrollable, appears after map section - Mobile Responsive - Hidden in fullscreen */}
+          {!isMapFullscreen && (
+            <section className="relative z-20 bg-black/90 backdrop-blur-md border-t border-white/10 min-h-screen">
             <div className="mx-auto max-w-7xl px-3 sm:px-4 lg:px-6 xl:px-8 py-4 sm:py-6">
 
               <h2
@@ -582,6 +741,7 @@ export default function CorporateServicesPage() {
               </div>
             </div>
           </section>
+          )}
         </main>
 
         {/* Jurisdiction Detail Modal */}

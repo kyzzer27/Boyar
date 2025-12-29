@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
+import { memo } from "react";
 
-export function CircularBackground() {
+function CircularBackgroundComponent() {
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
 
   useEffect(() => {
@@ -19,27 +20,48 @@ export function CircularBackground() {
     }
   }, []);
 
-  // Floating orbs with different sizes and speeds
-  const orbs = Array.from({ length: 8 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 120 + 80,
-    x: Math.random() * dimensions.width,
-    y: Math.random() * dimensions.height,
-    duration: Math.random() * 20 + 15,
-    delay: Math.random() * 5,
-  }));
+  // Memoize orbs to prevent recalculation on every render - Full 8 orbs with optimized calculations
+  const orbs = useMemo(() => {
+    const basePositions = [
+      { x: 0.2, y: 0.3 },
+      { x: 0.8, y: 0.2 },
+      { x: 0.3, y: 0.7 },
+      { x: 0.7, y: 0.8 },
+      { x: 0.15, y: 0.5 },
+      { x: 0.85, y: 0.5 },
+      { x: 0.5, y: 0.15 },
+      { x: 0.5, y: 0.85 },
+    ];
+    return Array.from({ length: 8 }, (_, i) => ({
+      id: i,
+      size: Math.random() * 120 + 80,
+      x: basePositions[i].x * dimensions.width,
+      y: basePositions[i].y * dimensions.height,
+      duration: Math.random() * 20 + 15,
+      delay: Math.random() * 5,
+      moveX: (Math.random() - 0.5) * 300,
+      moveY: (Math.random() - 0.5) * 300,
+    }));
+  }, [dimensions.width, dimensions.height]);
 
-  // Rotating rings
-  const rings = Array.from({ length: 3 }, (_, i) => ({
+  // Memoize rings - Full 3 rings
+  const rings = useMemo(() => Array.from({ length: 3 }, (_, i) => ({
     id: i,
     size: 300 + i * 200,
     duration: 20 + i * 10,
     delay: i * 2,
-  }));
+  })), []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Floating Orbs - More Visible */}
+    <div 
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden" 
+      style={{ 
+        willChange: 'transform',
+        contain: 'layout style paint',
+        isolation: 'isolate',
+      }}
+    >
+      {/* Floating Orbs - Full animation with GPU acceleration */}
       {orbs.map((orb) => (
         <motion.div
           key={`orb-${orb.id}`}
@@ -52,18 +74,22 @@ export function CircularBackground() {
             background: `radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%)`,
             border: "1px solid rgba(255, 255, 255, 0.15)",
             filter: "blur(2px)",
+            willChange: 'transform, opacity',
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden',
+            perspective: 1000,
           }}
           animate={{
             x: [
               orb.x,
-              orb.x + (Math.random() - 0.5) * 300,
-              orb.x - (Math.random() - 0.5) * 300,
+              orb.x + orb.moveX,
+              orb.x - orb.moveX,
               orb.x,
             ],
             y: [
               orb.y,
-              orb.y + (Math.random() - 0.5) * 300,
-              orb.y - (Math.random() - 0.5) * 300,
+              orb.y + orb.moveY,
+              orb.y - orb.moveY,
               orb.y,
             ],
             scale: [1, 1.3, 0.7, 1],
@@ -78,7 +104,7 @@ export function CircularBackground() {
         />
       ))}
 
-      {/* Rotating Rings - More Visible */}
+      {/* Rotating Rings - Full animation with GPU acceleration */}
       {rings.map((ring) => (
         <motion.div
           key={`ring-${ring.id}`}
@@ -88,8 +114,10 @@ export function CircularBackground() {
             height: ring.size,
             left: "50%",
             top: "50%",
-            transform: "translate(-50%, -50%)",
+            transform: "translate(-50%, -50%) translateZ(0)",
             boxShadow: "0 0 20px rgba(255, 255, 255, 0.1)",
+            willChange: 'transform',
+            backfaceVisibility: 'hidden',
           }}
           animate={{
             rotate: 360,
@@ -105,7 +133,7 @@ export function CircularBackground() {
         />
       ))}
 
-      {/* Pulsing Center Glow - More Visible */}
+      {/* Pulsing Center Glow - Full effect with GPU acceleration */}
       <motion.div
         className="absolute rounded-full"
         style={{
@@ -113,9 +141,11 @@ export function CircularBackground() {
           height: 500,
           left: "50%",
           top: "50%",
-          transform: "translate(-50%, -50%)",
+          transform: "translate(-50%, -50%) translateZ(0)",
           background: "radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 70%)",
           filter: "blur(20px)",
+          willChange: 'transform, opacity',
+          backfaceVisibility: 'hidden',
         }}
         animate={{
           scale: [1, 1.5, 0.8, 1],
@@ -151,8 +181,8 @@ export function CircularBackground() {
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
 
-      {/* Floating Geometric Shapes - More Visible */}
-      {Array.from({ length: 8 }, (_, i) => {
+      {/* Floating Geometric Shapes - Full 8 shapes with GPU acceleration */}
+      {useMemo(() => Array.from({ length: 8 }, (_, i) => {
         const size = 50 + i * 8;
         const x = (dimensions.width / 9) * (i + 1);
         const y = dimensions.height / 2 + Math.sin(i) * 150;
@@ -170,6 +200,9 @@ export function CircularBackground() {
               borderRadius: i % 2 === 0 ? "50%" : "25%",
               background: "rgba(255, 255, 255, 0.05)",
               boxShadow: "0 0 15px rgba(255, 255, 255, 0.1)",
+              willChange: 'transform, opacity',
+              transform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
             }}
             animate={{
               y: [y, y - 80, y + 80, y],
@@ -185,11 +218,11 @@ export function CircularBackground() {
             }}
           />
         );
-      })}
+      }), [dimensions.width, dimensions.height])}
 
-      {/* Connecting Lines Between Shapes */}
-      <svg className="absolute inset-0 w-full h-full opacity-30" style={{ zIndex: -1 }}>
-        {Array.from({ length: 5 }, (_, i) => {
+      {/* Connecting Lines Between Shapes - Full animation */}
+      <svg className="absolute inset-0 w-full h-full opacity-30" style={{ zIndex: -1, willChange: 'contents' }}>
+        {useMemo(() => Array.from({ length: 5 }, (_, i) => {
           const x1 = (dimensions.width / 6) * (i + 1);
           const y1 = dimensions.height / 2;
           const x2 = (dimensions.width / 6) * (i + 2);
@@ -205,6 +238,7 @@ export function CircularBackground() {
               stroke="rgba(255, 255, 255, 0.15)"
               strokeWidth="1"
               strokeDasharray="5,5"
+              style={{ willChange: 'stroke-dashoffset, opacity' }}
               animate={{
                 pathLength: [0, 1, 0],
                 opacity: [0.1, 0.3, 0.1],
@@ -217,9 +251,12 @@ export function CircularBackground() {
               }}
             />
           );
-        })}
+        }), [dimensions.width, dimensions.height])}
       </svg>
+
     </div>
   );
 }
+
+export const CircularBackground = memo(CircularBackgroundComponent);
 
