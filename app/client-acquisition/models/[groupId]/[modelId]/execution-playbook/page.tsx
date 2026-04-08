@@ -163,6 +163,21 @@ export default function ExecutionPlaybookPage() {
     "gc-roundtable": "cfo-gc-roundtable",
     "cfo-gc-roundtable-model": "cfo-gc-roundtable",
     "cfo-gc-acquisition": "cfo-gc-roundtable",
+    "ai-prospect-scoring": "ai-prospect-scoring",
+    "ai-prospect-scoring-personalization": "ai-prospect-scoring",
+    "ai-prospect-personalization": "ai-prospect-scoring",
+    "prospect-scoring-personalization": "ai-prospect-scoring",
+    "ai-scoring": "ai-prospect-scoring",
+    "predictive-competitor-monitoring": "predictive-competitor-monitoring",
+    "predictive-competitor": "predictive-competitor-monitoring",
+    "competitor-monitoring": "predictive-competitor-monitoring",
+    "algorithmic-linkedin-content": "algorithmic-linkedin-content",
+    "algorithmic-linkedin": "algorithmic-linkedin-content",
+    "linkedin-content-distribution": "algorithmic-linkedin-content",
+    "ai-driven-abm": "ai-driven-abm",
+    "ai-abm": "ai-driven-abm",
+    "ai-driven-abm-enhancements": "ai-driven-abm",
+    "abm-enhancements": "ai-driven-abm",
   };
 
   const modelId =
@@ -279,6 +294,16 @@ export default function ExecutionPlaybookPage() {
   const isReferralIntroducerNetworksModel = modelId === "referral-introducer-networks";
   const isFamilyOfficeAcquisitionModel = modelId === "family-office-acquisition";
   const isBoutiqueVcAngelModel = modelId === "boutique-vc-angel";
+  const isLicensingAcceleratorModel = modelId === "licensing-accelerator";
+  const isTokenizationDealflowModel = modelId === "tokenization-dealflow";
+  const isGeoTargetedExpansionModel = modelId === "geo-targeted-expansion";
+  const isEnterpriseLicensingExpansionModel = modelId === "enterprise-licensing-expansion";
+  const isFintechApiEcosystemModel = modelId === "fintech-api-ecosystem";
+  const isTokenizationStructuringHybridModel = modelId === "tokenization-structuring-hybrid";
+  const isAiProspectScoringModel = modelId === "ai-prospect-scoring";
+  const isPredictiveCompetitorMonitoringModel = modelId === "predictive-competitor-monitoring";
+  const isAlgorithmicLinkedinContentModel = modelId === "algorithmic-linkedin-content";
+  const isAiDrivenAbmModel = modelId === "ai-driven-abm";
   const plainSectionClass = "mb-10 space-y-4 text-gray-800 leading-relaxed text-left";
   const plainHeadingClass = "text-2xl font-bold mb-2 text-black";
 
@@ -291,7 +316,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -547,7 +572,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -789,7 +814,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -993,7 +1018,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -1235,7 +1260,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -1466,7 +1491,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -1706,7 +1731,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -1861,7 +1886,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -2167,7 +2192,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -2448,7 +2473,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -2812,7 +2837,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -3106,7 +3131,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -3420,7 +3445,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -3703,7 +3728,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -3989,7 +4014,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -4269,7 +4294,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -4559,7 +4584,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -4873,7 +4898,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -5161,7 +5186,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -5442,7 +5467,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -5713,7 +5738,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -5957,7 +5982,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -6125,7 +6150,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -6298,7 +6323,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -6447,6 +6472,1589 @@ export default function ExecutionPlaybookPage() {
       </ProtectedRoute>
     );
   }
+  // Licensing Accelerator Funnels — Execution Playbook
+  if (isLicensingAcceleratorModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Licensing Accelerator Funnels</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Licensing Accelerator Funnels
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Execution Playbook — Operational Blueprint for Boyar Partners
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                1. Tools & Infrastructure Required
+              </h2>
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-300 rounded-lg">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Function</th>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Tools</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">CRM / pipeline tracking</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">HubSpot, Notion CRM, Folk</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Prospect identification</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn Sales Navigator, Apollo.io</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Content distribution</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn, Substack / ConvertKit</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Document delivery</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Encrypted Drive, Notion (gated resources)</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Regulatory monitoring</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Regulator websites, Google Alerts, Lexology</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Diagnostic call scheduling</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Calendly, Google Meet / Zoom</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Proposal delivery</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Notion / PDF (fully branded)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                2. Intelligence Asset Library (Build First)
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Before any outreach, produce the following gated and ungated assets. These are the funnel entry points that establish authority before a prospect engages directly.
+                </p>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 1 — Licensing Jurisdiction Matrix (Gated PDF)</p>
+                  <p className="text-justify">Side-by-side comparison of VASP / EMI / Fund licensing across Malta, Seychelles, Cayman, ADGM, Lithuania, and Gibraltar. Columns: timeline, capital requirement, substance requirement, banking access, MiCA compatibility, cost range.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 2 — "Why Licence Applications Fail" Briefing Note (Ungated)</p>
+                  <p className="text-justify">7 common failure reasons across VASP, EMI, and fund licences. Designed to be shared freely and produce inbound diagnostic requests.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 3 — MiCA Transition Readiness Checklist (Gated)</p>
+                  <p className="text-justify">A structured checklist for crypto businesses assessing CASP licence readiness: entity structure, UBO compliance, AML programme, whitepaper, MLRO appointment, capital adequacy, banking access.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 4 — Licensing Lifecycle Map (LinkedIn Carousel)</p>
+                  <p className="text-justify">Visual breakdown of the 8 phases from licensing intent to approval and post-licence maintenance. Positions Boyar across the full advisory arc, not just the application phase.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 5 — Fund Licensing Pathway Guide (Gated PDF)</p>
+                  <p className="text-justify">Covers Cayman CIMA, BVI FSC, Luxembourg AIFMD, DIFC DFSA, and Singapore MAS — with cost, timeline, and minimum AUM considerations for GP/fund manager use.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                3. Prospect Identification & Signal Monitoring
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify font-semibold">Monitor these signals weekly on LinkedIn and across Web3/fintech communities:</p>
+                <div className="grid md:grid-cols-2 gap-3">
+                  <div className="p-3 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Hiring signals</p>
+                    <p className="text-sm text-gray-800">Job posts for MLRO, Compliance Officer, AML Analyst, Regulatory Affairs Manager — these indicate an active licensing project.</p>
+                  </div>
+                  <div className="p-3 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Content signals</p>
+                    <p className="text-sm text-gray-800">Founders posting about MiCA, VARA, FCA, or specific licence types they are evaluating.</p>
+                  </div>
+                  <div className="p-3 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Fundraising signals</p>
+                    <p className="text-sm text-gray-800">Newly funded crypto or fintech companies — capital events almost always trigger a structuring + licensing mandate.</p>
+                  </div>
+                  <div className="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Expansion signals</p>
+                    <p className="text-sm text-gray-800">Companies announcing EU market entry, new product verticals, or partnerships with regulated entities.</p>
+                  </div>
+                  <div className="p-3 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Deadline signals</p>
+                    <p className="text-sm text-gray-800">Any mention of MiCA July 2026, VARA annual renewal, FSC substance reviews, or "licence transition" language.</p>
+                  </div>
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Community signals</p>
+                    <p className="text-sm text-gray-800">Questions in Telegram groups, Discord servers, or LinkedIn about VASP/EMI licence timelines or jurisdiction selection.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                4. Outreach & Engagement Workflow (End-to-End)
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 1 — Signal Detection & List Build</h3>
+                  <p className="text-justify">Weekly: identify 15–20 prospects via the signals above. Log in CRM with trigger reason, licence type sought, jurisdiction signals, and urgency score (1–3).</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 2 — Connection Request</h3>
+                  <p className="text-justify">Send a personalised LinkedIn connection request with a single relevant observation. No pitch.</p>
+                  <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"Noticed your recent post on MiCA compliance timelines — we work on CASP licence architecture across Malta and Lithuania. Happy to connect and share what's worked."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 3 — Value-First Message (Post-Connection)</h3>
+                  <p className="text-justify">Send one relevant intelligence asset. No call ask.</p>
+                  <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"Sharing a brief jurisdiction matrix we put together for teams evaluating VASP licensing options — covers timelines, capital requirements, and banking access across the main jurisdictions. Useful if you're still mapping options."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 4 — Engagement Follow-Up</h3>
+                  <p className="text-justify">If they respond, like, or open the asset: follow up within 24 hours with a soft diagnostic invitation.</p>
+                  <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"If it helps, I can walk you through the full structure that fits your model — typically 30–40 minutes and gives you a clear picture of jurisdiction, entity, banking, and compliance requirements before you commit to anything."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 5 — Licensing Diagnostic Call (45 minutes)</h3>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Business model and transaction flows</li>
+                    <li className="text-justify">Target jurisdictions and market footprint</li>
+                    <li className="text-justify">Shareholder / UBO structure</li>
+                    <li className="text-justify">AML programme maturity</li>
+                    <li className="text-justify">Banking relationships and requirements</li>
+                    <li className="text-justify">Licence type recommendation and timeline</li>
+                    <li className="text-justify">Entity architecture required for the application</li>
+                  </ul>
+                  <p className="text-justify mt-2 font-semibold">Outcome: clear mandate scope and a verbal proposal.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 6 — Proposal Delivery (within 48 hours)</h3>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm mt-2">
+                    <p className="text-justify"><strong>Phase 1:</strong> Pre-application architecture (entity, UBOs, substance, AML) — $X</p>
+                    <p className="text-justify"><strong>Phase 2:</strong> Application preparation, regulator liaison, documentation — $X</p>
+                    <p className="text-justify"><strong>Phase 3:</strong> Banking onboarding and post-licence maintenance retainer — $X/year</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 7 — Mandate Execution</h3>
+                  <p className="text-justify">Boyar executes across: corporate structuring, compliance documentation, AML/MLRO build-out, banking introductions, application preparation, regulator correspondence, and post-approval ongoing advisory.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                5. Monthly Content Calendar
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Week 1 — Jurisdiction update:</strong> Regulatory change in one key licensing jurisdiction with Boyar's practical implication commentary.</li>
+                  <li className="text-justify"><strong>Week 2 — Failure analysis:</strong> "Why [licence type] applications are rejected in [jurisdiction]" — specific, technical, valuable.</li>
+                  <li className="text-justify"><strong>Week 3 — Structuring framework:</strong> Visual or carousel explaining entity architecture for a specific licence type.</li>
+                  <li className="text-justify"><strong>Week 4 — Deadline / urgency piece:</strong> MiCA countdown, VARA renewal window, or FSC substance deadline update with action guidance.</li>
+                </ul>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-2">
+                  <p className="text-justify font-semibold">Every piece ends with a soft CTA: "If you'd like a 30-minute walkthrough of how this applies to your specific structure, happy to arrange."</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                6. Governance Controls
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 1 — Never guarantee approval timelines</p>
+                  <p className="text-justify">Regulators set their own timelines. Boyar optimises the application but does not control the regulator's decision schedule.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 2 — Scope phases clearly to prevent mandate creep</p>
+                  <p className="text-justify">Each phase must be priced and scoped in writing before work begins.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 3 — KYC before any application work begins</p>
+                  <p className="text-justify">Full UBO disclosure and risk screening before any licence application architecture is produced. Non-negotiable.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 4 — Boyar positions as architect, not legal counsel</p>
+                  <p className="text-justify">Local legal counsel is engaged where required. Boyar coordinates and leads the overall structure but does not provide legal opinions.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                7. KPI System
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Primary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Licensing diagnostics booked per month</li>
+                    <li className="text-justify text-sm">Proposals issued and close rate</li>
+                    <li className="text-justify text-sm">Average mandate value (Phase 1 + 2 + 3)</li>
+                    <li className="text-justify text-sm">Licence types successfully applied for</li>
+                    <li className="text-justify text-sm">Recurring retainer clients post-approval</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Secondary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">LinkedIn engagement on licensing posts</li>
+                    <li className="text-justify text-sm">Intelligence asset downloads</li>
+                    <li className="text-justify text-sm">Signal-to-outreach conversion rate</li>
+                    <li className="text-justify text-sm">Referrals sourced from licensing clients</li>
+                    <li className="text-justify text-sm">Community mentions (Telegram/Discord)</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                8. Success Formula
+              </h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Signal detection → Intelligence asset delivery → Diagnostic call → Phased proposal → Full architecture mandate → Post-licence maintenance retainer → Referral to next licensing client. One licensing mandate produces $30K–$200K+ in total mandate value with 12–18 months of active engagement and multi-year renewal revenue. This is Boyar's single highest-ticket acquisition funnel.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Tokenization Dealflow Syndicates — Execution Playbook
+  if (isTokenizationDealflowModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Tokenization Dealflow Syndicates</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Tokenization Dealflow Syndicates
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Execution Playbook — Operational Blueprint for Boyar Partners
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                1. Tools & Infrastructure Required
+              </h2>
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-300 rounded-lg">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Function</th>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Tools</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">CRM / relationship tracking</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">HubSpot, Notion CRM, Folk</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Syndicate discovery</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn Sales Navigator, Telegram, Discord, CoinList</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Content distribution</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn, Mirror.xyz, Substack, Telegram broadcast</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Structure review delivery</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Notion pages, Google Meet, branded PDF summaries</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Regulatory monitoring</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">ESMA, VARA, MAS, ADGM regulator feeds, Lexology</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Proposal delivery</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Notion / branded PDF, DocuSign for engagement letters</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                2. Intelligence Asset Library (Build Before Outreach)
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 1 — Tokenization Structure Architecture Diagram (Ungated)</p>
+                  <p className="text-justify">Visual showing the standard Cayman Foundation + BVI OpCo + Token Issuance SPV architecture. Shareable on LinkedIn and in Web3 communities. Establishes Boyar as the firm that understands the full structural stack.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 2 — MiCA Token Classification Flowchart (Gated PDF)</p>
+                  <p className="text-justify">Decision tree that helps project teams classify their token as utility, asset-referenced, or e-money under MiCA — and understand the compliance obligations that follow each classification.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 3 — RWA Tokenization Jurisdiction Guide (Gated PDF)</p>
+                  <p className="text-justify">Covers Cayman, Liechtenstein, Luxembourg, BVI, and UAE for real-world asset tokenization — comparing legal treatment of tokenized securities, SPV requirements, investor eligibility, and banking access.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 4 — Pre-Launch Tokenization Compliance Checklist (Ungated)</p>
+                  <p className="text-justify">15-point checklist covering entity, regulatory, banking, AML, whitepaper, and custody requirements before a token project launches. Designed to be shared by syndicate leads with their portfolio projects.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 5 — Syndicate Partner Deck (Private)</p>
+                  <p className="text-justify">A concise 8-slide deck explaining Boyar's tokenization advisory capabilities, typical mandate scope, jurisdiction coverage, and referral arrangement terms — for the syndicate lead's first detailed conversation.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                3. Syndicate Discovery & Prioritisation
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify font-semibold">Identify and tier target syndicates across three categories:</p>
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Tier 1 — High Priority (approach first)</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Active launchpads backing 5+ projects per quarter</li>
+                    <li className="text-justify">RWA tokenization platforms with institutional backing</li>
+                    <li className="text-justify">Web3 accelerators with structured cohort programmes</li>
+                    <li className="text-justify">Deal clubs where syndicate lead is accessible on LinkedIn</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Tier 2 — Medium Priority</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Private equity GPs exploring tokenized LP structures</li>
+                    <li className="text-justify">Real estate developers with fractional tokenization interest</li>
+                    <li className="text-justify">Family office investment clubs co-investing in digital assets</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Tier 3 — Long-cycle (nurture)</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Institutional asset managers evaluating tokenization pilots</li>
+                    <li className="text-justify">Infrastructure providers (custodians, exchanges) with tokenization client bases</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                4. Outreach & Engagement Workflow (End-to-End)
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 1 — Syndicate Lead Identification</h3>
+                  <p className="text-justify">Weekly: identify 5–10 syndicate leads via LinkedIn (search: "tokenization", "launchpad", "RWA", "Web3 syndicate"), Telegram group admins, and accelerator programme directors. Log in CRM with tier, project volume estimate, and contact route.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 2 — Warm Connection Request</h3>
+                  <p className="text-justify">LinkedIn connection with a single relevant observation about their syndicate or a project they've backed. No pitch.</p>
+                  <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"Noticed [Syndicate Name] has been active in RWA tokenization — we work with project teams on the structural and regulatory architecture that makes these launches viable. Happy to connect and share some frameworks we've developed."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 3 — Value-First Asset Delivery</h3>
+                  <p className="text-justify">Send the Tokenization Structure Architecture Diagram or MiCA Classification Flowchart. Frame it as something useful for their portfolio projects.</p>
+                  <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"Thought this might be useful for teams in your network evaluating structure options — it's a framework we use to map entity, regulatory, and banking requirements before a token launch. Happy to share a version tailored to a specific project if helpful."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 4 — Syndicate Partner Conversation</h3>
+                  <p className="text-justify">If they engage: propose a 30-minute call to understand their deal pipeline and explain how Boyar can serve their portfolio projects. Share the Syndicate Partner Deck.</p>
+                  <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"If it makes sense, happy to walk through how we typically support token projects at the structure and compliance stage — takes 30 minutes and might be useful context for your next cohort."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 5 — Free Structure Review (Conversion Engine)</h3>
+                  <p className="text-justify">Offer a complimentary 30-minute tokenization structure review for any project in their pipeline. Cover:</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Token classification under applicable law</li>
+                    <li className="text-justify">Recommended entity and SPV architecture</li>
+                    <li className="text-justify">Jurisdiction selection rationale</li>
+                    <li className="text-justify">Banking pathway feasibility</li>
+                    <li className="text-justify">VASP/CASP licensing requirements</li>
+                    <li className="text-justify">Key compliance risks and mitigation steps</li>
+                  </ul>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 6 — Phased Mandate Proposal</h3>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm mt-2">
+                    <p className="text-justify"><strong>Phase 1:</strong> Entity formation + SPV structure — $X</p>
+                    <p className="text-justify"><strong>Phase 2:</strong> Regulatory classification + whitepaper advisory + AML framework — $X</p>
+                    <p className="text-justify"><strong>Phase 3:</strong> VASP/CASP licensing (if required) — $X</p>
+                    <p className="text-justify"><strong>Phase 4:</strong> Banking onboarding + ongoing compliance retainer — $X/month</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 7 — Syndicate Referral Agreement</h3>
+                  <p className="text-justify">For Tier 1 partners: formalise a referral arrangement with a signed referral agreement. Boyar pays a referral fee (typically 5–10% of mandate fees) for projects introduced by the syndicate lead.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                5. Content Strategy (Web3 Authority Engine)
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Week 1 — Structure post:</strong> Diagram or carousel showing entity architecture for a specific token type. Publish on LinkedIn and share in 2–3 relevant Telegram groups.</li>
+                  <li className="text-justify"><strong>Week 2 — Regulatory update:</strong> MiCA development, VARA update, or jurisdiction-specific token law change with practical implications for project teams.</li>
+                  <li className="text-justify"><strong>Week 3 — Case framework:</strong> "How we would structure a [real estate / PE fund / commodity] tokenization project" — anonymised, educational, highly shareable.</li>
+                  <li className="text-justify"><strong>Week 4 — Risk/compliance piece:</strong> Common tokenization compliance failures and how to avoid them. Attracts both project teams and syndicate leads who want to protect their portfolio.</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                6. Governance Controls
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 1 — Full KYC/AML screening before any mandate begins</p>
+                  <p className="text-justify">Token projects carry elevated regulatory risk. UBO disclosure, source of funds, and risk assessment are mandatory before engagement letters are signed.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 2 — Boyar does not advise on token economics or investment returns</p>
+                  <p className="text-justify">Boyar's scope is structure, compliance, licensing, and banking. Token economics and investment return projections are outside scope and must not be commented on.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 3 — Referral arrangements must be formally documented</p>
+                  <p className="text-justify">All syndicate referral fee arrangements must be in a signed referral agreement before any project introductions are accepted.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 4 — Phase mandates clearly to avoid scope creep</p>
+                  <p className="text-justify">Tokenization projects expand scope mid-engagement. Each phase must be separately scoped and priced before commencement.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                7. KPI System
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Primary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Active syndicate partnerships established</li>
+                    <li className="text-justify text-sm">Free structure reviews conducted per month</li>
+                    <li className="text-justify text-sm">Tokenization mandates won per quarter</li>
+                    <li className="text-justify text-sm">Average mandate value per project</li>
+                    <li className="text-justify text-sm">Referral conversion rate (intro → mandate)</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Secondary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">LinkedIn engagement on tokenization content</li>
+                    <li className="text-justify text-sm">Telegram/Discord community reach</li>
+                    <li className="text-justify text-sm">Gated asset downloads per month</li>
+                    <li className="text-justify text-sm">Syndicate leads in pipeline</li>
+                    <li className="text-justify text-sm">Recurring retainer clients post-launch</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                8. Success Formula
+              </h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Syndicate relationship → Project referral → Free structure review → Phased mandate (entity + regulatory + banking + licensing) → Post-launch compliance retainer → Next referral from the same syndicate. Two active syndicate partnerships producing 4–6 referrals each per year = 8–12 tokenization mandates = $640K–$960K in annual revenue at maturity.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Geo-Targeted Corporate Expansion Funnels
+  if (isGeoTargetedExpansionModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Geo-Targeted Corporate Expansion Funnels</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Geo-Targeted Corporate Expansion Funnels
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Execution Playbook — Operational Blueprint for Boyar Partners
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Tools & Infrastructure Required</h2>
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-300 rounded-lg">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Function</th>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Tools</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">CRM / pipeline tracking</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">HubSpot, Notion CRM, Folk</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Prospect identification</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn Sales Navigator (geo + industry filters)</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Signal monitoring</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Google Alerts, LinkedIn notifications, Apollo.io</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Content distribution</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn, WhatsApp broadcast, Substack</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Document delivery</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Notion corridor guides, branded PDFs</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Diagnostic scheduling</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Calendly, Google Meet / Zoom</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Proposal delivery</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Branded PDF, DocuSign engagement letters</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. Corridor Intelligence Assets (Build Before Outreach)</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">Build one corridor guide per target route before starting outreach. These assets replace cold prospecting.</p>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 1 — India → UAE Expansion Guide (Gated PDF)</p>
+                  <p className="text-justify">Entity options (DIFC, ADGM, Mainland, Freezone), banking landscape, substance requirements, tax treaty considerations, common structural mistakes, timeline and cost overview.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 2 — UK / EU → Cayman / BVI Holding Structure Guide (Gated PDF)</p>
+                  <p className="text-justify">Why founders restructure offshore post-expansion, Cayman vs BVI for different business types, banking access, economic substance, and CIMA/FSC registration overview.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 3 — Crypto Relocation Corridor Map (Ungated LinkedIn Carousel)</p>
+                  <p className="text-justify">Visual showing top relocation corridors for crypto businesses: source markets, destination jurisdictions, VASP licensing options, and banking feasibility ratings per corridor.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 4 — "5 Expansion Mistakes" Briefing Note (Ungated)</p>
+                  <p className="text-justify">The 5 most costly structural mistakes companies make when expanding internationally — wrong jurisdiction, wrong entity type, no substance, banking not assessed upfront, UBO gaps. Widely shareable, produces inbound enquiries.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Asset 5 — Expansion Diagnostic Call Script (Internal)</p>
+                  <p className="text-justify">Structured intake covering business model, source jurisdiction, destination requirements, timeline, banking needs, and compliance obligations. Used on every first diagnostic call to ensure consistent quality and complete information capture.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. Signal Monitoring System (Weekly)</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="grid md:grid-cols-2 gap-3">
+                  <div className="p-3 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Job posting signals</p>
+                    <p className="text-sm text-gray-800">"Country Manager UAE", "Head of International Expansion", "VP APAC" — company is actively expanding into a new market.</p>
+                  </div>
+                  <div className="p-3 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">LinkedIn announcement signals</p>
+                    <p className="text-sm text-gray-800">Founders posting "excited to announce our expansion into [country]" or "we've opened our Dubai office."</p>
+                  </div>
+                  <div className="p-3 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Funding signals</p>
+                    <p className="text-sm text-gray-800">Newly funded companies in target source markets — capital events almost always trigger international expansion planning.</p>
+                  </div>
+                  <div className="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Community signals</p>
+                    <p className="text-sm text-gray-800">Founders asking questions about UAE company formation, offshore banking, or Cayman structures in LinkedIn posts or groups.</p>
+                  </div>
+                  <div className="p-3 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Regulatory signals</p>
+                    <p className="text-sm text-gray-800">Policy changes in source markets (India FEMA, UK tax changes) that incentivise international restructuring.</p>
+                  </div>
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Partnership signals</p>
+                    <p className="text-sm text-gray-800">Companies announcing international partnerships — often precedes formal expansion and entity setup.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. Outreach & Engagement Workflow (End-to-End)</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 1 — Weekly Prospect List Build</h3>
+                  <p className="text-justify">Use LinkedIn Sales Navigator filtered by: geography (source market), seniority (Founder / CEO / CFO / GC), industry, and recent activity. Build 20–30 prospects per active corridor weekly. Log in CRM with corridor, trigger signal, and urgency score 1–3.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 2 — Corridor-Specific Connection Request</h3>
+                  <p className="text-justify">Reference their specific source market and destination. Never generic.</p>
+                  <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"Noticed you're building in India and recently posted about UAE expansion — we help founders structure this move correctly from day one (entity, banking, substance). Happy to connect and share what works."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 3 — Corridor Guide Delivery (Post-Connection)</h3>
+                  <p className="text-justify">Send the relevant corridor guide immediately after connecting. One document, no sales language.</p>
+                  <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"Sharing our India to UAE Expansion Guide — covers entity options, banking landscape, and common mistakes we see at this stage. Useful whether you're planning now or in the next 6 months."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 4 — Engagement Follow-Up</h3>
+                  <p className="text-justify">If they open, reply, or engage: follow up within 24–48 hours with a diagnostic invitation.</p>
+                  <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"Happy to do a quick 30-minute expansion diagnostic for your specific setup — we can map out the right structure, jurisdiction, and banking pathway before you commit to anything."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 5 — Expansion Diagnostic Call (30–45 minutes)</h3>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Business model and revenue flows</li>
+                    <li className="text-justify">Source jurisdiction obligations and exit considerations</li>
+                    <li className="text-justify">Target destination and entity type options</li>
+                    <li className="text-justify">Banking requirements and access feasibility</li>
+                    <li className="text-justify">Substance and compliance obligations in destination</li>
+                    <li className="text-justify">Licensing requirements if applicable</li>
+                    <li className="text-justify">Timeline, cost range, and recommended next steps</li>
+                  </ul>
+                  <p className="text-justify mt-2 font-semibold">Outcome: verbal mandate scope, written proposal within 48 hours.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 6 — Phased Expansion Mandate Proposal</h3>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm mt-2">
+                    <p className="text-justify"><strong>Phase 1:</strong> Entity formation in destination jurisdiction — $X</p>
+                    <p className="text-justify"><strong>Phase 2:</strong> Banking introductions and account opening support — $X</p>
+                    <p className="text-justify"><strong>Phase 3:</strong> Substance arrangement and compliance registration — $X</p>
+                    <p className="text-justify"><strong>Phase 4:</strong> Licensing (if required) + annual maintenance retainer — $X/year</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Corridor Activation Sequencing</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">Launch corridors sequentially — build authority in one before starting the next.</p>
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Month 1–3 — Corridor 1: India → UAE</p>
+                  <p className="text-justify">Highest volume, fastest conversion, strong founder community on LinkedIn. Build the guide, publish 4 pieces of corridor-specific content, run outreach to 60–90 Indian founders expanding to UAE.</p>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Month 4–6 — Corridor 2: Crypto / Web3 Relocation (multi-source → UAE / Malta / Lithuania)</p>
+                  <p className="text-justify">High mandate value, MiCA urgency driving demand. Leverage tokenization and licensing content already produced for other models.</p>
+                </div>
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Month 7–9 — Corridor 3: UK / EU → Cayman / BVI</p>
+                  <p className="text-justify">Fund managers and tech companies. Higher average mandate value. Leverage fund-related content and CFO/GC roundtable network already built.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>6. Monthly Content Calendar (Per Active Corridor)</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Week 1 — Structural post:</strong> "The right entity structure for [source] founders expanding to [destination]" — diagram or carousel format.</li>
+                  <li className="text-justify"><strong>Week 2 — Banking reality post:</strong> "What banks actually require from [source] companies expanding to [destination]" — specific, practical, no competitor publishes this.</li>
+                  <li className="text-justify"><strong>Week 3 — Mistake / risk post:</strong> "The 3 compliance mistakes [source] founders make when expanding to [destination]" — high engagement, triggers inbound DMs.</li>
+                  <li className="text-justify"><strong>Week 4 — Regulatory update:</strong> Any change in source or destination jurisdiction affecting the corridor — positions Boyar as the current authority.</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>7. Governance Controls</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 1 — Always perform source jurisdiction exit analysis</p>
+                  <p className="text-justify">Expansion mandates must account for obligations in the source jurisdiction — tax exit, regulatory deregistration, and transfer pricing — not just the destination. Incomplete advice creates client risk and liability.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 2 — Banking feasibility assessed before entity formation</p>
+                  <p className="text-justify">Forming an entity without confirming banking access first is the most common failure mode. Boyar assesses banking feasibility during the diagnostic, not after entity formation.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 3 — Full KYC before any mandate begins</p>
+                  <p className="text-justify">UBO disclosure and source of funds verification before engagement letters are signed. Non-negotiable.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 4 — Local counsel engaged for destination-specific legal advice</p>
+                  <p className="text-justify">Boyar coordinates the overall expansion architecture. Local legal counsel in the destination jurisdiction handles jurisdiction-specific legal opinions and filings.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>8. KPI System</h2>
+              <div className="grid md:grid-cols-2 gap-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Primary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Expansion diagnostics booked per month</li>
+                    <li className="text-justify text-sm">Mandates won per corridor per quarter</li>
+                    <li className="text-justify text-sm">Average mandate value per expansion client</li>
+                    <li className="text-justify text-sm">Active corridors with published content</li>
+                    <li className="text-justify text-sm">Referrals from existing expansion clients</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Secondary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Corridor guide downloads per month</li>
+                    <li className="text-justify text-sm">LinkedIn engagement on corridor content</li>
+                    <li className="text-justify text-sm">Connection acceptance rate per corridor</li>
+                    <li className="text-justify text-sm">Signal-to-outreach conversion rate</li>
+                    <li className="text-justify text-sm">Annual maintenance retainers secured</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>9. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Corridor content published → Expansion signal detected → Targeted outreach with corridor guide → Diagnostic call → Multi-phase expansion mandate (entity + banking + compliance + licensing) → Annual maintenance retainer → Source-market referral loop. One corridor at authority level generates 4–8 mandates per quarter at $15K–$60K average value. Three active corridors = $500K–$1.5M annual revenue channel at maturity.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Enterprise Licensing Expansion Funnels
+  if (isEnterpriseLicensingExpansionModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Enterprise Licensing Expansion Funnels</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Enterprise Licensing Expansion Funnels
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Execution Playbook — Operational Blueprint for Boyar Partners
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Tools & Infrastructure Required</h2>
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-300 rounded-lg">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Function</th>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Tools</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Enterprise CRM</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">HubSpot (company + contact hierarchy), Notion</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Prospect identification</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn Sales Navigator, Crunchbase, Refinitiv</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Regulatory monitoring</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">ESMA, EBA, FCA, VARA, MAS regulator feeds, Lexology</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Content distribution</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn, Substack, industry newsletter sponsorships</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Proposal & mandate management</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Notion workspaces, DocuSign, encrypted Drive</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Enterprise meeting scheduling</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Calendly Enterprise, Google Meet, MS Teams</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. Enterprise Signal Detection System</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify font-semibold">Monitor these enterprise-specific signals weekly. Each represents an active licensing expansion mandate opportunity:</p>
+                <div className="grid md:grid-cols-2 gap-3">
+                  <div className="p-3 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">MiCA transition signals</p>
+                    <p className="text-sm text-gray-800">EU crypto businesses posting about CASP authorisation, hiring for MiCA compliance roles, or announcing regulatory transition plans.</p>
+                  </div>
+                  <div className="p-3 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Market expansion announcements</p>
+                    <p className="text-sm text-gray-800">Press releases or LinkedIn posts announcing entry into a new regulated market — always requires a new licence or passporting.</p>
+                  </div>
+                  <div className="p-3 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Acquisition signals</p>
+                    <p className="text-sm text-gray-800">Regulated firms making acquisitions of other licensed entities — change of control notifications and regulatory integration mandates follow immediately.</p>
+                  </div>
+                  <div className="p-3 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Hiring signals</p>
+                    <p className="text-sm text-gray-800">Jobs posted for "Head of Regulatory Expansion", "Multi-Jurisdiction Compliance Manager", "VASP Licensing Specialist" — active licensing project underway.</p>
+                  </div>
+                  <div className="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Funding rounds</p>
+                    <p className="text-sm text-gray-800">Series B+ raises by regulated fintech or crypto companies — growth capital almost always earmarked for regulatory expansion.</p>
+                  </div>
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Product launch signals</p>
+                    <p className="text-sm text-gray-800">Announcements of new regulated product lines (crypto custody, lending, tokenized assets) that require licence variation or new authorisation.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. Target Contact Identification Within Enterprise</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">For each enterprise target, identify and track the following stakeholders:</p>
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Primary Decision-Makers (outreach first)</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Chief Compliance Officer (CCO)</li>
+                    <li className="text-justify">General Counsel (GC) / Head of Legal</li>
+                    <li className="text-justify">Head of Regulatory Affairs</li>
+                    <li className="text-justify">Chief Risk Officer (CRO)</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Secondary Influencers (engage after primary)</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">CFO (controls advisory spend approval)</li>
+                    <li className="text-justify">CEO / MD (final mandate sign-off)</li>
+                    <li className="text-justify">Head of Strategy or Business Development</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. Outreach & Engagement Workflow</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 1 — Enterprise Target List Build (Weekly)</h3>
+                  <p className="text-justify">Identify 5–10 enterprise targets per week using the signal system above. For each target, map the org chart (CCO, GC, CFO) in CRM. Score by urgency: MiCA deadline = Tier 1, active expansion announced = Tier 1, funding round = Tier 2, general expansion interest = Tier 3.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 2 — LinkedIn Connection to CCO / GC</h3>
+                  <p className="text-justify">Connect with the primary decision-maker first. Reference a specific regulatory challenge relevant to their firm.</p>
+                  <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"With the MiCA CASP deadline approaching, I've been working with several compliance teams on the transition architecture — entity restructuring, banking, and application preparation across multiple jurisdictions. Thought it might be useful to connect given what [Company] is navigating."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 3 — Technical Asset Delivery</h3>
+                  <p className="text-justify">Send one highly relevant technical document immediately after connecting. Enterprise compliance professionals evaluate advisors on technical depth — the document quality signals capability before any conversation.</p>
+                  <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"Sharing our MiCA CASP Transition Architecture Brief — covers the 8-step application roadmap, entity structure requirements, banking considerations, and timeline planning for firms currently operating under national registrations. Useful context if you're currently mapping the transition."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 4 — Enterprise Discovery Call (60 minutes)</h3>
+                  <p className="text-justify mb-2">A structured 60-minute call covering the full regulatory expansion picture:</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Current licensing footprint (jurisdictions, licence types, entity structure)</li>
+                    <li className="text-justify">Target expansion jurisdictions and timeline</li>
+                    <li className="text-justify">Internal compliance team capacity and gaps</li>
+                    <li className="text-justify">Banking relationships across entities</li>
+                    <li className="text-justify">Regulatory deadlines and board-level commitments</li>
+                    <li className="text-justify">Budget parameters for external advisory</li>
+                    <li className="text-justify">Prior experience with external licensing advisors</li>
+                  </ul>
+                  <p className="text-justify mt-2 font-semibold">Outcome: full picture of the mandate scope. Multi-phase proposal delivered within 5 business days.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 5 — Multi-Phase Enterprise Proposal</h3>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm mt-2">
+                    <p className="text-justify"><strong>Phase 1 — Licensing Roadmap & Architecture:</strong> Full regulatory mapping across all target jurisdictions, entity structure design, banking feasibility assessment — $X</p>
+                    <p className="text-justify mt-2"><strong>Phase 2 — Jurisdiction-by-Jurisdiction Execution:</strong> Application preparation, regulator liaison, documentation, entity formation per jurisdiction — $X per jurisdiction</p>
+                    <p className="text-justify mt-2"><strong>Phase 3 — Banking & Compliance Infrastructure:</strong> Banking onboarding across new entities, AML/MLRO build-out, substance arrangement — $X</p>
+                    <p className="text-justify mt-2"><strong>Phase 4 — Annual Compliance Retainer:</strong> Ongoing maintenance across all licensed entities, renewal management, regulatory change monitoring — $X/year</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 6 — Mandate Execution & Relationship Governance</h3>
+                  <p className="text-justify">Assign a dedicated Boyar engagement lead. Establish monthly reporting cadence to CCO/GC. Create a shared regulatory calendar tracking all deadlines, submission windows, and renewal dates across every licensed entity in the group.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Enterprise Content Strategy</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">Enterprise compliance professionals consume technical content. Generic offshore marketing does not reach them. Publish the following monthly:</p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>MiCA Transition Tracker:</strong> Monthly update on CASP application volumes, jurisdiction-specific timelines, and regulator stance changes across EU member states.</li>
+                  <li className="text-justify"><strong>Multi-Jurisdiction Licensing Matrix:</strong> Quarterly update comparing licence requirements, timelines, capital, and banking access across Boyar's 15 core licensing jurisdictions.</li>
+                  <li className="text-justify"><strong>Regulatory Change Bulletin:</strong> Bi-monthly summary of material regulatory changes affecting VASP, EMI, fund, and iGaming licences across key jurisdictions.</li>
+                  <li className="text-justify"><strong>Case Architecture Briefs:</strong> Anonymised case studies of multi-jurisdiction licensing rollouts — showing the structural, banking, and compliance architecture Boyar uses for complex enterprise engagements.</li>
+                </ul>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-2">
+                  <p className="text-justify font-semibold">Distribution: LinkedIn (Inderjeet's profile), direct email to CCO/GC contacts in CRM, and industry newsletter placements in fintech and crypto compliance publications.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>6. Governance Controls</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 1 — Always start with a Licensing Roadmap phase before execution</p>
+                  <p className="text-justify">Enterprise mandates must begin with a structured mapping phase. Jumping to execution without a full regulatory architecture review creates liability and scope disputes.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 2 — Each jurisdiction is a separate scoped phase</p>
+                  <p className="text-justify">Never price multi-jurisdiction rollouts as a single flat fee. Each jurisdiction has different complexity, timelines, and risk — price and scope each separately.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 3 — KYC the enterprise group, not just the entity</p>
+                  <p className="text-justify">Enterprise group KYC must cover all UBOs across the group structure, including parent entities, holding companies, and significant shareholders. Group-level AML risk assessment is mandatory.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 4 — Maintain written engagement governance throughout</p>
+                  <p className="text-justify">Enterprise mandates require formal engagement letters, scope change documentation, and monthly reporting. Verbal scope expansions are not acceptable at enterprise level.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>7. KPI System</h2>
+              <div className="grid md:grid-cols-2 gap-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Primary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Enterprise discovery calls booked per month</li>
+                    <li className="text-justify text-sm">Multi-phase proposals issued and close rate</li>
+                    <li className="text-justify text-sm">Average enterprise mandate value</li>
+                    <li className="text-justify text-sm">Annual retainer clients under management</li>
+                    <li className="text-justify text-sm">Jurisdictions executed per enterprise client</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Secondary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">CCO / GC connection acceptance rate</li>
+                    <li className="text-justify text-sm">Technical content engagement (downloads, shares)</li>
+                    <li className="text-justify text-sm">Enterprise peer referrals received</li>
+                    <li className="text-justify text-sm">MiCA pipeline value (total mandates in scope)</li>
+                    <li className="text-justify text-sm">Average time from first contact to mandate signed</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>8. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Enterprise signal detected → Technical content delivered to CCO/GC → Discovery call → Multi-phase proposal → Licensing roadmap executed → Jurisdiction-by-jurisdiction rollout → Annual retainer across all entities → Enterprise peer referral. One enterprise client = $150K–$500K initial mandate + $80K–$200K annual recurring. Three enterprise clients under retainer = a stable $240K–$600K annual recurring revenue base independent of new client acquisition.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // FinTech API Ecosystem Funnels
+  if (isFintechApiEcosystemModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">FinTech API Ecosystem Funnels</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                FinTech API Ecosystem Funnels
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Execution Playbook — Operational Blueprint for Boyar Partners
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Tools & Infrastructure Required</h2>
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-300 rounded-lg">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Function</th>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Tools</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Partner relationship CRM</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">HubSpot (partner pipeline), Notion partner tracker</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">API provider discovery</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn Sales Navigator, Crunchbase, product directories</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Referral tracking</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">HubSpot referral source field, Notion referral log</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Co-branded content creation</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Notion, Figma, Canva Pro for partner collateral</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Partner communication</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Slack shared channels, WhatsApp, encrypted email</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Referral agreement management</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">DocuSign, encrypted Drive</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. API Provider Target List & Prioritisation</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify font-semibold">Build a tiered target list of API providers. Approach Tier 1 first — highest referral volume potential, most accessible partnership teams.</p>
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Tier 1 — KYC / AML Technology Vendors</p>
+                  <p className="text-justify">Sumsub, Onfido, Sardine, Jumio, Veriff. Their clients are already building regulated products and need compliant AML frameworks — Boyar solves their immediate blocker. Partnership managers are highly motivated to refer.</p>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Tier 1 — Crypto Infrastructure Providers</p>
+                  <p className="text-justify">Fireblocks, BitGo, Copper, Alchemy, Chainalysis. Their clients need VASP licensing and compliant entity structures before accessing custody or trading infrastructure. Direct mandate pipeline.</p>
+                </div>
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Tier 2 — Banking-as-a-Service Platforms</p>
+                  <p className="text-justify">Railsr, Swan, Solaris, Treezor, Modulr. Clients building on BaaS infrastructure need EMI/PI licences and compliant corporate structures. Longer partnership sales cycle but very high referral volume once established.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Tier 3 — Payment Processing APIs & FX Providers</p>
+                  <p className="text-justify">Stripe Treasury, Adyen for Platforms, Currencycloud. Clients require appropriate licensing for their payment or FX use case. Slower referral activation but high mandate values per referral.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. Partnership Development Workflow (End-to-End)</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 1 — Identify Partnership Manager at Target Provider</h3>
+                  <p className="text-justify">Search LinkedIn for "Partnerships", "Business Development", "Partner Success", or "Ecosystem" roles at each target provider. These individuals are the correct entry point — not the CEO or sales team.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 2 — LinkedIn Connection with Partnership Framing</h3>
+                  <p className="text-justify">Connect with a message that leads with what Boyar does for their clients — not what Boyar wants from the provider.</p>
+                  <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"We work with fintech builders on licensing, entity structure, and banking — specifically the compliance architecture they need before integrating infrastructure like [Provider Name]. We've been thinking about how we might add value to your client onboarding process. Happy to connect and explore."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 3 — Partnership Discovery Call (30 minutes)</h3>
+                  <p className="text-justify mb-2">A structured call to understand the provider's client base and onboarding pain points:</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">What types of businesses are integrating your API?</li>
+                    <li className="text-justify">What regulatory or compliance issues delay your clients' go-live?</li>
+                    <li className="text-justify">Do you currently refer clients to external advisors for licensing or AML?</li>
+                    <li className="text-justify">What does your ideal partner ecosystem look like?</li>
+                    <li className="text-justify">What would make this a mutually beneficial relationship?</li>
+                  </ul>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 4 — Co-Produced Content Proposal</h3>
+                  <p className="text-justify">Propose co-authoring a guide that helps the provider's clients get ready to integrate their API. This gives the provider valuable content and positions Boyar as the recommended advisory partner.</p>
+                  <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">Examples: "How to Get Licensed Before Integrating [Provider] Custody Infrastructure" / "The AML Framework Your Business Needs Before Going Live on [Provider]" / "Licensing Roadmap for Businesses Building on [Provider] BaaS Platform."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 5 — Partner Listing & Referral Agreement</h3>
+                  <p className="text-justify">Formalise the partnership with a simple referral agreement covering: referral fee structure (typically 5–8% of mandate fees), referral process, confidentiality, and partner listing on the provider's website or partner directory. Boyar lists the provider as a recommended infrastructure partner in return.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 6 — Referral Client Intake & Mandate Conversion</h3>
+                  <p className="text-justify mb-2">When a referral arrives from the API provider:</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Respond within 4 business hours — speed signals professionalism to the client and the referring provider</li>
+                    <li className="text-justify">Run a 45-minute licensing and structuring diagnostic covering business model, target market, licence type, entity needs, and banking requirements</li>
+                    <li className="text-justify">Issue a phased mandate proposal within 48 hours</li>
+                    <li className="text-justify">Update the API provider's partnership team on progress — maintaining the relationship loop is essential for continued referral flow</li>
+                  </ul>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 7 — Partner Relationship Maintenance (Monthly)</h3>
+                  <p className="text-justify">Send a monthly partner update to each API provider's partnership team: number of referrals processed, mandates in progress, client milestones reached (licence approved, banking opened, entity formed). This keeps Boyar top of mind and demonstrates the value the partnership is generating for the provider's clients.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. Referral Client Mandate Structure</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">API ecosystem referral clients follow a predictable mandate structure — use this as the standard proposal framework for all referrals:</p>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Phase 1 — Entity & Structure Setup</p>
+                  <p className="text-justify">Incorporate the correct legal entity in the optimal jurisdiction for the client's use case and the API provider's requirements. Typical jurisdictions: Lithuania (EMI/VASP), Malta (EMI/VASP/iGaming), Seychelles (VASP/Forex), BVI (holding), UAE (VASP/payment). Fees: $3K–$12K.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Phase 2 — Regulatory Licensing</p>
+                  <p className="text-justify">Prepare and submit the licence application for the relevant regulatory regime (EMI, PI, VASP, MSB). Includes UBO compliance, AML programme design, MLRO appointment, and regulator liaison throughout the process. Fees: $25K–$80K depending on licence type and jurisdiction.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Phase 3 — Banking & Payment Rails</p>
+                  <p className="text-justify">Introduce client to appropriate banking partners, EMI account providers, or IBAN issuers compatible with their business model and the API provider's settlement requirements. Fees: $3K–$8K.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Phase 4 — AML Framework Build</p>
+                  <p className="text-justify">Produce the compliant AML/CFT policy, KYC procedures, transaction monitoring framework, and MLRO oversight structure required by the API provider before go-live. Fees: $5K–$15K.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Phase 5 — Ongoing Compliance Retainer</p>
+                  <p className="text-justify">Annual compliance maintenance: licence renewal, regulatory reporting, AML policy updates, banking relationship management. Fees: $1.5K–$4K/month.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Content Strategy to Support API Provider Partnerships</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Co-branded integration guides:</strong> One per API provider partner — distributed through the provider's client onboarding materials, newsletters, and partner directory.</li>
+                  <li className="text-justify"><strong>LinkedIn content targeting fintech builders:</strong> Weekly posts addressing the regulatory questions faced by businesses building on payment, crypto, and BaaS APIs — establishes Boyar's authority in the developer/builder community.</li>
+                  <li className="text-justify"><strong>API-specific licensing explainers:</strong> "What licence do you need to use [BaaS / crypto custody / payment API]?" — format easily shareable by API provider partner teams to their clients.</li>
+                  <li className="text-justify"><strong>Monthly regulatory update for partner clients:</strong> A short update on regulatory changes affecting the fintech API ecosystem — distributed via the partner's newsletter or shared directly with their client base.</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>6. Governance Controls</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 1 — All referral arrangements must be formally documented</p>
+                  <p className="text-justify">No verbal referral arrangements. Every API provider partnership requires a signed referral agreement before any client introductions are accepted.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 2 — Full KYC before any referral client mandate begins</p>
+                  <p className="text-justify">API provider referral does not bypass Boyar's own KYC/AML screening. Every referred client undergoes full UBO disclosure and risk assessment before engagement letters are signed.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 3 — Respond to every referral within 4 business hours</p>
+                  <p className="text-justify">Slow response to API provider referrals damages the partner relationship. A 4-hour maximum response commitment must be maintained for every inbound referral from an active partner.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 4 — Monthly partner reporting is non-negotiable</p>
+                  <p className="text-justify">Partners who do not receive regular updates on referred client progress will stop referring. Monthly partner updates must be sent consistently regardless of pipeline volume.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>7. KPI System</h2>
+              <div className="grid md:grid-cols-2 gap-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Primary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Active API provider partnerships</li>
+                    <li className="text-justify text-sm">Referrals received per partner per month</li>
+                    <li className="text-justify text-sm">Referral-to-mandate conversion rate</li>
+                    <li className="text-justify text-sm">Average mandate value per referral client</li>
+                    <li className="text-justify text-sm">Recurring retainer clients from API channel</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Secondary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Co-branded content pieces published</li>
+                    <li className="text-justify text-sm">Partner directory listings secured</li>
+                    <li className="text-justify text-sm">Average referral response time</li>
+                    <li className="text-justify text-sm">Partner satisfaction score (monthly check-in)</li>
+                    <li className="text-justify text-sm">Total pipeline value from API channel</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>8. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Partnership manager identified → Discovery call → Co-branded content produced → Referral agreement signed → Partner listing activated → Referrals arrive pre-qualified → Licensing diagnostic → Phased mandate (entity + licence + banking + AML) → Client goes live on API platform → Partner sends next referral. Three active API partnerships each producing 8–12 referrals per quarter = 24–36 pre-qualified mandates per quarter at $35K–$100K average value. This channel requires the least ongoing prospecting effort of any Boyar acquisition model once partnerships are established.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Tokenization + Structuring Hybrid Funnels
+  if (isTokenizationStructuringHybridModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Tokenization + Structuring Hybrid Funnels</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Tokenization + Structuring Hybrid Funnels
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Execution Playbook — Operational Blueprint for Boyar Partners
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Tools & Infrastructure Required</h2>
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-300 rounded-lg">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Function</th>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Tools</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">CRM / mandate tracking</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">HubSpot, Notion (multi-phase mandate tracker)</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Prospect identification</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn Sales Navigator, RWA community monitoring</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Architecture design & delivery</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Figma / Miro (structure diagrams), Notion (client workspace)</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Regulatory monitoring</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">ESMA MiCA tracker, VARA updates, Cayman CIMA feed</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Secure document management</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Encrypted Drive, DocuSign, ProtonMail for sensitive comms</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Content distribution</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn, Mirror.xyz, Substack, RWA Telegram groups</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. Hybrid Client Signal Detection</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify font-semibold">Hybrid mandate clients broadcast clear signals. Monitor these weekly across LinkedIn, RWA communities, and crypto/fintech news:</p>
+                <div className="grid md:grid-cols-2 gap-3">
+                  <div className="p-3 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">RWA tokenization announcements</p>
+                    <p className="text-sm text-gray-800">Developers, fund managers, or family offices publicly exploring tokenization of real estate, PE interests, or commodities.</p>
+                  </div>
+                  <div className="p-3 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">MiCA retroactive compliance signals</p>
+                    <p className="text-sm text-gray-800">Existing token projects posting about MiCA transition challenges — often indicates both a token framework problem and a structural gap underneath it.</p>
+                  </div>
+                  <div className="p-3 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Fund tokenization exploration</p>
+                    <p className="text-sm text-gray-800">GPs or LPs discussing tokenized fund interests, secondary liquidity mechanisms, or on-chain fund administration.</p>
+                  </div>
+                  <div className="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Complex Web3 architecture questions</p>
+                    <p className="text-sm text-gray-800">Founders posting about multi-entity crypto structures — foundation + opco + token — indicating they need the full hybrid architecture designed.</p>
+                  </div>
+                  <div className="p-3 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Family office digital asset allocation signals</p>
+                    <p className="text-sm text-gray-800">UHNW family office representatives posting about integrating tokenized assets into their portfolio structures.</p>
+                  </div>
+                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Syndicate and launchpad referrals</p>
+                    <p className="text-sm text-gray-800">Projects referred through tokenization dealflow syndicate relationships whose complexity exceeds a pure token advisory scope.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. Outreach & Engagement Workflow</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 1 — Signal Detection & Prospect Logging</h3>
+                  <p className="text-justify">Weekly: identify 5–10 hybrid mandate prospects via the signals above. Log in CRM with asset class (real estate / fund / commodity / Web3), trigger signal, and complexity score (1 = simple hybrid, 3 = multi-entity, multi-jurisdiction, multi-licence). Tier 1 prospects receive outreach within 48 hours of signal detection.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 2 — Precision Connection Request</h3>
+                  <p className="text-justify">Reference the specific intersection of structuring and tokenization in the connection note. Signal that Boyar understands both layers simultaneously.</p>
+                  <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"Noticed your recent posts on RWA tokenization — we work specifically on the intersection of corporate architecture and token frameworks, which is where most projects run into structural gaps. Happy to connect and share how we approach the foundation + SPV + token layer as a single integrated design."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 3 — Integrated Architecture Asset Delivery</h3>
+                  <p className="text-justify">Send a relevant architecture diagram or hybrid framework document immediately after connecting. This is the primary trust-building mechanism for this client type.</p>
+                  <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">"Sharing our integrated architecture framework for tokenized asset structures — shows how the foundation governance, SPV layer, token issuance mechanism, and MiCA compliance interact. Useful reference whether you're at early planning stage or already mid-execution."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 4 — Free Hybrid Architecture Diagnostic (45 minutes)</h3>
+                  <p className="text-justify mb-2">The highest-converting call format in Boyar's toolkit for this client type. Cover both layers simultaneously:</p>
+                  <div className="grid md:grid-cols-2 gap-3 mt-2">
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                      <p className="font-semibold text-gray-900 text-sm mb-1">Corporate Structure Layer</p>
+                      <ul className="text-sm text-gray-800 space-y-1">
+                        <li>• Jurisdiction selection rationale</li>
+                        <li>• Foundation vs trust vs company governance</li>
+                        <li>• SPV architecture for asset holding</li>
+                        <li>• UBO and ownership structure</li>
+                        <li>• Banking and treasury requirements</li>
+                      </ul>
+                    </div>
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                      <p className="font-semibold text-gray-900 text-sm mb-1">Token Framework Layer</p>
+                      <ul className="text-sm text-gray-800 space-y-1">
+                        <li>• Token classification (utility / security / ART / EMT)</li>
+                        <li>• Applicable regulatory regime (MiCA / securities law)</li>
+                        <li>• VASP/CASP licensing requirements</li>
+                        <li>• Whitepaper and disclosure obligations</li>
+                        <li>• Investor onboarding and AML framework</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p className="text-justify mt-3 font-semibold">Outcome: integrated architecture recommendation delivered verbally. Full written architecture brief and phased proposal within 5 business days.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 5 — Phased Hybrid Mandate Proposal</h3>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm mt-2">
+                    <p className="text-justify"><strong>Phase 1 — Architecture Design:</strong> Full integrated structure and token framework design document — jurisdiction selection, entity map, governance model, token classification, regulatory pathway. Delivered as a written brief. $X</p>
+                    <p className="text-justify mt-2"><strong>Phase 2 — Corporate Structure Execution:</strong> Foundation/trust formation, SPV incorporation, UBO compliance, banking introductions. $X</p>
+                    <p className="text-justify mt-2"><strong>Phase 3 — Token Framework & Regulatory:</strong> Whitepaper advisory, regulatory classification sign-off, VASP/CASP licence application, AML/KYC framework build. $X</p>
+                    <p className="text-justify mt-2"><strong>Phase 4 — Banking & Treasury:</strong> Banking introductions across all entities, settlement account setup, treasury management framework. $X</p>
+                    <p className="text-justify mt-2"><strong>Phase 5 — Ongoing Advisory Retainer:</strong> Annual compliance maintenance, licence renewal, regulatory change monitoring, corporate governance support. $X/month</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Stage 6 — Mandate Execution with Integrated Project Management</h3>
+                  <p className="text-justify">Assign a single Boyar engagement lead who coordinates both the corporate structure workstream and the token framework workstream simultaneously. Establish a shared Notion workspace with the client showing all phase milestones, regulatory deadlines, and banking timelines in one place. Weekly status updates to the client's founding team.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. Content Strategy (Hybrid Architecture Authority Engine)</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">Content for this model must demonstrate simultaneous mastery of both the corporate and token layers. Generic tokenization content or generic structuring content will not attract hybrid mandate clients.</p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Integrated architecture diagrams:</strong> Monthly LinkedIn carousel showing a complete hybrid structure for a specific use case — real estate tokenization, PE fund tokenization, commodity tokenization. Visual, technical, immediately useful to the target audience.</li>
+                  <li className="text-justify"><strong>MiCA retroactive restructuring guides:</strong> "How to build the corporate architecture your token project should have had from day one" — targets the large segment of existing token projects with structural gaps now exposed by MiCA.</li>
+                  <li className="text-justify"><strong>RWA tokenization jurisdiction comparison:</strong> Quarterly comparison of Cayman, Liechtenstein, Luxembourg, BVI, and UAE for hybrid structure + token issuance — covering legal treatment, tax, banking, and regulatory compatibility in a single framework.</li>
+                  <li className="text-justify"><strong>Case architecture briefs:</strong> Anonymised summaries of hybrid mandate architecture — showing the multi-layer structure Boyar designed without identifying the client. These produce more inbound inquiries than any other content format for this audience.</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Governance Controls</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 1 — Architecture Design phase is mandatory before execution</p>
+                  <p className="text-justify">No hybrid mandate proceeds to entity formation or token framework execution without a completed, signed-off Architecture Design document. Skipping this phase creates structural conflicts that are expensive and disruptive to correct mid-mandate.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 2 — Token classification must be confirmed before any corporate structure is finalised</p>
+                  <p className="text-justify">The regulatory classification of the token (utility, security, ART, EMT) directly determines which corporate structure and which jurisdiction is optimal. Finalising the corporate structure before confirming token classification is a sequencing error that creates significant rework risk.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 3 — Full group KYC including all UBOs and token allocation recipients</p>
+                  <p className="text-justify">Hybrid mandates often involve complex beneficial ownership structures across multiple entities. KYC must cover all UBOs at the corporate layer and all significant token allocation recipients at the token layer before any work begins.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 4 — Boyar does not advise on token pricing, tokenomics design, or investment returns</p>
+                  <p className="text-justify">Boyar's scope is structure, compliance, licensing, and banking. Token pricing, tokenomics models, and investment return projections are outside scope and must not be commented on in any client communication.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>6. KPI System</h2>
+              <div className="grid md:grid-cols-2 gap-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Primary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Hybrid diagnostics booked per month</li>
+                    <li className="text-justify text-sm">Architecture Design briefs issued</li>
+                    <li className="text-justify text-sm">Full hybrid mandates won per quarter</li>
+                    <li className="text-justify text-sm">Average total mandate value per hybrid client</li>
+                    <li className="text-justify text-sm">Ongoing advisory retainers from hybrid clients</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Secondary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Architecture diagram engagement on LinkedIn</li>
+                    <li className="text-justify text-sm">Inbound inquiries from RWA communities</li>
+                    <li className="text-justify text-sm">Referrals from tokenization dealflow syndicates</li>
+                    <li className="text-justify text-sm">Case architecture brief downloads</li>
+                    <li className="text-justify text-sm">Average phases per hybrid mandate</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>7. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Integrated architecture content published → Hybrid mandate signal detected → Precision outreach with architecture asset → Free hybrid diagnostic → Architecture Design brief → Phased mandate execution (structure + token framework + banking + licensing) → Ongoing advisory retainer → Referral to next hybrid client in same RWA or family office network. One hybrid mandate = $120K–$400K total fees. Three active hybrid clients under retainer = $360K–$1.2M in committed annual advisory revenue from the most sophisticated and durable client relationships Boyar can build.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
   // Founder-Led Origination Execution Playbook (full refreshed content)
   if (isFounderModel) {
     return (
@@ -6456,7 +8064,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -6749,7 +8357,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -7127,7 +8735,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -7466,7 +9074,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -7805,7 +9413,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -8165,7 +9773,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -8478,7 +10086,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -8799,7 +10407,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -9123,7 +10731,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -9475,7 +11083,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -9868,7 +11476,7 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -10149,8 +11757,8 @@ export default function ExecutionPlaybookPage() {
     );
   }
 
-  // For other models (founder-led-origination, etc.), show placeholder or redirect
-  if (!isLinkedInModel && !isFounderModel) {
+  // AI-Based Prospect Scoring
+  if (isAiProspectScoringModel) {
     return (
       <ProtectedRoute>
         <div className="min-h-screen bg-white text-black">
@@ -10158,373 +11766,1867 @@ export default function ExecutionPlaybookPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
                 </button>
-                <h1 className="text-lg font-semibold text-black">Execution Playbook</h1>
+                <h1 className="text-lg font-semibold text-black">AI-Based Prospect Scoring & Personalization</h1>
                 <div className="w-20" />
               </div>
             </div>
           </header>
-          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: 'left' }}>
-            <div className="text-center py-20">
-              <p className="text-gray-600 text-lg">Execution Playbook content will be added here.</p>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                AI-Based Prospect Scoring & Personalization
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Execution Playbook — Operational Blueprint for Boyar Partners
+              </h2>
             </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Tools Stack</h2>
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-300 rounded-lg">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Function</th>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Tool</th>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Prospect database</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Apollo.io</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Company data, contact details, intent signals</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Social signal monitoring</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn Sales Navigator</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Activity alerts, post monitoring, connection triggers</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Message personalisation</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Claude / ChatGPT</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Generate bespoke outreach messages per prospect</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">CRM & scoring tracker</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Notion + HubSpot</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Score tracking, pipeline staging, follow-up scheduling</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">News & regulatory alerts</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Google Alerts, Feedly</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Real-time detection of regulatory events affecting prospects</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Email sequencing</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">HubSpot Sequences / Lemlist</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Automated follow-up delivery at optimal intervals</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Performance analytics</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">HubSpot reports, Notion dashboards</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Track response rates, conversion by segment, message performance</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. The Scoring System</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">Every prospect in the CRM receives a score from 0–100, updated weekly. The score determines outreach priority for that week. Use this scoring matrix:</p>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full border border-gray-300 rounded-lg">
+                    <thead className="bg-gray-100">
+                      <tr>
+                        <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Signal</th>
+                        <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Points</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Posted about MiCA / VARA / licensing challenge in last 7 days</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">+30</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Announced fundraise or market expansion in last 14 days</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">+25</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Engaged with Boyar's LinkedIn content (like / comment / share)</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">+20</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Posted about banking challenges or corporate structure questions</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">+20</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Hired for compliance / regulatory / legal role in last 30 days</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">+15</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Seniority: Founder / CEO / CFO / GC / CCO</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">+10</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Industry: crypto / fintech / fund management / trading</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">+10</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Company size: 10–500 employees</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">+5</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Previously opened Boyar email or clicked link</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">+10</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Referred by a Boyar partner or existing client</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">+25</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="grid md:grid-cols-3 gap-3 mt-4">
+                  <div className="p-3 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Score 70–100</p>
+                    <p className="text-sm text-gray-800">Outreach within 24 hours. Founder-led, fully personalised.</p>
+                  </div>
+                  <div className="p-3 bg-yellow-50 border-l-4 border-yellow-500 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Score 40–69</p>
+                    <p className="text-sm text-gray-800">Outreach this week. AI-personalised message, founder reviews before sending.</p>
+                  </div>
+                  <div className="p-3 bg-green-50 border-l-4 border-green-500 rounded-r-lg">
+                    <p className="font-semibold text-gray-900 text-sm">Score 0–39</p>
+                    <p className="text-sm text-gray-800">Nurture track. Add to content distribution list. Re-score next week.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. Weekly Scoring & Personalisation Process</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Monday — Score Update (30 minutes)</h3>
+                  <p className="text-justify">Review all active prospects in CRM. Update scores based on last week's signals (new LinkedIn activity, content engagement, company news). Identify all prospects scoring 70+ — these are this week's priority outreach list. Flag any prospect whose score has jumped by 20+ points — these require same-day outreach.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Monday — AI Personalisation Batch (20 minutes)</h3>
+                  <p className="text-justify mb-2">For each priority prospect, paste the following into Claude or ChatGPT:</p>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm mt-2">
+                    <p className="text-gray-800 text-sm font-semibold mb-1">Prompt template:</p>
+                    <p className="text-gray-800 text-sm italic">"Write a personalised LinkedIn connection request and a follow-up message for a prospect with the following profile: [Name], [Title] at [Company], operating in [industry], recently posted about [signal], company is based in [location] and appears to be expanding to [destination]. Boyar Partners offers [relevant service]. Tone: professional, technically credible, not salesy. Max 300 characters for connection request, max 150 words for follow-up message."</p>
+                  </div>
+                  <p className="text-justify mt-2">Review, lightly edit for authenticity, load into CRM. Total time per prospect: 3–4 minutes.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Tuesday–Thursday — Outreach Execution</h3>
+                  <p className="text-justify">Send connection requests and follow-up messages from the Monday batch. Maximum 20–25 LinkedIn actions per day to stay within LinkedIn's activity limits. Log every action in CRM with timestamp and message sent.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Friday — Performance Review (20 minutes)</h3>
+                  <p className="text-justify mb-2">Review the week's outreach performance:</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Connection acceptance rate by segment</li>
+                    <li className="text-justify">Reply rate by message type</li>
+                    <li className="text-justify">Diagnostic calls booked from this week's outreach</li>
+                    <li className="text-justify">Which message angles produced the highest response</li>
+                    <li className="text-justify">Which prospect segments are converting and which are not</li>
+                  </ul>
+                  <p className="text-justify mt-2">Feed findings back into next week's scoring weights and message templates. The system improves every week.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. AI Personalisation Templates by Segment</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Segment: Crypto founder posting about MiCA</p>
+                  <p className="text-gray-800 italic mt-1">"Noticed your recent post on MiCA — the CASP transition is creating real structural complexity for teams operating under national registrations. We've been mapping the application architecture across Malta, Lithuania, and Seychelles for teams at your stage. Happy to connect and share what's working."</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Segment: Indian founder announcing UAE expansion</p>
+                  <p className="text-gray-800 italic mt-1">"Congratulations on the UAE expansion — the entity and banking decisions at this stage have a significant impact on how smoothly the move lands. We work specifically with founders navigating this corridor. Happy to connect and share what we've seen work."</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Segment: Fund manager posting about tokenized LP interests</p>
+                  <p className="text-gray-800 italic mt-1">"Interesting post on tokenized fund structures — the intersection of Cayman LP architecture and MiCA-compliant token frameworks is where most of the structural complexity sits. We work on these hybrid mandates. Happy to connect and share the framework we use."</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Segment: CCO at regulated fintech — expansion hiring signal</p>
+                  <p className="text-gray-800 italic mt-1">"Noticed [Company] is hiring for regulatory expansion roles — multi-jurisdiction licensing rollouts at scale require a different advisory model than single-jurisdiction work. We specialise in this. Happy to connect and share how we approach the architecture."</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Governance Controls</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 1 — Founder always reviews AI-generated messages before sending</p>
+                  <p className="text-justify">AI generates drafts. The founder edits and approves every message before it is sent. No fully automated outreach — Boyar's reputation depends on every communication being genuinely considered.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 2 — Maximum 20–25 LinkedIn actions per day</p>
+                  <p className="text-justify">Exceeding LinkedIn's activity thresholds risks account restriction. Quality over volume — 20 highly personalised messages outperform 100 generic ones.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 3 — Score every prospect weekly without exception</p>
+                  <p className="text-justify">The scoring system only works if scores are updated consistently. A prospect who scored 35 last week may score 75 this week after a regulatory announcement — without weekly updates, high-intent signals are missed.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 4 — Never use AI-generated messages verbatim for Tier 1 prospects</p>
+                  <p className="text-justify">For prospects scoring 70+, AI drafts are starting points only. Every Tier 1 message must be personally reviewed and meaningfully edited to reflect genuine knowledge of the prospect's specific situation.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>6. KPI System</h2>
+              <div className="grid md:grid-cols-2 gap-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Primary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Connection acceptance rate (target: 35%+)</li>
+                    <li className="text-justify text-sm">Reply rate to personalised messages (target: 15%+)</li>
+                    <li className="text-justify text-sm">Diagnostic calls booked per week</li>
+                    <li className="text-justify text-sm">Score-to-mandate conversion rate by tier</li>
+                    <li className="text-justify text-sm">Average time from first contact to diagnostic call</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Secondary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Best-performing message angle per segment</li>
+                    <li className="text-justify text-sm">Highest-converting signal category</li>
+                    <li className="text-justify text-sm">Average score of prospects who booked a call</li>
+                    <li className="text-justify text-sm">Week-on-week improvement in response rate</li>
+                    <li className="text-justify text-sm">Prospects rescued from cold status by re-scoring</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>7. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Weekly score update → Tier 1 prospects identified → AI generates personalised message batch → Founder reviews and sends in 30 minutes → Higher response rates across every channel → More diagnostic calls → More mandates → Performance data improves next week's scoring → Compounding improvement over time. At full operation: 20–25 personalised outreach actions per day, 35%+ acceptance rate, 15%+ reply rate, 3–5 diagnostic calls booked per week from outreach alone — at a total weekly time cost of under 2 hours for the founder.
+                </p>
+              </div>
+            </section>
           </main>
         </div>
       </ProtectedRoute>
     );
   }
 
-  return (
-    <ProtectedRoute>
-      <div className="min-h-screen bg-white text-black">
-        {/* Header */}
-        <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
-          <div className="mx-auto max-w-4xl px-6 py-4">
-            <div className="flex items-center justify-between">
-              <button
-                onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
-                className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+  // Predictive Competitor Monitoring
+  if (isPredictiveCompetitorMonitoringModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Predictive Competitor Monitoring</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Predictive Competitor Monitoring
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Execution Playbook — Operational Blueprint for Boyar Partners
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Tools Stack</h2>
+              <div className="overflow-x-auto">
+                <table className="min-w-full border border-gray-300 rounded-lg">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Function</th>
+                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Tool</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Competitor website monitoring</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Google Alerts, Visualping (page change detection)</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn staff movement tracking</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn Sales Navigator (company follower + staff alerts)</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Review and complaint monitoring</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Trustpilot, Google Reviews, Reddit, Trustpilot API</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Competitor content analysis</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn company pages, competitor blogs, SEMrush (optional)</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Intelligence logging</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Notion competitor intelligence database</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Community monitoring</td>
+                      <td className="border border-gray-300 px-4 py-3 text-gray-800">Reddit (r/offshorebanking etc.), Telegram, LinkedIn groups</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. The Four Intelligence Tracks — Weekly Monitoring Process</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Track 1 — Competitor Positioning & Content (Every Monday, 20 minutes)</h3>
+                  <p className="text-justify mb-2">Review the LinkedIn company pages and recent posts of Dixcart, Amicorp, Astons, Ocra, and Rosemont. Log in Notion:</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">What topics are they publishing on this week?</li>
+                    <li className="text-justify">What jurisdictions or services are they promoting?</li>
+                    <li className="text-justify">What are they NOT publishing on — where are the gaps?</li>
+                    <li className="text-justify">Is their content generic or technically specific?</li>
+                    <li className="text-justify">What engagement are they receiving and on which topics?</li>
+                  </ul>
+                  <p className="text-justify mt-2 font-semibold">Output: identify 1–2 content gaps per week that Boyar can own with a more specific, more technical post on the same topic.</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Track 2 — Staff Movement Monitoring (Every Monday, 10 minutes)</h3>
+                  <p className="text-justify mb-2">Check LinkedIn for recent departures from competitor firms. Set Sales Navigator alerts for all senior staff at each competitor. When a departure is detected:</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Log the departure in Notion with the person's role, tenure, and apparent client relationships</li>
+                    <li className="text-justify">Identify which client segments they managed based on their profile and published content</li>
+                    <li className="text-justify">Flag their connections who are likely clients of that firm for priority outreach within 48 hours</li>
+                  </ul>
+                  <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-2">
+                    <p className="text-gray-800 italic">Outreach to orphaned competitor clients: "Noticed there have been some changes at [Firm] recently — if you're evaluating your advisory arrangements, happy to have a brief conversation about how we approach [relevant service]."</p>
+                  </div>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Track 3 — Client Dissatisfaction Monitoring (Every Wednesday, 15 minutes)</h3>
+                  <p className="text-justify mb-2">Monitor these sources for competitor client complaints and dissatisfaction signals:</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify"><strong>Trustpilot and Google Reviews</strong> — search each competitor name and read new negative reviews. Log recurring complaint themes.</li>
+                    <li className="text-justify"><strong>Reddit</strong> — search r/offshorebanking, r/digitalnomad, r/expatfinance for mentions of competitors. Frustrated clients post publicly.</li>
+                    <li className="text-justify"><strong>LinkedIn comments</strong> — monitor competitor posts for negative comments or complaints in the replies.</li>
+                    <li className="text-justify"><strong>Telegram and WhatsApp groups</strong> — offshore and fintech communities frequently discuss service provider experiences.</li>
+                  </ul>
+                  <p className="text-justify mt-2 font-semibold">Output: log recurring complaint themes by competitor. Use these to write content that directly addresses those exact failure modes — "Why [problem] happens and how we approach it differently."</p>
+                </div>
+                <div className="border-l-4 border-gray-800 pl-4">
+                  <h3 className="text-lg font-semibold mb-2 text-black">Track 4 — Competitor Service & Pricing Intelligence (Monthly, 30 minutes)</h3>
+                  <p className="text-justify mb-2">Monthly deep review of each competitor's:</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">Website service pages — any new services, new jurisdictions, or removed offerings</li>
+                    <li className="text-justify">Pricing signals — any public fee mentions, changes to minimum engagement thresholds</li>
+                    <li className="text-justify">New hires — what roles are they hiring for? Indicates expansion direction.</li>
+                    <li className="text-justify">Press releases and news — any new partnerships, office openings, or client announcements</li>
+                  </ul>
+                  <p className="text-justify mt-2 font-semibold">Output: monthly competitor intelligence brief (1-page Notion document) summarising material changes across all monitored competitors. Used to update Boyar's positioning and content calendar.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. Converting Intelligence Into Content & Outreach</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Gap-fill content strategy</p>
+                  <p className="text-justify">Each identified competitor content gap becomes a Boyar content piece. If no competitor is publishing technically precise MiCA CASP application guidance, Boyar publishes it. If no competitor is covering the banking access implications of Seychelles VASP registration, Boyar covers it. Own the gaps systematically, week by week.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Complaint-driven positioning content</p>
+                  <p className="text-justify">Every recurring complaint theme about a competitor becomes a positioning asset for Boyar. "Slow execution timelines" → Boyar publishes "What a 90-day VASP licensing timeline actually looks like and how to compress it." "Lack of banking support" → Boyar publishes "The banking strategy that should be designed before your entity is formed." Never mention competitors by name — just solve the problems they leave unsolved.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Senior departure outreach</p>
+                  <p className="text-justify">Within 48 hours of detecting a senior departure from a competitor: identify their likely client connections on LinkedIn, run those connections through Boyar's scoring model, and initiate personalised outreach to those scoring 50+. Timing is the entire advantage here — reach them during the instability window, not three months later.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Community dissatisfaction response</p>
+                  <p className="text-justify">When a competitor client publicly complains in a community (Reddit, Telegram, LinkedIn) about a service failure: respond helpfully and professionally in the thread with relevant guidance — never pitch Boyar directly. Follow up with a private connection request offering to help further. The community sees Boyar as the firm that steps up when others fall short.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. Notion Intelligence Database Structure</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">Maintain a Notion database with the following tables:</p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Competitor Profiles:</strong> One page per competitor with strengths, weaknesses, service scope, pricing signals, key personnel, and last updated date</li>
+                  <li className="text-justify"><strong>Weekly Intelligence Log:</strong> Date, competitor, intelligence item, category (content gap / staff movement / complaint / service change), and recommended Boyar action</li>
+                  <li className="text-justify"><strong>Content Gap Tracker:</strong> Topics not covered by competitors that Boyar should own — with status (published / in draft / planned)</li>
+                  <li className="text-justify"><strong>Orphaned Client Prospects:</strong> Prospects identified through staff departure monitoring — with outreach status and score</li>
+                  <li className="text-justify"><strong>Complaint Theme Register:</strong> Recurring client complaint themes per competitor — used to inform Boyar's positioning content calendar</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Governance Controls</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 1 — Never name competitors negatively in public content</p>
+                  <p className="text-justify">Boyar's content addresses problems and gaps — it never names competitors disparagingly. Naming competitors in negative contexts creates reputational and legal risk and reads as insecure. Position through superiority, not criticism.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 2 — All intelligence sources must be publicly available</p>
+                  <p className="text-justify">No intelligence gathered through social engineering, false pretences, or access to non-public information. All monitoring is conducted through publicly visible sources only.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 3 — Outreach to orphaned competitor clients must be professional and non-predatory</p>
+                  <p className="text-justify">Outreach to clients of firms experiencing disruption must be genuinely helpful in tone — offering value, not exploiting a competitor's misfortune. The message must stand on its own merits.</p>
+                </div>
+                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">Control 4 — Weekly monitoring is non-negotiable — intelligence decays rapidly</p>
+                  <p className="text-justify">Staff departures detected three weeks late are useless. Content gaps filled two months after a competitor stops covering them are too late. The value of this model depends entirely on the timeliness and consistency of the monitoring cadence.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>6. KPI System</h2>
+              <div className="grid md:grid-cols-2 gap-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Primary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Content gaps identified and filled per month</li>
+                    <li className="text-justify text-sm">Orphaned competitor clients contacted per month</li>
+                    <li className="text-justify text-sm">Mandates won from competitor client outreach</li>
+                    <li className="text-justify text-sm">Staff departures detected within 48 hours</li>
+                    <li className="text-justify text-sm">Complaint themes converted into positioning content</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900 mb-2">Secondary KPIs</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify text-sm">Competitor intelligence items logged per week</li>
+                    <li className="text-justify text-sm">LinkedIn engagement on gap-fill content vs competitor content</li>
+                    <li className="text-justify text-sm">Community responses generating inbound inquiries</li>
+                    <li className="text-justify text-sm">Monthly competitor brief completed on schedule</li>
+                    <li className="text-justify text-sm">Competitor positioning gaps currently owned by Boyar</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>7. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Weekly monitoring → Content gaps identified → Boyar publishes what competitors don't → Dissatisfied competitor clients find Boyar's content → Inbound inquiry generated. Staff departure detected → Orphaned client outreach within 48 hours → High conversion rate. Complaint theme identified → Positioning content published → Boyar seen as the firm that solves what competitors leave broken. Total weekly time investment: 45 minutes. Total competitive advantage generated: Boyar systematically owns every gap its competitors leave open, in real time, week after week.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Algorithmic LinkedIn Content Distribution
+  if (isAlgorithmicLinkedinContentModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+
+          {/* Header */}
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">
+                  Algorithmic LinkedIn Content Distribution
+                </h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+
+          <main
+            className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8"
+            style={{ textAlign: "left" }}
+          >
+            {/* Title Block */}
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1
+                className="text-4xl font-bold mb-4 text-black"
+                style={{ fontFamily: "var(--font-benzin)" }}
               >
-                ← Back
-              </button>
-              <h1 className="text-lg font-semibold text-black">Execution Playbook</h1>
-              <div className="w-20" /> {/* Spacer */}
+                Algorithmic LinkedIn Content Distribution
+              </h1>
+              <h2
+                className="text-2xl font-semibold mb-2 text-gray-800"
+                style={{ fontFamily: "var(--font-benzin)" }}
+              >
+                Execution Playbook — Operational Blueprint for Boyar Partners
+              </h2>
             </div>
-          </div>
-        </header>
 
-        {/* Main Content */}
-        <main className="mx-auto max-w-4xl px-6 py-12">
-          {/* Title Page */}
-          <div className="mb-16 text-center border-b border-gray-300 pb-12">
-            <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: 'var(--font-benzin)' }}>
-              FULL EXECUTION PLAYBOOK
-            </h1>
-            <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: 'var(--font-benzin)' }}>
-              LinkedIn Executive Outreach Model
-            </h2>
-            <p className="text-gray-600 text-lg mt-4">With tools, workflows, scripts, governance, and KPI system</p>
-          </div>
-
-          {/* Section 1 */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 text-black" style={{ fontFamily: 'var(--font-benzin)' }}>
-              1. Required Tools for Model 2
-            </h2>
-            <div className="overflow-x-auto mb-4">
-              <table className="min-w-full border border-gray-300 rounded-lg">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Purpose</th>
-                    <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Tools</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">Executive targeting</td>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">LinkedIn Sales Navigator</td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">Content analytics</td>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">Shield Analytics</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">AI research</td>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">Clay.ai</td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">AI personalization</td>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">Lyne.ai / Clay workflows</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">CRM tracking</td>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">HubSpot / Notion CRM</td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">Scheduling</td>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">Buffer or Later</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">Document sharing</td>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">Google Drive</td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">Image assets</td>
-                    <td className="border border-gray-300 px-4 py-3 text-gray-800">Canva Pro</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p className="text-gray-800"><strong>Minimum stack:</strong> Sales Navigator + CRM + Shield + Google Drive.</p>
-          </section>
-
-          {/* Section 2 */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 text-black" style={{ fontFamily: 'var(--font-benzin)' }}>
-              2. Setup: Three Foundational Components
-            </h2>
-            
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900" style={{ fontFamily: 'var(--font-benzin)' }}>
-                  2.1 Profile Optimisation
-                </h3>
-                <p className="text-gray-800 mb-2">Founders' profiles must demonstrate:</p>
-                      <ul className="list-disc ml-6 space-y-2 pl-0 text-gray-800" style={{ listStylePosition: 'outside' }}>
-                  <li className="text-justify">Jurisdictional competence</li>
-                  <li className="text-justify">Regulatory knowledge</li>
-                  <li className="text-justify">Advisory credibility</li>
-                  <li className="text-justify">Boutique professionalism</li>
-                </ul>
-                <p className="mt-4 text-gray-800 mb-2"><strong>Key sections:</strong></p>
-                      <ul className="list-disc ml-6 space-y-2 pl-0 text-gray-800" style={{ listStylePosition: 'outside' }}>
-                  <li className="text-justify">Clean headline: "Offshore Structuring | Licensing | Trusts | Banking Advisory"</li>
-                  <li className="text-justify">Featured content: jurisdiction guides, insights, videos</li>
-                  <li className="text-justify">About section with founder-specific authority</li>
-                  <li className="text-justify">Case studies (anonymized)</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900" style={{ fontFamily: 'var(--font-benzin)' }}>
-                  2.2 Segmented Target Lists (Built in Sales Navigator)
-                </h3>
-                <p className="text-gray-800 mb-2">Build 6 separate lists:</p>
-                      <ul className="list-disc ml-6 space-y-2 pl-0 text-gray-800" style={{ listStylePosition: 'outside' }}>
-                  <li className="text-justify">Crypto/Web3</li>
-                  <li className="text-justify">FinTech / EMI / MSB</li>
-                  <li className="text-justify">Funds / Asset Managers</li>
-                  <li className="text-justify">SMEs doing cross-border expansion</li>
-                  <li className="text-justify">HNWIs / Family offices</li>
-                  <li className="text-justify">Licensing-driven businesses</li>
-                </ul>
-                <p className="mt-4 text-gray-800 mb-2"><strong>Target role types:</strong></p>
-                      <ul className="list-disc ml-6 space-y-2 pl-0 text-gray-800" style={{ listStylePosition: 'outside' }}>
-                  <li className="text-justify">Founder</li>
-                  <li className="text-justify">CEO</li>
-                  <li className="text-justify">COO/CFO</li>
-                  <li className="text-justify">GC</li>
-                  <li className="text-justify">Partner</li>
-                  <li className="text-justify">Managing Director</li>
-                  <li className="text-justify">Compliance Head</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900" style={{ fontFamily: 'var(--font-benzin)' }}>
-                  2.3 Core Content System (Monthly)
-                </h3>
-                <p className="text-gray-800 mb-2"><strong>Mandatory content formats:</strong></p>
-                      <ul className="list-disc ml-6 space-y-2 pl-0 text-gray-800" style={{ listStylePosition: 'outside' }}>
-                  <li className="text-justify">Jurisdiction Updates</li>
-                  <li className="text-justify">Licensing Insights</li>
-                  <li className="text-justify">Banking Environment Changes</li>
-                  <li className="text-justify">Structuring Playbooks</li>
-                  <li className="text-justify">Case Studies</li>
-                  <li className="text-justify">Short thought leadership quotes</li>
-                </ul>
-                <p className="mt-4 text-gray-800 mb-2"><strong>Posting frequency:</strong></p>
-                      <ul className="list-disc ml-6 space-y-2 pl-0 text-gray-800" style={{ listStylePosition: 'outside' }}>
-                  <li className="text-justify">4–8 times per month</li>
-                  <li className="text-justify">Always high-value, never generic</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 3 */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 text-black" style={{ fontFamily: 'var(--font-benzin)' }}>
-              3. Daily, Weekly & Monthly Execution Cadence
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
-                <h3 className="text-lg font-semibold mb-2 text-black">DAILY EXECUTION (Founders)</h3>
-                <ol className="list-decimal list-inside ml-2 space-y-1 text-gray-800 text-sm">
-                  <li className="text-justify">Accept/Review Connection Requests</li>
-                  <li className="text-justify">Check who engaged with the last post</li>
-                  <li className="text-justify">Send 3–5 personalised outreach messages</li>
-                  <li className="text-justify">Respond to inbound inquiries</li>
-                </ol>
-                <p className="mt-2 text-gray-800 text-xs italic">Prioritize executives and decision-makers. Move serious conversations to private calls.</p>
-              </div>
-
-              <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
-                <h3 className="text-lg font-semibold mb-2 text-black">WEEKLY EXECUTION</h3>
-                <ol className="list-decimal list-inside ml-2 space-y-1 text-gray-800 text-sm">
-                  <li className="text-justify">Publish 1 technical insight or jurisdiction update</li>
-                  <li className="text-justify">Outreach 20–30 targeted accounts</li>
-                  <li className="text-justify">Follow-up with high-engagement prospects</li>
-                  <li className="text-justify">Update CRM with new leads</li>
-                </ol>
-                <p className="mt-2 text-gray-800 text-xs italic">Done by founders. Personalised, no templates. Tag by segment and intent score.</p>
-              </div>
-
-              <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
-                <h3 className="text-lg font-semibold mb-2 text-black">MONTHLY EXECUTION</h3>
-                <ol className="list-decimal list-inside ml-2 space-y-1 text-gray-800 text-sm">
-                  <li className="text-justify">Produce a longer-form briefing note</li>
-                  <li className="text-justify">Host 1 micro-event (optional)</li>
-                  <li className="text-justify">Review success metrics</li>
-                </ol>
-                <p className="mt-2 text-gray-800 text-xs italic">Share privately with warm accounts. Review which posts brought calls and which segments responded best.</p>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 4 */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 text-black" style={{ fontFamily: 'var(--font-benzin)' }}>
-              4. Outreach Blueprint (Execution Workflow)
-            </h2>
-            <div className="space-y-6">
-              <div className="border-l-4 border-gray-800 pl-4">
-                <h3 className="text-lg font-semibold mb-2 text-black">Step 1 — Identify Trigger</h3>
-                <p className="text-gray-800 mb-2"><strong>Examples:</strong></p>
-                      <ul className="list-disc ml-6 space-y-2 pl-0 text-gray-800" style={{ listStylePosition: 'outside' }}>
-                  <li className="text-justify">Raised funding</li>
-                  <li className="text-justify">Announced expansion</li>
-                  <li className="text-justify">Posted about regulation</li>
-                  <li className="text-justify">Mentioned banking issues</li>
-                  <li className="text-justify">Hired compliance personnel</li>
-                </ul>
-                <p className="mt-2 text-gray-800">LinkedIn is full of these signals.</p>
-              </div>
-
-              <div className="border-l-4 border-gray-800 pl-4">
-                <h3 className="text-lg font-semibold mb-2 text-black">Step 2 — Send the Intro Message</h3>
-                <p className="text-gray-800 mb-2"><strong>Tone:</strong> Professional, discreet, helpful, executive-level.</p>
-                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-2">
-                  <p className="text-gray-800 italic"><strong>Example:</strong></p>
-                  <p className="text-gray-800 italic mt-1">"I thought it may be useful to share a brief framework we use for teams evaluating offshore structuring and banking options. If relevant, happy to outline where firms in your position typically see success."</p>
+            {/* Section 1: Tool Stack */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                1. Required Tool Stack
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  The tool stack for this model covers content production,
+                  scheduling, performance analytics, engagement management,
+                  and paid amplification. Each tool is selected for a specific
+                  function — no single tool covers all layers.
+                </p>
+                <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm bg-white">
+                  <table className="w-full text-sm text-left text-gray-800">
+                    <thead className="bg-gray-100 text-gray-900">
+                      <tr>
+                        <th className="px-4 py-3 border-b border-gray-200">Function</th>
+                        <th className="px-4 py-3 border-b border-gray-200">Tool</th>
+                        <th className="px-4 py-3 border-b border-gray-200">Priority</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        ["LinkedIn profile performance analytics", "Shield Analytics", "Essential"],
+                        ["Content scheduling & queue management", "Taplio or Buffer", "Essential"],
+                        ["Carousel / document post design", "Canva Pro", "Essential"],
+                        ["Content drafting & ideation", "Notion + Claude / ChatGPT", "Essential"],
+                        ["Engagement pod coordination", "Lempod or manual WhatsApp group", "Essential"],
+                        ["Hook testing & post optimisation", "Taplio AI or manual A/B log", "High priority"],
+                        ["ABM signal cross-referencing", "Shield Analytics + HubSpot", "High priority"],
+                        ["Paid amplification management", "LinkedIn Campaign Manager", "High priority"],
+                        ["Hashtag performance tracking", "Shield Analytics", "Recommended"],
+                        ["Content calendar planning", "Notion or Airtable", "Recommended"],
+                        ["Competitor content monitoring", "Feedly + LinkedIn manual", "Recommended"],
+                        ["Newsletter / long-form distribution", "LinkedIn Newsletter + Substack", "Optional"],
+                      ].map(([func, tool, priority], i) => (
+                        <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                          <td className="px-4 py-2 border-b border-gray-100">{func}</td>
+                          <td className="px-4 py-2 border-b border-gray-100 font-medium">{tool}</td>
+                          <td className="px-4 py-2 border-b border-gray-100">
+                            <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                              priority === "Essential"
+                                ? "bg-blue-100 text-blue-800"
+                                : priority === "High priority"
+                                ? "bg-green-100 text-green-800"
+                                : "bg-gray-100 text-gray-600"
+                            }`}>
+                              {priority}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="text-justify font-semibold">
+                    Minimum viable stack (Month 1): Shield Analytics + Taplio
+                    or Buffer + Canva Pro + Notion for content planning.
+                    Add LinkedIn Campaign Manager from Month 2 when organic
+                    winners are identified for paid amplification.
+                  </p>
                 </div>
               </div>
+            </section>
 
-              <div className="border-l-4 border-gray-800 pl-4">
-                <h3 className="text-lg font-semibold mb-2 text-black">Step 3 — If Accepted → Soft Follow-Up</h3>
-                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg mt-2">
-                  <p className="text-gray-800 italic"><strong>Example:</strong></p>
-                  <p className="text-gray-800 italic mt-1">"Sharing a short jurisdictional note that tends to help founders clarify early decisions."</p>
-                  <p className="text-gray-800 mt-2">Attach relevant document.</p>
+            {/* Section 2: Profile Optimisation */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                2. Profile Optimisation — The Foundation Before Publishing
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Before any content is published, both founder profiles must
+                  be fully optimised. LinkedIn's algorithm favours posts from
+                  profiles with complete, keyword-rich profiles because they
+                  signal credibility and relevance to the platform's content
+                  ranking system. An unoptimised profile suppresses distribution
+                  before the first post goes live.
+                </p>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">Profile Checklist — Non-Negotiables</p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      {
+                        section: "Headline",
+                        items: [
+                          "Contains 3–4 core keywords matching ICP search behaviour",
+                          "Example: 'Offshore Structuring | Licensing Advisory | Trust Services | Banking Access — Boyar Partners'",
+                          "No fluffy descriptors (passionate, visionary, results-driven)",
+                          "Keywords in headline directly improve discovery in LinkedIn search",
+                        ],
+                      },
+                      {
+                        section: "About Section",
+                        items: [
+                          "First 2 lines hook the reader before 'see more' cutoff",
+                          "Covers: who Boyar serves, what problems solved, what makes it different",
+                          "Includes social proof: jurisdictions covered, client types, specific outcomes",
+                          "Ends with a clear but soft CTA (connect, message, or link to resource)",
+                        ],
+                      },
+                      {
+                        section: "Featured Section",
+                        items: [
+                          "3 featured items: one jurisdiction guide / framework PDF, one case study note, one 'start here' briefing",
+                          "Featured section is the first thing visitors see after headline — it must demonstrate expertise immediately",
+                          "Updated quarterly as new content assets are produced",
+                        ],
+                      },
+                      {
+                        section: "Experience & Skills",
+                        items: [
+                          "Current role description matches the headline keywords",
+                          "Skills section includes: Corporate Structuring, Offshore Advisory, Trust Services, Licensing, Banking Advisory — top skills pinned",
+                          "LinkedIn's algorithm uses skills for content topic matching and discovery",
+                        ],
+                      },
+                    ].map(({ section, items }) => (
+                      <div key={section} className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                        <p className="font-semibold text-sm text-gray-900 mb-2">{section}</p>
+                        <ul className="list-disc ml-4 space-y-1 pl-0 text-sm text-gray-700" style={{ listStylePosition: "outside" }}>
+                          {items.map((item, i) => (
+                            <li key={i} className="text-justify">{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
+            </section>
 
-              <div className="border-l-4 border-gray-800 pl-4">
-                <h3 className="text-lg font-semibold mb-2 text-black">Step 4 — Invite to Private Discussion (Only When Warm)</h3>
-                <p className="text-gray-800 mb-2">Never push for a call early.</p>
-                <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg mt-2">
-                  <p className="text-gray-800 italic"><strong>Example:</strong></p>
-                  <p className="text-gray-800 italic mt-1">"If you're evaluating options in the next 60 days, happy to walk through the structure that aligns best with your scenario."</p>
+            {/* Section 3: Content Calendar System */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                3. Content Calendar System — Monthly Planning Protocol
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Content is batch-produced monthly and scheduled in advance —
+                  never written reactively on the day of posting. Reactive
+                  posting produces inconsistent quality and breaks algorithm
+                  momentum. The monthly planning session takes 2–3 hours and
+                  produces a full calendar for the following 4 weeks.
+                </p>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">Monthly Content Planning Session Agenda</p>
+                  <ol className="list-decimal ml-6 space-y-3 pl-0 text-gray-800" style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">
+                      <strong>Review last month's performance (30 mins):</strong> Which posts had the highest impressions, engagement rate, and comment quality? What topics resonated? What formats underperformed? Pull data from Shield Analytics.
+                    </li>
+                    <li className="text-justify">
+                      <strong>Identify current regulatory and market events (20 mins):</strong> What is happening in the next 30 days that affects Boyar's ICP? FATF updates, jurisdiction changes, licensing news, banking environment shifts, fund regulation changes. Timely content consistently outperforms evergreen content.
+                    </li>
+                    <li className="text-justify">
+                      <strong>Map content to ABM signal library (15 mins):</strong> Which intent signals are most active in the ABM system right now? Plan at least 2 posts that directly address those signals. If VASP licensing is trending in ABM, schedule a VASP post.
+                    </li>
+                    <li className="text-justify">
+                      <strong>Draft content calendar (60 mins):</strong> Assign one post per slot in the schedule below. Confirm format, hook concept, and key insight for each post. Content does not need to be fully written — hooks and key points are enough for scheduling.
+                    </li>
+                    <li className="text-justify">
+                      <strong>Assign production responsibilities (15 mins):</strong> Who writes which posts? Which posts require Canva design? Which are text-only? Confirm all assets will be ready 48 hours before scheduled post time.
+                    </li>
+                  </ol>
+                </div>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-3">Monthly Content Schedule Template</p>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm text-left text-gray-800">
+                      <thead className="bg-gray-100 text-gray-900">
+                        <tr>
+                          <th className="px-3 py-2 border-b border-gray-200">Week</th>
+                          <th className="px-3 py-2 border-b border-gray-200">Post 1 (Mon/Tue)</th>
+                          <th className="px-3 py-2 border-b border-gray-200">Post 2 (Thu/Fri)</th>
+                          <th className="px-3 py-2 border-b border-gray-200">Format Priority</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          ["Week 1", "Jurisdiction comparison / framework", "Regulatory update or licensing news", "Document carousel + Text-only"],
+                          ["Week 2", "Banking intelligence / VASP insight", "Counterintuitive take / myth-busting", "Text-only + Text-only"],
+                          ["Week 3", "Anonymised case study / outcome", "Industry deep dive (crypto, funds, fintech)", "Text-only + Document carousel"],
+                          ["Week 4", "Founder perspective / market opinion", "Poll or Q&A engagement post", "Text-only + Poll"],
+                        ].map(([week, p1, p2, fmt], i) => (
+                          <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                            <td className="px-3 py-2 border-b border-gray-100 font-semibold">{week}</td>
+                            <td className="px-3 py-2 border-b border-gray-100">{p1}</td>
+                            <td className="px-3 py-2 border-b border-gray-100">{p2}</td>
+                            <td className="px-3 py-2 border-b border-gray-100 text-gray-600 text-xs">{fmt}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-3">
+                    Minimum: 8 posts per month across both founder profiles (4 each). Optimal: 12–16 posts per month for maximum algorithmic momentum.
+                  </p>
                 </div>
               </div>
+            </section>
 
-              <div className="border-l-4 border-gray-800 pl-4">
-                <h3 className="text-lg font-semibold mb-2 text-black">Step 5 — Move to Calendar Booking</h3>
-                <p className="text-gray-800 mb-2"><strong>Via:</strong></p>
-                      <ul className="list-disc ml-6 space-y-2 pl-0 text-gray-800" style={{ listStylePosition: 'outside' }}>
-                  <li className="text-justify">Google Meet</li>
-                  <li className="text-justify">Zoom</li>
-                  <li className="text-justify">Calendly Link (optional)</li>
-                </ul>
+            {/* Section 4: Post Production SOP */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                4. Post Production SOP — How Every Post Is Built
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Every post published under this model follows a defined
+                  production process. No post goes live that has not been
+                  through each step. The process takes 45–90 minutes per post
+                  depending on format.
+                </p>
+
+                {[
+                  {
+                    step: "Step 1 — Define the Core Insight (5 mins)",
+                    color: "bg-white border border-gray-200",
+                    content: [
+                      "What is the single most useful thing this post teaches the reader?",
+                      "If you cannot state it in one sentence, the post does not have a clear enough insight — stop and refine before writing",
+                      "The insight must pass the test: 'Could a Boyar ICP account not find this in 30 seconds of googling?' If yes, publish. If no, deepen or change the insight",
+                      "Example of a passing insight: 'A BVI holding company triggers CFC rules in India under FEMA if the Indian founder holds more than 10% — most advisors miss this at the structuring stage'",
+                    ],
+                  },
+                  {
+                    step: "Step 2 — Write the Hook (15 mins)",
+                    color: "bg-amber-50 border border-amber-200",
+                    content: [
+                      "Write 5 different hook options for the post before choosing one",
+                      "Each hook must fit within 2 lines of the LinkedIn mobile preview (approximately 200 characters)",
+                      "Hook types that consistently outperform: Counterintuitive statement, Specific statistic or number, Tension-framing ('Most advisors tell you X. Here is what they don't tell you'), Direct address to ICP pain ('If you're expanding into the UAE and haven't done this, read this first')",
+                      "Choose the hook that creates the strongest pattern interrupt — the one that makes a CFO or founder stop scrolling in the first half-second",
+                      "Never start a post with 'I am excited to share', 'In today's world', or any variation of 'We at Boyar Partners'",
+                    ],
+                  },
+                  {
+                    step: "Step 3 — Write the Body (20 mins)",
+                    color: "bg-white border border-gray-200",
+                    content: [
+                      "Short paragraphs: maximum 2–3 lines per paragraph on desktop (1–2 on mobile). White space increases dwell time",
+                      "Use line breaks between every idea — LinkedIn is not an essay platform",
+                      "Structure options that perform well: Hook → Problem → Framework → Insight → CTA; Hook → List of insights (numbered) → Synthesis → CTA; Hook → Story / scenario → Lesson → CTA",
+                      "Every body section must deliver value — no filler, no preamble, no lengthy context-setting",
+                      "If the post is a document carousel, the body text introduces the carousel: '7 variables most founders get wrong when choosing their holding jurisdiction. I built this framework to fix that. Swipe →'",
+                    ],
+                  },
+                  {
+                    step: "Step 4 — Write the CTA (5 mins)",
+                    color: "bg-white border border-gray-200",
+                    content: [
+                      "Every post ends with a CTA — but the CTA is never a hard sell",
+                      "CTA hierarchy (in order of appropriateness): Ask a question to drive comments ('Which jurisdiction are you evaluating? Drop it below'); Invite them to save / share ('Save this for your next structuring meeting'); Offer a resource ('DM me and I'll send you the full framework'); Invite them to connect ('Follow for weekly structuring intelligence')",
+                      "Never use: 'Book a call with us', 'Contact Boyar Partners today', 'Schedule a consultation' — these convert the post from expertise to advertisement and suppresses algorithmic distribution",
+                      "The link to any external resource (guide, website, Calendly) always goes in the first comment — never in the post body",
+                    ],
+                  },
+                  {
+                    step: "Step 5 — Format & Design (15–30 mins for carousels; 5 mins for text-only)",
+                    color: "bg-blue-50 border border-blue-200",
+                    content: [
+                      "Text-only posts: paste into LinkedIn's composer; confirm line breaks render correctly on mobile preview before publishing",
+                      "Document carousels: design in Canva Pro using Boyar's brand colours and typography; maximum 10 slides; first slide is the hook in visual form; last slide is a summary + follow CTA",
+                      "All carousel slides: consistent font, consistent colour palette, no stock photo backgrounds, no clip art — clean, professional, advisory-grade design",
+                      "File format for carousels: PDF uploaded natively to LinkedIn (not a link to an external PDF). Native PDF uploads receive 3x more dwell time than linked documents",
+                      "Video posts: recorded by founder, maximum 90 seconds, no green screen required — direct-to-camera is more credible than produced studio content for advisory positioning",
+                    ],
+                  },
+                  {
+                    step: "Step 6 — Hashtag Selection (5 mins)",
+                    color: "bg-white border border-gray-200",
+                    content: [
+                      "Select exactly 3–5 hashtags per post. Never more than 5",
+                      "Choose hashtags based on two criteria: relevance to the post topic, and whether Boyar's ICP accounts follow that hashtag",
+                      "Do not use generic hashtags (#business, #growth, #success) — these are followed by billions of accounts, producing near-zero targeted distribution",
+                      "Avoid hashtag repetition — vary hashtags across posts rather than using the same 5 every time. LinkedIn's algorithm deprioritises profiles that appear to be gaming hashtag discovery with static repetition",
+                      "Place all hashtags at the very end of the post body — never embedded within the text",
+                    ],
+                  },
+                  {
+                    step: "Step 7 — Schedule & Timing (5 mins)",
+                    color: "bg-white border border-gray-200",
+                    content: [
+                      "Schedule via Taplio or Buffer — never post manually unless posting in real-time for a breaking regulatory update",
+                      "Optimal posting times for Boyar's ICP (based on LinkedIn global data for business-focused profiles): Tuesday 8–10am GMT / 9–11am UAE, Wednesday 9–11am GMT, Thursday 8–10am GMT",
+                      "Avoid posting Friday afternoon, weekends, or outside 7am–12pm in target time zones — algorithm scores engagement relative to when posted; low-traffic windows reduce Stage 2 sample quality",
+                      "Space posts minimum 48 hours apart — LinkedIn's algorithm suppresses same-account content that appears within 24 hours of a previous post",
+                    ],
+                  },
+                ].map(({ step, color, content }) => (
+                  <div key={step} className={`p-4 ${color} rounded-lg shadow-sm`}>
+                    <p className="font-semibold text-gray-900 mb-2">{step}</p>
+                    <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                      {content.map((item, i) => (
+                        <li key={i} className="text-justify">{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
+            </section>
 
-              <div className="border-l-4 border-gray-800 pl-4">
-                <h3 className="text-lg font-semibold mb-2 text-black">Step 6 — Enter Pipeline</h3>
-                <p className="text-gray-800 mb-2">Push into CRM with:</p>
-                      <ul className="list-disc ml-6 space-y-2 pl-0 text-gray-800" style={{ listStylePosition: 'outside' }}>
-                  <li className="text-justify">Segment</li>
-                  <li className="text-justify">Role</li>
-                  <li className="text-justify">Warmth level</li>
-                  <li className="text-justify">Trigger reason</li>
-                  <li className="text-justify">Recommended next step</li>
-                </ul>
+            {/* Section 5: Engagement Velocity Protocol */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                5. Engagement Velocity Protocol — The 90-Minute Window
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  The 60–90 minutes after a post goes live is the single most
+                  critical period in its performance lifecycle. Everything in
+                  this protocol is designed to maximise the quality and volume
+                  of engagement during this window — which directly determines
+                  how broadly LinkedIn distributes the post.
+                </p>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-3">
+                    The 90-Minute Launch Sequence
+                  </p>
+                  <ol className="list-decimal ml-6 space-y-4 pl-0 text-gray-800" style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">
+                      <strong>T+0 (Post goes live):</strong> The publishing
+                      founder immediately posts a substantive first comment
+                      beneath the post. This comment must add a new data point,
+                      ask an open question, or extend the argument in the post.
+                      It is not a summary — it is an addition. This seeds comment
+                      activity before any other engagement arrives and signals
+                      to the algorithm that the post is already generating
+                      discussion. Place the external link (if any) in this first
+                      comment.
+                    </li>
+                    <li className="text-justify">
+                      <strong>T+5 mins:</strong> The second founder reacts to
+                      the post with a comment (not a like — comments carry
+                      more algorithmic weight). The comment must be at least
+                      one full sentence and add genuine value or perspective to
+                      the post topic.
+                    </li>
+                    <li className="text-justify">
+                      <strong>T+10 mins:</strong> Notify the engagement pod
+                      via the coordination channel (WhatsApp group or Lempod).
+                      Share the post URL. Pod members engage within 15–30
+                      minutes. Pod rule: every pod member comment must be
+                      substantive (minimum 5 words, contextually relevant to
+                      the post). Likes alone do not move the algorithm
+                      meaningfully.
+                    </li>
+                    <li className="text-justify">
+                      <strong>T+30 mins:</strong> Boyar's team members (if any)
+                      and any relevant internal contacts engage with the post.
+                      Share the post to relevant WhatsApp groups or Telegram
+                      communities where ICP members are active — framed as
+                      sharing a useful resource, not asking for engagement.
+                    </li>
+                    <li className="text-justify">
+                      <strong>T+60–90 mins:</strong> Monitor Shield Analytics
+                      or LinkedIn native analytics for impression velocity. If
+                      the post is gaining traction (comment volume, profile
+                      visits spiking), the publishing founder replies to every
+                      comment received so far — LinkedIn's algorithm counts
+                      reply comments as additional engagement signals, further
+                      boosting distribution.
+                    </li>
+                    <li className="text-justify">
+                      <strong>T+4 hours:</strong> If the post has performed
+                      significantly above baseline (3x+ normal impressions),
+                      flag it for paid amplification review. Begin LinkedIn
+                      Campaign Manager boost targeting within 24 hours while
+                      organic momentum is still active.
+                    </li>
+                  </ol>
+                </div>
+
+                <div className="p-4 bg-amber-50 border-l-4 border-amber-400 rounded-r-lg">
+                  <p className="text-justify">
+                    <strong>Pod governance rule:</strong> Engagement pods work
+                    only when every member genuinely reads the post before
+                    commenting. A comment that is clearly unrelated to the post
+                    content triggers LinkedIn's spam filter and can suppress
+                    rather than boost distribution. Pod members must be briefed
+                    on this — quality of comment is more important than speed
+                    of comment.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 6: Paid Amplification Protocol */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                6. Paid Amplification Protocol — Boosting Organic Winners
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Paid amplification is not used for every post — only for posts
+                  that have already demonstrated organic resonance. This
+                  approach dramatically outperforms running paid campaigns on
+                  cold, untested content because the algorithm and the audience
+                  have already validated the post's appeal.
+                </p>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">
+                    Amplification Trigger Thresholds
+                  </p>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm text-left text-gray-800">
+                      <thead className="bg-gray-100 text-gray-900">
+                        <tr>
+                          <th className="px-3 py-2 border-b border-gray-200">Metric</th>
+                          <th className="px-3 py-2 border-b border-gray-200">Baseline (Avg Post)</th>
+                          <th className="px-3 py-2 border-b border-gray-200">Amplification Trigger</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          ["Impressions (48hrs)", "500–2,000", "3x baseline or above"],
+                          ["Engagement rate", "2–4%", "Above 5%"],
+                          ["Comment count", "3–8", "15+ substantive comments"],
+                          ["Profile visits from post", "10–30", "60+ profile visits"],
+                          ["Saves / bookmarks", "5–15", "30+ saves"],
+                        ].map(([metric, baseline, trigger], i) => (
+                          <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                            <td className="px-3 py-2 border-b border-gray-100">{metric}</td>
+                            <td className="px-3 py-2 border-b border-gray-100 text-gray-600">{baseline}</td>
+                            <td className="px-3 py-2 border-b border-gray-100 font-semibold text-green-700">{trigger}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">
+                    LinkedIn Campaign Manager Setup — Amplification Campaign
+                  </p>
+                  <div className="space-y-3">
+                    {[
+                      {
+                        label: "Campaign Objective",
+                        desc: "Brand Awareness or Engagement — not Lead Generation. The goal is reach into ICP audiences, not clicks to a form. Lead conversion happens through the ABM follow-up process, not the ad itself.",
+                      },
+                      {
+                        label: "Audience Targeting",
+                        desc: "Job Title: Founder, CEO, CFO, General Counsel, Head of Compliance, Managing Partner, Fund Manager, Chief Investment Officer. Industry: Financial Services, Venture Capital, Cryptocurrency, Legal Services, Investment Management. Company Size: 10–500 employees. Geography: UAE, UK, Singapore, EU, USA, India (adjust based on post topic — a VASP post targets crypto-heavy regions; a trust post targets HNWI-heavy regions).",
+                      },
+                      {
+                        label: "Ad Format",
+                        desc: "Boost the organic post directly via 'Boost Post' in LinkedIn native, or create a Thought Leader Ad in Campaign Manager targeting the same post from the founder's personal profile. Thought Leader Ads consistently outperform company page-boosted posts for advisory firms because they retain the personal credibility of the founder's profile.",
+                      },
+                      {
+                        label: "Budget & Duration",
+                        desc: "USD 50–150 per boosted post. Run for 5–7 days — not longer, as diminishing returns appear after 7 days on most boosted posts. Prioritise frequency (5–8 impressions per target account per week) over broad reach. Concentrated repetition builds recognition faster than wide but thin distribution.",
+                      },
+                      {
+                        label: "Post-Campaign Review",
+                        desc: "After each boosted post, review: total impressions, click-through rate, profile visits generated, and whether any new ABM accounts appeared in HubSpot from the campaign. Boosted posts that generate ABM-qualifying engagement (ICP account viewed profile or connected) are logged as ABM-sourced leads.",
+                      },
+                    ].map(({ label, desc }) => (
+                      <div key={label} className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                        <p className="font-semibold text-sm text-gray-900 mb-1">{label}</p>
+                        <p className="text-sm text-justify text-gray-700">{desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 7: Hook Library */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                7. Hook Library — Proven Templates for Boyar Content
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  The hook is the most important sentence in any LinkedIn post.
+                  Below are 6 hook templates proven to stop scrolling for
+                  Boyar's specific audience — each with an example customised
+                  to Boyar's service lines.
+                </p>
+
+                <div className="space-y-3">
+                  {[
+                    {
+                      type: "Template 1 — The Counterintuitive Opener",
+                      structure: "'[Common belief] is wrong. Here is what actually happens.'",
+                      example: "'The Cayman Islands is not always the best choice for your fund. Here is the decision framework that changes the answer.'",
+                      why: "Challenges existing knowledge — forces the reader to continue to find out why they are wrong.",
+                      color: "bg-blue-50 border-l-4 border-blue-400",
+                    },
+                    {
+                      type: "Template 2 — The Specific Number",
+                      structure: "'[Specific number] of [ICP group] make this mistake. Are you one of them?'",
+                      example: "'8 out of 10 fintech founders choose the wrong jurisdiction for their holding company. Here is the one they should have chosen.'",
+                      why: "Specificity creates credibility. The number creates self-doubt — the reader wants to find out if they are in the 80%.",
+                      color: "bg-green-50 border-l-4 border-green-400",
+                    },
+                    {
+                      type: "Template 3 — The Direct Address",
+                      structure: "'If you are [specific situation], you need to read this before [specific consequence].'",
+                      example: "'If you are a VASP applicant in the UAE and your banking is not structured before you submit your licence application, here is what happens next.'",
+                      why: "Speaks directly to a reader in a specific situation — maximum relevance for Tier 1 ABM accounts experiencing that situation.",
+                      color: "bg-purple-50 border-l-4 border-purple-400",
+                    },
+                    {
+                      type: "Template 4 — The Hidden Cost",
+                      structure: "'Nobody talks about the cost of [common decision]. Here is what it actually costs.'",
+                      example: "'Nobody talks about what a structuring mistake in Year 1 costs in Year 3. The number will surprise you.'",
+                      why: "Creates urgency by surfacing a consequence the reader has not considered. Financial framing performs particularly well with CFO and founder audiences.",
+                      color: "bg-amber-50 border-l-4 border-amber-400",
+                    },
+                    {
+                      type: "Template 5 — The Framework Teaser",
+                      structure: "'Here is the [X]-step framework [ICP group] use to [desired outcome]. Most advisors charge [amount] for this.'",
+                      example: "'Here is the 5-variable framework CFOs use to decide between BVI and Cayman for their holding structure. Most law firms charge $5,000 for this analysis.'",
+                      why: "Signals free, high-value expertise. 'Most advisors charge X' creates perceived value without a price tag on the post itself.",
+                      color: "bg-red-50 border-l-4 border-red-400",
+                    },
+                    {
+                      type: "Template 6 — The Regulatory Urgency Hook",
+                      structure: "'[Regulatory change] just happened. Here is what it means for [ICP group] and what you need to do before [deadline].'",
+                      example: "'The UAE just updated its VASP licensing requirements. Here is what changes for applicants already in the queue — and what it means for your timeline.'",
+                      why: "Timeliness creates mandatory engagement — ICP accounts directly affected by the regulation must read the post to understand their exposure.",
+                      color: "bg-indigo-50 border-l-4 border-indigo-400",
+                    },
+                  ].map(({ type, structure, example, why, color }) => (
+                    <div key={type} className={`p-4 ${color} rounded-r-lg`}>
+                      <p className="font-semibold text-gray-900">{type}</p>
+                      <p className="text-sm text-gray-700 mt-1">
+                        <span className="font-medium">Structure:</span> <em>{structure}</em>
+                      </p>
+                      <p className="text-sm text-gray-700 mt-1">
+                        <span className="font-medium">Boyar Example:</span> "{example}"
+                      </p>
+                      <p className="text-sm text-gray-600 mt-1">
+                        <span className="font-medium">Why it works:</span> {why}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Section 8: Weekly Operational Cadence */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                8. Weekly Operational Cadence
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                {[
+                  {
+                    day: "Monday",
+                    color: "bg-slate-50 border border-slate-200",
+                    tasks: [
+                      "Review Shield Analytics: weekend post performance, any late-breaking engagement",
+                      "Confirm this week's scheduled posts are ready in Taplio / Buffer — check hooks, formatting, hashtags",
+                      "Review ABM system: did any accounts engage with last week's content? Escalate if necessary",
+                      "Prepare first comment for Tuesday post (written in advance, posted T+0 when post goes live)",
+                    ],
+                  },
+                  {
+                    day: "Tuesday",
+                    color: "bg-blue-50 border border-blue-200",
+                    tasks: [
+                      "Post 1 goes live (8–10am GMT / 9–11am UAE). Execute 90-minute engagement velocity protocol immediately",
+                      "Monitor through midday: are comments coming from ICP accounts? Respond to every comment within 2 hours",
+                      "If post hits amplification threshold by end of day — flag for LinkedIn Campaign Manager boost",
+                    ],
+                  },
+                  {
+                    day: "Wednesday",
+                    color: "bg-slate-50 border border-slate-200",
+                    tasks: [
+                      "Review Tuesday post analytics (24-hour snapshot): impressions, engagement rate, profile visits, follows",
+                      "Identify any new accounts that engaged — cross-reference with ABM list; add if not already tracked",
+                      "Begin drafting next week's posts if content calendar does not have them fully written",
+                    ],
+                  },
+                  {
+                    day: "Thursday",
+                    color: "bg-green-50 border border-green-200",
+                    tasks: [
+                      "Post 2 goes live (8–10am GMT). Execute 90-minute engagement velocity protocol immediately",
+                      "Monitor through midday — respond to all comments, reply to pod members' comments specifically",
+                      "If running a paid boost on Tuesday's post — check campaign performance mid-week, adjust budget if needed",
+                    ],
+                  },
+                  {
+                    day: "Friday",
+                    color: "bg-slate-50 border border-slate-200",
+                    tasks: [
+                      "Weekly analytics review in Shield Analytics: which post performed better this week and why?",
+                      "Log the top-performing hook in the Hook Library — note what format, topic, and template it used",
+                      "Identify any regulatory or market news from the week that should be turned into reactive content next week",
+                      "Brief the engagement pod: share next week's tentative post schedule so pod members can plan their availability",
+                    ],
+                  },
+                ].map(({ day, color, tasks }) => (
+                  <div key={day} className={`p-4 ${color} rounded-lg shadow-sm`}>
+                    <p className="font-semibold text-gray-900 mb-2">{day}</p>
+                    <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                      {tasks.map((task, i) => (
+                        <li key={i} className="text-justify">{task}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Section 9: Engagement Pod Setup & Rules */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                9. Engagement Pod Setup & Operating Rules
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  An engagement pod is a group of professionals who commit to
+                  engaging with each other's LinkedIn posts within the Stage 2
+                  window. Done correctly, it is a legitimate mutual amplification
+                  arrangement between complementary advisors. Done incorrectly,
+                  it triggers LinkedIn's spam detection and suppresses
+                  distribution.
+                </p>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">Who to Include in the Pod</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">
+                      8–15 professionals maximum — larger pods produce lower
+                      comment quality and increase spam risk
+                    </li>
+                    <li className="text-justify">
+                      Ideal pod members: lawyers specialising in corporate or
+                      tax law (complementary, not competing), accountants and
+                      tax advisors, fintech / crypto advisors, banking
+                      relationship managers, fund administrators, family office
+                      advisors in non-overlapping service areas
+                    </li>
+                    <li className="text-justify">
+                      Pod members should have LinkedIn profiles with 500+
+                      connections and active posting histories — their
+                      engagement carries more algorithmic weight than accounts
+                      with thin profiles
+                    </li>
+                    <li className="text-justify">
+                      Avoid adding direct competitors — even if the content
+                      is non-competitive, the optics and future conflict risk
+                      are not worth the marginal engagement benefit
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">Non-Negotiable Pod Rules</p>
+                  <div className="space-y-2">
+                    {[
+                      "Every comment must be substantive — minimum 5 words, contextually relevant to the post content. 'Great post!' is not acceptable and will be called out",
+                      "Pod members must read the post before commenting — not just the hook. Off-topic comments damage the poster's credibility and can suppress distribution",
+                      "Engagement must happen within 60 minutes of the post going live — engagement after 90 minutes has diminishing algorithmic value",
+                      "Reciprocity is mandatory — if you receive pod engagement on your posts, you must engage with pod members' posts in return. Any member who consistently takes without giving is removed",
+                      "No automation — all comments are written by the pod member personally. No bots, no Lempod auto-comments, no AI-generated pod responses",
+                      "The pod coordination channel (WhatsApp group) is private — pod membership and coordination arrangements are not disclosed publicly",
+                    ].map((rule, i) => (
+                      <div key={i} className="flex gap-3 text-sm">
+                        <span className="text-red-500 font-bold flex-shrink-0">→</span>
+                        <span className="text-justify text-gray-700">{rule}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 10: Content-ABM Integration Workflow */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                10. Content-to-ABM Integration Workflow
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Every post that earns engagement from an ICP-matched account
+                  is an ABM event — not just a content metric. This workflow
+                  ensures that LinkedIn content engagement feeds directly into
+                  the ABM pipeline rather than being treated as a vanity metric.
+                </p>
+
+                <div className="space-y-3">
+                  {[
+                    {
+                      trigger: "Trigger 1 — ICP Account Likes or Saves a Post",
+                      action: "Log in HubSpot. Add to Tier 3 awareness tracking. Flag for monitoring — if the same account engages with a second post, escalate to Tier 2.",
+                      urgency: "Low",
+                    },
+                    {
+                      trigger: "Trigger 2 — ICP Account Comments on a Post",
+                      action: "Founder replies to the comment publicly (to drive further algorithmic distribution), then sends a personalised LinkedIn connection request within 24 hours referencing the comment. This is a warm outreach trigger — the account has self-identified as interested.",
+                      urgency: "High",
+                    },
+                    {
+                      trigger: "Trigger 3 — ICP Account Visits Founder Profile After Post",
+                      action: "Shield Analytics captures profile visits from post. If the visitor matches ICP criteria, add to ABM Tier 2 immediately. Within 48 hours, send a LinkedIn connection request with a personalised note referencing a relevant insight from the post they viewed.",
+                      urgency: "High",
+                    },
+                    {
+                      trigger: "Trigger 4 — ICP Account Reshares a Post",
+                      action: "A reshare is the strongest possible engagement signal — the account is voluntarily distributing Boyar's content to their network. Treat as Tier 1 immediately. Founder sends connection request within 24 hours + personalised message acknowledging the share and opening a relevant conversation.",
+                      urgency: "Immediate",
+                    },
+                    {
+                      trigger: "Trigger 5 — New Account Engages (Not Previously in ABM System)",
+                      action: "Research the account within 48 hours. Score against ICP criteria. If it meets Tier 1 or Tier 2 threshold, add to the ABM system and initiate the appropriate outreach sequence. Content has surfaced a qualified account that manual prospecting would have missed.",
+                      urgency: "Medium",
+                    },
+                  ].map(({ trigger, action, urgency }) => (
+                    <div key={trigger} className={`p-4 rounded-lg shadow-sm border ${
+                      urgency === "Immediate" ? "bg-red-50 border-red-200" :
+                      urgency === "High" ? "bg-amber-50 border-amber-200" :
+                      "bg-slate-50 border-slate-200"
+                    }`}>
+                      <div className="flex items-start justify-between gap-3">
+                        <p className="font-semibold text-gray-900">{trigger}</p>
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
+                          urgency === "Immediate" ? "bg-red-100 text-red-700" :
+                          urgency === "High" ? "bg-amber-100 text-amber-700" :
+                          "bg-blue-100 text-blue-700"
+                        }`}>{urgency}</span>
+                      </div>
+                      <p className="text-justify mt-2 text-sm text-gray-700">{action}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Section 11: Governance Rules */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                11. Governance Rules — Non-Negotiables
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                {[
+                  {
+                    rule: "Rule 1 — Minimum 4 posts per founder profile per month, regardless of other pressures",
+                    detail: "Algorithm momentum built over 6 months is destroyed by a 3-week posting gap. Content is batch-produced and scheduled in advance specifically to prevent this. If a founder is unavailable, pre-approved posts in the Taplio queue are published on schedule.",
+                  },
+                  {
+                    rule: "Rule 2 — No promotional content in the post body",
+                    detail: "Every post delivers value first. Service descriptions, pricing, calls to action linking to Boyar's website, and 'contact us' CTAs in post bodies are prohibited. LinkedIn's algorithm penalises promotional content. The audience disengages from it. All commercial information lives in comments, DMs, or profile links.",
+                  },
+                  {
+                    rule: "Rule 3 — The 90-minute engagement protocol is executed for every post without exception",
+                    detail: "A post without the first comment, pod notification, and team engagement in the first 90 minutes is algorithmically equivalent to a post with no distribution budget. The protocol is not optional — it is part of the post production process.",
+                  },
+                  {
+                    rule: "Rule 4 — External links always in comments, never in post bodies",
+                    detail: "LinkedIn's algorithm applies a reach penalty of approximately 30–50% to posts containing external URLs in the body. All links to Boyar's website, guides, Calendly, or any external resource are placed in the first comment only.",
+                  },
+                  {
+                    rule: "Rule 5 — Every ICP engagement is logged in HubSpot within 48 hours",
+                    detail: "Content-driven ABM intelligence is only useful if it is captured. Any ICP account that comments, reshares, or visits the founder profile after a post must be logged in HubSpot with the engagement type and date. Without this, the content-to-ABM integration workflow produces no pipeline.",
+                  },
+                  {
+                    rule: "Rule 6 — Content quality never compromised for posting frequency",
+                    detail: "If the monthly content calendar cannot be completed to quality standard in the available time, reduce frequency before reducing quality. Two excellent posts outperform eight mediocre ones — both algorithmically and in terms of ICP perception. Quality is the non-negotiable variable; frequency is the adjustable one.",
+                  },
+                ].map(({ rule, detail }) => (
+                  <div key={rule} className="p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900">{rule}</p>
+                    <p className="text-justify mt-1">{detail}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Section 12: KPI Dashboard */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                12. KPI Dashboard
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg shadow-sm">
+                    <p className="font-semibold text-gray-900 mb-3">Primary KPIs</p>
+                    <div className="space-y-2">
+                      {[
+                        ["Avg impressions per post", "Month 1: 500+ → Month 6: 3,000+"],
+                        ["Avg engagement rate", "> 3.5% (industry avg is 2%)"],
+                        ["ICP account profile visits / month", "> 40 from content"],
+                        ["New ABM accounts sourced from content", "5–10 / month"],
+                        ["Posts hitting amplification threshold", "2–3 / month"],
+                        ["Tier escalations from content engagement", "3–6 / month"],
+                      ].map(([metric, target]) => (
+                        <div key={metric} className="flex items-start justify-between text-sm gap-2">
+                          <span className="text-gray-700">{metric}</span>
+                          <span className="font-semibold text-green-700 text-right">{target}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg shadow-sm">
+                    <p className="font-semibold text-gray-900 mb-3">Secondary KPIs</p>
+                    <div className="space-y-2">
+                      {[
+                        ["LinkedIn connection requests accepted / month", "> 30 from content-warmed accounts"],
+                        ["Comments from ICP accounts / month", "> 20"],
+                        ["Reshares from ICP or adjacent accounts", "> 5 / month"],
+                        ["Paid amplification ROAS (profile visits)", "> 5x spend"],
+                        ["Newsletter subscribers growth", "> 50 / month at scale"],
+                        ["Follower growth (ICP-matched)", "> 100 / month"],
+                      ].map(([metric, target]) => (
+                        <div key={metric} className="flex items-start justify-between text-sm gap-2">
+                          <span className="text-gray-700">{metric}</span>
+                          <span className="font-semibold text-blue-700 text-right">{target}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">Deployment Timeline</p>
+                  <div className="space-y-2">
+                    {[
+                      ["Month 1", "Profile optimisation completed for both founders. Shield Analytics installed. Taplio / Buffer configured. Content calendar built. Engagement pod recruited (6–8 members). First 4 posts published with full 90-minute protocol."],
+                      ["Month 2", "Pod at full operating strength (10–15 members). LinkedIn Campaign Manager set up. First paid amplification campaign run on best-performing Month 1 post. ABM integration workflow operational — ICP engagements logged in HubSpot."],
+                      ["Month 3", "First full Shield Analytics review. Hook Library populated with top-performing hooks. Content calendar refined based on Month 1–2 performance data. Posting frequency assessed — increase if quality maintained."],
+                      ["Month 4–6", "Algorithm momentum compounding — average impressions should be 2–3x Month 1 baseline. Paid amplification running on 2–3 posts per month. ABM pipeline receiving 5–8 content-sourced accounts monthly. First content-attributed mandates trackable."],
+                    ].map(([month, desc]) => (
+                      <div key={month} className="flex gap-3 text-sm">
+                        <span className="font-semibold text-gray-900 w-20 flex-shrink-0">{month}</span>
+                        <span className="text-gray-700">{desc}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 13: Success Formula */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                13. Success Formula
+              </h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Engineered hook → Post goes live → 90-minute protocol executed
+                  → Algorithm amplifies → ICP accounts reached → Engagement
+                  logged → ABM tier elevated → Warm outreach triggered →
+                  Diagnostic call booked → Mandate.
+                </p>
+                <p className="text-justify mt-3">
+                  The posts that reach the right people are not the ones with
+                  the most followers behind them. They are the ones engineered
+                  most precisely to satisfy Stage 2 of LinkedIn's ranking
+                  algorithm. Boyar's advantage is not audience size — it is
+                  systematic, consistent execution of the mechanics that
+                  determine distribution, applied to genuinely expert content
+                  that no competitor in the TCSP and structuring space is
+                  producing at the same quality or consistency.
+                </p>
+                <p className="text-justify mt-3 font-semibold">
+                  At month 6, this system produces a compounding authority
+                  signal that means Boyar Partners appears in the LinkedIn feeds
+                  of thousands of qualified decision-makers every single week —
+                  before a single cold outreach message is sent. That is the
+                  structural advantage no ad budget can replicate.
+                </p>
+              </div>
+            </section>
+
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  if (isAiDrivenAbmModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">AI-Driven ABM Enhancements</h1>
+                <div className="w-20" />
               </div>
             </div>
-          </section>
+          </header>
 
-          {/* Section 5 */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 text-black" style={{ fontFamily: 'var(--font-benzin)' }}>
-              5. Governance Controls
-            </h2>
-            <div className="space-y-4">
-              <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
-                <h3 className="text-lg font-semibold mb-2 text-black">Control 1 — No mass outreach</h3>
-                <p className="text-gray-800">LinkedIn penalizes spam; also not aligned with boutique positioning.</p>
-              </div>
-
-              <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
-                <h3 className="text-lg font-semibold mb-2 text-black">Control 2 — Maintain discretion</h3>
-                <p className="text-gray-800">No sensitive discussions via LinkedIn chat.</p>
-              </div>
-
-              <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
-                <h3 className="text-lg font-semibold mb-2 text-black">Control 3 — Messaging consistency</h3>
-                <p className="text-gray-800">Founders must follow the same tone guidelines.</p>
-              </div>
-
-              <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
-                <h3 className="text-lg font-semibold mb-2 text-black">Control 4 — Weekly review of inactive warm leads</h3>
-                <p className="text-gray-800">Follow-up with precision.</p>
-              </div>
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>AI-Driven ABM Enhancements</h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>Execution Playbook — Operational Blueprint for Boyar Partners</h2>
             </div>
-          </section>
 
-          {/* Section 6 */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 text-black" style={{ fontFamily: 'var(--font-benzin)' }}>
-              6. KPI System
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
-                <h3 className="text-lg font-semibold mb-2 text-black">Primary KPIs:</h3>
-                      <ul className="list-disc ml-6 space-y-2 pl-0 text-gray-800 text-sm" style={{ listStylePosition: 'outside' }}>
-                  <li className="text-justify">Connection acceptance rate</li>
-                  <li className="text-justify">Executive reply rate</li>
-                  <li className="text-justify">Calls booked</li>
-                  <li className="text-justify">Warm introductions generated</li>
-                  <li className="text-justify">LinkedIn engagement quality</li>
-                </ul>
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Required Tool Stack</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">The lean ABM stack below covers account discovery, data enrichment, outreach personalisation, CRM tracking, and retargeting — and can be deployed progressively, starting with the minimum set before adding advanced layers.</p>
+                <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm bg-white">
+                  <table className="w-full text-sm text-left text-gray-800">
+                    <thead className="bg-gray-100 text-gray-900">
+                      <tr>
+                        <th className="px-4 py-3 border-b border-gray-200">Function</th>
+                        <th className="px-4 py-3 border-b border-gray-200">Tool</th>
+                        <th className="px-4 py-3 border-b border-gray-200">Priority</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        ["Account targeting & signal monitoring", "LinkedIn Sales Navigator", "Essential"],
+                        ["AI data enrichment & research automation", "Clay.ai", "Essential"],
+                        ["Contact discovery & email verification", "Apollo.io", "Essential"],
+                        ["CRM & pipeline management", "HubSpot CRM", "Essential"],
+                        ["AI personalisation at scale", "Lyne.ai / Clay workflows", "High priority"],
+                        ["Intent signal monitoring (web)", "Bombora / G2 Buyer Intent", "High priority"],
+                        ["Email sequence automation", "HubSpot Sequences / Lemlist", "High priority"],
+                        ["LinkedIn content scheduling", "Buffer / Taplio", "Recommended"],
+                        ["Retargeting ad management", "LinkedIn Campaign Manager", "Recommended"],
+                        ["Content performance analytics", "Shield Analytics", "Recommended"],
+                        ["Document tracking (opens, time spent)", "Notion + DocSend", "Optional"],
+                        ["ABM reporting dashboard", "HubSpot Reports / Notion", "Optional"],
+                      ].map(([func, tool, priority], i) => (
+                        <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                          <td className="px-4 py-2 border-b border-gray-100">{func}</td>
+                          <td className="px-4 py-2 border-b border-gray-100 font-medium">{tool}</td>
+                          <td className="px-4 py-2 border-b border-gray-100">
+                            <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                              priority === "Essential" ? "bg-blue-100 text-blue-800" :
+                              priority === "High priority" ? "bg-green-100 text-green-800" :
+                              "bg-gray-100 text-gray-600"
+                            }`}>{priority}</span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="text-justify font-semibold">Minimum viable stack (Month 1): Sales Navigator + Clay.ai + Apollo.io + HubSpot CRM. Deploy intent monitoring and retargeting from Month 2 onward once the ICP and scoring model are validated.</p>
+                </div>
               </div>
+            </section>
 
-              <div className="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg">
-                <h3 className="text-lg font-semibold mb-2 text-black">Secondary KPIs:</h3>
-                      <ul className="list-disc ml-6 space-y-2 pl-0 text-gray-800 text-sm" style={{ listStylePosition: 'outside' }}>
-                  <li className="text-justify">Post engagement from ICP</li>
-                  <li className="text-justify">Profile visits by ICP</li>
-                  <li className="text-justify">Number of prospects moved to pipeline</li>
-                  <li className="text-justify">Number of briefing notes downloaded privately</li>
-                </ul>
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. Build the Ideal Client Profile (ICP) & Account Tier System</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">Before any AI tool is deployed, the ICP must be defined with precision. The ICP is the filter that determines which signals matter, which accounts get scored, and which outreach gets triggered. A poorly defined ICP produces false positives that waste founder time.</p>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">Boyar Partners ICP Definition</p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 mb-1">Firmographic Criteria</p>
+                      <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                        <li className="text-justify">Company size: 5–500 employees</li>
+                        <li className="text-justify">Revenue stage: Pre-revenue to $50M ARR</li>
+                        <li className="text-justify">Sectors: Fintech, Web3/Crypto, Funds, Family Offices, Cross-Border SMEs, Licensing applicants</li>
+                        <li className="text-justify">Geography: Global — with priority on UAE, UK, Singapore, EU, USA, India</li>
+                        <li className="text-justify">Ownership: Founder-led or PE-backed with active expansion mandates</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700 mb-1">Buyer Persona Criteria</p>
+                      <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                        <li className="text-justify">Title: Founder, CEO, CFO, GC, COO, Head of Compliance, Managing Partner</li>
+                        <li className="text-justify">Decision-making authority: Final or strong influence over structuring, licensing, banking decisions</li>
+                        <li className="text-justify">Activity: Posting about expansion, hiring for regulatory roles, attending finance conferences</li>
+                        <li className="text-justify">LinkedIn presence: Active profile, 500+ connections, recent activity</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">Account Tier Classification</p>
+                  <div className="space-y-3">
+                    {[
+                      { tier: "Tier 1 — Priority Accounts", color: "bg-red-50 border-l-4 border-red-400", desc: "Strong ICP match + active intent signal (fundraising, licensing application, regulatory hire, banking challenge). Founder direct outreach within 48 hours of signal detection." },
+                      { tier: "Tier 2 — Warm Accounts", color: "bg-amber-50 border-l-4 border-amber-400", desc: "Good ICP match + partial signal (sector fit, expansion posting, but no acute trigger). Enter automated content nurture sequence; founder outreach triggered when signal strengthens." },
+                      { tier: "Tier 3 — Awareness Accounts", color: "bg-blue-50 border-l-4 border-blue-400", desc: "Reasonable ICP fit, no current signal. Retargeting and content exposure only. Re-scored monthly. Escalated to Tier 2 when signals emerge." },
+                    ].map(({ tier, color, desc }) => (
+                      <div key={tier} className={`p-4 ${color} rounded-r-lg`}>
+                        <p className="font-semibold text-gray-900">{tier}</p>
+                        <p className="text-justify mt-1">{desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          {/* Section 7 */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 text-black" style={{ fontFamily: 'var(--font-benzin)' }}>
-              7. Success Formula
-            </h2>
-            <div className="p-6 bg-gray-50 border-l-4 border-gray-800 rounded-r-lg">
-              <p className="text-lg text-gray-800 leading-relaxed mb-4">
-                LinkedIn → Micro insights → Authority → Private conversations → Founder-led diagnostic → Mandate.
-              </p>
-              <p className="text-gray-800 font-semibold">
-                Boyar Partners' expertise + the founders' personal credibility = a conversion engine that outperforms all forms of paid marketing.
-              </p>
-            </div>
-          </section>
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. Intent Signal Library — What AI Monitors</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">AI tools are configured to monitor the following signal categories across LinkedIn, news feeds, company websites, job boards, and regulatory databases. Each signal is mapped to a specific Boyar service line so outreach is immediately relevant.</p>
+                <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm bg-white">
+                  <table className="w-full text-sm text-left text-gray-800">
+                    <thead className="bg-gray-100 text-gray-900">
+                      <tr>
+                        <th className="px-4 py-3 border-b border-gray-200">Signal</th>
+                        <th className="px-4 py-3 border-b border-gray-200">Source</th>
+                        <th className="px-4 py-3 border-b border-gray-200">Boyar Service Line</th>
+                        <th className="px-4 py-3 border-b border-gray-200">Tier</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        ["Series A/B/C funding announcement", "LinkedIn, Crunchbase, press", "Corporate structuring, holding company", "1"],
+                        ["Hiring: MLRO / Compliance Officer / GC", "LinkedIn Jobs, company page", "Licensing, AML/KYC advisory", "1"],
+                        ["VASP / EMI / MSB licence application public", "Regulatory registry, news", "Licensing advisory", "1"],
+                        ["International expansion announcement", "LinkedIn post, press release", "Jurisdiction selection, entity setup", "1"],
+                        ["Banking / payment processing issue mentioned", "LinkedIn post, Twitter/X", "Banking introduction advisory", "1"],
+                        ["Tokenisation or digital asset launch", "Blog, LinkedIn, press", "Tokenisation structuring", "1"],
+                        ["Crypto exchange or OTC desk launch", "LinkedIn, company website", "VASP licensing, structuring", "1"],
+                        ["Key executive join (CFO, GC, COO)", "LinkedIn activity", "Founder-targeted ABM outreach", "2"],
+                        ["Company website visit (Boyar content)", "HubSpot tracking", "All service lines", "2"],
+                        ["Engagement with Boyar LinkedIn post", "LinkedIn analytics", "Relevant service line by post topic", "2"],
+                        ["Attending offshore / fintech conference", "Event registrations, posts", "Networking + ABM alignment", "2"],
+                        ["Competitor mentions on LinkedIn", "Social monitoring", "Competitive intercept", "2"],
+                        ["Job posting in new jurisdiction", "LinkedIn Jobs", "Jurisdiction + entity advisory", "3"],
+                        ["Company restructuring or rebranding", "LinkedIn, press", "Corporate restructuring advisory", "3"],
+                      ].map(([signal, source, service, tier], i) => (
+                        <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                          <td className="px-4 py-2 border-b border-gray-100">{signal}</td>
+                          <td className="px-4 py-2 border-b border-gray-100 text-gray-600">{source}</td>
+                          <td className="px-4 py-2 border-b border-gray-100 text-gray-600">{service}</td>
+                          <td className="px-4 py-2 border-b border-gray-100">
+                            <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                              tier === "1" ? "bg-red-100 text-red-700" :
+                              tier === "2" ? "bg-amber-100 text-amber-700" :
+                              "bg-blue-100 text-blue-700"
+                            }`}>T{tier}</span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
 
-          {/* Footer */}
-          <div className="mt-16 pt-8 border-t border-gray-200 text-center text-gray-600 text-sm">
-            <p>LinkedIn Executive Outreach Execution Playbook</p>
-            <p className="mt-2">Boyar Partners — Internal Use Only</p>
-          </div>
-        </main>
-      </div>
-    </ProtectedRoute>
-  );
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. Account Discovery & AI Scoring Workflow</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">This is the operational core of the ABM system — the process by which Clay.ai, Sales Navigator, and Apollo.io work together to surface, enrich, and score accounts before any human touches the outreach.</p>
+                {[
+                  { step: "Step 1 — Account Discovery", color: "bg-white border border-gray-200", content: ["Use LinkedIn Sales Navigator to build segmented account lists by sector, geography, company size, and seniority of target contacts.", "Use Clay.ai to pull accounts from news feeds, Crunchbase fundraising data, job posting databases, and regulatory announcement feeds.", "Use Apollo.io to supplement with verified contact data (email, phone, LinkedIn URL) for decision-makers at discovered accounts.", "Set up automated Clay workflows to continuously scan sources and add new accounts matching ICP criteria into the discovery queue — removing the need for manual research."] },
+                  { step: "Step 2 — Data Enrichment", color: "bg-white border border-gray-200", content: ["For each discovered account, Clay.ai automatically enriches the profile: company size, funding stage, recent news, LinkedIn activity of key contacts, technology stack (where detectable), and recent job postings.", "Enrichment also captures contextual intelligence: Has the founder posted about expansion? Has the company recently hired compliance? Is there a regulatory announcement on public record?", "This enrichment is appended to the CRM record in HubSpot, creating a fully contextualised account profile before outreach begins."] },
+                  { step: "Step 3 — AI Scoring", color: "bg-white border border-gray-200", content: ["Each account is scored against the ICP criteria and signal library using a weighted scoring model configured in Clay.ai or HubSpot.", "Score components: ICP firmographic match (40%), buyer persona match (25%), active intent signal present (25%), Boyar content engagement (10%).", "Accounts scoring above threshold are automatically classified as Tier 1 and flagged for founder review within the same working day.", "Accounts scoring in mid-range are classified Tier 2 and entered into automated nurture. Low-scoring accounts go to Tier 3 awareness-only retargeting."] },
+                  { step: "Step 4 — Human Review Gate (Tier 1 Only)", color: "bg-amber-50 border border-amber-200", content: ["Every Tier 1 account is reviewed by a founder before outreach is triggered. AI handles research; founders confirm relevance and approve the personalised message.", "This gate prevents false positives from entering outreach and maintains the boutique positioning — every Tier 1 message is founder-reviewed.", "Review time per account: 3–5 minutes with AI-prepared context brief already in CRM.", "Founder approves, edits, or downgrades the account. If approved, outreach sequence begins within 24 hours."] },
+                ].map(({ step, color, content }) => (
+                  <div key={step} className={`p-4 ${color} rounded-lg shadow-sm`}>
+                    <p className="font-semibold text-gray-900 mb-2">{step}</p>
+                    <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                      {content.map((item, i) => (<li key={i} className="text-justify">{item}</li>))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Personalisation Engine — Message Architecture</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">All outreach for Tier 1 accounts uses AI-generated context to build a personalised opening — not a generic template. The structure below applies across LinkedIn DM, email, and WhatsApp (where appropriate).</p>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">Message Architecture — The 4-Part Formula</p>
+                  <div className="space-y-3">
+                    {[
+                      { part: "Part 1 — Context Hook (1 sentence)", desc: "Reference the specific signal that triggered outreach. Not generic — specific to this account's event.", example: "Saw your announcement about expanding operations into the UAE — congrats on the milestone.", color: "bg-blue-50 border-l-4 border-blue-400" },
+                      { part: "Part 2 — Relevance Bridge (1–2 sentences)", desc: "Connect the signal to a specific challenge or decision that Boyar solves — without pitching.", example: "Teams at your stage typically face a structural decision at this point around where to place the holding entity and how to approach UAE banking access.", color: "bg-green-50 border-l-4 border-green-400" },
+                      { part: "Part 3 — Credential Signal (1 sentence)", desc: "One understated proof point — not a sales pitch, a credibility marker.", example: "We handle this specifically for fintech and Web3 teams across 35+ jurisdictions.", color: "bg-indigo-50 border-l-4 border-indigo-400" },
+                      { part: "Part 4 — Low-Friction CTA (1 sentence)", desc: "A soft, non-pressured ask. Never 'book a call' at this stage. Offer value first.", example: "Happy to share a short framework we use for structuring decisions at this stage — no strings attached.", color: "bg-amber-50 border-l-4 border-amber-400" },
+                    ].map(({ part, desc, example, color }) => (
+                      <div key={part} className={`p-4 ${color} rounded-r-lg`}>
+                        <p className="font-semibold text-gray-900">{part}</p>
+                        <p className="text-justify text-sm text-gray-700 mt-1">{desc}</p>
+                        <p className="text-justify text-sm mt-2 italic text-gray-600">Example: &quot;{example}&quot;</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">Personalisation by Service Line</p>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm text-left text-gray-800">
+                      <thead className="bg-gray-50 text-gray-900">
+                        <tr>
+                          <th className="px-3 py-2 border-b border-gray-200">Signal Trigger</th>
+                          <th className="px-3 py-2 border-b border-gray-200">Lead Service Line</th>
+                          <th className="px-3 py-2 border-b border-gray-200">Content Asset to Attach</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          ["Fundraising announcement", "Holding company + structuring", "Jurisdiction comparison framework"],
+                          ["VASP licence application", "Licensing advisory", "VASP jurisdiction matrix"],
+                          ["Banking challenge mentioned", "Banking introduction", "Banking acceptance guide"],
+                          ["International expansion post", "Entity setup + jurisdiction", "Expansion structuring guide"],
+                          ["Tokenisation project", "Token structure advisory", "Token foundation + SPV overview"],
+                          ["HNWI relocation signal", "Trust + citizenship", "Residency structuring brief"],
+                          ["Fund launch announcement", "Fund administration + structure", "Fund vehicle comparison note"],
+                        ].map(([signal, service, asset], i) => (
+                          <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                            <td className="px-3 py-2 border-b border-gray-100">{signal}</td>
+                            <td className="px-3 py-2 border-b border-gray-100">{service}</td>
+                            <td className="px-3 py-2 border-b border-gray-100 text-gray-600">{asset}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>6. Multi-Touch Outreach Sequence by Tier</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-red-50 border border-red-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-3">Tier 1 — Priority Outreach Sequence (Days 1–21)</p>
+                  <ol className="list-decimal ml-6 space-y-3 pl-0" style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify"><strong>Day 1:</strong> Founder sends personalised LinkedIn connection request with 1-line note referencing the specific trigger signal. No pitch.</li>
+                    <li className="text-justify"><strong>Day 3 (if connected):</strong> Send 4-part personalised message (Context Hook → Relevance Bridge → Credential Signal → Low-Friction CTA). Attach one relevant content asset (framework, jurisdiction brief).</li>
+                    <li className="text-justify"><strong>Day 7 (if no reply):</strong> Second LinkedIn touchpoint — share a related insight post or jurisdiction update directly relevant to their sector. Comment on their recent post first to warm visibility.</li>
+                    <li className="text-justify"><strong>Day 10:</strong> Email follow-up via Apollo.io verified address — reference the LinkedIn message, share the same framework, reiterate the low-friction offer. Keep it under 80 words.</li>
+                    <li className="text-justify"><strong>Day 14 (if warm but uncommitted):</strong> Invite to a relevant resource — roundtable, briefing note, or jurisdiction deep-dive document. Position as value, not a pitch.</li>
+                    <li className="text-justify"><strong>Day 21 (final Tier 1 touch):</strong> Short, direct message: "Happy to set up a 20-minute diagnostic call — no obligation. If timing isn't right, I'll keep you in the loop on relevant developments." Then move to Tier 2 nurture if no response.</li>
+                  </ol>
+                </div>
+                <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-3">Tier 2 — Automated Nurture Sequence (Weeks 1–8)</p>
+                  <ol className="list-decimal ml-6 space-y-3 pl-0" style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify"><strong>Week 1:</strong> LinkedIn connection request (no note). HubSpot adds to email nurture list — send first content asset (jurisdiction intelligence brief matching their sector).</li>
+                    <li className="text-justify"><strong>Week 2:</strong> Automated email: regulatory update or licensing development relevant to their sector. Short, informative, no CTA other than "reply if you'd like to discuss."</li>
+                    <li className="text-justify"><strong>Week 4:</strong> LinkedIn retargeting ad serves Boyar's most relevant thought leadership content (post, guide, or video) to this account's contacts. No outreach message — visibility only.</li>
+                    <li className="text-justify"><strong>Week 6:</strong> Second email: share a different framework (banking acceptance, fund structure, or citizenship planning depending on sector). Invite to subscribe to Boyar's jurisdiction intelligence newsletter.</li>
+                    <li className="text-justify"><strong>Week 8:</strong> AI re-scores the account. If engagement detected (email open, link click, LinkedIn profile visit), escalate to Tier 1 and trigger founder direct outreach. If no engagement, continue monthly nurture.</li>
+                  </ol>
+                </div>
+                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-3">Tier 3 — Awareness & Retargeting (Ongoing)</p>
+                  <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">LinkedIn retargeting ads serving Boyar content to decision-makers at Tier 3 companies — no direct outreach until a signal elevates the account to Tier 2 or Tier 1</li>
+                    <li className="text-justify">Monthly newsletter send if email address available via Apollo</li>
+                    <li className="text-justify">AI re-scoring runs monthly — any account showing new signal is automatically elevated to the appropriate tier and flagged</li>
+                    <li className="text-justify">Tier 3 exists to keep Boyar visible in the account's awareness at near-zero cost while the account matures toward a buying window</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>7. Content Asset Library — ABM Ammunition</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">ABM outreach is only as good as the content assets it distributes. Each asset below serves a specific account segment and service line, ensuring that every outreach touch delivers relevant value — not generic marketing collateral.</p>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">Priority Assets to Build (Phase 1)</p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      { label: "Jurisdiction Comparison Framework", desc: "One-page decision matrix comparing BVI, Cayman, Dubai, Singapore, Cyprus across 8 variables. Sent to all corporate structuring signals." },
+                      { label: "VASP Licensing Matrix", desc: "Licensing requirements comparison across 10 jurisdictions for crypto/Web3 companies. Triggered by VASP-related signals." },
+                      { label: "Banking Acceptance Guide", desc: "How Boyar approaches banking introductions for high-risk sectors — the process, timeline, and jurisdiction options. For banking-challenge signals." },
+                      { label: "Fund Vehicle Comparison Note", desc: "Cayman vs BVI vs Luxembourg vs Singapore fund structures — when to use which. Triggered by fund launch signals." },
+                      { label: "Expansion Structuring Guide", desc: "Entity placement framework for cross-border expansions — holding + operating + IP structure. For international expansion signals." },
+                      { label: "Residency & Citizenship Brief", desc: "Second residency and citizenship options overview for HNWIs — programme comparison, timelines, costs. For HNWI relocation signals." },
+                    ].map(({ label, desc }) => (
+                      <div key={label} className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                        <p className="font-semibold text-sm text-gray-900">{label}</p>
+                        <p className="text-sm text-gray-700 mt-1">{desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="text-justify"><strong>Asset Development Rule:</strong> Each content asset should be 1–2 pages maximum. It is a proof of expertise, not a full proposal. The goal is to demonstrate that Boyar understands the prospect's challenge deeply — not to answer every question before the first call.</p>
+                </div>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>8. Weekly Execution Cadence</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                {[
+                  { label: "Monday — Account Review", color: "bg-slate-50 border border-slate-200", items: ["Review Clay.ai and Sales Navigator alerts: new accounts flagged since last week", "Review HubSpot: which Tier 1 accounts have engaged with email or LinkedIn content", "Escalate any Tier 2 accounts showing signals to Tier 1 — set founder outreach", "Approve AI-drafted outreach messages for new Tier 1 accounts (3–5 per week)"] },
+                  { label: "Tuesday–Thursday — Outreach Execution", color: "bg-slate-50 border border-slate-200", items: ["Send approved Tier 1 LinkedIn connection requests and personalised messages (founders)", "Send email follow-ups to Tier 1 accounts that connected but haven't replied (Day 10 touchpoint)", "Review replies and book diagnostic calls for warm responses", "Update CRM: tag every account with current status, last touch, next action date"] },
+                  { label: "Friday — Analytics & Optimisation", color: "bg-slate-50 border border-slate-200", items: ["Review Shield Analytics: which LinkedIn posts drove profile visits from ICP accounts", "Review HubSpot email metrics: open rates, click-through rates, replies by segment", "Identify which content assets are converting best — scale production of top performers", "Update scoring model if false positives are appearing consistently in Tier 1 queue"] },
+                ].map(({ label, color, items }) => (
+                  <div key={label} className={`p-4 ${color} rounded-lg shadow-sm`}>
+                    <p className="font-semibold text-gray-900 mb-2">{label}</p>
+                    <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                      {items.map((item, i) => (<li key={i} className="text-justify">{item}</li>))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>9. Monthly Review & Optimisation Protocol</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                    <p className="font-semibold text-gray-900 mb-2">Performance Review</p>
+                    <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                      <li className="text-justify">How many Tier 1 accounts were identified this month?</li>
+                      <li className="text-justify">What was the connection acceptance rate on LinkedIn outreach?</li>
+                      <li className="text-justify">What percentage of Tier 1 outreach produced a reply?</li>
+                      <li className="text-justify">How many diagnostic calls were booked?</li>
+                      <li className="text-justify">How many mandates are in active proposal stage?</li>
+                      <li className="text-justify">Which content asset produced the most engagement?</li>
+                      <li className="text-justify">Which sector produced the highest signal density?</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                    <p className="font-semibold text-gray-900 mb-2">Optimisation Actions</p>
+                    <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                      <li className="text-justify">If acceptance rate is below 30% → refine targeting criteria; check message tone</li>
+                      <li className="text-justify">If reply rate is below 15% → review personalisation quality; test alternative CTAs</li>
+                      <li className="text-justify">If calls booked is below target → check Tier 1 threshold; may be too many false positives</li>
+                      <li className="text-justify">If one sector is outperforming → increase account discovery volume for that sector</li>
+                      <li className="text-justify">If content asset clicks are low → replace the asset; test a new format or topic</li>
+                      <li className="text-justify">Update ICP definition if consistently wrong sector is triggering Tier 1 alerts</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>10. Governance Rules — Non-Negotiables</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                {[
+                  { rule: "Rule 1 — Founders review every Tier 1 message before it is sent", detail: "AI prepares. Founders approve. No Tier 1 outreach goes out without a founder reviewing the personalisation and confirming the account is genuinely relevant." },
+                  { rule: "Rule 2 — No mass volume outreach at any tier", detail: "ABM is precision, not scale. Maximum 10–15 Tier 1 outreach messages per week. Quality of personalisation always beats volume of sends." },
+                  { rule: "Rule 3 — All sensitive advisory discussions move off LinkedIn immediately", detail: "LinkedIn DMs are for initiating the relationship only. Any discussion involving specific client situations, pricing, or confidential structuring advice moves to a private call or secure email." },
+                  { rule: "Rule 4 — Data privacy compliance is mandatory", detail: "All AI tools configured to use publicly available data sources only. No private profile scraping. All email outreach includes unsubscribe option. GDPR opt-out honoured within 48 hours." },
+                  { rule: "Rule 5 — Every outreach must provide value before asking for anything", detail: "No cold pitches. Every message delivers an insight, framework, or relevant observation before any ask is made. The ask itself must be low-friction — never 'book a call' as a first message." },
+                  { rule: "Rule 6 — CRM discipline is mandatory", detail: "Every account touched must be logged in HubSpot with status, last contact date, next action, and segment tag. An account not in CRM does not exist in the ABM system." },
+                ].map(({ rule, detail }) => (
+                  <div key={rule} className="p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900">{rule}</p>
+                    <p className="text-justify mt-1">{detail}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>11. KPI Dashboard</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg shadow-sm">
+                    <p className="font-semibold text-gray-900 mb-2">Primary KPIs</p>
+                    <div className="space-y-2">
+                      {[
+                        ["Tier 1 accounts identified / month", "10–20"],
+                        ["LinkedIn connection acceptance rate", "> 35%"],
+                        ["Reply rate (Tier 1 outreach)", "> 20%"],
+                        ["Diagnostic calls booked / month", "4–8"],
+                        ["Active proposals in pipeline", "2–4"],
+                        ["Mandates won from ABM channel", "1–2 / month at scale"],
+                      ].map(([metric, target]) => (
+                        <div key={metric} className="flex items-center justify-between text-sm">
+                          <span className="text-gray-700">{metric}</span>
+                          <span className="font-semibold text-green-700">{target}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg shadow-sm">
+                    <p className="font-semibold text-gray-900 mb-2">Secondary KPIs</p>
+                    <div className="space-y-2">
+                      {[
+                        ["Email open rate (Tier 2 nurture)", "> 40%"],
+                        ["Email click-through rate", "> 12%"],
+                        ["Tier 2 → Tier 1 escalations / month", "3–6"],
+                        ["Retargeting ad impression frequency", "5–8x / month"],
+                        ["Content asset downloads", "Tracked per asset"],
+                        ["Accounts in active Tier 2 nurture", "50–150"],
+                      ].map(([metric, target]) => (
+                        <div key={metric} className="flex items-center justify-between text-sm">
+                          <span className="text-gray-700">{metric}</span>
+                          <span className="font-semibold text-blue-700">{target}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900 mb-2">Deployment Timeline</p>
+                  <div className="space-y-2">
+                    {[
+                      ["Month 1", "ICP definition, tool stack setup, Sales Navigator lists built, first 20 Tier 1 accounts identified and outreach begun, HubSpot pipeline configured"],
+                      ["Month 2", "Clay.ai workflows active for automated discovery, Apollo.io email verified, Tier 2 nurture sequences live, LinkedIn retargeting campaigns running"],
+                      ["Month 3", "First KPI review, scoring model refined, content asset library completed, Bombora intent monitoring added if budget allows"],
+                      ["Month 4+", "Full ABM system operational, monthly optimisation cadence established, pipeline reporting integrated into founder weekly review"],
+                    ].map(([month, desc]) => (
+                      <div key={month} className="flex gap-3 text-sm">
+                        <span className="font-semibold text-gray-900 w-20 flex-shrink-0">{month}</span>
+                        <span className="text-gray-700">{desc}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>12. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">AI discovers → Signal triggers → Account scored → Founder approves → Personalised outreach sent → Value delivered before ask → Warm reply → Diagnostic call → Mandate.</p>
+                <p className="text-justify mt-3">The AI-Driven ABM system removes the two biggest inefficiencies in boutique advisory acquisition: time wasted on unqualified prospects and outreach sent at the wrong moment. AI handles discovery, enrichment, scoring, and nurture — founders invest time only in accounts that are already warm, already relevant, and already primed to engage.</p>
+                <p className="text-justify mt-3 font-semibold">At full deployment, this system produces a self-sustaining pipeline where the right account receives the right message at the right time — without the founder spending a single hour on cold prospecting.</p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
 }

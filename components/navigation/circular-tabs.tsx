@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import type { UserRole } from "@/components/layout/app-shell";
+import { ClientOnboardingModal } from "@/components/client-acquisition/client-onboarding-modal";
 
 interface Tab {
   id: string;
@@ -27,22 +28,9 @@ const revenueSegments = [
 const clientAcquisitionOptions = [
   "Acquisition channels",
   "Conversion metrics",
-  "Lead generation",
   "Client onboarding",
 ];
 
-interface ProjectionStep {
-  label: string;
-  path?: string;
-}
-
-const corporateProjectionSteps: ProjectionStep[] = [
-  { label: "Year 1", path: "/revenue/year-1" },
-  { label: "Year 2", path: "/revenue/year-2" },
-  { label: "Year 3", path: "/revenue/year-3" },
-  { label: "Year 4", path: "/revenue/year-4" },
-  { label: "Year 5", path: "/revenue/year-5" },
-];
 
 const tabs: Tab[] = [
   {
@@ -58,22 +46,6 @@ const tabs: Tab[] = [
         "Business highlights",
         "Mission statement",
         "Key metrics"
-      ]
-    }
-  },
-  {
-    id: "product",
-    label: "Services",
-    icon: "",
-    value: "$15.8M",
-    content: {
-      title: "Services",
-      description: "Services and product offerings",
-      details: [
-        "Service catalog",
-        "Service descriptions",
-        "Pricing information",
-        "Status and availability"
       ]
     }
   },
@@ -136,10 +108,9 @@ const tabs: Tab[] = [
       details: [
         "Acquisition channels",
         "Conversion metrics",
-        "Lead generation",
-        "Client onboarding"
-      ]
-    }
+        "Client onboarding",
+      ],
+    },
   },
   {
     id: "documents",
@@ -174,6 +145,22 @@ const tabs: Tab[] = [
     }
   },
   {
+    id: "trajectory",
+    label: "Trajectory",
+    icon: "",
+    value: "$0M",
+    content: {
+      title: "Trajectory",
+      description: "Strategic trajectory and institutional scaling roadmap",
+      details: [
+        "Growth trajectory assumptions",
+        "Client acquisition compounding",
+        "Service-line expansion path",
+        "Governance & risk evolution"
+      ]
+    }
+  },
+  {
     id: "expenditure",
     label: "Expenditure",
     icon: "",
@@ -188,6 +175,17 @@ const tabs: Tab[] = [
         "Financial reports"
       ]
     }
+  },
+  {
+    id: "services-direct",
+    label: "Services",
+    icon: "",
+    value: "$0M",
+    content: {
+      title: "Services",
+      description: "",
+      details: []
+    }
   }
 ];
 
@@ -195,14 +193,258 @@ interface CircularTabsProps {
   role: UserRole;
   initialActiveTab?: string | null;
   initialRevenueSegment?: string | null;
-  initialShowCorporatePopup?: boolean;
+}
+
+function CacNavButton({ label, onClick, index }: { label: string; onClick: () => void; index: number }) {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [circumference, setCircumference] = useState(0);
+  const [radius, setRadius] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (buttonRef.current) {
+        const width = buttonRef.current.offsetWidth;
+        const r = width / 2 - 2;
+        setRadius(r);
+        setCircumference(2 * Math.PI * r);
+      }
+    }, 150);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <motion.button
+      ref={buttonRef}
+      className="group relative w-32 sm:w-36 aspect-square rounded-full border border-white/10 bg-gradient-to-br from-white/8 to-white/3 text-center flex flex-col items-center justify-center tracking-wide transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 shadow-md"
+      style={{
+        boxShadow: isHovered
+          ? "0 0 15px rgba(59, 130, 246, 0.3), 0 0 30px rgba(59, 130, 246, 0.15)"
+          : "0 0 12px rgba(59, 130, 246, 0.10), 0 0 30px rgba(59, 130, 246, 0.05)",
+        fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif",
+      }}
+      initial={{ opacity: 0, scale: 0.6, y: 16 }}
+      animate={{ opacity: 1, scale: 1, y: 0, filter: "grayscale(0.6)" }}
+      transition={{ duration: 0.6, delay: 0.25 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ scale: 1.05, filter: "grayscale(0)", transition: { duration: 0.3 } }}
+      whileTap={{ scale: 0.95 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
+    >
+      {circumference > 0 && radius > 0 && (
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{ transform: "rotate(-90deg)", zIndex: 5 }}
+          viewBox={`0 0 ${radius * 2 + 4} ${radius * 2 + 4}`}
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <motion.circle
+            cx={(radius * 2 + 4) / 2}
+            cy={(radius * 2 + 4) / 2}
+            r={radius}
+            fill="none"
+            stroke="#3b82f6"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            strokeDashoffset={isHovered ? 0 : circumference}
+            initial={false}
+            animate={{ strokeDashoffset: isHovered ? 0 : circumference }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          />
+        </svg>
+      )}
+      <div className="relative z-10 w-full flex flex-col items-center">
+        <span className="px-3 leading-snug text-[10px] sm:text-xs md:text-sm font-medium text-white group-hover:text-blue-200 transition-colors duration-300">
+          {label}
+        </span>
+        <div className="mt-1 w-6 h-[1.5px] bg-gradient-to-r from-blue-500 to-cyan-400 opacity-50 group-hover:opacity-100 transition-opacity duration-300 mx-auto rounded-full" />
+      </div>
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none overflow-hidden rounded-full z-0">
+        <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-blue-500/20 rounded-full blur-xl -translate-y-1/2" />
+        <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-cyan-500/20 rounded-full blur-xl translate-y-1/2" />
+      </div>
+    </motion.button>
+  );
+}
+
+function AcquisitionButton({ option, index, router, setShowOnboardingModal, setActiveTab }: any) {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [circumference, setCircumference] = useState(0);
+  const [radius, setRadius] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    // Small timeout ensures the DOM has settled its flexible grid dimensions before measuring width
+    const timer = setTimeout(() => {
+      if (buttonRef.current) {
+        const width = buttonRef.current.offsetWidth;
+        const r = width / 2 - 2;
+        setRadius(r);
+        setCircumference(2 * Math.PI * r);
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <motion.button
+      ref={buttonRef}
+      key={option}
+      className="group relative w-full aspect-square rounded-full border border-white/10 bg-gradient-to-br from-white/8 to-white/3 flex flex-col items-center justify-center transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 overflow-hidden"
+      style={{ 
+        fontFamily: 'var(--font-benzin)',
+        willChange: "transform, opacity"
+      }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.96 }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        opacity: { delay: index * 0.1 },
+        scale: { delay: index * 0.1 },
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => {
+        if (option === "Acquisition channels") {
+          setActiveTab(null);
+          router.push("/tools/realfood-iframe");
+        } else if (option === "Conversion metrics") {
+          setActiveTab(null);
+          router.push("/client-acquisition/conversion-metrics");
+        } else if (option === "Client onboarding") {
+          setShowOnboardingModal(true);
+        } else {
+          console.log(`Selected Client Acquisition option: ${option}`);
+        }
+      }}
+    >
+      {/* Full circular border with wipe animation - Matches Pricing exactly */}
+      {circumference > 0 && radius > 0 && (
+        <svg 
+          className="absolute inset-0 w-full h-full pointer-events-none" 
+          style={{ transform: 'rotate(-90deg)', zIndex: 5 }}
+          viewBox={`0 0 ${radius * 2 + 4} ${radius * 2 + 4}`}
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <motion.circle
+            cx={(radius * 2 + 4) / 2}
+            cy={(radius * 2 + 4) / 2}
+            r={radius}
+            fill="none"
+            stroke="#3b82f6"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            strokeDashoffset={isHovered ? 0 : circumference}
+            initial={false}
+            animate={{
+              strokeDashoffset: isHovered ? 0 : circumference
+            }}
+            transition={{
+              duration: 0.6,
+              ease: "easeInOut",
+            }}
+          />
+        </svg>
+      )}
+
+      {/* Button Content */}
+      <div className="relative z-10 w-full flex flex-col items-center">
+        <span className="px-2 text-center text-xs sm:text-sm font-medium text-white group-hover:text-blue-200 transition-colors duration-300 break-words w-full">
+          {option}
+        </span>
+        <div className="mt-2 w-6 h-[1.5px] bg-gradient-to-r from-blue-500 to-cyan-400 opacity-50 group-hover:opacity-100 transition-opacity duration-300 mx-auto rounded-full"></div>
+      </div>
+
+      {/* Background flare glows */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-full z-0">
+        <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-blue-500/20 rounded-full blur-xl -translate-y-1/2"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-cyan-500/20 rounded-full blur-xl translate-y-1/2"></div>
+      </div>
+    </motion.button>
+  );
+}
+
+function RevenueSegmentButton({ segment, index, isActive, onClick }: { segment: string; index: number; isActive: boolean; onClick: () => void }) {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [circumference, setCircumference] = useState(0);
+  const [radius, setRadius] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (buttonRef.current) {
+        const width = buttonRef.current.offsetWidth;
+        const r = width / 2 - 2;
+        setRadius(r);
+        setCircumference(2 * Math.PI * r);
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <motion.button
+      ref={buttonRef}
+      className={`group relative w-full aspect-square rounded-full border flex flex-col items-center justify-center transition-all duration-300 overflow-hidden ${
+        isActive
+          ? "border-white/40 bg-gradient-to-br from-white/20 to-white/10"
+          : "border-white/10 bg-gradient-to-br from-white/8 to-white/3 hover:border-white/20 hover:from-white/12 hover:to-white/8"
+      }`}
+      style={{ fontFamily: "var(--font-benzin)", willChange: "transform, opacity" }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.96 }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ opacity: { delay: index * 0.1 }, scale: { delay: index * 0.1 } }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
+    >
+      {circumference > 0 && radius > 0 && (
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{ transform: "rotate(-90deg)", zIndex: 5 }}
+          viewBox={`0 0 ${radius * 2 + 4} ${radius * 2 + 4}`}
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <motion.circle
+            cx={(radius * 2 + 4) / 2}
+            cy={(radius * 2 + 4) / 2}
+            r={radius}
+            fill="none"
+            stroke="#3b82f6"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            strokeDashoffset={isHovered ? 0 : circumference}
+            initial={false}
+            animate={{ strokeDashoffset: isHovered ? 0 : circumference }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          />
+        </svg>
+      )}
+      <div className="relative z-10 w-full flex flex-col items-center">
+        <span className="px-2 text-center text-xs sm:text-sm font-medium text-white group-hover:text-blue-200 transition-colors duration-300 break-words w-full">
+          {segment}
+        </span>
+        <div className="mt-2 w-6 h-[1.5px] bg-gradient-to-r from-blue-500 to-cyan-400 opacity-50 group-hover:opacity-100 transition-opacity duration-300 mx-auto rounded-full" />
+      </div>
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-full z-0">
+        <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-blue-500/20 rounded-full blur-xl -translate-y-1/2" />
+        <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-cyan-500/20 rounded-full blur-xl translate-y-1/2" />
+      </div>
+    </motion.button>
+  );
 }
 
 export function CircularTabs({
   role,
   initialActiveTab = null,
   initialRevenueSegment = null,
-  initialShowCorporatePopup = false,
 }: CircularTabsProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<string | null>(initialActiveTab);
@@ -210,16 +452,17 @@ export function CircularTabs({
   const [rotation, setRotation] = useState(0);
   const [restrictionNotice, setRestrictionNotice] = useState<string | null>(null);
   const [activeRevenueSegment, setActiveRevenueSegment] = useState<string | null>(initialRevenueSegment);
-  const [showCorporatePopup, setShowCorporatePopup] = useState(initialShowCorporatePopup);
+  const [showOnboardingModal, setShowOnboardingModal] = useState(false);
+  const [hoveredOption, setHoveredOption] = useState<string | null>(null);
 
-  const [dimensions, setDimensions] = useState({ width: 500, height: 500 });
+  const [dimensions, setDimensions] = useState({ width: 620, height: 620 });
 
   useEffect(() => {
     // Calculate responsive dimensions
     const updateDimensions = () => {
       const isMobile = window.innerWidth < 640;
       const isTablet = window.innerWidth < 1024;
-      const size = isMobile ? 320 : isTablet ? 400 : 500;
+      const size = isMobile ? 370 : isTablet ? 480 : 620;
       setDimensions({ width: size, height: size });
     };
     
@@ -228,7 +471,8 @@ export function CircularTabs({
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  const radius = dimensions.width * 0.36; // Responsive radius
+  const isMobile = dimensions.width < 400;
+  const radius = dimensions.width * (isMobile ? 0.37 : 0.40);
 
   useEffect(() => {
     // Auto-rotate the entire circle slowly - Optimized with requestAnimationFrame
@@ -257,14 +501,14 @@ export function CircularTabs({
 
   const activeTabData = tabs.find(tab => tab.id === activeTab);
   const isCacTab = activeTabData?.id === "cac";
-  const isProductTab = activeTabData?.id === "product";
   const isRevenueTab = activeTabData?.id === "revenue";
   const isClientAcquisitionTab = activeTabData?.id === "client-acquisition";
 
+
   const centerX = dimensions.width / 2;
   const centerY = dimensions.height / 2;
-  const centerCircleSize = dimensions.width * 0.32; // Responsive center circle
-  const tabCircleSize = dimensions.width * 0.19; // Responsive tab circles
+  const centerCircleSize = isMobile ? 110 : 160;
+  const tabCircleSize = isMobile ? 65 : 95;
 
   useEffect(() => {
     if (!restrictionNotice) return;
@@ -275,7 +519,6 @@ export function CircularTabs({
   useEffect(() => {
     if (!isRevenueTab) {
       setActiveRevenueSegment(null);
-      setShowCorporatePopup(false);
     }
   }, [isRevenueTab]);
 
@@ -285,25 +528,9 @@ export function CircularTabs({
       router.push("/cac/marketing");
       return;
     }
-    console.log(`Selected CAC action: ${action}`);
-  }
-
-  function handleProductAction(action: "investor" | "admin") {
-    if (action === "investor") {
+    if (action === "true") {
       setActiveTab(null);
-      router.push("/products/investor");
-      return;
-    }
-    if (action === "admin") {
-      // Check if user is admin
-      if (!isAdmin) {
-        setRestrictionNotice("Admin access required. Only administrators can access this section.");
-        return;
-      }
-      // Handle admin product view
-      setActiveTab(null);
-      // router.push("/products/admin"); // Uncomment when admin page is created
-      console.log(`Selected Product action: ${action}`);
+      router.push("/cac/true");
       return;
     }
   }
@@ -359,7 +586,7 @@ export function CircularTabs({
               }}
               initial={{ scale: 0, opacity: 0 }}
               animate={{
-                scale: isRestricted ? 1 : isActive ? 1.3 : isHovered ? 1.15 : 1,
+                scale: isRestricted ? 1 : isActive ? (isMobile ? 1.15 : 1.3) : isHovered ? 1.15 : 1,
                 opacity: 1,
                 borderColor: isActive 
                   ? "rgba(255, 255, 255, 0.9)" 
@@ -390,7 +617,20 @@ export function CircularTabs({
                   router.push("/pitch");
                 } else if (tab.id === "expenditure") {
                   router.push("/expenditure");
+                } else if (tab.id === "pricing") {
+                  router.push("/pricing");
+                } else if (tab.id === "trajectory") {
+                  router.push("/tools/trajectory");
+                } else if (tab.id === "services-direct") {
+                  router.push("/tools/services-direct");
+                } else if (tab.id === "documents") {
+                  router.push("/tools/company-documents");
+                } else if (tab.id === "vision") {
+                  router.push("/tools/vision");
                 } else {
+                  if (tab.id === "revenue" && !isActive) {
+                    setActiveRevenueSegment(null);
+                  }
                   setActiveTab(isActive ? null : tab.id);
                 }
               }}
@@ -415,15 +655,22 @@ export function CircularTabs({
           {tabs.map((tab, index) => {
             const { x, y } = getTabPosition(index, rotation);
             const isHighlighted = hoveredTab === tab.id || activeTab === tab.id;
-            // Center of middle circle: 250, 250 (center of 500x500)
-            // Center of tab circle: centerX + x, centerY + y
+            // Calculate line start at edge of center circle
+            const dist = Math.sqrt(x * x + y * y);
+            const edgeOffset = centerCircleSize / 2 + 2;
+            const startX = dist > 0 ? centerX + (x / dist) * edgeOffset : centerX;
+            const startY = dist > 0 ? centerY + (y / dist) * edgeOffset : centerY;
+            // Calculate line end at edge of tab circle
+            const tabEdgeOffset = tabCircleSize / 2 + 2;
+            const endX = dist > 0 ? centerX + x - (x / dist) * tabEdgeOffset : centerX + x;
+            const endY = dist > 0 ? centerY + y - (y / dist) * tabEdgeOffset : centerY + y;
             return (
               <motion.line
                 key={tab.id}
-                x1={centerX}
-                y1={centerY}
-                x2={centerX + x}
-                y2={centerY + y}
+                x1={startX}
+                y1={startY}
+                x2={endX}
+                y2={endY}
                 stroke="#22c55e"
                 strokeWidth="2"
                 filter="url(#glow)"
@@ -499,7 +746,8 @@ export function CircularTabs({
                   </motion.button>
                 </div>
 
-                {!isCacTab && !isProductTab && !isRevenueTab && !isClientAcquisitionTab && (
+
+                {!isCacTab && !isRevenueTab && !isClientAcquisitionTab && (
                   <>
                     <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg leading-relaxed">
                       {activeTabData.content.description}
@@ -528,118 +776,79 @@ export function CircularTabs({
                   </>
                 )}
 
-                {isProductTab && (
-                  <motion.div
-                    className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 mt-10"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <motion.button
-                      onClick={() => handleProductAction("investor")}
-                      className="w-32 sm:w-36 aspect-square rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white hover:bg-white/10 transition text-xs sm:text-sm text-center px-4"
-                      style={{ fontFamily: 'var(--font-benzin)' }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.96 }}
-                      animate={{
-                        boxShadow: [
-                          "0 0 10px rgba(255,255,255,0.25)",
-                          "0 0 35px rgba(255,255,255,0.55)",
-                          "0 0 10px rgba(255,255,255,0.25)"
-                        ],
-                        borderColor: [
-                          "rgba(255,255,255,0.35)",
-                          "rgba(255,255,255,0.75)",
-                          "rgba(255,255,255,0.35)"
-                        ]
-                      }}
-                      transition={{ duration: 2.4, repeat: Infinity }}
-                    >
-                      Investor
-                    </motion.button>
-                    <motion.button
-                      onClick={() => handleProductAction("admin")}
-                      className={`w-32 sm:w-36 aspect-square rounded-full border border-white/20 bg-white/5 flex items-center justify-center transition text-xs sm:text-sm text-center px-4 ${
-                        isAdmin 
-                          ? "text-white hover:bg-white/10 cursor-pointer" 
-                          : "text-white/40 cursor-not-allowed opacity-60"
-                      }`}
-                      style={{ fontFamily: 'var(--font-benzin)' }}
-                      whileHover={isAdmin ? { scale: 1.05 } : {}}
-                      whileTap={isAdmin ? { scale: 0.96 } : {}}
-                      animate={isAdmin ? {
-                        boxShadow: [
-                          "0 0 10px rgba(255,255,255,0.25)",
-                          "0 0 35px rgba(255,255,255,0.55)",
-                          "0 0 10px rgba(255,255,255,0.25)"
-                        ],
-                        borderColor: [
-                          "rgba(255,255,255,0.35)",
-                          "rgba(255,255,255,0.75)",
-                          "rgba(255,255,255,0.35)"
-                        ]
-                      } : {
-                        boxShadow: [
-                          "0 0 5px rgba(255,255,255,0.1)",
-                          "0 0 5px rgba(255,255,255,0.1)"
-                        ],
-                        borderColor: [
-                          "rgba(255,255,255,0.2)",
-                          "rgba(255,255,255,0.2)"
-                        ]
-                      }}
-                      transition={{ duration: 2.4, repeat: Infinity, delay: 0.3 }}
-                    >
-                      Admin
-                    </motion.button>
-                  </motion.div>
-                )}
 
                 {isRevenueTab && (
                   <motion.div
-                    className="mt-10 grid w-full gap-4 sm:grid-cols-2"
+                    className="mt-10 grid grid-cols-2 gap-6 sm:gap-8"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4 }}
                   >
-                    {revenueSegments.map((segment) => (
-                      <motion.button
+                    {revenueSegments.map((segment, index) => (
+                      <RevenueSegmentButton
                         key={segment}
-                        className={`rounded-2xl border px-4 py-6 text-center text-sm transition ${
-                          activeRevenueSegment === segment
-                            ? "border-white/70 bg-white/20 text-white"
-                            : "border-white/20 bg-white/5 text-white/80 hover:bg-white/10 hover:border-white/40"
-                        }`}
-                        style={{ fontFamily: 'var(--font-benzin)' }}
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
+                        segment={segment}
+                        index={index}
+                        isActive={activeRevenueSegment === segment}
                         onClick={() => {
                           const isActive = activeRevenueSegment === segment;
                           if (segment === "Corporate Services") {
-                            setActiveRevenueSegment("Corporate Services");
-                            setShowCorporatePopup(true);
+                            setActiveRevenueSegment(null);
+                            setActiveTab(null);
+                            router.push("/revenue/corporate-services");
+                            return;
+                          }
+                          if (segment === "Banking") {
+                            setActiveRevenueSegment(null);
+                            setActiveTab(null);
+                            router.push("/revenue/banking-projection");
+                            return;
+                          }
+                          if (segment === "Fund admin") {
+                            setActiveRevenueSegment(null);
+                            setActiveTab(null);
+                            router.push("/revenue/fund-administration");
+                            return;
+                          }
+                          if (segment === "Licensing") {
+                            setActiveRevenueSegment(null);
+                            setActiveTab(null);
+                            router.push("/revenue/licensing-projection");
                             return;
                           }
                           setActiveRevenueSegment(isActive ? null : segment);
-                          setShowCorporatePopup(false);
                         }}
-                      >
-                        {segment}
-                      </motion.button>
+                      />
                     ))}
+
+                    <motion.div
+                      className="col-span-2 flex justify-center mt-2"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.3 }}
+                    >
+                      <motion.a
+                        href="/files/Boyar_Partners_Revenue_Projection_2026_v3_1.xlsx"
+                        download="Boyar_Partners_Revenue_Projection_2026_v3_1.xlsx"
+                        className="group relative px-6 py-2.5 rounded-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 text-center flex flex-col items-center justify-center tracking-wide transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 shadow-[0_0_12px_rgba(59,130,246,0.10),0_0_30px_rgba(59,130,246,0.05)] hover:shadow-[0_0_15px_rgba(59,130,246,0.3),0_0_30px_rgba(59,130,246,0.15)]"
+                        style={{ fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" }}
+                        whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+                      >
+                        <div className="relative z-10 w-full flex flex-col items-center">
+                          <span className="leading-snug text-sm font-medium text-white group-hover:text-blue-200 transition-colors duration-300">
+                            Download in excel
+                          </span>
+                          <div className="mt-1 w-6 h-[1.5px] bg-gradient-to-r from-blue-500 to-cyan-400 opacity-50 group-hover:opacity-100 transition-opacity duration-300 mx-auto rounded-full" />
+                        </div>
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none overflow-hidden rounded-xl z-0">
+                          <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-blue-500/20 rounded-full blur-xl -translate-y-1/2" />
+                          <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-cyan-500/20 rounded-full blur-xl translate-y-1/2" />
+                        </div>
+                      </motion.a>
+                    </motion.div>
                   </motion.div>
                 )}
 
-                {isRevenueTab && activeRevenueSegment === "Corporate Services" && (
-                  <motion.div
-                    className="mt-6 rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-center text-xs text-white/70"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    Select a projection horizon to open detailed view.
-                  </motion.div>
-                )}
 
                 {isCacTab && (
                   <motion.div
@@ -648,50 +857,8 @@ export function CircularTabs({
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <motion.button
-                      onClick={() => handleCacAction("marketing")}
-                      className="w-32 sm:w-36 aspect-square rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white hover:bg-white/10 transition text-xs sm:text-sm text-center px-4"
-                      style={{ fontFamily: 'var(--font-benzin)' }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.96 }}
-                      animate={{
-                        boxShadow: [
-                          "0 0 10px rgba(255,255,255,0.25)",
-                          "0 0 35px rgba(255,255,255,0.55)",
-                          "0 0 10px rgba(255,255,255,0.25)"
-                        ],
-                        borderColor: [
-                          "rgba(255,255,255,0.35)",
-                          "rgba(255,255,255,0.75)",
-                          "rgba(255,255,255,0.35)"
-                        ]
-                      }}
-                      transition={{ duration: 2.4, repeat: Infinity }}
-                    >
-                      CAC model - marketing
-                    </motion.button>
-                    <motion.button
-                      onClick={() => handleCacAction("true")}
-                      className="w-32 sm:w-36 aspect-square rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white hover:bg-white/10 transition text-xs sm:text-sm text-center px-4"
-                      style={{ fontFamily: 'var(--font-benzin)' }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.96 }}
-                      animate={{
-                        boxShadow: [
-                          "0 0 10px rgba(255,255,255,0.25)",
-                          "0 0 35px rgba(255,255,255,0.55)",
-                          "0 0 10px rgba(255,255,255,0.25)"
-                        ],
-                        borderColor: [
-                          "rgba(255,255,255,0.35)",
-                          "rgba(255,255,255,0.75)",
-                          "rgba(255,255,255,0.35)"
-                        ]
-                      }}
-                      transition={{ duration: 2.4, repeat: Infinity, delay: 0.3 }}
-                    >
-                      True CAC
-                    </motion.button>
+                    <CacNavButton label="CAC model - marketing" onClick={() => handleCacAction("marketing")} index={0} />
+                    <CacNavButton label="True CAC" onClick={() => handleCacAction("true")} index={1} />
                   </motion.div>
                 )}
 
@@ -703,47 +870,14 @@ export function CircularTabs({
                     transition={{ duration: 0.4 }}
                   >
                     {clientAcquisitionOptions.map((option, index) => (
-                      <motion.button
+                      <AcquisitionButton
                         key={option}
-                        className="w-full aspect-square rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white hover:bg-white/10 transition text-xs sm:text-sm text-center px-4"
-                        style={{ fontFamily: 'var(--font-benzin)' }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.96 }}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{
-                          opacity: 1,
-                          scale: 1,
-                          boxShadow: [
-                            "0 0 10px rgba(255,255,255,0.25)",
-                            "0 0 35px rgba(255,255,255,0.55)",
-                            "0 0 10px rgba(255,255,255,0.25)"
-                          ],
-                          borderColor: [
-                            "rgba(255,255,255,0.35)",
-                            "rgba(255,255,255,0.75)",
-                            "rgba(255,255,255,0.35)"
-                          ]
-                        }}
-                        transition={{
-                          opacity: { delay: index * 0.1 },
-                          scale: { delay: index * 0.1 },
-                          boxShadow: { duration: 2.4, repeat: Infinity, delay: index * 0.2 },
-                          borderColor: { duration: 2.4, repeat: Infinity, delay: index * 0.2 }
-                        }}
-                        onClick={() => {
-                          if (option === "Acquisition channels") {
-                            setActiveTab(null);
-                            router.push("/client-acquisition/acquisition-channels");
-                          } else if (option === "Conversion metrics") {
-                            setActiveTab(null);
-                            router.push("/client-acquisition/conversion-metrics");
-                          } else {
-                            console.log(`Selected Client Acquisition option: ${option}`);
-                          }
-                        }}
-                      >
-                        {option}
-                      </motion.button>
+                        option={option}
+                        index={index}
+                        router={router}
+                        setShowOnboardingModal={setShowOnboardingModal}
+                        setActiveTab={setActiveTab}
+                      />
                     ))}
                   </motion.div>
                 )}
@@ -767,99 +901,11 @@ export function CircularTabs({
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {showCorporatePopup && activeRevenueSegment === "Corporate Services" && (
-          <>
-            <motion.div
-              className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setShowCorporatePopup(false)}
-            />
-            <motion.div
-              className="fixed inset-0 z-[70] flex items-center justify-center p-4"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ type: "spring", damping: 20, stiffness: 200 }}
-            >
-              <motion.div
-                className="relative w-full max-w-md rounded-3xl border border-white/20 bg-black/95 p-6 text-white shadow-2xl"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 20, opacity: 0 }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.4em] text-white/60">Corporate Services</p>
-                    <h3 className="text-xl font-semibold" style={{ fontFamily: 'var(--font-benzin)' }}>
-                      Projection Horizon
-                    </h3>
-                  </div>
-                  <button
-                    onClick={() => setShowCorporatePopup(false)}
-                    className="text-white/70 hover:text-white text-2xl leading-none"
-                  >
-                    ×
-                  </button>
-                </div>
-                <div className="relative mx-auto mt-6 h-64 w-64 sm:h-72 sm:w-72">
-                  <div className="absolute inset-0 rounded-full border border-white/10" />
-                  {corporateProjectionSteps.map((step, index) => {
-                    const angle = (index / corporateProjectionSteps.length) * 2 * Math.PI - Math.PI / 2;
-                    const radius = 110;
-                    const x = Math.cos(angle) * radius;
-                    const y = Math.sin(angle) * radius;
-                    return (
-                      <div
-                        key={step.label}
-                        className="absolute top-1/2 left-1/2"
-                        style={{ transform: `translate(-50%, -50%) translate(${x}px, ${y}px)` }}
-                      >
-                        <motion.button
-                          className="flex h-16 w-16 items-center justify-center rounded-full border border-emerald-100/40 bg-emerald-400/10 text-xs font-semibold uppercase tracking-wide text-white shadow-[0_0_18px_rgba(16,185,129,0.2)]"
-                          style={{ fontFamily: 'var(--font-benzin)' }}
-                          whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(16,185,129,0.35)" }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={() => {
-                            if (step.path) {
-                              setShowCorporatePopup(false);
-                              setActiveTab(null);
-                              router.push(step.path);
-                            } else {
-                              setRestrictionNotice(`${step.label} projection coming soon.`);
-                            }
-                          }}
-                        >
-                          {step.label}
-                        </motion.button>
-                      </div>
-                    );
-                  })}
-                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <motion.button
-                      className="flex h-20 w-20 flex-col items-center justify-center rounded-full border border-white/60 bg-gradient-to-br from-white/40 to-white/10 text-center text-[9px] font-semibold uppercase tracking-[0.15em] text-white shadow-[0_0_22px_rgba(255,255,255,0.4)]"
-                      style={{ fontFamily: 'var(--font-benzin)' }}
-                      whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255,255,255,0.6)" }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => {
-                        setShowCorporatePopup(false);
-                        setActiveTab(null);
-                        router.push("/revenue/combined");
-                      }}
-                    >
-                      Combined
-                      <span className="text-[8px] tracking-[0.3em]">Projection</span>
-                    </motion.button>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      <ClientOnboardingModal
+        isOpen={showOnboardingModal}
+        onClose={() => setShowOnboardingModal(false)}
+      />
+
     </div>
   );
 }

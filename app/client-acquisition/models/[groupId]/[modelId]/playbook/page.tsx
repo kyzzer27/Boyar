@@ -17,7 +17,7 @@ export default function PlaybookPage() {
           <div className="mx-auto max-w-4xl px-6 py-4">
             <div className="flex items-center justify-between">
               <button
-                onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                onClick={() => router.back()}
                 className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
               >
                 ← Back

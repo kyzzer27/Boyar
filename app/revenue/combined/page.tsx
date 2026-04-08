@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Script from "next/script";
 import { motion } from "framer-motion";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { CircularBackground } from "@/components/motion/circular-background";
+import { useEffect, useRef, useState } from "react";
 
 interface YearProjection {
   label: string;
@@ -20,9 +22,9 @@ const projections: YearProjection[] = [
   {
     label: "Year 1",
     fiscal: "FY2026",
-    totalUsd: 107900,
-    totalInr: 9818900,
-    newRevenue: 107900,
+    totalUsd: 110900,
+    totalInr: Math.round(110900 * 90.44),
+    newRevenue: 110900,
     renewalRevenue: 0,
     renewals: 0,
     growth: "—",
@@ -30,42 +32,42 @@ const projections: YearProjection[] = [
   {
     label: "Year 2",
     fiscal: "FY2027",
-    totalUsd: 193950,
-    totalInr: 17663450,
-    newRevenue: 134400,
-    renewalRevenue: 59550,
-    renewals: 10,
-    growth: "79.7%",
+    totalUsd: 212780,
+    totalInr: Math.round(212780 * 90.44),
+    newRevenue: 151600,
+    renewalRevenue: 61180,
+    renewals: 9,
+    growth: "91.9%",
   },
   {
     label: "Year 3",
     fiscal: "FY2028",
-    totalUsd: 268250,
-    totalInr: 24410750,
-    newRevenue: 137900,
-    renewalRevenue: 130350,
-    renewals: 26,
-    growth: "38.3%",
+    totalUsd: 315500,
+    totalInr: Math.round(315500 * 90.44),
+    newRevenue: 167100,
+    renewalRevenue: 148400,
+    renewals: 22,
+    growth: "48.3%",
   },
   {
     label: "Year 4",
     fiscal: "FY2029",
-    totalUsd: 368750,
-    totalInr: 33558250,
-    newRevenue: 167600,
-    renewalRevenue: 201150,
-    renewals: 42,
-    growth: "37.4%",
+    totalUsd: 539970,
+    totalInr: Math.round(539970 * 90.44),
+    newRevenue: 293500,
+    renewalRevenue: 246470,
+    renewals: 37,
+    growth: "71.1%",
   },
   {
     label: "Year 5",
     fiscal: "FY2030",
-    totalUsd: 461825,
-    totalInr: 42026075,
-    newRevenue: 167600,
-    renewalRevenue: 294225,
-    renewals: 59,
-    growth: "25.2%",
+    totalUsd: 672740,
+    totalInr: Math.round(672740 * 90.44),
+    newRevenue: 328200,
+    renewalRevenue: 344540,
+    renewals: 50,
+    growth: "24.6%",
   },
 ];
 
@@ -122,16 +124,117 @@ const combinedInsights = [
 
 export default function CombinedProjectionPage() {
   const peakYear = projections.reduce((prev, curr) => (curr.totalUsd > prev.totalUsd ? curr : prev), projections[0]);
+  const [chartReady, setChartReady] = useState(false);
+  const chartCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const chartRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (!chartReady) return;
+    const Chart = (window as any).Chart;
+    if (!Chart) return;
+    if (chartRef.current) chartRef.current.destroy();
+
+    if (chartCanvasRef.current) {
+      const ctx = chartCanvasRef.current.getContext("2d");
+      if (ctx) {
+        chartRef.current = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: projections.map((y) => y.label),
+            datasets: [
+              {
+                label: "New revenue",
+                data: projections.map((y) => y.newRevenue / 1000),
+                backgroundColor: "#38bdf8",
+                borderRadius: 3,
+                stack: "revenue",
+                order: 2,
+              },
+              {
+                label: "Renewal revenue",
+                data: projections.map((y) => y.renewalRevenue / 1000),
+                backgroundColor: "#34d399",
+                borderRadius: 3,
+                stack: "revenue",
+                order: 2,
+              },
+              {
+                type: "line",
+                label: "Total",
+                data: projections.map((y) => y.totalUsd / 1000),
+                borderColor: "#f59e0b",
+                backgroundColor: "transparent",
+                borderWidth: 2,
+                tension: 0.3,
+                pointRadius: 5,
+                pointBackgroundColor: "#f59e0b",
+                pointBorderColor: "#f59e0b",
+                fill: false,
+                order: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label(context: any) {
+                    const label = context.dataset.label ?? "";
+                    const val = context.raw ?? 0;
+                    return `${label}: $${Math.round(val * 1000).toLocaleString()}`;
+                  },
+                },
+              },
+            },
+            scales: {
+              x: {
+                stacked: true,
+                grid: { color: "rgba(255,255,255,0.08)" },
+                ticks: { color: "rgba(255,255,255,0.6)" },
+              },
+              y: {
+                stacked: true,
+                grid: { color: "rgba(255,255,255,0.08)" },
+                ticks: {
+                  color: "rgba(255,255,255,0.6)",
+                  callback(value: any) {
+                    return "$" + value + "K";
+                  },
+                },
+                title: {
+                  display: true,
+                  text: "Revenue ($K)",
+                  color: "rgba(255,255,255,0.5)",
+                },
+              },
+            },
+          },
+        });
+      }
+    }
+
+    return () => {
+      if (chartRef.current) chartRef.current.destroy();
+    };
+  }, [chartReady]);
 
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
         <CircularBackground />
+        <Script
+          src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"
+          strategy="afterInteractive"
+          onReady={() => setChartReady(true)}
+        />
 
         <header className="relative z-10 border-b border-white/10 bg-black/90">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-5 sm:px-6 lg:px-8">
-            <Link href="/tools?focus=corporate-revenue" className="text-sm text-white/70 transition hover:text-white">
-              ← Back to Corporate Projection
+            <Link href="/revenue/corporate-services" className="text-sm text-white/70 transition hover:text-white">
+              ← Back to Corporate Services
             </Link>
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-white/50">Combined Projection</p>
@@ -216,6 +319,37 @@ export default function CombinedProjectionPage() {
               ))}
             </div>
           </section>
+
+          <motion.section
+            className="rounded-3xl border border-white/10 bg-black/70 p-6 shadow-2xl"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
+            <p className="text-xs uppercase tracking-[0.4em] text-white/60">Visual Overview</p>
+            <h2 className="mt-2 text-xl font-semibold text-white" style={{ fontFamily: "var(--font-benzin)" }}>
+              Revenue Composition by Year
+            </h2>
+            <p className="mt-1 text-sm text-white/60">Stacked bars show new and renewal revenue. Line tracks total.</p>
+            <div className="relative mt-6 h-72 w-full">
+              <canvas ref={chartCanvasRef} className="h-full w-full" />
+            </div>
+            <div className="mt-4 flex flex-wrap gap-4 text-xs text-white/70">
+              <div className="flex items-center gap-2">
+                <span className="h-3 w-3 rounded-sm" style={{ backgroundColor: "#38bdf8" }} />
+                <span>New revenue</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="h-3 w-3 rounded-sm" style={{ backgroundColor: "#34d399" }} />
+                <span>Renewal revenue</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="h-0.5 w-4 rounded-full" style={{ backgroundColor: "#f59e0b" }} />
+                <span>Total revenue</span>
+              </div>
+            </div>
+          </motion.section>
 
           <section className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr]">
             <motion.div
@@ -314,6 +448,11 @@ export default function CombinedProjectionPage() {
     </ProtectedRoute>
   );
 }
+
+
+
+
+
 
 
 

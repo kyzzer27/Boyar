@@ -111,61 +111,80 @@ function formatUsd(value: number) {
 
 export default function Feb2026MonthlyCostPage() {
   const router = useRouter();
-  const [pieProgress, setPieProgress] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [lineHoverIndex, setLineHoverIndex] = useState<number | null>(null);
 
   const totalInr = FEB_CATEGORIES.reduce((sum, c) => sum + c.inr, 0);
   const totalUsd = FEB_CATEGORIES.reduce((sum, c) => sum + c.usd, 0);
 
   useEffect(() => {
-    const duration = 3000;
-    const start = Date.now();
-
-    const tick = () => {
-      const elapsed = Date.now() - start;
-      const raw = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - raw, 3);
-      setPieProgress(eased);
-      if (raw < 1) requestAnimationFrame(tick);
+    let checkInterval: any;
+    const initChart = () => {
+      if (typeof window === "undefined" || !(window as any).Chart) return false;
+      
+      if ((window as any)._monthlyChart_FEB_CATEGORIES) {
+        ((window as any)._monthlyChart_FEB_CATEGORIES).destroy();
+      }
+      
+      const el = document.getElementById('pie-chart') as HTMLCanvasElement;
+      if (!el) return false;
+      
+      (window as any)._monthlyChart_FEB_CATEGORIES = new (window as any).Chart(el.getContext('2d'), {
+        type: 'doughnut',
+        data: {
+          labels: FEB_CATEGORIES.map(c => c.name),
+          datasets: [{
+            data: FEB_CATEGORIES.map(c => c.inr),
+            backgroundColor: FEB_CATEGORIES.map(c => c.color),
+            borderColor: '#0F172A',
+            borderWidth: 2,
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '65%',
+          animation: {
+            animateScale: true,
+            animateRotate: true,
+            duration: 2000,
+            easing: 'easeOutQuart'
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: false }
+          },
+          onHover: (event: any, elements: any[]) => {
+            if (elements && elements.length) {
+              setHoveredIndex(elements[0].index);
+            } else {
+              setHoveredIndex(null);
+            }
+          }
+        }
+      });
+      return true;
     };
 
-    requestAnimationFrame(tick);
+    if (!initChart()) {
+      checkInterval = setInterval(() => {
+        if (initChart()) clearInterval(checkInterval);
+      }, 100);
+    }
+
+    return () => {
+      if (checkInterval) clearInterval(checkInterval);
+      if ((window as any)._monthlyChart_FEB_CATEGORIES) {
+        ((window as any)._monthlyChart_FEB_CATEGORIES).destroy();
+        (window as any)._monthlyChart_FEB_CATEGORIES = null;
+      }
+    }
   }, []);
-
-  let currentAngle = -90;
-  const pieSlices = FEB_CATEGORIES.map((category) => {
-    const angle = (category.inr / totalInr) * 360;
-    const startAngle = currentAngle;
-    const endAngle = currentAngle + angle;
-    currentAngle += angle;
-    return {
-      ...category,
-      startAngle,
-      endAngle,
-      percentage: (category.inr / totalInr) * 100,
-      largeArcFlag: angle > 180 ? 1 : 0,
-    };
-  });
-
-  function polarToCartesian(
-    centerX: number,
-    centerY: number,
-    radius: number,
-    angleInDegrees: number
-  ) {
-    const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180;
-    return {
-      x: centerX + radius * Math.cos(angleInRadians),
-      y: centerY + radius * Math.sin(angleInRadians),
-    };
-  }
-
-  function getPath(radius: number, startAngle: number, endAngle: number, largeArcFlag: number) {
-    const start = polarToCartesian(0, 0, radius, endAngle);
-    const end = polarToCartesian(0, 0, radius, startAngle);
-    return `M 0 0 L ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArcFlag} 0 ${end.x} ${end.y} Z`;
-  }
+  
+  const pieSlices = FEB_CATEGORIES.map(cat => ({
+    ...cat, percentage: (cat.inr / totalInr) * 100
+  }));
 
   return (
     <ProtectedRoute>
@@ -175,7 +194,7 @@ export default function Feb2026MonthlyCostPage() {
         <header className="relative z-10 border-b border-white/10 bg-black/90">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
             <button
-              onClick={() => router.push("/expenditure/monthly-cost?skipAnimation=1")}
+              onClick={() => router.back()}
               className="text-sm text-white/70 hover:text-white transition"
             >
               ← Back to Monthly Cost
@@ -204,7 +223,7 @@ export default function Feb2026MonthlyCostPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl shadow-2xl"
+            className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8  shadow-2xl"
           >
             <div className="grid gap-6 md:grid-cols-[1.6fr,1.1fr]">
               <div className="space-y-4 text-sm sm:text-base leading-relaxed text-white/80">
@@ -255,7 +274,7 @@ export default function Feb2026MonthlyCostPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8 backdrop-blur-xl"
+              className="rounded-3xl border border-white/10 bg-black/80 p-6 sm:p-8 "
             >
               <h2
                 className="text-lg sm:text-xl font-semibold text-white mb-1"
@@ -270,47 +289,7 @@ export default function Feb2026MonthlyCostPage() {
               <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
                 <div className="relative mx-auto h-64 w-64 flex-shrink-0">
                   <div className="h-full w-full flex items-center justify-center">
-                    <svg
-                      width="256"
-                      height="256"
-                      viewBox="-110 -110 220 220"
-                      className="h-full w-full"
-                    >
-                      <g>
-                      {pieSlices.map((slice, index) => {
-                        const animatedEnd =
-                          slice.startAngle +
-                          (slice.endAngle - slice.startAngle) * pieProgress;
-                        const path = getPath(
-                          100,
-                          slice.startAngle,
-                          animatedEnd,
-                          slice.largeArcFlag
-                        );
-                        return (
-                          <motion.path
-                            key={slice.name}
-                            d={path}
-                            fill={slice.color}
-                            stroke="#000"
-                            strokeWidth={2}
-                            initial={{ opacity: 0, scale: 0.92, transformOrigin: "0 0" }}
-                            animate={{
-                              opacity: 1,
-                              scale: hoveredIndex === index ? 1.04 : 1,
-                            }}
-                            transition={{
-                              duration: 0.6,
-                              delay: 0.2 + index * 0.08,
-                              ease: [0.16, 1, 0.3, 1],
-                            }}
-                            onMouseEnter={() => setHoveredIndex(index)}
-                            onMouseLeave={() => setHoveredIndex(null)}
-                          />
-                        );
-                      })}
-                      </g>
-                    </svg>
+                    <canvas id="pie-chart" className="w-full h-full"></canvas>
                   </div>
                   <div className="pointer-events-none absolute inset-10 rounded-full bg-black/90 flex flex-col items-center justify-center text-center">
                     <p className="text-[10px] uppercase tracking-[0.4em] text-white/50">
@@ -348,7 +327,7 @@ export default function Feb2026MonthlyCostPage() {
                     </div>
                   ))}
                   {hoveredIndex !== null && (
-                    <div className="mt-3 rounded-2xl border border-white/15 bg-black/60 p-3 text-[11px] sm:text-xs text-white/80">
+                    <div className="mt-3 rounded-2xl border border-white/15 bg-black/80 p-3 text-[11px] sm:text-xs text-white/80">
                       <p className="mb-1 font-semibold" style={{ fontFamily: "var(--font-benzin)" }}>
                         {FEB_CATEGORIES[hoveredIndex].name}
                       </p>
@@ -364,7 +343,7 @@ export default function Feb2026MonthlyCostPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8 backdrop-blur-xl"
+              className="rounded-3xl border border-white/10 bg-black/80 p-6 sm:p-8 "
             >
               <h2
                 className="text-lg sm:text-xl font-semibold text-white mb-1"
@@ -390,12 +369,13 @@ export default function Feb2026MonthlyCostPage() {
                       </div>
                       <div className="h-2.5 w-full rounded-full bg-white/10 overflow-hidden">
                         <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${width}%` }}
+                          initial={{ scaleX: 0 }}
+                          whileInView={{ scaleX: 1 }}
                           viewport={{ once: true, margin: "-100px" }}
                           transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-                          className="h-full rounded-full"
+                          className="h-full rounded-full origin-left"
                           style={{
+                            width: `${width}%`,
                             background: `linear-gradient(90deg, ${category.color}, rgba(255,255,255,0.7))`,
                           }}
                         />
@@ -412,7 +392,7 @@ export default function Feb2026MonthlyCostPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.14 }}
-            className="rounded-3xl border border-white/10 bg-black/70 p-6 sm:p-8 backdrop-blur-xl"
+            className="rounded-3xl border border-white/10 bg-black/85 p-6 sm:p-8 "
           >
             <h2
               className="text-lg sm:text-xl font-semibold text-white mb-1"
@@ -608,7 +588,7 @@ export default function Feb2026MonthlyCostPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.15 }}
-            className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl shadow-2xl"
+            className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8  shadow-2xl"
           >
             <h2
               className="text-lg sm:text-xl font-semibold text-white mb-4"
@@ -700,7 +680,7 @@ export default function Feb2026MonthlyCostPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8 backdrop-blur-xl"
+              className="rounded-3xl border border-white/10 bg-black/80 p-6 sm:p-8 "
             >
               <h2
                 className="text-lg sm:text-xl font-semibold text-white mb-4"
@@ -750,7 +730,7 @@ export default function Feb2026MonthlyCostPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.25 }}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 "
             >
               <p className="text-xs uppercase tracking-[0.4em] text-white/60 mb-2">
                 Investor Summary — February 2026

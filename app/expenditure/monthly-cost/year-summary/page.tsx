@@ -17,44 +17,44 @@ interface Segment {
 const SEGMENTS: Segment[] = [
   {
     name: "One-Time Setup & Infrastructure",
-    inr: 846000,
-    usd: 9297,
+    inr: 917000,
+    usd: 10077,
     color: "#3B82F6",
     description:
       "Foundational, non-recurring investment to establish legitimacy and operational readiness. Includes licensing, company incorporation, website, and core devices.",
   },
   {
     name: "Core Operating Expenses",
-    inr: 1279200,
-    usd: 14056,
+    inr: 1759200,
+    usd: 19332,
     color: "#10B981",
     description:
       "12 months cumulative of lean, outsourced operating model with controlled fixed costs. Includes software, office rent, laptop rentals, content production, and contingency reserve.",
   },
   {
     name: "Marketing & Growth",
-    inr: 1480000,
-    usd: 16264,
+    inr: 1560000,
+    usd: 17143,
     color: "#F59E0B",
     description:
       "Seasonally diversified ad spend aligned with HNI and corporate planning cycles. Performance-driven and tracked separately through the CAC module.",
   },
 ];
 
-// Monthly spending data
+// Monthly spending data (aligned with Runway Projection)
 const MONTHLY_SPENDING = [
-  1082600, // M1
-  236600,  // M2
-  226600,  // M3
-  216600,  // M4
-  221600,  // M5
-  211600,  // M6
-  206600,  // M7
-  236600,  // M8
-  246600,  // M9
-  256600,  // M10
-  236600,  // M11
-  226600,  // M12
+  1243600, // M1
+  276600,  // M2
+  296600,  // M3
+  256600,  // M4
+  261600,  // M5
+  251600,  // M6
+  246600,  // M7
+  276600,  // M8
+  286600,  // M9
+  296600,  // M10
+  276600,  // M11
+  266600,  // M12
 ];
 
 const MONTH_LABELS = [
@@ -72,9 +72,9 @@ const MONTH_LABELS = [
   "M12",
 ];
 
-const TOTAL_CAPITAL = 7700000;
-const TOTAL_UTILIZED = 3605200;
-const TOTAL_REMAINING = 4094800;
+const TOTAL_CAPITAL = 13700000;
+const TOTAL_UTILIZED = MONTHLY_SPENDING.reduce((sum, v) => sum + v, 0);
+const TOTAL_REMAINING = TOTAL_CAPITAL - TOTAL_UTILIZED;
 
 function formatInr(value: number) {
   return new Intl.NumberFormat("en-IN", {
@@ -169,11 +169,11 @@ export default function Year1SummaryPage() {
         <CircularBackground />
         <div className="relative z-10">
           {/* Header */}
-          <header className="border-b border-white/10 bg-black/40 backdrop-blur-xl">
+          <header className="border-b border-white/10 bg-black/40 ">
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push("/expenditure/monthly-cost?skipAnimation=1")}
+                  onClick={() => router.back()}
                   className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
                 >
                   <svg
@@ -209,7 +209,7 @@ export default function Year1SummaryPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8 backdrop-blur-xl"
+              className="rounded-3xl border border-white/10 bg-black/80 p-6 sm:p-8 "
             >
               <h2
                 className="text-xl sm:text-2xl font-semibold text-white mb-4"
@@ -231,7 +231,7 @@ export default function Year1SummaryPage() {
                   >
                     {formatInr(TOTAL_CAPITAL)}
                   </p>
-                  <p className="text-xs text-white/60">≈ {formatUsd(84615)}</p>
+                  <p className="text-xs text-white/60">≈ {formatUsd(TOTAL_CAPITAL / 91)}</p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/40 p-4">
                   <p className="text-xs uppercase tracking-[0.3em] text-white/60">
@@ -243,7 +243,7 @@ export default function Year1SummaryPage() {
                   >
                     {formatInr(TOTAL_UTILIZED)}
                   </p>
-                  <p className="text-xs text-white/60">≈ {formatUsd(39624)}</p>
+                  <p className="text-xs text-white/60">≈ {formatUsd(TOTAL_UTILIZED / 91)}</p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/40 p-4">
                   <p className="text-xs uppercase tracking-[0.3em] text-white/60">
@@ -255,9 +255,9 @@ export default function Year1SummaryPage() {
                   >
                     {formatInr(TOTAL_REMAINING)}
                   </p>
-                  <p className="text-xs text-white/60">≈ {formatUsd(44991)}</p>
+                  <p className="text-xs text-white/60">≈ {formatUsd(TOTAL_REMAINING / 91)}</p>
                   <p className="mt-1 text-xs text-white/50">
-                    ~53% of capital remains
+                    ~{((TOTAL_REMAINING / TOTAL_CAPITAL) * 100).toFixed(1)}% of capital remains
                   </p>
                 </div>
               </div>
@@ -270,7 +270,7 @@ export default function Year1SummaryPage() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.05 }}
-                className="rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8 backdrop-blur-xl"
+                className="rounded-3xl border border-white/10 bg-black/80 p-6 sm:p-8 "
               >
                 <h2
                   className="text-lg sm:text-xl font-semibold text-white mb-1"
@@ -362,7 +362,7 @@ export default function Year1SummaryPage() {
                       </div>
                     ))}
                     {hoveredIndex !== null && (
-                      <div className="mt-3 rounded-2xl border border-white/15 bg-black/60 p-3 text-[11px] sm:text-xs text-white/80">
+                      <div className="mt-3 rounded-2xl border border-white/15 bg-black/80 p-3 text-[11px] sm:text-xs text-white/80">
                         <p className="mb-1 font-semibold" style={{ fontFamily: "var(--font-benzin)" }}>
                           {SEGMENTS[hoveredIndex].name}
                         </p>
@@ -378,7 +378,7 @@ export default function Year1SummaryPage() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
-                className="rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8 backdrop-blur-xl"
+                className="rounded-3xl border border-white/10 bg-black/80 p-6 sm:p-8 "
               >
                 <h2
                   className="text-lg sm:text-xl font-semibold text-white mb-1"
@@ -423,7 +423,7 @@ export default function Year1SummaryPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.14 }}
-              className="rounded-3xl border border-white/10 bg-black/70 p-6 sm:p-8 backdrop-blur-xl"
+              className="rounded-3xl border border-white/10 bg-black/85 p-6 sm:p-8 "
             >
               <h2
                 className="text-lg sm:text-xl font-semibold text-white mb-1"
@@ -678,37 +678,37 @@ export default function Year1SummaryPage() {
                         </>
                       );
                     })()}
-                    {/* Legend */}
+                    {/* Legend — below x-axis */}
                     <g>
                       <line
-                        x1={50}
-                        y1={30}
-                        x2={80}
-                        y2={30}
+                        x1={110}
+                        y1={272}
+                        x2={140}
+                        y2={272}
                         stroke="url(#yearSpendLineGradient)"
                         strokeWidth={2.5}
                       />
                       <text
-                        x={90}
-                        y={33}
-                        fontSize={10}
+                        x={145}
+                        y={275}
+                        fontSize={9}
                         fill="rgba(255,255,255,0.8)"
                       >
                         Cumulative Spending
                       </text>
                       <line
-                        x1={50}
-                        y1={50}
-                        x2={80}
-                        y2={50}
+                        x1={260}
+                        y1={272}
+                        x2={290}
+                        y2={272}
                         stroke="#22C55E"
                         strokeWidth={2.5}
                         strokeDasharray="6 4"
                       />
                       <text
-                        x={90}
-                        y={53}
-                        fontSize={10}
+                        x={295}
+                        y={275}
+                        fontSize={9}
                         fill="rgba(255,255,255,0.8)"
                       >
                         Remaining Capital
@@ -724,7 +724,7 @@ export default function Year1SummaryPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.18 }}
-              className="rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8 backdrop-blur-xl"
+              className="rounded-3xl border border-white/10 bg-black/80 p-6 sm:p-8 "
             >
               <h2
                 className="text-xl sm:text-2xl font-semibold text-white mb-4"
@@ -733,33 +733,17 @@ export default function Year1SummaryPage() {
                 Capital Allocation Insight
               </h2>
               <div className="grid gap-4 sm:grid-cols-3 mb-6">
-                <div className="rounded-2xl border border-white/10 bg-black/40 p-4">
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-2">
-                    Marketing & Growth
-                  </p>
-                  <p className="text-2xl font-semibold text-white">~41%</p>
-                  <p className="text-xs text-white/60 mt-1">
-                    {formatInr(1480000)}
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/40 p-4">
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-2">
-                    Core Operations
-                  </p>
-                  <p className="text-2xl font-semibold text-white">~35%</p>
-                  <p className="text-xs text-white/60 mt-1">
-                    {formatInr(1279200)}
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/40 p-4">
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-2">
-                    One-Time Setup
-                  </p>
-                  <p className="text-2xl font-semibold text-white">~24%</p>
-                  <p className="text-xs text-white/60 mt-1">
-                    {formatInr(846000)}
-                  </p>
-                </div>
+                {SEGMENTS.map((seg) => (
+                  <div key={seg.name} className="rounded-2xl border border-white/10 bg-black/40 p-4">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-2">
+                      {seg.name}
+                    </p>
+                    <p className="text-2xl font-semibold text-white">~{Math.round((seg.inr / totalInr) * 100)}%</p>
+                    <p className="text-xs text-white/60 mt-1">
+                      {formatInr(seg.inr)}
+                    </p>
+                  </div>
+                ))}
               </div>
               <div className="space-y-4 text-sm text-white/80">
                 <p>
@@ -781,7 +765,7 @@ export default function Year1SummaryPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.22 }}
-              className="rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8 backdrop-blur-xl"
+              className="rounded-3xl border border-white/10 bg-black/80 p-6 sm:p-8 "
             >
               <h2
                 className="text-xl sm:text-2xl font-semibold text-white mb-4"
@@ -808,7 +792,7 @@ export default function Year1SummaryPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.26 }}
-              className="rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8 backdrop-blur-xl"
+              className="rounded-3xl border border-white/10 bg-black/80 p-6 sm:p-8 "
             >
               <h2
                 className="text-xl sm:text-2xl font-semibold text-white mb-4"

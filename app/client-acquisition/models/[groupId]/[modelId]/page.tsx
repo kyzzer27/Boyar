@@ -7,6 +7,10 @@ import { useRouter, useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const modelDetails: { [key: string]: { name: string; groupName: string } } = {
+  "algorithmic-linkedin-content": {
+    name: "Algorithmic LinkedIn Content Distribution",
+    groupName: "Group 7 — Automation, Retargeting & AI-Driven Optimization",
+  },
   "ai-driven-abm": {
     name: "AI-Driven ABM Enhancements",
     groupName: "Group 7 — Automation, Retargeting & AI-Driven Optimization",
@@ -154,14 +158,41 @@ const modelDetails: { [key: string]: { name: string; groupName: string } } = {
   "boutique-vc-angel": {
     name: "Boutique VC & Angel Syndicate Cross-Promotion",
     groupName: "Group 1 — Direct Origination & Partnership Channels",
+  },
+  "licensing-accelerator": {
+    name: "Licensing Accelerator Funnels",
+    groupName: "Group 6 — Solution-Specific & Industry-Specific Funnel",
+  },
+  "tokenization-dealflow": {
+    name: "Tokenization Dealflow Syndicates",
+    groupName: "Group 6 — Solution-Specific & Industry-Specific Funnel",
+  },
+  "geo-targeted-expansion": {
+    name: "Geo-Targeted Corporate Expansion Funnels",
+    groupName: "Group 6 — Solution-Specific & Industry-Specific Funnel",
+  },
+  "enterprise-licensing-expansion": {
+    name: "Enterprise Licensing Expansion Funnels",
+    groupName: "Group 6 — Solution-Specific & Industry-Specific Funnel",
+  },
+  "fintech-api-ecosystem": {
+    name: "FinTech API Ecosystem Funnels",
+    groupName: "Group 6 — Solution-Specific & Industry-Specific Funnel",
+  },
+  "compliance-as-a-service": {
+    name: "Compliance-as-a-Service Onboarding Funnels",
+    groupName: "Group 6 — Solution-Specific & Industry-Specific Funnel",
+  },
+  "tokenization-structuring-hybrid": {
+    name: "Tokenization + Structuring Hybrid Funnels",
+    groupName: "Group 6 — Solution-Specific & Industry-Specific Funnel",
   }
 };
 
 const modelButtons: { [key: string]: Array<{ id: string; label: string }> } = {
   "ai-driven-abm": [
     { id: "what-is-it", label: "What is it" },
-    { id: "playbook", label: "Playbook" },
-    { id: "messaging-scripts", label: "Messaging scripts" },
+    { id: "execution-playbook", label: "Execution Playbook" },
   ],
   "founder-led-origination": [
     { id: "what-is-it", label: "What is it" },
@@ -296,6 +327,34 @@ const modelButtons: { [key: string]: Array<{ id: string; label: string }> } = {
     { id: "execution-playbook", label: "Execution Playbook" },
   ],
   "boutique-vc-angel": [
+    { id: "what-is-it", label: "What is it" },
+    { id: "execution-playbook", label: "Execution Playbook" },
+  ],
+  "licensing-accelerator": [
+    { id: "what-is-it", label: "What is it" },
+    { id: "execution-playbook", label: "Execution Playbook" },
+  ],
+  "tokenization-dealflow": [
+    { id: "what-is-it", label: "What is it" },
+    { id: "execution-playbook", label: "Execution Playbook" },
+  ],
+  "geo-targeted-expansion": [
+    { id: "what-is-it", label: "What is it" },
+    { id: "execution-playbook", label: "Execution Playbook" },
+  ],
+  "enterprise-licensing-expansion": [
+    { id: "what-is-it", label: "What is it" },
+    { id: "execution-playbook", label: "Execution Playbook" },
+  ],
+  "fintech-api-ecosystem": [
+    { id: "what-is-it", label: "What is it" },
+    { id: "execution-playbook", label: "Execution Playbook" },
+  ],
+  "compliance-as-a-service": [
+    { id: "what-is-it", label: "What is it" },
+    { id: "execution-playbook", label: "Execution Playbook" },
+  ],
+  "tokenization-structuring-hybrid": [
     { id: "what-is-it", label: "What is it" },
     { id: "execution-playbook", label: "Execution Playbook" },
   ],
@@ -464,6 +523,14 @@ export default function ModelDetailPage() {
   "gc-roundtable": "cfo-gc-roundtable",
   "cfo-gc-roundtable-model": "cfo-gc-roundtable",
   "cfo-gc-acquisition": "cfo-gc-roundtable",
+    "algorithmic-linkedin-content": "algorithmic-linkedin-content",
+    "algorithmic-linkedin": "algorithmic-linkedin-content",
+    "linkedin-content-distribution": "algorithmic-linkedin-content",
+    "algorithmic-linkedin-content-distribution": "algorithmic-linkedin-content",
+    "ai-driven-abm": "ai-driven-abm",
+    "ai-abm": "ai-driven-abm",
+    "ai-driven-abm-enhancements": "ai-driven-abm",
+    "abm-enhancements": "ai-driven-abm",
   };
 
   const modelId =
@@ -531,7 +598,7 @@ export default function ModelDetailPage() {
           <div className="relative z-10 text-center">
             <h1 className="text-2xl font-bold mb-4">Model not found</h1>
             <button
-              onClick={() => router.push(`/client-acquisition/models/${groupId}`)}
+              onClick={() => router.back()}
               className="px-4 py-2 rounded-lg border border-white/20 hover:bg-white/10 transition"
             >
               Go Back
@@ -551,18 +618,18 @@ export default function ModelDetailPage() {
         <header className="fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 backdrop-blur-md z-30">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
             <button
-              onClick={() => router.push(`/client-acquisition/models/${groupId}`)}
+              onClick={() => router.back()}
               className="text-sm sm:text-base text-white hover:text-gray-300 transition flex items-center gap-2"
             >
               ← Back
             </button>
             <h1
-              className="text-lg sm:text-xl md:text-2xl font-medium text-white"
+              className="text-sm sm:text-xl md:text-2xl font-medium text-white truncate min-w-0 mx-2"
               style={{ fontFamily: 'var(--font-benzin)' }}
             >
               {modelData.name}
             </h1>
-            <div className="w-12 sm:w-20" /> {/* Spacer */}
+            <div className="w-8 sm:w-20 flex-shrink-0" />
           </div>
         </header>
 
@@ -595,8 +662,8 @@ export default function ModelDetailPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative rounded-2xl border border-white/20 bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-md p-8 sm:p-10 text-center hover:border-white/40 transition-all duration-300 min-h-[200px] flex items-center justify-center"
-                  whileHover={{ scale: 1.05 }}
+                  className="group relative rounded-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 backdrop-blur-md p-4 sm:p-8 md:p-10 text-center overflow-hidden hover:border-white/20 hover:from-white/12 hover:to-white/8 transition-all duration-300 min-h-[160px] sm:min-h-[200px] flex items-center justify-center shadow-[0_10px_40px_-24px_rgba(255,255,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+                  whileHover={{ y: -6 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => {
                     if (button.id === "what-is-it" || button.id === "execution-playbook") {
@@ -606,8 +673,11 @@ export default function ModelDetailPage() {
                     setSelectedButton(selectedButton === button.id ? null : button.id);
                   }}
                 >
+                  {/* Top accent line */}
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"></div>
+
                   {/* Gradient Background on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl z-0" />
                   
                   {/* Content */}
                   <div className="relative z-10">
@@ -628,7 +698,13 @@ export default function ModelDetailPage() {
                   </div>
 
                   {/* Hover Effect Indicator */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-xl z-20" />
+
+                  {/* Background Ambient Glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0">
+                    <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -translate-y-1/2"></div>
+                    <div className="absolute bottom-0 right-1/4 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl translate-y-1/2"></div>
+                  </div>
                 </motion.button>
               ))}
             </div>
@@ -649,15 +725,15 @@ export default function ModelDetailPage() {
                         What is it
                       </h3>
                       <p className="text-gray-300 leading-relaxed mb-4">
-                        AI-Driven ABM (Account-Based Marketing) Enhancements leverage artificial intelligence and machine learning to optimize account-based marketing strategies. This model uses AI to identify high-value target accounts, personalize messaging at scale, predict buying signals, and automate engagement workflows for maximum efficiency and conversion rates.
+                        AI-Driven ABM Enhancements layer artificial intelligence onto Boyar's account-based marketing infrastructure — using AI to identify high-value target accounts, score intent signals, personalise outreach at scale, and automate engagement workflows across the entire Group 7 acquisition system.
                       </p>
                       <motion.button
-                        onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}/abm-plan`)}
+                        onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}/what-is-it`)}
                         className="mt-4 px-6 py-3 rounded-lg border border-white/30 bg-white/10 hover:bg-white/20 text-white transition-all duration-300 flex items-center gap-2"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <span>View Full ABM Strategic Framework</span>
+                        <span>Read Full Model Definition</span>
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -736,6 +812,23 @@ export default function ModelDetailPage() {
                       <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-benzin)' }}>
                         Execution Playbook
                       </h3>
+                      <p className="text-gray-300 leading-relaxed mb-4">
+                        Comprehensive execution playbook covering network mapping, relationship intelligence, founder positioning, compliance frameworks, and operational guidelines for founder-led origination.
+                      </p>
+                      <motion.button
+                        onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}/execution-playbook`)}
+                        className="mt-4 px-6 py-3 rounded-lg border border-white/30 bg-white/10 hover:bg-white/20 text-white transition-all duration-300 flex items-center gap-2"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <span>View Complete Execution Playbook</span>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </motion.button>
+                    </div>
+                  )}
+
                   {selectedButton === "what-is-it" && modelId === "youtube-expertise" && (
                     <div>
                       <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-benzin)' }}>
@@ -765,22 +858,6 @@ export default function ModelDetailPage() {
                       </h3>
                       <p className="text-gray-300 leading-relaxed mb-4">
                         Complete operational blueprint for YouTube Expertise Positioning: tools, video architecture, formats, production workflow, distribution, governance, KPIs, and the authority-building success formula.
-                      </p>
-                      <motion.button
-                        onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}/execution-playbook`)}
-                        className="mt-4 px-6 py-3 rounded-lg border border-white/30 bg-white/10 hover:bg-white/20 text-white transition-all duration-300 flex items-center gap-2"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <span>View Complete Execution Playbook</span>
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </motion.button>
-                    </div>
-                  )}
-                      <p className="text-gray-300 leading-relaxed mb-4">
-                        Comprehensive execution playbook covering network mapping, relationship intelligence, founder positioning, compliance frameworks, and operational guidelines for founder-led origination.
                       </p>
                       <motion.button
                         onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}/execution-playbook`)}
@@ -1323,43 +1400,21 @@ export default function ModelDetailPage() {
                     </div>
                   )}
                   
-                  {selectedButton === "playbook" && (
+                  {selectedButton === "execution-playbook" && modelId === "ai-driven-abm" && (
                     <div>
                       <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-benzin)' }}>
-                        Playbook
+                        Execution Playbook
                       </h3>
                       <p className="text-gray-300 leading-relaxed mb-4">
-                        Comprehensive execution playbook covering foundational setup, daily/weekly/monthly operations, personalization rules, risk controls, tool stack, and success metrics for AI-driven ABM implementation.
+                        Complete operational blueprint covering the required tool stack, ICP and account tier system, intent signal library, AI scoring workflows, personalisation engine, multi-touch outreach sequences, weekly execution cadence, and KPI dashboard for AI-driven ABM implementation.
                       </p>
                       <motion.button
-                        onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}/playbook`)}
+                        onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}/execution-playbook`)}
                         className="mt-4 px-6 py-3 rounded-lg border border-white/30 bg-white/10 hover:bg-white/20 text-white transition-all duration-300 flex items-center gap-2"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <span>View Complete ABM Execution Playbook</span>
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </motion.button>
-                    </div>
-                  )}
-                  
-                  {selectedButton === "messaging-scripts" && (
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-benzin)' }}>
-                        Messaging Scripts
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed mb-4">
-                        Comprehensive messaging templates organized by target segment, including LinkedIn introductions, follow-up sequences, email scripts, and contextual triggers for precision outreach.
-                      </p>
-                      <motion.button
-                        onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}/messaging-scripts`)}
-                        className="mt-4 px-6 py-3 rounded-lg border border-white/30 bg-white/10 hover:bg-white/20 text-white transition-all duration-300 flex items-center gap-2"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <span>View Complete Messaging Scripts</span>
+                        <span>Read Full Execution Playbook</span>
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>

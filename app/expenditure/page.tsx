@@ -210,6 +210,8 @@ export default function ExpenditurePage() {
                   setShowDashboard(false);
                 } else if (buttonId === "burn-rate-summary") {
                   router.push("/expenditure/burn-rate-summary");
+                } else if (buttonId === "brief-assessment") {
+                  router.push("/expenditure/burn-rate-summary/brief-assessment");
                 } else {
                   // Handle other button clicks (can add navigation or other actions here)
                   console.log(`Navigate to ${buttonId} section`);
@@ -246,24 +248,7 @@ export default function ExpenditurePage() {
           Back
         </button>
 
-        {/* Mute/Unmute Button - Fixed at top right */}
-        <button
-          onClick={toggleMute}
-          className="fixed top-4 right-4 z-50 px-4 py-2 bg-black/50 hover:bg-black/70 border border-white/20 rounded-lg text-white transition-all flex items-center gap-2"
-          style={{ fontFamily: 'var(--font-benzin)' }}
-        >
-          {isMuted ? (
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-            </svg>
-          ) : (
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 14.142M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-            </svg>
-          )}
-          {isMuted ? "Unmute" : "Mute"}
-        </button>
+
 
         {/* Background Audio - Hidden */}
         <audio
@@ -346,7 +331,7 @@ export default function ExpenditurePage() {
                   textShadow: '3px 3px 12px rgba(0, 0, 0, 1), 0 0 20px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.8), 1px 1px 2px rgba(0, 0, 0, 1)',
                   fontWeight: 700
                 }}>
-                  Dear Investors,
+                  To Our Investors,
                 </p>
                 
                 <p className="text-justify" style={{
@@ -354,7 +339,15 @@ export default function ExpenditurePage() {
                   textShadow: '3px 3px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(0, 0, 0, 0.95), 0 0 28px rgba(0, 0, 0, 0.9), 0 0 38px rgba(0, 0, 0, 0.85), 1px 1px 2px rgba(0, 0, 0, 1)',
                   fontWeight: 500
                 }}>
-                  Welcome to the expenditure overview. Our intent is to ensure full clarity and alignment on how operational funds are allocated so that there is no room for miscommunication or uncertainty regarding the financial framework required to operate this boutique advisory firm.
+                  Welcome to the Expenditure Overview. This section is designed to provide complete transparency into how operational capital is deployed — ensuring there is no ambiguity regarding the financial framework underpinning this firm's operations.
+                </p>
+
+                <p className="font-bold text-base sm:text-lg md:text-xl mb-2" style={{
+                  color: '#ffffff',
+                  textShadow: '3px 3px 12px rgba(0, 0, 0, 1), 0 0 20px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.8), 1px 1px 2px rgba(0, 0, 0, 1)',
+                  fontWeight: 700
+                }}>
+                  On Our Cost Structure
                 </p>
 
                 <p className="text-justify" style={{
@@ -362,7 +355,15 @@ export default function ExpenditurePage() {
                   textShadow: '3px 3px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(0, 0, 0, 0.95), 0 0 28px rgba(0, 0, 0, 0.9), 0 0 38px rgba(0, 0, 0, 0.85), 1px 1px 2px rgba(0, 0, 0, 1)',
                   fontWeight: 500
                 }}>
-                  As we are not a physical manufacturing business, our cost structure is inherently oriented toward service-driven and sales-enabling assets. Some line items may appear unconventional at first glance; however, each has been carefully assessed and included only because it directly supports client acquisition, operational efficiency, brand positioning, or service delivery at a standard consistent with the expectations of a boutique advisory firm. These expenditures are not discretionary—they are essential components of a competitive, credibility-driven service model.
+                  As a boutique advisory firm — not a capital-intensive manufacturing operation — our expenditure profile is inherently weighted toward service enablement, client acquisition infrastructure, and brand positioning. Certain line items may appear unconventional relative to traditional business models; however, each has been evaluated against a simple threshold: does this expenditure directly support client acquisition, operational capacity, service delivery, or brand credibility at a standard consistent with our market positioning? Only items that meet this criterion have been included. These are not discretionary costs — they are structural requirements of a credibility-driven, high-touch service model.
+                </p>
+
+                <p className="font-bold text-base sm:text-lg md:text-xl mb-2" style={{
+                  color: '#ffffff',
+                  textShadow: '3px 3px 12px rgba(0, 0, 0, 1), 0 0 20px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.8), 1px 1px 2px rgba(0, 0, 0, 1)',
+                  fontWeight: 700
+                }}>
+                  On Cost Optimisation
                 </p>
 
                 <p className="text-justify" style={{
@@ -370,7 +371,15 @@ export default function ExpenditurePage() {
                   textShadow: '3px 3px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(0, 0, 0, 0.95), 0 0 28px rgba(0, 0, 0, 0.9), 0 0 38px rgba(0, 0, 0, 0.85), 1px 1px 2px rgba(0, 0, 0, 1)',
                   fontWeight: 500
                 }}>
-                  We value your partnership deeply. If any investor can help reduce costs by providing equivalent services at a lower rate—without compromising the output quality we must maintain—we genuinely welcome such collaboration. At the same time, we must emphasize that we will not implement cost reductions that weaken execution, dilute brand perception, or hinder outcomes. Forced reductions that impair performance would ultimately waste capital, time, and human resources, which is not in the best interest of the company or its investors.
+                  We actively welcome investor collaboration in reducing costs where equivalent quality can be maintained at a lower rate. What we will not do is implement reductions that compromise execution quality, dilute market positioning, or impair client-facing outcomes. Cost savings that weaken performance are not savings — they are misallocations that erode capital, time, and operational momentum.
+                </p>
+
+                <p className="font-bold text-base sm:text-lg md:text-xl mb-2" style={{
+                  color: '#ffffff',
+                  textShadow: '3px 3px 12px rgba(0, 0, 0, 1), 0 0 20px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.8), 1px 1px 2px rgba(0, 0, 0, 1)',
+                  fontWeight: 700
+                }}>
+                  On Fund Governance & Accountability
                 </p>
 
                 <p className="text-justify" style={{
@@ -378,7 +387,7 @@ export default function ExpenditurePage() {
                   textShadow: '3px 3px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(0, 0, 0, 0.95), 0 0 28px rgba(0, 0, 0, 0.9), 0 0 38px rgba(0, 0, 0, 0.85), 1px 1px 2px rgba(0, 0, 0, 1)',
                   fontWeight: 500
                 }}>
-                  We also want to reassure you that no funds will ever be used for personal purposes. Every rupee allocated will be transparently documented and shared through weekly or monthly expenditure reports, accompanied by performance insights that illustrate the value generated from each cost segment. Any usage of contingency reserves will be disclosed prior to allocation, ensuring full transparency and trust.
+                  No allocated capital will be directed toward personal use under any circumstance. Every rupee deployed will be documented transparently and shared via weekly or monthly expenditure reports, accompanied by performance commentary illustrating the return generated from each cost segment. Any draw on contingency reserves will be disclosed and approved prior to deployment.
                 </p>
 
                 <p className="text-justify" style={{
@@ -386,7 +395,7 @@ export default function ExpenditurePage() {
                   textShadow: '3px 3px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(0, 0, 0, 0.95), 0 0 28px rgba(0, 0, 0, 0.9), 0 0 38px rgba(0, 0, 0, 0.85), 1px 1px 2px rgba(0, 0, 0, 1)',
                   fontWeight: 500
                 }}>
-                  We maintain a disciplined governance structure. All expenditure-related matters will be reviewed in monthly board meetings and, as operations mature, transitioned into quarterly reviews. This structured rhythm ensures that financial decisions remain aligned with both short-term priorities and long-term strategic direction. Should any questions or concerns arise, you may use our chatbot system for immediate clarifications or reach out directly to the founders, Joel Yadav or Inderjeet Bandwal.
+                  All expenditure decisions are subject to structured governance: monthly board-level review during the current operating phase, transitioning to quarterly cadence as the firm matures. This rhythm ensures financial discipline remains anchored to both near-term execution priorities and long-term strategic direction.
                 </p>
 
                 <p className="text-justify" style={{
@@ -394,7 +403,15 @@ export default function ExpenditurePage() {
                   textShadow: '3px 3px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(0, 0, 0, 0.95), 0 0 28px rgba(0, 0, 0, 0.9), 0 0 38px rgba(0, 0, 0, 0.85), 1px 1px 2px rgba(0, 0, 0, 1)',
                   fontWeight: 500
                 }}>
-                  Finally, we appreciate the trust and patience you have extended to us. Your support allows us to focus on building a firm that not only operates efficiently but also reflects the calibre and professionalism expected from a boutique advisory entity. Our commitment is to manage your capital with discipline, transparency, and respect, always keeping investor interests at the forefront.
+                  For immediate queries, our investor chatbot is available at all times. For matters requiring direct engagement, Joel Yadav and Inderjeet Bandwal remain personally accessible.
+                </p>
+
+                <p className="font-bold text-base sm:text-lg md:text-xl mb-2" style={{
+                  color: '#ffffff',
+                  textShadow: '3px 3px 12px rgba(0, 0, 0, 1), 0 0 20px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.8), 1px 1px 2px rgba(0, 0, 0, 1)',
+                  fontWeight: 700
+                }}>
+                  A Note of Gratitude
                 </p>
 
                 <p className="text-justify" style={{
@@ -402,86 +419,26 @@ export default function ExpenditurePage() {
                   textShadow: '3px 3px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(0, 0, 0, 0.95), 0 0 28px rgba(0, 0, 0, 0.9), 0 0 38px rgba(0, 0, 0, 0.85), 1px 1px 2px rgba(0, 0, 0, 1)',
                   fontWeight: 500
                 }}>
-                  Thank you once again for your confidence in our vision and for walking this journey with us.
+                  Your trust, patience, and partnership afford us the runway to build a firm that reflects the operational discipline and professional calibre this market demands. We do not take that lightly. Our commitment is to steward your capital with rigour, transparency, and an unwavering focus on investor-aligned outcomes.
                 </p>
 
-                {/* Disclaimer Checkbox */}
-                <div className="mt-8 sm:mt-10 md:mt-12 flex items-center gap-3 sm:gap-4">
-                  <button
-                    onClick={() => setIsDisclaimerRead(!isDisclaimerRead)}
-                    className={`flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
-                      isDisclaimerRead
-                        ? 'bg-white border-white'
-                        : 'bg-transparent border-white/70 hover:border-white'
-                    }`}
-                    style={{
-                      boxShadow: isDisclaimerRead
-                        ? '0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3)'
-                        : 'none'
-                    }}
-                  >
-                    {isDisclaimerRead && (
-                      <svg
-                        className="w-4 h-4 sm:w-5 sm:h-5 text-black"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={3}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    )}
-                  </button>
-                  <label
-                    onClick={() => setIsDisclaimerRead(!isDisclaimerRead)}
-                    className="text-white cursor-pointer text-sm sm:text-base md:text-lg"
-                    style={{
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontWeight: 700,
-                      textShadow: '3px 3px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(0, 0, 0, 0.95), 0 0 28px rgba(0, 0, 0, 0.9), 0 0 38px rgba(0, 0, 0, 0.85), 1px 1px 2px rgba(0, 0, 0, 1)'
-                    }}
-                  >
-                    I have read the full disclaimer before entering expenditure section
-                  </label>
-                </div>
+                <p className="text-justify" style={{
+                  color: '#ffffff',
+                  textShadow: '3px 3px 10px rgba(0, 0, 0, 1), 0 0 18px rgba(0, 0, 0, 0.95), 0 0 28px rgba(0, 0, 0, 0.9), 0 0 38px rgba(0, 0, 0, 0.85), 1px 1px 2px rgba(0, 0, 0, 1)',
+                  fontWeight: 500
+                }}>
+                  Thank you for your confidence in what we are building together.
+                </p>
+
+
               </div>
             </div>
           </div>
         </div>
         )}
 
-        {/* Enter Button - Appears when disclaimer is checked */}
-        {isDisclaimerRead && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50"
-          >
-            <button
-              onClick={() => {
-                setShowDisclaimerText(false);
-                // Ensure video plays
-                if (videoRef.current) {
-                  videoRef.current.play().catch(console.error);
-                }
-              }}
-              className="px-8 py-4 bg-white text-black rounded-lg font-bold text-lg sm:text-xl hover:bg-gray-100 transition-all duration-200 shadow-2xl hover:shadow-white/50"
-              style={{
-                fontFamily: 'Montserrat, sans-serif',
-                fontWeight: 700,
-                boxShadow: '0 10px 40px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'
-              }}
-            >
-              Enter
-            </button>
-          </motion.div>
-        )}
+
+
             </motion.div>
           )}
         </AnimatePresence>

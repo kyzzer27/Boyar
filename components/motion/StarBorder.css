@@ -1,0 +1,47 @@
+/** @format */
+
+.star-border-container {
+	position: relative;
+}
+
+.border-glow {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	pointer-events: none;
+	filter: blur(8px);
+	z-index: 0;
+	animation: move-border-glow linear infinite;
+}
+
+.inner-content {
+	position: relative;
+	z-index: 1;
+}
+
+@keyframes move-border-glow {
+	0% {
+		top: 0;
+		left: 0;
+	}
+	25% {
+		top: 0;
+		left: 100%;
+		transform: translateX(-100%);
+	}
+	50% {
+		top: 100%;
+		left: 100%;
+		transform: translate(-100%, -100%);
+	}
+	75% {
+		top: 100%;
+		left: 0;
+		transform: translateY(-100%);
+	}
+	100% {
+		top: 0;
+		left: 0;
+		transform: translate(0, 0);
+	}
+}

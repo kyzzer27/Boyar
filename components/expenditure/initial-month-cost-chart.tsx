@@ -23,13 +23,13 @@ interface ExpenseSegment {
 const expenseSegments: ExpenseSegment[] = [
   {
     name: "Licensing & Legal",
-    inr: 420000,
-    usd: 4615.38,
+    inr: 610000,
+    usd: 6703.30,
     color: "#3B82F6",
     description: "Regulatory compliance and corporate structure foundation costs.",
     isRecurring: false,
     items: [
-      { name: "FCA Licensing (₹3,50,000 licence renting + ₹50,000 HMRC)", inr: 400000, usd: 4395.60 },
+      { name: "FCA Licensing (₹4,80,000 licence renting + ₹50,000 HMRC registration + ₹60,000 professional fee)", inr: 590000, usd: 6483.52 },
       { name: "Indian Company Formation (Pvt. Ltd.)", inr: 20000, usd: 219.78 },
     ],
   },
@@ -263,7 +263,7 @@ export function InitialMonthCostChart({ onClose }: InitialMonthCostChartProps) {
           <section className="grid gap-8">
             {/* Overview Section */}
             <motion.div
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl shadow-2xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6  shadow-2xl"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -368,7 +368,7 @@ export function InitialMonthCostChart({ onClose }: InitialMonthCostChartProps) {
                   </div>
                 </div>
               </div>
-              <div className="mt-6 rounded-2xl border border-emerald-400/30 bg-emerald-400/10 p-4 backdrop-blur-xl">
+              <div className="mt-6 rounded-2xl border border-emerald-400/30 bg-emerald-400/10 p-4 ">
                 <div className="flex items-center justify-between text-sm">
                   <div>
                     <p className="text-xs uppercase tracking-[0.4em] text-emerald-200 mb-1">Month-1 Recurring Cost Total</p>
@@ -395,14 +395,14 @@ export function InitialMonthCostChart({ onClose }: InitialMonthCostChartProps) {
               title="Expenditure Allocation by Segment" 
               subtitle="Strategic cost distribution across operational, regulatory, and growth investment categories."
             >
-              <div className="overflow-hidden rounded-2xl border border-white/10">
+              <div className="overflow-x-auto rounded-2xl border border-white/10">
                 <table className="w-full text-sm">
                   <thead className="bg-white/5 text-white/60">
                     <tr>
-                      <th className="px-4 py-3 text-left font-medium">Segment</th>
-                      <th className="px-4 py-3 text-left font-medium">Allocation %</th>
-                      <th className="px-4 py-3 text-left font-medium">Cost (INR)</th>
-                      <th className="px-4 py-3 text-left font-medium">Cost (USD)</th>
+                      <th className="px-4 py-3 text-left font-medium whitespace-nowrap">Segment</th>
+                      <th className="px-4 py-3 text-left font-medium whitespace-nowrap">Allocation %</th>
+                      <th className="px-4 py-3 text-left font-medium whitespace-nowrap">Cost (INR)</th>
+                      <th className="px-4 py-3 text-left font-medium whitespace-nowrap">Cost (USD)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -506,7 +506,7 @@ export function InitialMonthCostChart({ onClose }: InitialMonthCostChartProps) {
                               : (tooltipPosition.y < 128 ? 'translate(-100%, 0)' : 'translate(-100%, -100%)'),
                           }}
                         >
-                        <div className="bg-black/95 border border-white/20 rounded-lg p-3 shadow-2xl backdrop-blur-xl min-w-[200px]">
+                        <div className="bg-black/95 border border-white/20 rounded-lg p-3 shadow-2xl  min-w-[200px]">
                           <div className="flex items-center gap-2 mb-2">
                             <span 
                               className="h-3 w-3 rounded-full" 
@@ -533,8 +533,10 @@ export function InitialMonthCostChart({ onClose }: InitialMonthCostChartProps) {
                     </AnimatePresence>
                   </div>
                   <div className="w-full space-y-2 text-xs text-white/70 text-center">
-                    <p>Licensing & Legal represents 39.3% of initial investment, establishing regulatory foundation and compliance framework.</p>
-                    <p>Tech infrastructure and marketing combined account for 42.5% of Month-1 expenditure, enabling operational readiness and market entry.</p>
+                    <p>Licensing & Legal currently represents {pieData[0].percentage.toFixed(1)}% of initial investment, establishing regulatory foundation and compliance framework.</p>
+                    <p>Tech infrastructure and marketing combined account for {(
+                      pieData[1].percentage + pieData[6].percentage
+                    ).toFixed(1)}% of Month-1 expenditure, enabling operational readiness and market entry.</p>
                   </div>
                 </div>
               </div>
@@ -547,7 +549,7 @@ export function InitialMonthCostChart({ onClose }: InitialMonthCostChartProps) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+                  className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 "
                   onClick={() => setSelectedSegment(null)}
                 >
                 <motion.div
@@ -603,7 +605,7 @@ export function InitialMonthCostChart({ onClose }: InitialMonthCostChartProps) {
                       <h4 className="text-sm font-semibold text-white mb-3" style={{ fontFamily: "var(--font-benzin)" }}>
                         Line Items
                       </h4>
-                      <div className="rounded-xl border border-white/10 overflow-hidden">
+                      <div className="rounded-xl border border-white/10 overflow-x-auto">
                         <table className="w-full text-sm">
                           <thead className="bg-white/5 text-white/60">
                             <tr>
@@ -708,7 +710,7 @@ export function InitialMonthCostChart({ onClose }: InitialMonthCostChartProps) {
                         </div>
                       </div>
                       <p className="mb-4 text-sm text-white/70">{segment.description}</p>
-                      <div className="overflow-hidden rounded-xl border border-white/5">
+                      <div className="overflow-x-auto rounded-xl border border-white/5">
                         <table className="w-full text-sm">
                           <thead className="bg-white/5 text-white/60">
                             <tr>
@@ -741,7 +743,7 @@ export function InitialMonthCostChart({ onClose }: InitialMonthCostChartProps) {
 
             {/* Summary Note */}
             <motion.div
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 "
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -789,7 +791,7 @@ interface SectionCardProps {
 function SectionCard({ title, subtitle, children }: SectionCardProps) {
   return (
     <motion.section
-      className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl shadow-2xl"
+      className="rounded-3xl border border-white/10 bg-white/5 p-6  shadow-2xl"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

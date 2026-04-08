@@ -1,0 +1,80 @@
+/**
+ * Expenditure Bento Card Glow Effects
+ *
+ * @format
+ */
+
+.bento-card {
+	--glow-x: 50%;
+	--glow-y: 50%;
+	--glow-intensity: 0;
+	--glow-radius: 300px;
+	--glow-color: 59, 130, 246;
+	position: relative;
+	overflow: hidden;
+	transition: transform 0.3s ease;
+	will-change: transform;
+	transform: translateZ(0); /* Force GPU acceleration */
+	contain: layout style paint;
+}
+
+/* Mouse-following radial border glow */
+.bento-card--border-glow::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	padding: 1.5px;
+	background: radial-gradient(
+		calc(var(--glow-radius) * 0.8) circle at var(--glow-x) var(--glow-y),
+		rgba(var(--glow-color), calc(0.85 * var(--glow-intensity))),
+		rgba(var(--glow-color), calc(0.4 * var(--glow-intensity))) 40%,
+		transparent 70%
+	);
+	-webkit-mask:
+		linear-gradient(#fff 0 0) content-box,
+		linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	pointer-events: none;
+	z-index: 1;
+	transition: opacity 0.3s ease;
+}
+
+/* Inner radial glow on card surface */
+.bento-card--border-glow::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: radial-gradient(
+		calc(var(--glow-radius) * 0.6) circle at var(--glow-x) var(--glow-y),
+		rgba(var(--glow-color), calc(0.12 * var(--glow-intensity))),
+		transparent 70%
+	);
+	pointer-events: none;
+	z-index: 0;
+	transition: opacity 0.3s ease;
+}
+
+/* Global spotlight (applied to body-level div) */
+.bento-spotlight {
+	position: fixed;
+	width: 800px;
+	height: 800px;
+	border-radius: 50%;
+	pointer-events: none;
+	background: radial-gradient(
+		circle,
+		rgba(59, 130, 246, 0.12) 0%,
+		rgba(59, 130, 246, 0.06) 15%,
+		rgba(59, 130, 246, 0.03) 25%,
+		rgba(59, 130, 246, 0.015) 40%,
+		rgba(59, 130, 246, 0.008) 65%,
+		transparent 70%
+	);
+	z-index: 200;
+	opacity: 0;
+	transform: translate(-50%, -50%);
+	mix-blend-mode: screen;
+}

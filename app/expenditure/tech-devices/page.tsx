@@ -43,7 +43,7 @@ export default function TechDevicesReasoningPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35 }}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl shadow-2xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8  shadow-xl"
             >
               <header className="mb-4 sm:mb-6">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-1">
@@ -96,7 +96,7 @@ export default function TechDevicesReasoningPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: 0.03 }}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl shadow-2xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8  shadow-xl"
             >
               <header className="mb-4 sm:mb-6">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-1">
@@ -147,7 +147,7 @@ export default function TechDevicesReasoningPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: 0.06 }}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl shadow-2xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8  shadow-xl"
             >
               <header className="mb-4 sm:mb-6">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-1">
@@ -198,7 +198,7 @@ export default function TechDevicesReasoningPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: 0.09 }}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl shadow-2xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8  shadow-xl"
             >
               <header className="mb-4 sm:mb-6">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-1">
@@ -238,7 +238,7 @@ export default function TechDevicesReasoningPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: 0.12 }}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl shadow-2xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8  shadow-xl"
             >
               <header className="mb-4 sm:mb-6">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-1">
@@ -288,7 +288,7 @@ export default function TechDevicesReasoningPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: 0.15 }}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl shadow-2xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8  shadow-xl"
             >
               <header className="mb-4 sm:mb-6">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-1">

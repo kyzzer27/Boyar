@@ -43,7 +43,7 @@ export default function LicensingLegalReasoningPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl shadow-2xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8  shadow-xl"
             >
               <header className="mb-4 sm:mb-6">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-1">
@@ -89,7 +89,9 @@ export default function LicensingLegalReasoningPage() {
                     To balance speed with regulatory discipline, Boyar Partners is
                     securing FCA coverage via a licensed third-party arrangement,
                     with facilitation and structuring support from Intershore
-                    Consult (BVI).
+                    Consult (BVI). This professional fee is charged by one of our
+                    suppliers who is facilitating this white-label licence
+                    solution for us.
                   </p>
                   <ul className="list-disc list-outside pl-5 space-y-1 text-white/80">
                     <li className="text-justify">
@@ -123,7 +125,7 @@ export default function LicensingLegalReasoningPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl shadow-2xl"
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8  shadow-xl"
             >
               <header className="mb-4 sm:mb-6">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/60 mb-1">

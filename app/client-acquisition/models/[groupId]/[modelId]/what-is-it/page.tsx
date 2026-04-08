@@ -166,6 +166,21 @@ export default function WhatIsItPage() {
     "gc-roundtable": "cfo-gc-roundtable",
     "cfo-gc-roundtable-model": "cfo-gc-roundtable",
     "cfo-gc-acquisition": "cfo-gc-roundtable",
+    "ai-prospect-scoring": "ai-prospect-scoring",
+    "ai-prospect-scoring-personalization": "ai-prospect-scoring",
+    "ai-prospect-personalization": "ai-prospect-scoring",
+    "prospect-scoring-personalization": "ai-prospect-scoring",
+    "ai-scoring": "ai-prospect-scoring",
+    "predictive-competitor-monitoring": "predictive-competitor-monitoring",
+    "predictive-competitor": "predictive-competitor-monitoring",
+    "competitor-monitoring": "predictive-competitor-monitoring",
+    "algorithmic-linkedin-content": "algorithmic-linkedin-content",
+    "algorithmic-linkedin": "algorithmic-linkedin-content",
+    "linkedin-content-distribution": "algorithmic-linkedin-content",
+    "ai-driven-abm": "ai-driven-abm",
+    "ai-abm": "ai-driven-abm",
+    "ai-driven-abm-enhancements": "ai-driven-abm",
+    "abm-enhancements": "ai-driven-abm",
   };
 
   const modelId =
@@ -275,6 +290,16 @@ export default function WhatIsItPage() {
   const isReferralIntroducerNetworksModel = modelId === "referral-introducer-networks";
   const isFamilyOfficeAcquisitionModel = modelId === "family-office-acquisition";
   const isBoutiqueVcAngelModel = modelId === "boutique-vc-angel";
+  const isLicensingAcceleratorModel = modelId === "licensing-accelerator";
+  const isTokenizationDealflowModel = modelId === "tokenization-dealflow";
+  const isGeoTargetedExpansionModel = modelId === "geo-targeted-expansion";
+  const isEnterpriseLicensingExpansionModel = modelId === "enterprise-licensing-expansion";
+  const isFintechApiEcosystemModel = modelId === "fintech-api-ecosystem";
+  const isTokenizationStructuringHybridModel = modelId === "tokenization-structuring-hybrid";
+  const isAiProspectScoringModel = modelId === "ai-prospect-scoring";
+  const isPredictiveCompetitorMonitoringModel = modelId === "predictive-competitor-monitoring";
+  const isAlgorithmicLinkedinContentModel = modelId === "algorithmic-linkedin-content";
+  const isAiDrivenAbmModel = modelId === "ai-driven-abm";
   const plainSectionClass = "mb-10 space-y-4 text-gray-800 leading-relaxed text-left";
   const plainHeadingClass = "text-2xl font-bold mb-2 text-black";
   const sectionClass =
@@ -292,7 +317,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -544,7 +569,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -768,7 +793,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -908,7 +933,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -1028,7 +1053,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -1168,7 +1193,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -1329,7 +1354,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -1488,7 +1513,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -1649,7 +1674,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -1821,7 +1846,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -1986,7 +2011,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -2164,7 +2189,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -2330,7 +2355,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -2488,7 +2513,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -2652,7 +2677,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -2811,7 +2836,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -2968,7 +2993,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -3153,7 +3178,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -3319,7 +3344,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -3484,7 +3509,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -3631,7 +3656,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -3792,7 +3817,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -3895,7 +3920,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -4002,7 +4027,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -4255,7 +4280,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -4486,7 +4511,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -4728,7 +4753,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -4968,7 +4993,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -5208,7 +5233,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -5464,7 +5489,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -5751,7 +5776,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -6051,7 +6076,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -6343,7 +6368,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -6618,7 +6643,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -6891,7 +6916,7 @@ export default function WhatIsItPage() {
             <div className="mx-auto max-w-4xl px-6 py-4">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => router.push(`/client-acquisition/models/${groupId}/${modelId}`)}
+                  onClick={() => router.back()}
                   className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
                 >
                   ← Back
@@ -7164,6 +7189,2113 @@ export default function WhatIsItPage() {
               <p>Strategic Partnership & Referral Alliances Model Definition</p>
               <p className="mt-2">Boyar Partners — Internal Use Only</p>
             </div>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Licensing Accelerator Funnels (Group 6)
+  if (isLicensingAcceleratorModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Licensing Accelerator Funnels</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Licensing Accelerator Funnels
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Model Definition & Strategic Framework
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                1. Model Definition
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  The Licensing Accelerator Funnel is a dedicated client acquisition system that targets businesses, founders, and operators who are actively pursuing — or urgently need — a regulatory licence. Boyar Partners positions itself as the advisory firm that compresses the timeline, eliminates structural mistakes, and dramatically increases licence approval probability.
+                </p>
+                <p className="text-justify">
+                  The model captures clients at the precise moment they are committing to a regulated business model, creating mandates across:
+                </p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>VASP / CASP licences</strong> — Virtual Asset Service Providers under MiCA, VARA, FSCA, ADGM, and national regimes</li>
+                  <li className="text-justify"><strong>EMI / PI licences</strong> — Electronic Money Institution and Payment Institution licences (EU, UK, Gibraltar, Malta)</li>
+                  <li className="text-justify"><strong>MSB / MTL licences</strong> — Money Services Business and Money Transmission Licences (US, Canada)</li>
+                  <li className="text-justify"><strong>Forex / CFD dealer licences</strong> — Seychelles FSA, Vanuatu, Mauritius FSC, Cyprus CySEC</li>
+                  <li className="text-justify"><strong>Fund licences</strong> — Cayman CIMA, BVI FSC, Luxembourg AIFMD, DIFC DFSA, Singapore MAS</li>
+                  <li className="text-justify"><strong>iGaming licences</strong> — Malta MGA, Isle of Man GSC, Curaçao, Kahnawake</li>
+                  <li className="text-justify"><strong>Crypto exchange licences</strong> — Estonia, Lithuania, Czech Republic, Poland (pre-MiCA), plus post-MiCA transition mandates</li>
+                  <li className="text-justify"><strong>Trust company / TCSP licences</strong> — Cayman, BVI, Seychelles, Cook Islands, Nevis</li>
+                </ul>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-4">
+                  <p className="text-justify">
+                    Boyar does not just file paperwork — it structures the entire legal, corporate, and compliance architecture required for a successful application. This is the differentiator that turns a licensing inquiry into a full advisory mandate worth $30K–$200K+.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                2. Why Licensing Clients Are Among the Highest-Value Prospects Boyar Can Target
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">A. Licensing mandates are high-ticket by default</p>
+                  <p className="text-justify">
+                    A single VASP or EMI licensing engagement typically spans $35K–$120K in advisory fees across scoping, structuring, application preparation, banking, and compliance build-out. A fund licence can exceed $200K in total mandate value including entity formation, capital introduction, and regulatory filings.
+                  </p>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">B. The MiCA July 2026 deadline creates a permanent urgency window</p>
+                  <p className="text-justify">
+                    Every crypto business operating in the EU without a MiCA-compliant CASP licence faces operational shutdown. This has created a high-intent wave of licensing demand — companies are actively searching for advisors who understand the full application architecture.
+                  </p>
+                </div>
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">C. Licensing clients produce the longest engagement cycles</p>
+                  <p className="text-justify">
+                    The licensing journey often spans 6–18 months. During this period, Boyar manages corporate structuring, compliance documentation, banking onboarding, regulator correspondence, substance requirements, and ongoing advisory — all billable across the relationship lifecycle.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. Licensing cascades into renewal, maintenance, and expansion mandates</p>
+                  <p className="text-justify">
+                    A licence does not end at approval. Clients need annual compliance reviews, licence variation filings, controller change notifications, new jurisdiction expansions, and periodic substance audits — all generating recurring advisory revenue.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. Most competitors offer filing services, not architecture</p>
+                  <p className="text-justify">
+                    The market is crowded with paralegals and document mills. Boyar's differentiation is end-to-end architecture: corporate structure design, shareholder/UBO compliance, substance arrangement, banking readiness, and AML/MLRO build-out before submission. This advisory layer is where competitors are absent.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">F. Licensing clients refer other licensing clients</p>
+                  <p className="text-justify">
+                    Founders in the VASP, iGaming, and fintech space operate in tight networks. A successfully licensed client becomes a credible referral source within their ecosystem — one licence can produce three to five downstream mandates.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                3. How Boyar Can Execute This Model Even With No Licensing Track Record at the Start
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">A. The funnel starts with intelligence assets, not case studies</p>
+                  <p className="text-justify">
+                    Publish licensing matrices, comparison frameworks, and regulator requirement summaries. A prospect evaluating a Malta VASP vs. a Seychelles FSA licence needs clarity first — whoever provides that clarity owns the mandate conversation.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">B. Licensing intent signals are easy to detect on LinkedIn</p>
+                  <p className="text-justify">
+                    Founders posting about MiCA compliance, hiring compliance officers, announcing expansion into regulated markets, or commenting on regulatory news are broadcasting licensing intent. These are direct outreach triggers requiring no cold prospecting.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">C. Regulatory deadlines do the sales work</p>
+                  <p className="text-justify">
+                    MiCA July 2026. VARA annual renewal windows. FSC substance reviews. These deadlines create urgency that eliminates long consideration cycles. Prospects don't deliberate when their operating licence is at stake.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. Niche licensing content outperforms general advisory content by a wide margin</p>
+                  <p className="text-justify">
+                    A post titled "The 7 reasons VASP applications fail in Malta" outperforms any generic offshore structuring post. Specific, technical, licence-focused content attracts exactly the right prospects at exactly the right moment.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. Licensing communities are highly concentrated and accessible</p>
+                  <p className="text-justify">
+                    Specific LinkedIn groups, Telegram channels, Web3 and fintech Slack communities, and iGaming conferences host exactly the founders seeking licensing guidance. Entry into one community produces disproportionate reach.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">F. The diagnostic call closes itself</p>
+                  <p className="text-justify">
+                    A licensing prospect who has already committed to regulation just needs a credible advisor to walk them through the right structure. A 45-minute diagnostic where Boyar maps jurisdiction, entity structure, banking pathway, and compliance requirements is often sufficient to win the mandate.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                4. Target Client Profiles
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Crypto / Web3 founders</strong> building exchanges, wallets, custodians, DeFi platforms, or token issuance platforms requiring VASP/CASP licensing under MiCA or VARA</li>
+                  <li className="text-justify"><strong>Fintech founders</strong> operating payment gateways, neobanks, or B2B payment infrastructure requiring EMI or PI licensing</li>
+                  <li className="text-justify"><strong>Fund managers and GPs</strong> establishing investment vehicles requiring AIFMD, MAS CMS, CIMA, or DFSA authorisation</li>
+                  <li className="text-justify"><strong>iGaming operators</strong> seeking MGA, IoM, or Curaçao licences and requiring compliant corporate structures</li>
+                  <li className="text-justify"><strong>Trading platform operators</strong> requiring Forex/CFD dealer licences in Seychelles, Mauritius, or Vanuatu</li>
+                  <li className="text-justify"><strong>Existing licensed entities</strong> seeking to vary, passport, or expand their licence into new jurisdictions</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                5. Success Formula
+              </h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Licensing intent signal → Licensing intelligence content → Diagnostic call → Full-architecture mandate (entity + compliance + banking + application) → Ongoing renewal and expansion advisory. One licensing client = $30K–$200K+ mandate value with multi-year recurring revenue. This is one of the highest-value, most defensible acquisition channels Boyar Partners can build.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Tokenization Dealflow Syndicates (Group 6)
+  if (isTokenizationDealflowModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Tokenization Dealflow Syndicates</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Tokenization Dealflow Syndicates
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Model Definition & Strategic Framework
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                1. Model Definition
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  The Tokenization Dealflow Syndicate Model is a targeted acquisition channel where Boyar Partners embeds itself within the networks, syndicates, launchpads, and deal communities that originate tokenization projects — becoming the preferred advisory firm called upon whenever a project requires legal structuring, SPV architecture, foundation setup, VASP licensing, or compliant token issuance frameworks.
+                </p>
+                <p className="text-justify">
+                  Tokenization is the process of representing real-world or digital assets — equity, debt, real estate, commodities, intellectual property, fund interests — as blockchain-based tokens. Every tokenization project, regardless of asset class, requires:
+                </p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>A legal entity structure</strong> — Cayman foundation, BVI company, Liechtenstein foundation, or similar</li>
+                  <li className="text-justify"><strong>An SPV or issuer vehicle</strong> — to hold the underlying assets and issue tokens</li>
+                  <li className="text-justify"><strong>A regulatory framework</strong> — determining whether the token is a utility, security, or e-money token under applicable law</li>
+                  <li className="text-justify"><strong>A VASP or CASP licence</strong> — where the project involves exchange, custody, or transfer of tokens</li>
+                  <li className="text-justify"><strong>Banking and payment rails</strong> — for subscription proceeds, distributions, and treasury management</li>
+                  <li className="text-justify"><strong>AML / KYC infrastructure</strong> — mandatory for investor onboarding and ongoing compliance</li>
+                  <li className="text-justify"><strong>Whitepaper and disclosure documentation</strong> — legally reviewed under MiCA or applicable securities law</li>
+                </ul>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-4">
+                  <p className="text-justify">
+                    Boyar Partners positions itself upstream — inside the syndicates and deal networks where tokenization projects are conceived and funded — so that by the time a project needs an advisor, Boyar is already the trusted name in the room.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                2. Why Tokenization Dealflow Is One of Boyar's Most Valuable Acquisition Channels
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">A. Every tokenization project is a mandatory advisory mandate</p>
+                  <p className="text-justify">
+                    Unlike general corporate clients who may or may not need offshore structuring, tokenization projects cannot legally launch without proper entity architecture, regulatory classification, and compliance infrastructure. The advisory mandate is not optional — it is a prerequisite for the project to exist.
+                  </p>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">B. MiCA creates an urgent compliance forcing function</p>
+                  <p className="text-justify">
+                    Under MiCA, token issuers targeting EU markets must publish whitepapers, obtain CASP authorisation where required, and comply with asset-referenced token and e-money token rules. Projects that launched before MiCA now need retroactive restructuring — creating a large backlog of urgent mandates.
+                  </p>
+                </div>
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">C. Syndicates concentrate dealflow — one relationship unlocks many projects</p>
+                  <p className="text-justify">
+                    A single tokenization syndicate or launchpad may back 5–20 projects per year. Becoming the preferred advisor to the syndicate — not just one project — means Boyar receives a continuous referral stream from a single relationship rather than hunting for individual clients one by one.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. Mandate values are large and multi-phase</p>
+                  <p className="text-justify">
+                    A typical tokenization advisory mandate spans: entity formation ($5K–$15K), foundation/SPV setup ($8K–$20K), regulatory classification and whitepaper advisory ($10K–$25K), VASP licensing ($35K–$80K), banking introductions ($5K–$10K), and ongoing compliance retainer ($2K–$5K/month). Total lifecycle value per project: $60K–$150K+.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. Real-world asset tokenization is expanding rapidly beyond crypto</p>
+                  <p className="text-justify">
+                    Real estate, private equity, infrastructure debt, commodities, and even IP royalties are being tokenized. This expands Boyar's addressable market well beyond crypto founders into fund managers, family offices, real estate developers, and institutional asset managers — all of whom require compliant structures.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">F. Few advisors understand the full tokenization stack</p>
+                  <p className="text-justify">
+                    Most law firms understand securities law but not token economics. Most crypto consultants understand blockchain but not regulatory compliance. Boyar's multi-disciplinary positioning — entity, compliance, banking, licensing — covers the full stack that no single competitor currently owns.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                3. How Boyar Executes This Model Even With Zero Tokenization Brand Recognition at the Start
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">A. Start with the syndicate leads, not the projects</p>
+                  <p className="text-justify">
+                    Syndicate leads, launchpad founders, and deal club managers are reachable on LinkedIn and in Web3 communities. One introductory conversation with a syndicate lead who backs 10 projects per year is worth more than 10 individual cold outreaches to project founders.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">B. Publish tokenization structure frameworks — they spread virally in Web3 communities</p>
+                  <p className="text-justify">
+                    A clear diagram showing "Cayman Foundation + BVI OpCo + Token Issuance SPV" architecture, or a MiCA classification flowchart, will be shared widely across Telegram groups, Discord servers, and LinkedIn posts by project founders who need exactly this clarity.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">C. Offer a free tokenization structure review as the entry point</p>
+                  <p className="text-justify">
+                    A 30-minute session where Boyar reviews a project's proposed token model, flags regulatory risks, and suggests structural improvements — at no cost — is an extraordinarily powerful conversion tool. Projects that receive this review almost always proceed with Boyar for the full mandate.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. The MiCA deadline creates inbound demand that requires no prospecting</p>
+                  <p className="text-justify">
+                    Projects that launched token sales before MiCA are actively searching for advisors who can help them restructure for compliance. Publishing content on "How to restructure your token project for MiCA compliance" attracts exactly these inbound mandates.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. Real-world asset tokenization projects are not in crypto communities — they're in TradFi networks</p>
+                  <p className="text-justify">
+                    Family offices, fund managers, and real estate developers exploring tokenization are reachable through Boyar's existing professional networks — no crypto community access required. This is a largely untapped segment with very high mandate values.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">F. Boyar needs only 2–3 syndicate relationships to build a self-sustaining dealflow channel</p>
+                  <p className="text-justify">
+                    Two active syndicate partnerships each producing 4–6 project referrals per year = 8–12 tokenization mandates annually. At an average mandate value of $80K, this channel alone can contribute $640K–$960K in annual revenue at maturity.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                4. Target Syndicate & Dealflow Network Types
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Web3 / crypto launchpads</strong> — platforms that incubate and launch token projects (e.g., Polkastarter, DAO Maker, Republic Crypto)</li>
+                  <li className="text-justify"><strong>Tokenization-focused syndicates</strong> — private deal clubs focused on RWA tokenization, DeFi infrastructure, and blockchain-native asset classes</li>
+                  <li className="text-justify"><strong>Real estate tokenization platforms</strong> — fractional property platforms requiring compliant SPV and investor onboarding structures</li>
+                  <li className="text-justify"><strong>Private equity tokenization funds</strong> — GPs exploring tokenized LP interests as a distribution mechanism</li>
+                  <li className="text-justify"><strong>Family office investment clubs</strong> — UHNW networks co-investing in tokenized assets requiring trust/foundation overlay</li>
+                  <li className="text-justify"><strong>Web3 accelerators and incubators</strong> — structured programmes that produce 8–20 fundable token projects per cohort</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                5. Success Formula
+              </h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Syndicate relationship → Project referral → Free structure review → Full advisory mandate (entity + SPV + regulatory + banking + licensing) → Ongoing compliance retainer → Next referral from same syndicate. Two syndicate relationships = 8–12 tokenization mandates per year = $640K–$960K in revenue at maturity. This channel produces the highest mandate density of any single relationship type Boyar can cultivate.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Geo-Targeted Corporate Expansion Funnels
+  if (isGeoTargetedExpansionModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Geo-Targeted Corporate Expansion Funnels</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Geo-Targeted Corporate Expansion Funnels
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Model Definition & Strategic Framework
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Model Definition</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  The Geo-Targeted Corporate Expansion Funnel is an acquisition model where Boyar Partners targets businesses and founders in specific geographic markets who are planning, executing, or struggling with cross-border corporate expansion. Rather than broad outreach, this model uses precise geographic and industry targeting to reach companies at the exact moment they are expanding into a new jurisdiction.
+                </p>
+                <p className="text-justify">The core expansion corridors Boyar targets include:</p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>India → UAE / Cayman / Singapore</strong> — founders and SMEs internationalising for tax efficiency, banking access, and global client acquisition</li>
+                  <li className="text-justify"><strong>UK / Europe → UAE / Cayman / BVI</strong> — businesses relocating holding structures for regulatory or tax reasons post-Brexit</li>
+                  <li className="text-justify"><strong>US → Cayman / BVI / Singapore</strong> — fund managers and tech companies establishing offshore vehicles for international investors</li>
+                  <li className="text-justify"><strong>Southeast Asia → UAE / Cayman / Seychelles</strong> — crypto, fintech, and trading businesses seeking regulated jurisdictions with banking access</li>
+                  <li className="text-justify"><strong>CIS / Eastern Europe → UAE / Cyprus / Malta</strong> — businesses relocating for compliance, sanctions avoidance, and banking normalisation</li>
+                  <li className="text-justify"><strong>Africa → Mauritius / Seychelles / UAE</strong> — HNW families and businesses seeking asset protection and international banking</li>
+                </ul>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-4">
+                  <p className="text-justify">
+                    Boyar's geo-targeted approach means content, outreach, and messaging is tailored specifically to the pain points and expansion patterns of companies from a defined source market moving into a defined destination — making every touchpoint immediately relevant and driving dramatically higher engagement than generic advisory outreach.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. Why Geo-Targeted Funnels Outperform Generic Outreach</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">A. Expansion decisions are high-stakes and time-sensitive</p>
+                  <p className="text-justify">A company that has decided to expand internationally needs an advisor immediately. The compliance risks are high and the cost of getting it wrong — wrong jurisdiction, wrong structure, banking rejection — can derail the entire expansion. Urgency drives fast conversion with minimal nurture required.</p>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">B. Geographic specificity makes content immediately relevant</p>
+                  <p className="text-justify">A post titled "Expanding from India to UAE: the 5 structural mistakes that cost founders $50K" will be read, shared, and acted upon by exactly the right audience. Generic offshore content competes with thousands of providers. Geo-specific content has almost no competition.</p>
+                </div>
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">C. Expansion mandates are multi-service by nature</p>
+                  <p className="text-justify">A company expanding into a new jurisdiction almost always needs entity formation, substance arrangement, banking, compliance registration, and potentially licensing. A single expansion client generates $15K–$60K in immediate mandate value with ongoing annual maintenance revenue on top.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. LinkedIn geo-targeting enables surgical prospect identification</p>
+                  <p className="text-justify">Sales Navigator allows Boyar to filter by company geography, founder nationality, industry, and seniority — identifying expansion-ready prospects in any source market without a local office or local team.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. Source-market communities are concentrated and accessible</p>
+                  <p className="text-justify">Indian founder networks, UK fintech communities, and Southeast Asia Web3 groups are active on LinkedIn and Telegram. Boyar can build authority within a specific source-market community rapidly by publishing corridor-specific content.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">F. Geo-targeted clients refer within their own networks</p>
+                  <p className="text-justify">A founder from India who successfully expanded to UAE through Boyar will refer other Indian founders facing the same journey. Geographic referral networks are tight — one successful client in a source-market community produces multiple downstream referrals.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. How Boyar Executes This With No Geographic Presence in Source Markets</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">A. Corridor-specific content does the heavy lifting</p>
+                  <p className="text-justify">Publishing an "India to UAE Expansion Guide" attracts exactly the right audience without requiring boots on the ground in the source market. The content itself signals expertise for that specific corridor.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">B. LinkedIn geolocation filters replace physical presence</p>
+                  <p className="text-justify">Sales Navigator allows Boyar to filter by company geography, founder nationality, industry, and seniority — identifying expansion-ready prospects in any source market without a local office.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">C. Expansion signals are publicly visible and easy to monitor</p>
+                  <p className="text-justify">Company announcements, LinkedIn posts about new market entry, job postings for "Country Manager UAE", and press releases about new offices are publicly available signals that identify expansion-ready prospects in real time.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. A single corridor guide positions Boyar as the specialist for that route</p>
+                  <p className="text-justify">Publishing a comprehensive, jurisdiction-specific expansion guide for one corridor positions Boyar as the specialist for that route within 60–90 days. No competitor currently owns any specific corridor with authoritative published content.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. Diaspora networks in destination markets are powerful referral hubs</p>
+                  <p className="text-justify">Indian, British, and Southeast Asian professional communities in the UAE and Singapore are active and well-connected. Boyar can build relationships within these diaspora networks to receive referrals from community members helping peers from their home markets expand internationally.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">F. The diagnostic call converts at extremely high rates for expansion clients</p>
+                  <p className="text-justify">A prospect mid-expansion facing structural or banking challenges converts almost immediately when Boyar provides a clear, experienced diagnosis. The combination of urgency, complexity, and corridor-specific knowledge makes conversion the natural outcome of the first call.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. Target Client Profiles</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Indian tech and fintech founders</strong> expanding to UAE or Singapore for banking access and holding structure optimisation</li>
+                  <li className="text-justify"><strong>UK and European businesses</strong> establishing offshore holding structures in Cayman or BVI for international investor access and tax efficiency</li>
+                  <li className="text-justify"><strong>Crypto and Web3 companies</strong> relocating from restrictive jurisdictions to UAE, Malta, or Lithuania for VASP licensing and banking</li>
+                  <li className="text-justify"><strong>Family-owned businesses</strong> internationalising for succession planning, asset protection, and multi-generational wealth structuring</li>
+                  <li className="text-justify"><strong>Fund managers</strong> establishing parallel or feeder vehicles in Cayman, BVI, or Luxembourg for international LP access</li>
+                  <li className="text-justify"><strong>Trading and financial services companies</strong> from CIS or Eastern Europe seeking banking normalisation and compliant corporate restructuring</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Corridor-specific content → Expansion signal detection → Targeted outreach → Expansion diagnostic call → Multi-service mandate (entity + banking + compliance + substance) → Ongoing annual maintenance → Source-market referral loop. One corridor built to authority level produces a self-sustaining referral engine within 6–12 months. Three active corridors cover the majority of Boyar's target client base at scale.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Enterprise Licensing Expansion Funnels
+  if (isEnterpriseLicensingExpansionModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Enterprise Licensing Expansion Funnels</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Enterprise Licensing Expansion Funnels
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Model Definition & Strategic Framework
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Model Definition</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  The Enterprise Licensing Expansion Funnel targets mid-to-large regulated businesses that already hold one regulatory licence and are now expanding that licensing footprint into new jurisdictions, new product lines, or new regulatory regimes. This is distinct from first-time licensing — these are companies with established compliance teams, existing regulated operations, and strategic expansion mandates requiring a trusted external advisory partner to execute jurisdiction-by-jurisdiction licensing rollouts.
+                </p>
+                <p className="text-justify">The model targets enterprises undergoing one or more of the following expansion scenarios:</p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Licence passporting</strong> — extending an existing EU licence (EMI, AIFMD, MiFID) into new member states through passporting notifications and local substance setup</li>
+                  <li className="text-justify"><strong>Multi-jurisdiction VASP rollout</strong> — a company licensed in one jurisdiction (e.g., Lithuania VASP) expanding into UAE VARA, UK FCA, or Singapore MAS frameworks</li>
+                  <li className="text-justify"><strong>Licence variation and scope expansion</strong> — adding new regulated activities (e.g., adding custody to an existing exchange licence, or adding retail to a wholesale fund licence)</li>
+                  <li className="text-justify"><strong>MiCA transition for existing crypto businesses</strong> — companies operating under national crypto regimes now required to obtain CASP authorisation under the EU-wide MiCA framework by July 2026</li>
+                  <li className="text-justify"><strong>Post-acquisition licensing integration</strong> — enterprises that have acquired a regulated entity and need to restructure, re-licence, or integrate it into the group's existing regulatory framework</li>
+                  <li className="text-justify"><strong>New product line licensing</strong> — a regulated financial institution adding a new product vertical (e.g., a bank adding a crypto custody service, or an EMI adding a lending product) that requires a separate or amended authorisation</li>
+                </ul>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-4">
+                  <p className="text-justify">
+                    Enterprise licensing clients represent Boyar's highest average mandate values — multi-jurisdiction rollouts typically span $150K–$500K+ in total advisory fees across structure, application preparation, regulator liaison, banking, and ongoing compliance across multiple entities and jurisdictions simultaneously.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. Why Enterprise Licensing Expansion Is Boyar's Highest-Value Acquisition Target</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">A. Mandate values are the largest in Boyar's service portfolio</p>
+                  <p className="text-justify">
+                    A single enterprise licensing expansion engagement — covering three jurisdictions, entity restructuring, banking across multiple entities, and ongoing compliance — can generate $200K–$500K+ in total fees. No other client type produces this level of mandate value from a single relationship.
+                  </p>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">B. Enterprise clients produce multi-year retainer relationships</p>
+                  <p className="text-justify">
+                    Once Boyar is embedded as the licensing advisor for an enterprise, the relationship continues through every new jurisdiction, every licence variation, every annual renewal, and every regulatory change. A single enterprise client can generate $80K–$200K in recurring annual advisory fees across the relationship lifecycle.
+                  </p>
+                </div>
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">C. MiCA creates an immediate and time-bound enterprise mandate wave</p>
+                  <p className="text-justify">
+                    Every crypto business currently operating under a national VASP registration in the EU — including large, established exchanges and financial institutions — must obtain CASP authorisation under MiCA or cease EU operations. This creates a concentrated, high-urgency mandate wave affecting hundreds of enterprise-scale businesses simultaneously.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. Enterprise compliance teams need external specialists, not generalists</p>
+                  <p className="text-justify">
+                    Enterprise compliance teams are competent in their existing jurisdictions but lack the cross-jurisdictional depth needed for rapid multi-market licensing expansion. They actively seek specialist advisory firms who can execute in parallel across multiple regulatory regimes — which is precisely Boyar's positioning.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. Enterprise referrals operate at industry level</p>
+                  <p className="text-justify">
+                    When Boyar successfully executes a multi-jurisdiction licensing rollout for an enterprise, the compliance director or GC refers Boyar to peers at other regulated firms facing the same challenge. Enterprise referrals produce enterprise-scale clients — one referral can be worth $150K–$300K in mandate value.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">F. Post-acquisition licensing integration is chronically underserved</p>
+                  <p className="text-justify">
+                    When regulated entities are acquired by larger groups, the regulatory integration — re-licensing, change of control notifications, group structure compliance — is complex, urgent, and typically not handled well by the acquiring entity's existing advisors. Boyar's expertise in multi-entity regulatory architecture positions it perfectly for this underserved mandate type.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. How Boyar Accesses Enterprise Clients Without an Enterprise Brand</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">A. Enterprise compliance directors and GCs are reachable on LinkedIn</p>
+                  <p className="text-justify">
+                    Chief Compliance Officers, General Counsels, and Heads of Regulatory Affairs at mid-size regulated firms (50–500 employees) are active on LinkedIn and engage with regulatory content. They are not protected by gatekeepers in the way that C-suite executives at large corporates are.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">B. MiCA urgency makes enterprise outreach welcomed rather than intrusive</p>
+                  <p className="text-justify">
+                    A compliance director at an EU crypto firm receiving a message about MiCA CASP transition architecture in early 2025 is grateful, not annoyed. The deadline creates a context where outreach about licensing solutions is a service, not a sales pitch.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">C. Technical content demonstrates enterprise-grade capability before the first call</p>
+                  <p className="text-justify">
+                    Publishing a detailed MiCA CASP application roadmap, a multi-jurisdiction VASP comparison matrix, or a change of control regulatory notification guide signals to enterprise compliance teams that Boyar operates at their level of technical sophistication — before any conversation takes place.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. CFO / GC Roundtable model provides warm access to enterprise decision-makers</p>
+                  <p className="text-justify">
+                    Boyar's existing CFO/GC Roundtable channel provides a direct route to the exact enterprise decision-makers who commission licensing expansion mandates. One roundtable participant who is evaluating a multi-jurisdiction licensing rollout converts this channel into a direct enterprise mandate pipeline.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. Industry event presence creates enterprise credibility rapidly</p>
+                  <p className="text-justify">
+                    Speaking or presenting at a single fintech or crypto compliance conference positions Boyar in front of 50–200 enterprise compliance professionals simultaneously. One 20-minute presentation on MiCA transition architecture produces more enterprise-quality leads than months of individual outreach.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. Target Enterprise Client Profiles</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Mid-size crypto exchanges</strong> holding national VASP registrations in EU jurisdictions now required to transition to MiCA CASP authorisation</li>
+                  <li className="text-justify"><strong>EMI / PI licence holders</strong> expanding payment services into new EU member states or adding new regulated products requiring licence variation</li>
+                  <li className="text-justify"><strong>Fund managers</strong> expanding from single-jurisdiction fund structures into multi-jurisdiction parallel vehicles for international LP access</li>
+                  <li className="text-justify"><strong>Fintech companies</strong> that have grown beyond their original licensing scope and need to expand, vary, or restructure their regulatory permissions</li>
+                  <li className="text-justify"><strong>Financial services groups</strong> that have made acquisitions and need to integrate the target's regulatory licences into the group structure</li>
+                  <li className="text-justify"><strong>iGaming operators</strong> expanding from one licence jurisdiction into multiple markets requiring separate licensing in each</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Technical content targeting enterprise compliance professionals → Signal detection (MiCA deadline, expansion announcement, acquisition) → Outreach to CCO / GC / Head of Regulatory Affairs → Enterprise diagnostic call → Multi-jurisdiction licensing rollout mandate → Annual compliance retainer across all licensed entities → Enterprise peer referral. One enterprise client = $150K–$500K mandate value + $80K–$200K annual recurring. This is Boyar's highest single-client revenue category.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // FinTech API Ecosystem Funnels
+  if (isFintechApiEcosystemModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">FinTech API Ecosystem Funnels</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                FinTech API Ecosystem Funnels
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Model Definition & Strategic Framework
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Model Definition</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  The FinTech API Ecosystem Funnel is an acquisition model where Boyar Partners embeds itself within the partner networks, developer ecosystems, and distribution channels of established fintech infrastructure providers — becoming the preferred regulatory and structuring advisor recommended to every new business that integrates those providers' APIs and services.
+                </p>
+                <p className="text-justify">
+                  FinTech API providers — payment processors, banking-as-a-service platforms, KYC/AML technology vendors, crypto infrastructure providers, and open banking aggregators — onboard hundreds of new business clients every month. Each of those businesses typically needs:
+                </p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>A compliant legal entity</strong> — correctly structured to access the API provider's services and satisfy their onboarding requirements</li>
+                  <li className="text-justify"><strong>A regulatory licence</strong> — EMI, PI, VASP, MSB, or equivalent depending on the use case and target market</li>
+                  <li className="text-justify"><strong>A banking relationship</strong> — operational and settlement accounts that meet the API provider's requirements</li>
+                  <li className="text-justify"><strong>An AML/KYC framework</strong> — compliant policies and procedures required by the API provider before go-live</li>
+                  <li className="text-justify"><strong>A jurisdiction strategy</strong> — determining where to incorporate and licence to maximise API provider access while minimising regulatory burden</li>
+                </ul>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-4">
+                  <p className="text-justify">
+                    By becoming the recommended advisory partner of 3–5 fintech API providers, Boyar receives a continuous stream of pre-qualified referrals — businesses that have already committed to building a regulated fintech product and urgently need exactly the services Boyar provides. The API provider does the prospecting. Boyar closes the mandate.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. Why FinTech API Ecosystem Partnerships Are Exceptionally High-Value</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">A. API providers onboard dozens of new clients monthly — each needing Boyar's services</p>
+                  <p className="text-justify">
+                    A mid-size banking-as-a-service provider onboards 20–50 new business clients per month. A crypto infrastructure provider may onboard 10–30 new exchanges or wallet operators per quarter. Even a 10% referral conversion rate produces 2–5 new Boyar mandates per month from a single provider relationship.
+                  </p>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">B. API provider referrals are pre-qualified and high-intent</p>
+                  <p className="text-justify">
+                    A business that has already integrated a payment API or crypto infrastructure service has committed to building a regulated product. They are not evaluating whether to pursue regulation — they are actively seeking an advisor to get them there. Conversion rates from API provider referrals are significantly higher than cold outreach.
+                  </p>
+                </div>
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">C. The relationship benefits both parties symmetrically</p>
+                  <p className="text-justify">
+                    API providers benefit from recommending Boyar because it increases the speed and compliance quality of their clients' go-live — reducing their own onboarding friction and compliance risk. Boyar benefits from a pre-qualified referral stream. This mutual benefit makes the partnership self-reinforcing and durable.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. API ecosystem clients are typically high-growth and multi-service</p>
+                  <p className="text-justify">
+                    Businesses building on fintech APIs are growth-stage companies with expanding regulatory footprints. A client that starts with a single EMI licence in one jurisdiction frequently expands to additional markets, additional licence types, and additional banking relationships — all generating further Boyar mandates over a multi-year relationship.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. API providers are highly accessible compared to traditional enterprise clients</p>
+                  <p className="text-justify">
+                    Partnership managers and business development leads at fintech API providers are active on LinkedIn, attend industry events, and are incentivised to build their partner ecosystems. A single 30-minute conversation with a partnerships lead at a mid-size API provider can unlock a referral channel producing 10–20 mandates per year.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">F. No competitor currently occupies this channel systematically</p>
+                  <p className="text-justify">
+                    Most offshore advisory firms do not have structured partnership programmes with fintech API providers. The channel is open, untapped, and produces disproportionate mandate volume relative to the relationship investment required to establish it.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. Target API Provider Categories</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Banking-as-a-Service (BaaS) platforms</strong> — providers offering IBAN issuance, account management, and payment rails to fintech builders (e.g., Railsr, Swan, Solaris, Treezor)</li>
+                  <li className="text-justify"><strong>Crypto infrastructure providers</strong> — custody APIs, trading infrastructure, and blockchain node providers onboarding exchanges, wallets, and DeFi platforms (e.g., Fireblocks, BitGo, Copper, Alchemy)</li>
+                  <li className="text-justify"><strong>Payment processing APIs</strong> — card issuing, acquiring, and cross-border payment providers requiring their clients to hold appropriate licences (e.g., Stripe Treasury, Adyen for Platforms, Modulr)</li>
+                  <li className="text-justify"><strong>KYC / AML technology vendors</strong> — identity verification and transaction monitoring providers whose clients are required to have compliant AML frameworks before go-live (e.g., Sumsub, Onfido, Sardine)</li>
+                  <li className="text-justify"><strong>Open banking aggregators</strong> — account information and payment initiation service providers requiring their business clients to hold PSD2 registration or equivalent</li>
+                  <li className="text-justify"><strong>FX and liquidity providers</strong> — providers of currency conversion and liquidity rails requiring regulated corporate structures and banking relationships from their clients</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. How Boyar Executes This With No Existing API Provider Relationships</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">A. Partnership managers are the entry point, not the CEO</p>
+                  <p className="text-justify">Every API provider has a partnerships or business development team whose job is to build the partner ecosystem. These individuals are actively looking for advisory firms like Boyar to recommend to their clients. The conversation is welcomed, not sold.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">B. A simple value proposition opens the door immediately</p>
+                  <p className="text-justify">"We help your clients get licensed, structured, and banked faster — which means they go live on your platform sooner and with fewer compliance issues." This is a direct benefit to the API provider's onboarding metrics and client success outcomes.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">C. Start with KYC/AML vendors — they have the most acute referral need</p>
+                  <p className="text-justify">KYC/AML technology vendors frequently encounter clients who need help building compliant AML frameworks before they can use the vendor's product. Boyar can position as the firm that solves this blocker — making the vendor's own sales process smoother.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. Co-produced content accelerates partnership credibility</p>
+                  <p className="text-justify">Offering to co-author a guide with the API provider — "How to get licensed and banked before integrating [Provider Name]'s API" — gives the provider valuable content for their client base while positioning Boyar as their recommended advisor. Both parties benefit from the co-branded distribution.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  API provider partnership established → Client referral received (pre-qualified, high-intent) → Licensing and structuring diagnostic → Full mandate (entity + licence + banking + AML framework) → Client goes live on API provider platform → API provider sends next referral. Three active API provider partnerships each producing 5–10 referrals per quarter = 15–30 pre-qualified mandates per quarter. This is the highest referral-density channel Boyar can build with the least ongoing prospecting effort.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Tokenization + Structuring Hybrid Funnels
+  if (isTokenizationStructuringHybridModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Tokenization + Structuring Hybrid Funnels</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Tokenization + Structuring Hybrid Funnels
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Model Definition & Strategic Framework
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Model Definition</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  The Tokenization + Structuring Hybrid Funnel is a high-value acquisition model that targets clients who require both tokenization advisory and comprehensive corporate structuring simultaneously — clients whose business model sits at the intersection of blockchain-based asset issuance and traditional offshore corporate architecture.
+                </p>
+                <p className="text-justify">
+                  Unlike pure tokenization mandates (which focus on the token layer) or pure structuring mandates (which focus on the corporate layer), the hybrid model addresses clients who cannot separate the two. The tokenization only works if the underlying structure is correct, and the structure only functions if the token framework is legally compliant. Examples of hybrid client scenarios include:
+                </p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Real estate tokenization with holding structure:</strong> A developer tokenizing a property portfolio requires a Cayman or BVI SPV as the asset-holding entity, a foundation or trust as the governance layer, and a compliant token issuance framework sitting above both</li>
+                  <li className="text-justify"><strong>Private equity fund with tokenized LP interests:</strong> A GP tokenizing limited partner interests needs a Cayman LP structure, a CIMA-registered fund, an investor onboarding framework, and a MiCA-compliant or securities law-compliant token issuance model</li>
+                  <li className="text-justify"><strong>Family office with tokenized asset portfolio:</strong> A UHNW family structuring their asset portfolio across trusts, foundations, and tokenized investment vehicles requires the corporate architecture and the token governance layer designed together from day one</li>
+                  <li className="text-justify"><strong>Tokenized commodity or royalty stream:</strong> A commodity trader or IP rights holder tokenizing future cashflows needs an SPV to hold the underlying asset, a distribution mechanism, and a compliant token structure that satisfies securities or asset-referenced token rules under MiCA</li>
+                  <li className="text-justify"><strong>Web3 company with complex multi-entity architecture:</strong> A crypto business requiring a Cayman foundation for token governance, a BVI holding company, an operational entity in UAE or Lithuania, and VASP licensing across multiple jurisdictions — all designed as a single integrated structure</li>
+                </ul>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-4">
+                  <p className="text-justify">
+                    The hybrid mandate is Boyar's most complex and highest-value single engagement type. Because it requires simultaneous expertise in corporate structuring, trust and foundation law, regulatory licensing, banking, and token governance — almost no competitor can execute the full scope. Boyar's multi-disciplinary positioning makes it the natural choice for clients whose needs span all of these domains at once.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. Why the Hybrid Model Produces Boyar's Most Complex and Valuable Mandates</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">A. Hybrid mandates cannot be fragmented across multiple advisors</p>
+                  <p className="text-justify">
+                    A client who needs both tokenization and structuring cannot use a corporate law firm for the structure and a crypto consultant for the token layer — the two must be designed together or they create legal and regulatory conflicts. Boyar's ability to handle both as a single integrated mandate is a direct competitive moat with no viable alternative.
+                  </p>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">B. Mandate values are the highest in Boyar's portfolio</p>
+                  <p className="text-justify">
+                    A hybrid mandate spanning foundation setup, SPV formation, VASP licensing, token framework advisory, banking, and ongoing compliance across multiple entities typically generates $120K–$400K in total fees. The complexity and multi-phase nature of these engagements also produces the longest and most durable client relationships.
+                  </p>
+                </div>
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">C. Real-world asset tokenization is the fastest-growing segment of institutional crypto adoption</p>
+                  <p className="text-justify">
+                    BlackRock, Franklin Templeton, JPMorgan, and dozens of institutional asset managers have launched tokenized fund products. This institutional validation is driving mid-market asset managers, real estate developers, and family offices to explore tokenization — creating a rapidly expanding addressable market for hybrid advisory mandates.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. The hybrid client is highly sophisticated and values expertise over price</p>
+                  <p className="text-justify">
+                    Clients pursuing tokenization + structuring hybrid mandates are typically fund managers, family offices, real estate developers, or institutional-grade crypto businesses. They select advisors based on demonstrated technical depth, not fee competition. Boyar's ability to speak authoritatively across both domains immediately differentiates it from every generalist competitor.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. MiCA forces existing token projects to restructure their corporate architecture</p>
+                  <p className="text-justify">
+                    Many Web3 companies that issued tokens before MiCA did so with inadequate or non-existent corporate structures. MiCA compliance now requires these companies to build the corporate architecture retroactively — creating a large wave of hybrid mandates from existing token projects needing both structural remediation and regulatory compliance simultaneously.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">F. Hybrid clients produce the most valuable long-term relationships</p>
+                  <p className="text-justify">
+                    A client whose entire corporate and token architecture was designed by Boyar will return to Boyar for every subsequent change — new jurisdiction, new token issuance, new fund vehicle, new banking relationship. The depth of the initial engagement creates a near-permanent advisory relationship with high recurring value.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. How Boyar Attracts Hybrid Mandate Clients</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">A. Publish integrated architecture content that no competitor produces</p>
+                  <p className="text-justify">
+                    A diagram showing "Cayman Foundation + BVI SPV + VASP Licence + MiCA Token Framework" as a single integrated architecture is immediately recognised by sophisticated clients as the work of an advisor who understands both worlds. This content attracts exactly the right audience and produces inbound inquiries from clients who already know they need the hybrid model.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">B. RWA tokenization communities are concentrated and accessible</p>
+                  <p className="text-justify">
+                    Real-world asset tokenization communities — on LinkedIn, in private Telegram groups, at events like Token2049 and RWA Summit — are the primary gathering points for hybrid mandate clients. Active participation in these communities with technical content positions Boyar as the go-to firm before any prospect has searched for an advisor.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">C. Family office and fund manager networks provide warm access to hybrid clients</p>
+                  <p className="text-justify">
+                    Family offices and fund managers exploring tokenization are reachable through Boyar's existing family office acquisition and CFO/GC roundtable channels. The hybrid mandate is often the natural next step when a structuring conversation with a family office or fund manager reveals tokenization interest.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. Tokenization dealflow syndicates refer hybrid clients directly</p>
+                  <p className="text-justify">
+                    Syndicates and launchpads that refer tokenization projects (covered in the Tokenization Dealflow model) frequently encounter projects whose complexity exceeds a pure token advisory scope. These projects — which need both the token framework and the full corporate architecture — convert naturally into hybrid mandates referred through the same syndicate relationships.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. The free hybrid diagnostic converts at the highest rate of any Boyar service</p>
+                  <p className="text-justify">
+                    A 45-minute session where Boyar maps both the corporate structure and the token framework for a prospective client — showing how both layers interact and where the risks lie — produces an almost immediate mandate decision. The complexity of the problem and the clarity of Boyar's analysis makes the engagement letter a natural outcome of the first call.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. Target Client Profiles</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Real estate developers and asset managers</strong> tokenizing property portfolios or fractional ownership structures requiring SPV + token issuance architecture</li>
+                  <li className="text-justify"><strong>Private equity and venture GPs</strong> exploring tokenized LP interests or secondary liquidity mechanisms for fund investors</li>
+                  <li className="text-justify"><strong>Family offices and UHNW individuals</strong> structuring multi-asset portfolios that include tokenized investment vehicles alongside traditional trust and foundation structures</li>
+                  <li className="text-justify"><strong>Commodity traders and IP rights holders</strong> tokenizing future revenue streams requiring both an asset-holding SPV and a MiCA-compliant token framework</li>
+                  <li className="text-justify"><strong>Web3 companies with complex multi-entity architectures</strong> requiring foundation governance, holding company structure, operational entities, VASP licensing, and token governance designed as a single integrated system</li>
+                  <li className="text-justify"><strong>Existing token projects</strong> needing retroactive structural remediation for MiCA compliance alongside corporate architecture that was never properly established at launch</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Integrated architecture content → Inbound from sophisticated client with dual structuring + tokenization need → Free hybrid diagnostic → Full multi-phase mandate (foundation + SPV + VASP licence + token framework + banking) → Multi-year ongoing advisory relationship → Referral to next hybrid client in same network. One hybrid mandate = $120K–$400K in total fees with the highest recurring advisory value of any client type Boyar serves.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // AI-Based Prospect Scoring
+  if (isAiProspectScoringModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">AI-Based Prospect Scoring & Personalization</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                AI-Based Prospect Scoring & Personalization
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Model Definition & Strategic Framework
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Model Definition</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  The AI-Based Prospect Scoring & Personalization Model is an intelligence layer that sits above all of Boyar Partners' other acquisition channels — using AI tools to identify, rank, and personalise outreach to the highest-intent prospects across every funnel simultaneously. Rather than treating all prospects equally, this model ensures Boyar's limited founder time is concentrated on the contacts most likely to convert, at the moment they are most likely to engage.
+                </p>
+                <p className="text-justify">
+                  The model operates across three functions:
+                </p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Prospect scoring</strong> — using AI to analyse signals across LinkedIn activity, company data, regulatory events, and public announcements to assign an intent score to every prospect in the CRM pipeline, ranking them by conversion likelihood</li>
+                  <li className="text-justify"><strong>Outreach personalisation</strong> — using AI to generate highly personalised first-contact messages, follow-up sequences, and content recommendations tailored to each prospect's specific industry, jurisdiction, regulatory situation, and behavioural signals</li>
+                  <li className="text-justify"><strong>Engagement monitoring</strong> — using AI to track which content pieces, outreach formats, and messaging angles produce the highest response and conversion rates across each client segment, and continuously refining the approach based on live performance data</li>
+                </ul>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-4">
+                  <p className="text-justify">
+                    At Boyar's current stage, this model does not require expensive enterprise AI software. It is executed using a combination of readily available tools — Claude, ChatGPT, Apollo.io, LinkedIn Sales Navigator, and a well-structured Notion CRM — combined with a disciplined weekly process for scoring, personalising, and prioritising outreach. The competitive advantage is not the technology — it is the systematic application of AI to a process that most boutique advisory firms still execute manually and inconsistently.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. Why AI-Based Scoring & Personalization Multiplies the Output of Every Other Acquisition Model</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">A. Founder time is Boyar's scarcest resource — scoring ensures it goes to the right prospects</p>
+                  <p className="text-justify">
+                    Without scoring, outreach is distributed across all prospects equally. With scoring, Inderjeet spends his limited daily outreach time exclusively on the 10–15% of prospects who are most likely to convert — dramatically increasing the return on every hour invested in business development.
+                  </p>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">B. Personalisation at scale is now possible without hiring a sales team</p>
+                  <p className="text-justify">
+                    AI tools can generate a bespoke, highly relevant first-contact message for each of the 30 prospects in this week's outreach list in under 10 minutes — referencing their specific company, recent LinkedIn activity, regulatory situation, and expansion corridor. Generic outreach converts at 2–5%. Personalised outreach converts at 15–30%. AI makes personalisation at scale possible for a two-person firm.
+                  </p>
+                </div>
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">C. High-intent signals are time-sensitive — AI enables real-time detection and response</p>
+                  <p className="text-justify">
+                    A prospect who posts about MiCA compliance on Monday morning is 10× more receptive to outreach on Monday afternoon than on Friday. AI monitoring tools can detect these signals in near real-time and flag them for immediate outreach — turning a passive pipeline into a live intent detection system.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. Continuous performance data improves every subsequent outreach cycle</p>
+                  <p className="text-justify">
+                    By tracking which message types, content pieces, and outreach angles produce the highest response rates across each prospect segment, Boyar builds a proprietary performance dataset that makes every subsequent outreach cycle more effective than the last. This compounding improvement is unavailable to competitors who do not systematically track and analyse their outreach performance.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. AI scoring prevents high-value prospects from going cold in a large pipeline</p>
+                  <p className="text-justify">
+                    As Boyar's pipeline grows across multiple acquisition channels, manually tracking which prospects need follow-up and when becomes impossible. AI-assisted CRM scoring surfaces prospects who have gone warm but not yet been followed up — preventing high-value leads from being lost simply due to volume management failure.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">F. This model costs almost nothing to implement at Boyar's current stage</p>
+                  <p className="text-justify">
+                    The tools required — Claude API, Apollo.io, LinkedIn Sales Navigator, Notion — are already accessible at low monthly cost. The competitive advantage comes from process discipline, not technology spend. A boutique firm with a disciplined AI-assisted process outperforms a larger firm using expensive CRM software without a coherent scoring methodology.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. The Four Signal Categories Boyar Scores</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Signal Category 1 — Regulatory Intent Signals (highest weight)</p>
+                  <p className="text-justify">Posts about MiCA, VARA, FCA, licensing challenges, AML compliance, substance requirements, or banking difficulties. A prospect broadcasting regulatory pain is at the top of the intent pyramid — they need help now.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Signal Category 2 — Expansion & Growth Signals (high weight)</p>
+                  <p className="text-justify">Fundraising announcements, new market entry posts, hiring for international roles, partnership announcements with regulated entities. These signals indicate a company on the move — structuring and licensing needs follow expansion decisions within weeks.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Signal Category 3 — Content Engagement Signals (medium weight)</p>
+                  <p className="text-justify">Prospects who like, comment on, or share Boyar's LinkedIn content have self-identified as interested in the topics Boyar covers. They are warmer than cold prospects and should be prioritised for follow-up outreach.</p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Signal Category 4 — Profile & Company Fit Signals (baseline weight)</p>
+                  <p className="text-justify">Seniority (Founder / CEO / CFO / GC / CCO), industry (crypto / fintech / fund management / trading), company size (10–500 employees), and jurisdiction footprint (operating in or targeting Boyar's core markets). These define whether a prospect is structurally a Boyar client — the other signal categories determine timing and urgency.</p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. What AI Personalisation Produces for Each Prospect</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">For each scored prospect, AI generates the following personalised assets before outreach begins:</p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>A personalised connection request note</strong> — referencing the prospect's specific company, recent activity, and the specific Boyar service most relevant to their situation</li>
+                  <li className="text-justify"><strong>A post-connection value message</strong> — delivering the most relevant intelligence asset for their industry, jurisdiction, and apparent need</li>
+                  <li className="text-justify"><strong>A follow-up sequence (2–3 messages)</strong> — spaced 5–10 days apart, each adding a new piece of relevant value without repeating the previous message</li>
+                  <li className="text-justify"><strong>A diagnostic call agenda</strong> — pre-prepared based on the prospect's company profile, regulatory situation, and expansion signals, so Boyar can open the first call with precise, relevant questions rather than generic discovery</li>
+                </ul>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  AI scores all prospects weekly → Top 15% flagged for immediate outreach → AI generates personalised message sequence for each → Founder sends in under 30 minutes → Higher response rates → More diagnostic calls booked → More mandates won → Performance data fed back into scoring model → Next cycle is more effective than the last. This model does not replace any other acquisition channel — it makes every other channel 2–3× more productive by ensuring the right message reaches the right prospect at the right moment.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Predictive Competitor Monitoring
+  if (isPredictiveCompetitorMonitoringModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">Predictive Competitor Monitoring</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+ 
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                Predictive Competitor Monitoring
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Model Definition & Strategic Framework
+              </h2>
+            </div>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Model Definition</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Predictive Competitor Monitoring is a systematic intelligence model where Boyar Partners continuously tracks competitor firms — Dixcart, Amicorp, Astons, Ocra, Rosemont, and others — to identify gaps in their service delivery, weaknesses in their client relationships, and moments where their clients are most likely to be dissatisfied or underserved. These intelligence insights are then used to position Boyar precisely where competitors are failing, attract their dissatisfied clients, and design content and outreach that directly addresses the gaps competitors consistently leave open.
+                </p>
+                <p className="text-justify">The model operates across four intelligence tracks:</p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Competitor positioning gaps</strong> — identifying service areas, jurisdictions, or client types that competitors under-serve or do not serve at all, allowing Boyar to own those gaps through targeted content and outreach</li>
+                  <li className="text-justify"><strong>Competitor client dissatisfaction signals</strong> — monitoring reviews, community complaints, LinkedIn posts, and public commentary where competitor clients express frustration, delays, poor service, or unmet expectations</li>
+                  <li className="text-justify"><strong>Competitor content and messaging analysis</strong> — understanding what competitors publish, how they position themselves, and where their messaging is weak or generic — so Boyar's content is always more specific, more technical, and more credible by comparison</li>
+                  <li className="text-justify"><strong>Competitor team movement tracking</strong> — monitoring senior departures from competitor firms, which often signal client relationship instability and create windows for Boyar to engage those orphaned clients</li>
+                </ul>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg mt-4">
+                  <p className="text-justify">
+                    This model does not involve any unethical intelligence gathering. All monitoring is conducted through publicly available sources — LinkedIn, Google, review platforms, industry forums, and public company information. The competitive advantage comes from systematic analysis of publicly visible information that competitors assume nobody is tracking.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. Why Competitor Monitoring Is a Direct Client Acquisition Tool</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">A. Competitor gaps are Boyar's best positioning opportunities</p>
+                  <p className="text-justify">
+                    Dixcart is strong in Isle of Man and Channel Islands but weak in crypto and VASP licensing. Amicorp has broad jurisdiction coverage but is perceived as slow and process-heavy for complex mandates. Astons is strong in CBI but weak in corporate structuring depth. Each gap is a positioning opportunity Boyar can own with targeted content and outreach before those clients even start searching for an alternative.
+                  </p>
+                </div>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">B. Dissatisfied competitor clients are the warmest possible prospects</p>
+                  <p className="text-justify">
+                    A client who is actively frustrated with their current TCSP provider has already decided they need a change — they just haven't found the right alternative yet. Reaching this client at the moment of dissatisfaction, with messaging that directly addresses the exact problem their current provider is failing to solve, produces the highest conversion rate of any prospect category.
+                  </p>
+                </div>
+                <div className="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <p className="font-semibold text-gray-900">C. Senior departures from competitor firms create predictable client instability windows</p>
+                  <p className="text-justify">
+                    When a senior relationship manager or director leaves Dixcart, Amicorp, or Rosemont, the clients they managed face a service disruption. These clients are suddenly without their trusted contact, often receiving reduced attention during the transition, and are far more open to evaluating alternatives than they would be under normal circumstances. LinkedIn tracks these departures in real time.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">D. Competitor content analysis reveals what Boyar should publish to dominate search and LinkedIn</p>
+                  <p className="text-justify">
+                    If Dixcart's LinkedIn publishes generic jurisdiction overviews and Amicorp publishes corporate structure diagrams with no regulatory depth, Boyar publishes technically precise, regulatory-specific content that makes competitors look generic by comparison. The bar in this market for content quality is low — systematic analysis of competitor content makes it easy to identify exactly where to set a higher standard.
+                  </p>
+                </div>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">E. Competitor pricing and service scope signals inform Boyar's own positioning</p>
+                  <p className="text-justify">
+                    Monitoring competitor pricing signals, service scope changes, and new jurisdiction announcements allows Boyar to anticipate market shifts and position in advance of competitors moving into a space — or to identify where competitors are retreating, creating openings for Boyar to fill.
+                  </p>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. Primary Competitors to Monitor</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="overflow-x-auto">
+                  <table className="min-w-full border border-gray-300 rounded-lg">
+                    <thead className="bg-gray-100">
+                      <tr>
+                        <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Competitor</th>
+                        <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Strength</th>
+                        <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-900">Known Gap / Weakness</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">Dixcart</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Isle of Man, Channel Islands, trusts</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Weak in crypto/VASP, slow for complex mandates, expensive</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">Amicorp</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Broad jurisdiction coverage, fund admin</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Process-heavy, impersonal, slow for boutique clients</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">Astons</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">CBI/residency, immigration</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Weak in corporate structuring depth, limited licensing capability</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">Ocra</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Offshore formation, BVI/Cayman volume</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Mass-market positioning, low advisory depth, no licensing</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800 font-semibold">Rosemont</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Fund services, fiduciary, Cayman</td>
+                        <td className="border border-gray-300 px-4 py-3 text-gray-800">Very conservative, limited crypto exposure, high minimum fees</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+ 
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Weekly competitor intelligence review → Gap identified → Boyar publishes content directly addressing that gap → Dissatisfied competitor client encounters Boyar's content → Inbound inquiry → Mandate won. Senior departure detected → Boyar reaches out to that firm's orphaned clients within 48 hours → High conversion rate due to timing. Competitor weakness mapped → Boyar owns that positioning in content and outreach → Prospects comparing Boyar to competitor always see Boyar as the more capable, more specific, more credible choice.
+                </p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // Algorithmic LinkedIn Content Distribution
+  if (isAlgorithmicLinkedinContentModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+
+          {/* Header */}
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">
+                  Algorithmic LinkedIn Content Distribution
+                </h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+
+          <main
+            className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8"
+            style={{ textAlign: "left" }}
+          >
+            {/* Title Block */}
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1
+                className="text-4xl font-bold mb-4 text-black"
+                style={{ fontFamily: "var(--font-benzin)" }}
+              >
+                Algorithmic LinkedIn Content Distribution
+              </h1>
+              <h2
+                className="text-2xl font-semibold mb-2 text-gray-800"
+                style={{ fontFamily: "var(--font-benzin)" }}
+              >
+                Model Definition & Strategic Framework
+              </h2>
+            </div>
+
+            {/* Section 1 — Definition */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                1. Model Definition
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Algorithmic LinkedIn Content Distribution is the practice of
+                  engineering every piece of content Boyar Partners publishes on
+                  LinkedIn — its format, structure, timing, topic, and engagement
+                  mechanics — specifically to maximise the reach LinkedIn's
+                  algorithm assigns to each post, and to ensure that reach lands
+                  on accounts that match Boyar's Ideal Client Profile.
+                </p>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="text-justify">
+                    Most firms post on LinkedIn hoping the algorithm distributes
+                    their content. This model reverses that dynamic: Boyar
+                    Partners studies how the algorithm works, builds every post
+                    to satisfy its ranking signals, and uses additional
+                    distribution levers — engagement pods, first-comment
+                    strategy, reshare networks, and paid amplification on
+                    organic performers — to systematically expand reach into
+                    target audiences. Content is not created and posted. It is
+                    engineered and deployed.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 2 — Why It Exists */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                2. Why This Model Exists — The LinkedIn Distribution Problem
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  LinkedIn has over one billion members. The average post reaches
+                  fewer than 5% of a page's or profile's followers. The
+                  difference between a post that reaches 200 people and one that
+                  reaches 20,000 is not the quality of the insight — it is how
+                  well the post satisfies LinkedIn's algorithmic ranking criteria
+                  in the critical first 60–90 minutes after publication.
+                </p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify">
+                    Boyar Partners produces genuinely expert, differentiated
+                    content on cross-border structuring, licensing, and banking
+                    — content that would interest thousands of relevant
+                    decision-makers. Without algorithmic distribution, it
+                    reaches a fraction of them
+                  </li>
+                  <li className="text-justify">
+                    The firm cannot afford paid advertising at scale in early
+                    stages — algorithmic distribution is the mechanism that
+                    produces organic reach at zero additional cost per impression
+                  </li>
+                  <li className="text-justify">
+                    Trust in advisory services is built through repeated
+                    exposure to credible expertise. Algorithmic distribution
+                    ensures decision-makers see Boyar's content multiple times,
+                    across multiple topics, before any direct outreach occurs —
+                    compressing the trust-building timeline from months to weeks
+                  </li>
+                  <li className="text-justify">
+                    Competitors in the TCSP and structuring space post
+                    inconsistently and without algorithmic intent — which means
+                    a systematic approach to LinkedIn distribution creates a
+                    disproportionate share of voice in the market
+                  </li>
+                </ul>
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="text-justify">
+                    LinkedIn's algorithm is not random. It is a deterministic
+                    ranking system with known inputs. This model is built on
+                    understanding and consistently satisfying those inputs — so
+                    Boyar's content earns the reach it deserves, every time.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 3 — How LinkedIn's Algorithm Works */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                3. How LinkedIn's Algorithm Works — The Mechanics
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  LinkedIn's content ranking system filters every post through
+                  four stages. Understanding these stages is the foundation of
+                  algorithmic content strategy.
+                </p>
+
+                <div className="space-y-3">
+                  {[
+                    {
+                      stage: "Stage 1 — Spam Filter (Automated, Instant)",
+                      color: "bg-slate-50 border border-slate-200",
+                      content:
+                        "Every post is immediately assessed by LinkedIn's automated spam detection. Posts are classified as spam, low quality, or clear. Spam and low-quality posts receive zero distribution. Triggers for spam classification include: external links in the post body, excessive hashtags (more than 5), keyword stuffing, or formatting patterns associated with mass posting tools. Clear posts proceed to Stage 2.",
+                    },
+                    {
+                      stage: "Stage 2 — Initial Distribution & Engagement Scoring (0–90 Minutes)",
+                      color: "bg-blue-50 border border-blue-200",
+                      content:
+                        "LinkedIn distributes the post to a small initial sample of the poster's first-degree connections — typically 1–5% of followers. It then measures the engagement quality of this sample over the next 60–90 minutes. It counts likes, comments, reshares, and dwell time (how long users spend reading the post without scrolling past). Comments from high-connection accounts carry more weight than likes. This is the most critical window in a post's lifecycle.",
+                    },
+                    {
+                      stage: "Stage 3 — Algorithm Amplification (Based on Stage 2 Score)",
+                      color: "bg-green-50 border border-green-200",
+                      content:
+                        "If Stage 2 engagement exceeds a threshold, LinkedIn's algorithm dramatically expands distribution — first to second-degree connections, then beyond. Posts that perform in the top decile in Stage 2 can reach 10x–50x their initial sample within 24–48 hours. Posts that underperform in Stage 2 receive no further distribution and are effectively buried, regardless of content quality.",
+                    },
+                    {
+                      stage: "Stage 4 — Editorial Review (High-Performing Posts Only)",
+                      color: "bg-purple-50 border border-purple-200",
+                      content:
+                        "Posts that achieve exceptional Stage 3 performance may be selected by LinkedIn's editorial team for further amplification through LinkedIn News, Collaborative Articles, or newsletter recommendations. This is rare but produces disproportionate reach. Increasing the probability of editorial selection requires consistent posting of genuinely educational, non-promotional content with high comment volume.",
+                    },
+                  ].map(({ stage, color, content }) => (
+                    <div key={stage} className={`p-4 ${color} rounded-lg shadow-sm`}>
+                      <p className="font-semibold text-gray-900 mb-2">{stage}</p>
+                      <p className="text-justify">{content}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="p-4 bg-amber-50 border-l-4 border-amber-400 rounded-r-lg">
+                  <p className="text-justify font-semibold">
+                    The strategic implication: everything Boyar does to engineer
+                    a post is aimed at maximising Stage 2 engagement in the
+                    first 60–90 minutes. Stage 3 and Stage 4 amplification
+                    follow automatically from Stage 2 performance.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 4 — The Five Distribution Levers */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                4. The Five Distribution Levers Boyar Controls
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Algorithmic distribution is not passive. Boyar controls five
+                  active levers that directly influence how far and to whom each
+                  post is distributed.
+                </p>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">
+                    Lever 1 — Post Format Engineering
+                  </p>
+                  <p className="text-justify mt-1">
+                    LinkedIn's algorithm has documented preferences for specific
+                    post formats that increase dwell time and comment probability.
+                    Text-only posts consistently outperform link posts because
+                    LinkedIn's algorithm penalises posts that direct users off
+                    the platform. Document posts (carousels / PDFs) produce the
+                    highest average reach because scrolling through pages
+                    generates dwell time signals. Video posts outperform images
+                    but underperform documents for reach. The format decision is
+                    made before the content is written — not after.
+                  </p>
+                  <ul className={`mt-2 ${listClass}`} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">
+                      <strong>Highest reach:</strong> Document/carousel posts,
+                      text-only posts with strong hooks
+                    </li>
+                    <li className="text-justify">
+                      <strong>Mid reach:</strong> Native video, poll posts
+                      (high engagement but lower quality signal)
+                    </li>
+                    <li className="text-justify">
+                      <strong>Lowest reach:</strong> External link posts, image
+                      posts with link in caption
+                    </li>
+                    <li className="text-justify">
+                      <strong>Boyar rule:</strong> External links always placed
+                      in first comment — never in post body
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">
+                    Lever 2 — Hook Architecture
+                  </p>
+                  <p className="text-justify mt-1">
+                    The first two lines of every LinkedIn post are the only lines
+                    visible before the "see more" cutoff. If these two lines do
+                    not arrest the scroll, dwell time is zero and Stage 2
+                    engagement fails. Hook quality is the single highest-leverage
+                    variable in post performance. Every post begins with a hook
+                    engineered to create a pattern interrupt — a statement that
+                    is counterintuitive, specific, or frames a tension the target
+                    audience recognises immediately.
+                  </p>
+                  <div className="mt-3 grid md:grid-cols-2 gap-3">
+                    <div className="p-3 bg-red-50 border-l-4 border-red-300 rounded-r-lg">
+                      <p className="text-sm font-semibold text-gray-900 mb-1">❌ Weak Hook</p>
+                      <p className="text-sm text-justify italic text-gray-700">
+                        "We are excited to share some thoughts on offshore
+                        structuring options for businesses looking to expand
+                        internationally."
+                      </p>
+                      <p className="text-xs text-gray-500 mt-1">Generic. No tension. Scrolled past.</p>
+                    </div>
+                    <div className="p-3 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                      <p className="text-sm font-semibold text-gray-900 mb-1">✓ Strong Hook</p>
+                      <p className="text-sm text-justify italic text-gray-700">
+                        "95% of founders choose the wrong jurisdiction for their
+                        holding company. Here is the decision framework most
+                        advisors never show you."
+                      </p>
+                      <p className="text-xs text-gray-500 mt-1">Specific. Counterintuitive. Stops the scroll.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">
+                    Lever 3 — Engagement Velocity Engineering (First 60 Minutes)
+                  </p>
+                  <p className="text-justify mt-1">
+                    Because LinkedIn's Stage 2 window is 60–90 minutes, the
+                    first wave of engagement on a post must arrive quickly and
+                    from high-quality accounts. This is engineered through three
+                    mechanisms:
+                  </p>
+                  <ul className={`mt-2 ${listClass}`} style={{ listStylePosition: "outside" }}>
+                    <li className="text-justify">
+                      <strong>First Comment Strategy:</strong> Immediately after
+                      posting, the founder posts a substantive first comment that
+                      adds a data point, asks a question, or extends the
+                      argument. This signals to the algorithm that engagement has
+                      already begun and gives readers a reason to also comment
+                    </li>
+                    <li className="text-justify">
+                      <strong>Internal Engagement:</strong> Boyar's team (both
+                      founders and staff) engage with the post within the first
+                      15 minutes — genuine comments, not just likes
+                    </li>
+                    <li className="text-justify">
+                      <strong>Engagement Pod Network:</strong> A curated group
+                      of 8–15 complementary professionals (lawyers, accountants,
+                      bankers, and other advisors in adjacent fields) who agree
+                      to engage with each other's posts within the first hour —
+                      structured reciprocally, never artificially. Comments must
+                      be substantive (3+ words)
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">
+                    Lever 4 — Strategic Hashtag & Topic Targeting
+                  </p>
+                  <p className="text-justify mt-1">
+                    LinkedIn distributes content to users who follow relevant
+                    hashtags and topics, in addition to the poster's connections.
+                    Using 3–5 highly specific hashtags — selected for relevance
+                    to the ICP rather than popularity — extends distribution
+                    beyond Boyar's existing network into audiences actively
+                    following those topics.
+                  </p>
+                  <div className="mt-3 grid md:grid-cols-2 gap-3">
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                      <p className="text-sm font-semibold text-gray-900 mb-1">Core Boyar Hashtags</p>
+                      <p className="text-sm text-gray-700">
+                        #OffshoreStructuring · #CorporateStructuring ·
+                        #CrossBorderExpansion · #VASPLicensing ·
+                        #TrustPlanning · #FamilyOffice · #WealthManagement ·
+                        #FinancialLicensing · #BankingAdvisory · #Tokenization
+                      </p>
+                    </div>
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                      <p className="text-sm font-semibold text-gray-900 mb-1">Posting Rule</p>
+                      <p className="text-sm text-gray-700">
+                        Maximum 5 hashtags per post. Always placed at the end
+                        of the post body. Never in the first 3 lines. Always
+                        matched to the specific topic — never generic (#business,
+                        #success are useless signals).
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">
+                    Lever 5 — Paid Amplification of Organic Winners
+                  </p>
+                  <p className="text-justify mt-1">
+                    When an organic post significantly outperforms baseline
+                    metrics (defined as 3x average impressions or 2x average
+                    engagement rate), it is boosted using LinkedIn Campaign
+                    Manager to extend reach into a precisely defined ICP
+                    audience — by job title, industry, geography, and company
+                    size. This is not a replacement for organic distribution —
+                    it is a multiplier applied only to content that has already
+                    proven its resonance with the audience. Spending ad budget
+                    on posts that have organically validated their appeal
+                    produces dramatically higher ROAS than running paid campaigns
+                    on cold, untested content.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 5 — Content Architecture */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                5. Content Architecture — What Boyar Posts and Why
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Content published under this model is not marketing content.
+                  It is expertise content — genuinely useful, technically
+                  credible, and structured to demonstrate the depth of knowledge
+                  that distinguishes Boyar from generalist advisors and
+                  commodity incorporators.
+                </p>
+
+                <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm bg-white">
+                  <table className="w-full text-sm text-left text-gray-800">
+                    <thead className="bg-gray-100 text-gray-900">
+                      <tr>
+                        <th className="px-4 py-3 border-b border-gray-200">Content Type</th>
+                        <th className="px-4 py-3 border-b border-gray-200">Format</th>
+                        <th className="px-4 py-3 border-b border-gray-200">Target Audience</th>
+                        <th className="px-4 py-3 border-b border-gray-200">Algorithm Goal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        ["Jurisdiction comparison frameworks", "Document / Carousel", "CFOs, founders, fund managers", "High dwell time from scrolling"],
+                        ["Regulatory update breakdowns", "Text-only post", "Compliance officers, GCs, licensing teams", "Quick shares, high saves"],
+                        ["Banking acceptance insights", "Text-only + first comment link", "Fintech founders, crypto operators", "High comment volume (controversial topic)"],
+                        ["Licensing deep dives (VASP, EMI, MSB)", "Document / Carousel", "Licensing applicants, crypto founders", "Extended dwell time"],
+                        ["Anonymised case studies", "Text-only", "Founders, family offices, HNWIs", "High engagement — relatability"],
+                        ["Myth-busting / counterintuitive takes", "Text-only", "Broad ICP — maximum reach posts", "Pattern interrupt → comments"],
+                        ["Jurisdiction-specific intelligence briefs", "Document", "Geographic expansion targets", "Reshares from relevant communities"],
+                        ["Founder Q&A / poll posts", "Poll or text", "Broad audience — discovery mechanism", "High engagement velocity in Stage 2"],
+                      ].map(([type, format, audience, goal], i) => (
+                        <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                          <td className="px-4 py-2 border-b border-gray-100 font-medium">{type}</td>
+                          <td className="px-4 py-2 border-b border-gray-100">{format}</td>
+                          <td className="px-4 py-2 border-b border-gray-100 text-gray-600">{audience}</td>
+                          <td className="px-4 py-2 border-b border-gray-100 text-gray-600">{goal}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg">
+                  <p className="text-justify">
+                    <strong>The content mix rule:</strong> 70% educational and
+                    technical (jurisdictions, regulations, structuring
+                    frameworks, banking intelligence) — 20% perspective and
+                    opinion (takes on market trends, regulatory shifts, advisory
+                    positioning) — 10% social proof (anonymised case outcomes,
+                    client results without confidential detail). Never more than
+                    10% promotional. LinkedIn's algorithm and its users both
+                    penalise overt self-promotion.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 6 — Audience Targeting Logic */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                6. Audience Targeting Logic — Who the Algorithm Reaches
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  LinkedIn's algorithm distributes content through three
+                  concentric circles of audience. Boyar's distribution strategy
+                  is designed to maximise penetration of each circle in sequence.
+                </p>
+
+                <div className="space-y-3">
+                  {[
+                    {
+                      circle: "Circle 1 — First-Degree Connections",
+                      color: "bg-blue-50 border-l-4 border-blue-500",
+                      desc: "Boyar's direct LinkedIn connections. Distribution here is proportional to connection quality — the algorithm prioritises showing posts to connections who have previously engaged with the poster's content. This is why consistent posting compounds: every post that earns engagement from a connection increases the probability that the next post reaches that connection. The connection base should be continuously expanded with ICP-matched accounts via the LinkedIn Executive Outreach model.",
+                    },
+                    {
+                      circle: "Circle 2 — Second-Degree Connections (The Amplification Zone)",
+                      color: "bg-green-50 border-l-4 border-green-500",
+                      desc: "When a first-degree connection comments on or reshares a Boyar post, LinkedIn distributes that post to the commenter's first-degree connections — who are Boyar's second-degree connections. This is where exponential reach is created. A comment from a well-connected CFO or fund manager exposes Boyar's content to hundreds of their peers in a single action. This is why comment quality from high-connection accounts matters more than likes — a like has no second-degree distribution effect.",
+                    },
+                    {
+                      circle: "Circle 3 — Hashtag & Topic Followers (Discovery Distribution)",
+                      color: "bg-purple-50 border-l-4 border-purple-500",
+                      desc: "LinkedIn distributes posts to users who follow the hashtags used in the post — regardless of whether they are connected to the poster. This is the primary discovery mechanism for reaching ICP accounts that are not yet in Boyar's network. A post on #VASPLicensing reaches every LinkedIn user who follows that hashtag. This is why hashtag selection must be ICP-specific — the goal is not maximum follower count on the hashtag but maximum relevance to the target audience.",
+                    },
+                  ].map(({ circle, color, desc }) => (
+                    <div key={circle} className={`p-4 ${color} rounded-r-lg`}>
+                      <p className="font-semibold text-gray-900">{circle}</p>
+                      <p className="text-justify mt-1">{desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Section 7 — Integration with ABM */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                7. Integration with AI-Driven ABM
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Algorithmic LinkedIn Content Distribution does not operate in
+                  isolation. It is the top-of-funnel awareness engine that feeds
+                  the AI-Driven ABM system — creating warm accounts before direct
+                  outreach is attempted.
+                </p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify">
+                    Accounts that engage with Boyar's LinkedIn content (like,
+                    comment, reshare, or visit the profile) are automatically
+                    flagged in Shield Analytics and cross-referenced with the
+                    ABM account list — elevating their tier score
+                  </li>
+                  <li className="text-justify">
+                    A Tier 3 ABM account that engages with two or more Boyar
+                    posts is automatically escalated to Tier 2 — the algorithm
+                    has identified them as interested; outreach is now warm
+                  </li>
+                  <li className="text-justify">
+                    A new account not previously on the ABM radar that comments
+                    substantively on a Boyar post is immediately added to the
+                    ABM system and scored — organic content surfaces qualified
+                    accounts that manual prospecting would have missed
+                  </li>
+                  <li className="text-justify">
+                    Content topics are calibrated against the ABM signal library
+                    — if a high volume of VASP licensing signals is detected in
+                    the ABM system, more VASP-related content is published to
+                    increase distribution to that audience segment
+                  </li>
+                </ul>
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <p className="text-justify">
+                    The flywheel: Content reaches ICP accounts → ICP accounts
+                    engage → Engagement elevates ABM tier → Outreach is
+                    triggered warm → Outreach converts to diagnostic call →
+                    Mandate. The content distribution model eliminates cold
+                    outreach entirely for the accounts it reaches.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 8 — Why This Builds Compounding Advantage */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                8. Why Algorithmic Distribution Builds Compounding Advantage
+              </h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Unlike paid advertising, which stops producing results the
+                  moment the budget ends, algorithmic LinkedIn distribution
+                  produces compounding returns over time — for three structural
+                  reasons.
+                </p>
+                <div className="grid md:grid-cols-3 gap-4">
+                  {[
+                    {
+                      title: "Network Compounding",
+                      color: "bg-green-50 border-l-4 border-green-400",
+                      desc: "Every new ICP-matched connection added to Boyar's LinkedIn network increases the size of the Stage 2 distribution audience for every future post. 500 relevant connections produce more Stage 2 signal than 5,000 irrelevant ones. Network quality compounds posting performance perpetually.",
+                    },
+                    {
+                      title: "Engagement History Compounding",
+                      color: "bg-blue-50 border-l-4 border-blue-400",
+                      desc: "LinkedIn's algorithm weights engagement history in its ranking. A profile that has consistently posted high-engagement content receives preferential initial distribution compared to a new or inconsistent poster — even for an identical post. Consistency builds an algorithmic advantage that is invisible but real.",
+                    },
+                    {
+                      title: "Authority Compounding",
+                      color: "bg-purple-50 border-l-4 border-purple-400",
+                      desc: "As Boyar's content library grows, the probability of appearing in any given ICP account's feed increases — because more topics are covered, more hashtags are associated with the profile, and more first-degree connections have engaged with previous posts. A 12-month consistent posting history makes every new post measurably easier to distribute.",
+                    },
+                  ].map(({ title, color, desc }) => (
+                    <div key={title} className={`p-4 ${color} rounded-r-lg`}>
+                      <p className="font-semibold text-gray-900 mb-2">{title}</p>
+                      <p className="text-justify text-sm">{desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Section 9 — Risks & Controls */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                9. Risks & Controls
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                {[
+                  {
+                    risk: "Risk 1 — Algorithm changes reduce organic reach unexpectedly",
+                    control: "Monitor LinkedIn algorithm update announcements monthly via Shield Analytics and LinkedIn Marketing Labs. Adjust format mix within 2 weeks of any confirmed change. Paid amplification of organic winners provides a buffer against algorithmic volatility.",
+                  },
+                  {
+                    risk: "Risk 2 — Engagement pod activity detected and penalised by LinkedIn",
+                    control: "Pod engagement must always be genuine — real comments, substantive reactions, not manufactured activity. LinkedIn's spam detection monitors engagement velocity and authenticity. Pods are capped at 15 participants and engagement must be contextually relevant to the post.",
+                  },
+                  {
+                    risk: "Risk 3 — Content quality declines under production pressure",
+                    control: "Maintain a minimum quality bar: every post must deliver a specific, actionable insight that a founder or CFO could not find in 30 seconds of googling. If the insight does not pass this test, it does not get published. Volume is never prioritised over quality.",
+                  },
+                  {
+                    risk: "Risk 4 — Posting becomes promotional rather than educational",
+                    control: "70/20/10 content mix rule is enforced at the monthly review. If the ratio shifts beyond this, the following month's content calendar is adjusted. A single promotional post in a sequence of educational posts resets the trust signal with the audience.",
+                  },
+                  {
+                    risk: "Risk 5 — Inconsistent posting breaks algorithm momentum",
+                    control: "Minimum posting cadence of 4 posts per month per founder profile, regardless of other pressures. Content is batch-produced in monthly sessions and scheduled in advance. A content calendar is maintained 4 weeks ahead at all times.",
+                  },
+                ].map(({ risk, control }) => (
+                  <div key={risk} className="p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                    <p className="font-semibold text-gray-900">{risk}</p>
+                    <p className="text-justify mt-1">
+                      <span className="font-medium">Control:</span> {control}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Section 10 — Strategic Fit */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                10. Strategic Fit for Boyar Partners
+              </h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify">
+                    Boyar's competitive advantage is depth of expertise — algorithmic LinkedIn distribution is the mechanism that makes that expertise visible to decision-makers who would otherwise never encounter the firm
+                  </li>
+                  <li className="text-justify">
+                    The target client profile — founders, CFOs, GCs, fund managers, HNWIs — is highly active on LinkedIn and receptive to expert content from advisors who demonstrate they understand the specific challenges of cross-border structuring, licensing, and banking
+                  </li>
+                  <li className="text-justify">
+                    The content required for this model (jurisdiction guides, regulatory briefs, structuring frameworks) is identical to the content required for the AI-Driven ABM model, the Thought Leadership model, and the Jurisdiction Intelligence Report model — creating a content production flywheel where a single piece of expertise is distributed across multiple channels simultaneously
+                  </li>
+                  <li className="text-justify">
+                    At zero incremental distribution cost (excluding tool stack and paid amplification), consistent algorithmic LinkedIn content strategy produces a compounding audience of relevant decision-makers who arrive at any direct outreach or referral conversation already familiar with Boyar's expertise
+                  </li>
+                </ul>
+                <div className="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg">
+                  <p className="text-justify">
+                    Algorithmic LinkedIn Content Distribution is not a marketing
+                    function. It is the systematic conversion of Boyar's
+                    expertise into a distributed, always-on, compounding
+                    authority signal that reaches thousands of ICP-matched
+                    decision-makers every month — before any direct conversation
+                    begins.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 11 — Success Formula */}
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>
+                11. Success Formula
+              </h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  Engineered post → Algorithm picks up Stage 2 engagement →
+                  Distribution to ICP audience → ICP accounts engage → ABM
+                  system flags engagement → Tier elevated → Outreach triggered
+                  warm → Diagnostic call booked → Mandate.
+                </p>
+                <p className="text-justify mt-3">
+                  Every post Boyar publishes is simultaneously a client
+                  acquisition tool, an authority signal, an ABM warming
+                  mechanism, and a compounding asset that makes the next post
+                  easier to distribute. The model does not produce results in
+                  Week 1. By Month 6, it produces a systematic flow of warm,
+                  expert-level inbound interest that no amount of cold outreach
+                  could replicate.
+                </p>
+                <p className="text-justify mt-3 font-semibold">
+                  The algorithm rewards consistency. Boyar wins by being the
+                  most consistently expert voice in its niche — every week,
+                  without exception.
+                </p>
+              </div>
+            </section>
+
+          </main>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  // AI-Driven ABM Enhancements
+  if (isAiDrivenAbmModel) {
+    return (
+      <ProtectedRoute>
+        <div className="min-h-screen bg-white text-black">
+          <header className="border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
+            <div className="mx-auto max-w-4xl px-6 py-4">
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => router.back()}
+                  className="text-gray-700 hover:text-black transition flex items-center gap-2 text-sm font-medium"
+                >
+                  ← Back
+                </button>
+                <h1 className="text-lg font-semibold text-black">AI-Driven ABM Enhancements</h1>
+                <div className="w-20" />
+              </div>
+            </div>
+          </header>
+
+          <main className="mx-auto max-w-4xl px-6 py-12 print:max-w-full print:px-8" style={{ textAlign: "left" }}>
+            <div className="mb-12 text-center border-b border-gray-200 pb-10">
+              <h1 className="text-4xl font-bold mb-4 text-black" style={{ fontFamily: "var(--font-benzin)" }}>
+                AI-Driven ABM Enhancements
+              </h1>
+              <h2 className="text-2xl font-semibold mb-2 text-gray-800" style={{ fontFamily: "var(--font-benzin)" }}>
+                Model Definition & Strategic Framework
+              </h2>
+            </div>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>1. Model Definition</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">
+                  AI-Driven ABM (Account-Based Marketing) Enhancements layer artificial intelligence onto Boyar Partners' existing account-based marketing infrastructure. Instead of relying solely on manual account identification, research, and outreach sequencing, this model uses AI tools to identify high-value target accounts faster, score their intent signals with greater precision, personalise outreach at scale without losing the advisory tone, and automate the operational mechanics of multi-touch engagement — so founders spend their time exclusively on accounts that are ready to engage.
+                </p>
+                <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <p className="text-justify">
+                    Standard ABM identifies accounts and runs sequences manually. AI-Driven ABM uses machine learning to find better accounts, score them dynamically, generate hyper-personalised messaging, and trigger outreach at exactly the right moment — compressing the pipeline from weeks to days while maintaining the founder-led, advisory-grade quality that distinguishes Boyar from commodity outreach.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>2. Why This Model Exists</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">Boyar Partners operates with a lean team. Every hour of founder time spent on an unqualified account is an hour not spent on a mandate-ready one. AI-Driven ABM exists to solve four specific problems:</p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Scale without headcount</strong> — AI handles the research, scoring, and first-draft personalisation that would otherwise require a dedicated SDR team. Boyar can run ABM at the intensity of a 10-person team with a 2-person operation</li>
+                  <li className="text-justify"><strong>Signal detection at speed</strong> — AI monitors hundreds of intent signals (hiring patterns, regulatory filings, funding rounds, LinkedIn activity, web visits) simultaneously, flagging accounts showing buying behaviour before a human analyst would notice</li>
+                  <li className="text-justify"><strong>Personalisation at scale</strong> — AI generates account-specific messaging drafts using publicly available data, which founders then review and refine — producing outreach that feels hand-crafted at 10x the volume of manual writing</li>
+                  <li className="text-justify"><strong>Timing precision</strong> — AI triggers outreach sequences at the moment an account crosses an intent threshold, rather than relying on calendar-based cadences that may miss the window of maximum receptivity</li>
+                </ul>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>3. Core Components</h2>
+              <div className="space-y-4 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Component 1 — AI-Powered Account Discovery</p>
+                  <p className="text-justify mt-1">AI tools (Clay, Apollo, LinkedIn Sales Navigator with AI filters) scan the market continuously to identify accounts matching Boyar's ICP. Instead of manually building target lists, AI surfaces accounts based on firmographic data (industry, size, geography, structure), technographic signals (tools used, platforms adopted), and behavioural indicators (recent funding, executive hires, regulatory filings). The output is a dynamically updated target account list that grows and refines itself weekly.</p>
+                </div>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Component 2 — Intent Signal Scoring</p>
+                  <p className="text-justify mt-1">Every target account is scored on a 0–100 intent scale based on observable signals: website visits to Boyar's site, LinkedIn content engagement, job postings for compliance/legal/structuring roles, regulatory filings in target jurisdictions, funding announcements, and competitive research activity. AI aggregates these signals in real time and assigns a composite score that determines which tier the account occupies and what outreach sequence it receives.</p>
+                </div>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Component 3 — Hyper-Personalised Messaging Engine</p>
+                  <p className="text-justify mt-1">For every Tier 1 and Tier 2 account, AI generates a first-draft outreach message using the account's public data — recent press coverage, executive LinkedIn posts, regulatory environment in their jurisdiction, known pain points from their industry vertical. The founder reviews, refines tone, and sends. This compresses message drafting from 20–30 minutes per account to 3–5 minutes while maintaining the advisory quality that makes Boyar's outreach credible.</p>
+                </div>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Component 4 — Automated Multi-Touch Sequencing</p>
+                  <p className="text-justify mt-1">AI manages the outreach cadence: LinkedIn connection request → profile view → first message → follow-up → content share → second follow-up → final attempt. Each step is triggered by the account's response behaviour and intent score changes — not by a fixed calendar. If an account engages with Boyar content between touches, AI accelerates the sequence. If an account shows declining intent, AI pauses outreach to avoid fatigue.</p>
+                </div>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <p className="font-semibold text-gray-900">Component 5 — Real-Time Dashboard & Alerts</p>
+                  <p className="text-justify mt-1">A centralised dashboard (HubSpot + Clay integration) shows all active ABM accounts, their current tier, intent score trajectory, last touch, next scheduled action, and conversion probability. Founders receive daily alerts for accounts that have crossed intent thresholds or shown sudden engagement spikes — ensuring no high-intent moment is missed.</p>
+                </div>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>4. Who This Model Targets</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">AI-Driven ABM targets the same ICP as Boyar's broader acquisition system, but with AI-enhanced precision:</p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>Founders and CEOs</strong> of companies expanding internationally or restructuring cross-border operations</li>
+                  <li className="text-justify"><strong>CFOs and General Counsel</strong> evaluating holding structures, substance requirements, or banking relationships</li>
+                  <li className="text-justify"><strong>Fund managers and CIOs</strong> launching new vehicles or restructuring existing ones across jurisdictions</li>
+                  <li className="text-justify"><strong>Crypto and fintech operators</strong> pursuing VASP, EMI, or MiCA licensing</li>
+                  <li className="text-justify"><strong>Family offices and HNWIs</strong> seeking trust structuring, estate planning, or multi-jurisdictional wealth architecture</li>
+                  <li className="text-justify"><strong>Compliance officers and regulatory teams</strong> managing cross-border obligations</li>
+                </ul>
+                <div className="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg mt-3">
+                  <p className="text-justify">AI does not change who Boyar targets — it changes how efficiently Boyar finds them, how precisely it scores their readiness, and how quickly it engages them with relevant, personalised outreach.</p>
+                </div>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>5. Strategic Fit for Boyar Partners</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify">Boyar's advisory model requires high-touch, personalised engagement — AI handles the research and operational mechanics so founders can focus exclusively on the advisory conversation</li>
+                  <li className="text-justify">The firm's lean team structure means AI leverage is not optional — it is the mechanism that allows two founders to run ABM campaigns at enterprise scale</li>
+                  <li className="text-justify">Cross-border structuring, licensing, and banking advisory have long sales cycles — AI-driven intent scoring identifies which accounts are closest to a decision, concentrating effort where conversion probability is highest</li>
+                  <li className="text-justify">The multi-service nature of Boyar's offering means a single account can generate multiple mandates — AI tracks which services each account has engaged with and triggers cross-sell sequences automatically</li>
+                </ul>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>6. Standard ABM vs AI-Driven ABM — What Changes</h2>
+              <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm bg-white">
+                <table className="w-full text-sm text-left text-gray-800">
+                  <thead className="bg-gray-100 text-gray-900">
+                    <tr>
+                      <th className="px-4 py-3 border-b border-gray-200">Function</th>
+                      <th className="px-4 py-3 border-b border-gray-200">Standard ABM</th>
+                      <th className="px-4 py-3 border-b border-gray-200">AI-Driven ABM</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      ["Account discovery", "Manual list building from LinkedIn, events, referrals", "AI scans market continuously, surfaces ICP-matched accounts automatically"],
+                      ["Intent scoring", "Subjective assessment based on interactions", "Composite 0–100 score from multiple signal sources, updated in real time"],
+                      ["Personalisation", "Hand-written messages for each account (20–30 mins each)", "AI-drafted, founder-refined messages (3–5 mins each) at 10x volume"],
+                      ["Outreach timing", "Calendar-based cadences (every 3 days, every week)", "Signal-triggered sequences — outreach fires when intent score crosses threshold"],
+                      ["Pipeline visibility", "Spreadsheet or basic CRM tracking", "Real-time dashboard with intent trajectories, conversion probabilities, and automated alerts"],
+                      ["Scale", "Limited by founder hours — 15–25 active accounts", "AI-augmented — 50–100+ active accounts with same founder time investment"],
+                    ].map(([func, standard, ai], i) => (
+                      <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                        <td className="px-4 py-2 border-b border-gray-100 font-medium">{func}</td>
+                        <td className="px-4 py-2 border-b border-gray-100 text-gray-600">{standard}</td>
+                        <td className="px-4 py-2 border-b border-gray-100 text-green-700 font-medium">{ai}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>7. Advantages</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>10x account coverage</strong> — AI enables Boyar to actively manage 50–100+ target accounts versus 15–25 under manual ABM, without additional headcount</li>
+                  <li className="text-justify"><strong>Higher conversion rates</strong> — Intent-scored outreach reaches accounts at the moment of maximum receptivity, producing 2–3x higher response rates than calendar-based sequences</li>
+                  <li className="text-justify"><strong>Faster time-to-mandate</strong> — AI compresses the research → personalisation → outreach cycle from days to hours, shortening the average pipeline from first touch to diagnostic call</li>
+                  <li className="text-justify"><strong>Compounding intelligence</strong> — Every interaction (opens, clicks, replies, content engagement) feeds back into the scoring model, making future targeting and personalisation progressively more accurate</li>
+                  <li className="text-justify"><strong>Founder time protection</strong> — By automating research, scoring, and first-draft messaging, AI ensures founders spend 80%+ of their client acquisition time in actual conversations with qualified prospects rather than in preparation</li>
+                </ul>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>8. Risks & Controls</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <div className="p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                  <p className="text-justify"><strong>Risk 1 — AI-generated messaging feels impersonal</strong></p>
+                  <p className="text-justify">Control: All AI-drafted messages reviewed and personalised by founders before sending; AI handles research, humans handle tone.</p>
+                </div>
+                <div className="p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                  <p className="text-justify"><strong>Risk 2 — Over-reliance on signals produces false positives</strong></p>
+                  <p className="text-justify">Control: AI scoring is validated against a minimum ICP threshold before any account enters outreach; human review gate on Tier 1 accounts.</p>
+                </div>
+                <div className="p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                  <p className="text-justify"><strong>Risk 3 — Data privacy and GDPR compliance</strong></p>
+                  <p className="text-justify">Control: AI tools restricted to publicly available data sources; no scraping of private profiles or databases; opt-out honoured immediately.</p>
+                </div>
+                <div className="p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                  <p className="text-justify"><strong>Risk 4 — AI tools add operational complexity and cost</strong></p>
+                  <p className="text-justify">Control: Tool selection prioritised on ROI and simplicity; initial deployment uses a lean stack (Clay, Apollo, HubSpot/CRM, LinkedIn Sales Navigator) before expanding.</p>
+                </div>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>9. Relationship to Other Group 7 Models</h2>
+              <div className="space-y-3 text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">AI-Driven ABM is the intelligence backbone of the entire Group 7 system. It does not operate in isolation — it feeds and enhances every other Group 7 model:</p>
+                <ul className={listClass} style={{ listStylePosition: "outside" }}>
+                  <li className="text-justify"><strong>AI Prospect Scoring & Personalisation</strong> — ABM provides the account list; scoring determines the sequence</li>
+                  <li className="text-justify"><strong>Precision Retargeting</strong> — ABM accounts that visit Boyar's website or engage with content are auto-retargeted with relevant ads</li>
+                  <li className="text-justify"><strong>Multi-Touch Nurture Automation</strong> — Accounts that don't convert immediately are handed to automated nurture sequences managed by the same AI infrastructure</li>
+                  <li className="text-justify"><strong>Algorithmic LinkedIn Content Distribution</strong> — ABM target accounts are used to calibrate which content topics LinkedIn's algorithm should be directed toward</li>
+                  <li className="text-justify"><strong>Predictive Competitor Monitoring</strong> — Competitor activity on ABM target accounts surfaces accounts at risk of being engaged by competitors first, triggering priority escalation</li>
+                </ul>
+              </div>
+            </section>
+
+            <section className={sectionClass}>
+              <h2 className={headingClass} style={{ fontFamily: "var(--font-benzin)" }}>10. Success Formula</h2>
+              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm text-gray-800 leading-relaxed text-left">
+                <p className="text-justify">AI identifies → Scores → Triggers contextual outreach → Human founders engage warm, high-intent accounts → Diagnostic call → Mandate.</p>
+                <p className="text-justify mt-2">The combination of AI precision and Boyar's founder-led advisory model produces a conversion engine where the right account receives the right message at the right time — and the only human effort invested is in accounts already primed to engage.</p>
+                <p className="text-justify mt-2 font-semibold">ABM does not chase clients. It surfaces the ones already looking.</p>
+              </div>
+            </section>
           </main>
         </div>
       </ProtectedRoute>

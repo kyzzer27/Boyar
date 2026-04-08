@@ -2,8 +2,18 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { CircularBackground } from "@/components/motion/circular-background";
+
+/** Same blue shades as burn rate assessment bar chart */
+const BAR_BLUES = [
+  "#60a5fa", // light
+  "#3b82f6",
+  "#2563eb",
+  "#1d4ed8",
+  "#1e40af", // deep
+];
 
 interface RevenueRow {
   service: string;
@@ -16,24 +26,26 @@ interface RevenueRow {
 }
 
 const revenueRows: RevenueRow[] = [
-  { service: "Company Formation", clients: 8, unitUsd: 2500, newRevenue: 20000, renewals: 0, renewalRevenue: 0, total: 20000 },
+  { service: "Company Formation", clients: 6, unitUsd: 2500, newRevenue: 15000, renewals: 0, renewalRevenue: 0, total: 15000 },
+  { service: "Standalone Trust", clients: 1, unitUsd: 13000, newRevenue: 13000, renewals: 0, renewalRevenue: 0, total: 13000 },
   { service: "Full Structure", clients: 2, unitUsd: 29700, newRevenue: 59400, renewals: 0, renewalRevenue: 0, total: 59400 },
-  { service: "Office Registration", clients: 1, unitUsd: 1500, newRevenue: 1500, renewals: 0, renewalRevenue: 0, total: 1500 },
-  { service: "Banking", clients: 2, unitUsd: 6500, newRevenue: 13000, renewals: 0, renewalRevenue: 0, total: 13000 },
   { service: "Corporate Services", clients: 4, unitUsd: 3500, newRevenue: 14000, renewals: 0, renewalRevenue: 0, total: 14000 },
+  { service: "Office Registration", clients: 2, unitUsd: 1500, newRevenue: 3000, renewals: 0, renewalRevenue: 0, total: 3000 },
+  { service: "Banking", clients: 1, unitUsd: 6500, newRevenue: 6500, renewals: 0, renewalRevenue: 0, total: 6500 },
 ];
 
-const TOTAL_REVENUE_USD = 107900;
-const TOTAL_REVENUE_INR = 9818900;
+const TOTAL_REVENUE_USD = 110900;
+const TOTAL_REVENUE_INR = Math.round(110900 * 94.0);
 const TOTAL_CLIENTS = revenueRows.reduce((sum, row) => sum + row.clients, 0);
 const GROWTH_VS_PRIOR = "N/A";
 
 const serviceColors: Record<string, string> = {
   "Company Formation": "#34d399",
+  "Standalone Trust": "#a78bfa",
   "Full Structure": "#38bdf8",
+  "Corporate Services": "#c084fc",
   "Office Registration": "#f87171",
   Banking: "#facc15",
-  "Corporate Services": "#c084fc",
 };
 
 function usdFormatter(value: number) {
@@ -66,6 +78,134 @@ function buildPieGradient() {
     .join(", ");
 }
 
+interface RevenueByServiceBarChartProps {
+  revenueRows: RevenueRow[];
+  maxRevenue: number;
+  usdFormatter: (value: number) => string;
+}
+
+function RevenueByServiceBarChart({ revenueRows, maxRevenue, usdFormatter }: RevenueByServiceBarChartProps) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const yAxisMax = Math.ceil(maxRevenue / 20000) * 20000 || 100000;
+  const chartHeight = 200;
+  const chartTop = 20;
+  const chartBottom = 240;
+  const chartWidth = 330;
+  const startX = 50;
+  const n = revenueRows.length;
+  const barSpacing = chartWidth / n;
+  const barWidth = Math.min(barSpacing * 0.65, 48);
+
+  return (
+    <motion.section
+      className="mt-10 rounded-3xl border border-white/10 bg-black/60 p-6 shadow-2xl"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+    >
+      <p className="text-xs uppercase tracking-[0.4em] text-white/60">Revenue by service</p>
+      <h3 className="mt-2 text-lg font-semibold text-white" style={{ fontFamily: "var(--font-benzin)" }}>
+        Year 1 Performance by Service (USD)
+      </h3>
+      <p className="mt-1 text-sm text-white/60">Bar chart: one bar per service, same style as burn rate assessment.</p>
+      <div className="relative mt-6 h-80 w-full">
+        <svg viewBox="0 0 400 280" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
+          <line x1={40} y1={240} x2={380} y2={240} stroke="rgba(148,163,184,0.5)" strokeWidth={0.5} />
+          <line x1={40} y1={20} x2={40} y2={240} stroke="rgba(148,163,184,0.5)" strokeWidth={0.5} />
+          {[0.25, 0.5, 0.75].map((r) => (
+            <line key={r} x1={50} x2={380} y1={240 - r * 200} y2={240 - r * 200} stroke="rgba(148,163,184,0.2)" strokeWidth={0.5} strokeDasharray="4 4" />
+          ))}
+          {[0, 0.25, 0.5, 0.75, 1].map((r, i) => (
+            <text key={r} x={38} y={240 - r * 200 + 4} textAnchor="end" fontSize={8} fill="rgba(148,163,184,0.9)">
+              {i === 0 ? "0" : `$${Math.round((yAxisMax * r) / 1000)}k`}
+            </text>
+          ))}
+          {revenueRows.map((row, idx) => {
+            const centerX = startX + idx * barSpacing + barSpacing / 2;
+            const x = centerX - barWidth / 2;
+            const fullHeight = (row.total / yAxisMax) * chartHeight;
+            const yPos = chartBottom - fullHeight;
+            const [firstWord, ...restWords] = row.service.split(" ");
+            const secondLine = restWords.join(" ");
+            return (
+              <g key={row.service}>
+                <rect
+                  x={x}
+                  y={yPos}
+                  width={barWidth}
+                  height={fullHeight}
+                  fill={BAR_BLUES[idx % BAR_BLUES.length]}
+                  onMouseEnter={() => setHoveredIndex(idx)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  style={{ cursor: "pointer" }}
+                />
+                <text
+                  x={centerX}
+                  y={255}
+                  textAnchor="middle"
+                  fontSize={8}
+                  fill="rgba(148,163,184,0.9)"
+                >
+                  <tspan x={centerX} dy={0}>
+                    {firstWord}
+                  </tspan>
+                  {secondLine && (
+                    <tspan x={centerX} dy={9}>
+                      {secondLine}
+                    </tspan>
+                  )}
+                </text>
+              </g>
+            );
+          })}
+          {hoveredIndex !== null && (
+            <g>
+              <rect
+                x={50 + hoveredIndex * barSpacing + barSpacing / 2 - 55}
+                y={20}
+                width={110}
+                height={44}
+                fill="rgba(0,0,0,0.9)"
+                rx={4}
+                stroke="rgba(255,255,255,0.2)"
+              />
+              <text
+                x={50 + hoveredIndex * barSpacing + barSpacing / 2}
+                y={35}
+                textAnchor="middle"
+                fontSize={10}
+                fill="white"
+                fontWeight="bold"
+              >
+                {revenueRows[hoveredIndex].service}
+              </text>
+              <text
+                x={50 + hoveredIndex * barSpacing + barSpacing / 2}
+                y={50}
+                textAnchor="middle"
+                fontSize={9}
+                fill="rgba(255,255,255,0.9)"
+              >
+                {usdFormatter(revenueRows[hoveredIndex].total)}
+              </text>
+            </g>
+          )}
+        </svg>
+      </div>
+      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+        {revenueRows.map((row, i) => (
+          <div key={row.service} className="flex items-center gap-2 text-xs text-white/70">
+            <span className="h-3 w-3 rounded-sm" style={{ backgroundColor: BAR_BLUES[i % BAR_BLUES.length] }} />
+            <span>{row.service}</span>
+            <span className="text-white/50">{usdFormatter(row.total)}</span>
+          </div>
+        ))}
+      </div>
+    </motion.section>
+  );
+}
+
 export default function YearOneRevenuePage() {
   const pieGradient = `conic-gradient(${buildPieGradient()})`;
   const maxRevenue = Math.max(...revenueRows.map((row) => row.total));
@@ -77,8 +217,8 @@ export default function YearOneRevenuePage() {
 
         <header className="relative z-10 border-b border-white/10 bg-black/90">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-5 sm:px-6 lg:px-8">
-            <Link href="/tools?focus=corporate-revenue" className="text-sm text-white/70 transition hover:text-white">
-              ← Back to Dashboard
+            <Link href="/revenue/corporate-services" className="text-sm text-white/70 transition hover:text-white">
+              ← Back to Corporate Services
             </Link>
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-white/50">Year 1 Projection</p>
@@ -145,7 +285,18 @@ export default function YearOneRevenuePage() {
                 <tbody>
                   {revenueRows.map((row) => (
                     <tr key={row.service} className="border-t border-white/10">
-                      <td className="px-4 py-3 text-white">{row.service}</td>
+                      <td className="px-4 py-3 text-white">
+                        {row.service === "Banking" ? (
+                          <Link
+                            href="/revenue/banking-projection"
+                            className="underline decoration-dotted decoration-white/40 underline-offset-4 hover:text-white/90 hover:decoration-white"
+                          >
+                            {row.service}
+                          </Link>
+                        ) : (
+                          row.service
+                        )}
+                      </td>
                       <td className="px-4 py-3 text-right">{row.clients}</td>
                       <td className="px-4 py-3 text-right">{usdFormatter(row.unitUsd)}</td>
                       <td className="px-4 py-3 text-right">{usdFormatter(row.newRevenue)}</td>
@@ -247,6 +398,13 @@ export default function YearOneRevenuePage() {
               </div>
             </motion.div>
           </section>
+
+          {/* Bar chart by service — same style as burn rate assessment */}
+          <RevenueByServiceBarChart
+            revenueRows={revenueRows}
+            maxRevenue={maxRevenue}
+            usdFormatter={usdFormatter}
+          />
 
           <section className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6">
             <div className="flex flex-wrap items-center justify-between gap-4">

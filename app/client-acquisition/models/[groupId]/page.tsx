@@ -118,21 +118,6 @@ export default function ModelsPage() {
   
   const groupData = groupModels[groupId];
 
-  // Group 1 models with their display names
-  const group1Models = groupId === "group-1" ? [
-    { id: "founder-led-origination", name: "Founder-Led Origination" },
-    { id: "linkedin-executive-outreach", name: "LinkedIn Executive Outreach" },
-    { id: "commission-based-representative", name: "Commission-Based Representative Channel" },
-    { id: "family-office-uhnw", name: "Family Office & UHNW Network" },
-    { id: "private-banker-wealth-manager", name: "Private Banker & Wealth Manager Alliances" },
-    { id: "fund-manager-pipeline", name: "Fund Manager Pipeline Programs" },
-    { id: "cross-border-ma-feeder", name: "Cross-Border M&A Feeder Channels" },
-    { id: "investor-club-syndicate", name: "Investor Club Syndicate Partnerships" },
-    { id: "crypto-exchange-otc", name: "Crypto Exchange / OTC Desk Partnerships" },
-    { id: "incubator-accelerator", name: "Incubator & Accelerator Dealflow Access" },
-    { id: "law-firm-co-branded", name: "Law Firm Strategic Co-Branded Funnels" },
-    { id: "strategic-partnerships-referral", name: "Strategic Partnerships & Referral Alliances" },
-  ] : [];
 
   const openStaticPdf = (modelId: string, type: "what-is-it" | "execution-playbook") => {
     const url = `/api/pdf?groupId=${groupId}&modelId=${modelId}&type=${type}`;
@@ -147,7 +132,7 @@ export default function ModelsPage() {
           <div className="relative z-10 text-center">
             <h1 className="text-2xl font-bold mb-4">Group not found</h1>
             <button
-              onClick={() => router.push("/client-acquisition/acquisition-channels")}
+              onClick={() => router.back()}
               className="px-4 py-2 rounded-lg border border-white/20 hover:bg-white/10 transition"
             >
               Go Back
@@ -167,18 +152,18 @@ export default function ModelsPage() {
         <header className="fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 backdrop-blur-md z-30">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
             <button
-              onClick={() => router.push("/client-acquisition/acquisition-channels")}
+              onClick={() => router.back()}
               className="text-sm sm:text-base text-white hover:text-gray-300 transition flex items-center gap-2"
             >
               ← Back
             </button>
             <h1
-              className="text-lg sm:text-xl md:text-2xl font-medium text-white"
+              className="text-sm sm:text-xl md:text-2xl font-medium text-white truncate min-w-0 mx-2"
               style={{ fontFamily: 'var(--font-benzin)' }}
             >
               Models
             </h1>
-            <div className="w-12 sm:w-20" /> {/* Spacer */}
+            <div className="w-8 sm:w-20 flex-shrink-0" />
           </div>
         </header>
 
@@ -193,25 +178,23 @@ export default function ModelsPage() {
               className="text-center mb-12 sm:mb-16"
             >
               <h2
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-white"
+                className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-white"
                 style={{ fontFamily: 'var(--font-benzin)' }}
               >
                 {groupData.groupName}
               </h2>
-              {/* Download PDF Button for Group 1 */}
-              {groupId === "group-1" && (
-                <motion.button
-                  onClick={() => setShowDownloadModal(true)}
-                  className="mt-2 px-3 py-1.5 text-xs bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-lg text-white transition-all duration-300 flex items-center gap-1.5 mx-auto"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <span>Download PDF</span>
-                </motion.button>
-              )}
+              {/* Download PDF Button */}
+              <motion.button
+                onClick={() => setShowDownloadModal(true)}
+                className="mt-2 px-3 py-1.5 text-xs bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-lg text-white transition-all duration-300 flex items-center gap-1.5 mx-auto"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>Download PDF</span>
+              </motion.button>
               <p className="text-gray-300 text-base sm:text-lg max-w-3xl mx-auto mt-4">
                 Select a model to view detailed information and implementation strategies
               </p>
@@ -225,33 +208,59 @@ export default function ModelsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
-                  className="group relative rounded-xl border border-white/20 bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-md p-6 sm:p-8 text-left hover:border-white/40 transition-all duration-300 hover:scale-105"
-                  whileHover={{ scale: 1.02 }}
+                  className="group relative w-full rounded-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 backdrop-blur-md p-4 sm:p-7 text-left overflow-hidden transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20 shadow-[0_10px_40px_-24px_rgba(255,255,255,0.45)]"
+                  style={{ fontFamily: "var(--font-benzin)" }}
+                  whileHover={{ y: -6 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => {
                     // All models open their detail page; defaults will show “What is it” and “Execution Playbook”
                     router.push(`/client-acquisition/models/${groupId}/${model.id}`);
                   }}
                 >
-                  {/* Gradient Background on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-                  
-                  {/* Content */}
-                  <div className="relative">
+                  {/* Top accent line */}
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                  {/* Header info */}
+                  <div className="mb-4 flex items-center justify-between relative z-10">
+                    <div className="text-[11px] font-semibold tracking-[0.18em] text-blue-300/80 uppercase" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                      Model
+                    </div>
+                    <div className="text-xl sm:text-2xl font-bold text-white/15 group-hover:text-white/30 transition-colors duration-300">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                  </div>
+
+                  {/* Title Area */}
+                  <div className="space-y-3 relative z-10">
                     <h3
-                      className="text-lg sm:text-xl font-semibold text-white mb-2 group-hover:text-white transition-colors"
-                      style={{ fontFamily: 'var(--font-benzin)' }}
+                      className="text-lg sm:text-xl font-semibold text-white leading-snug group-hover:text-blue-200 transition-colors duration-300"
                     >
                       {model.name}
                     </h3>
-                    
-                    {/* Arrow indicator */}
-                    <div className="flex items-center gap-2 text-white/60 group-hover:text-white/80 transition-colors mt-4">
-                      <span className="text-sm">View Details</span>
-                      <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                    <div className="w-10 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+
+                  {/* Bottom Right Arrow */}
+                  <div className="mt-8 flex justify-end relative z-10" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+                    <div className="w-9 h-9 border border-white/10 rounded-full group-hover:border-blue-500/50 transition-colors duration-300 flex items-center justify-center">
+                      <motion.span
+                        className="text-base text-gray-300 group-hover:text-white"
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{
+                          duration: 1.6,
+                          repeat: Infinity,
+                          delay: index * 0.05,
+                        }}
+                      >
+                        →
+                      </motion.span>
                     </div>
+                  </div>
+
+                  {/* Background Ambient Glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -translate-y-1/2"></div>
+                    <div className="absolute bottom-0 right-1/4 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl translate-y-1/2"></div>
                   </div>
                 </motion.button>
               ))}
@@ -274,7 +283,7 @@ export default function ModelsPage() {
 
         {/* Download PDF Modal */}
         <AnimatePresence>
-          {showDownloadModal && groupId === "group-1" && (
+          {showDownloadModal && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -307,7 +316,7 @@ export default function ModelsPage() {
                 </div>
 
                 <div className="space-y-4">
-                  {group1Models.map((model) => (
+                  {groupData.models.map((model) => (
                     <div
                       key={model.id}
                       className="border border-white/10 rounded-lg p-4 bg-white/5 hover:bg-white/10 transition"

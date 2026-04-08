@@ -117,7 +117,7 @@ export default function AcquisitionChannelsPage() {
         <header className="fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 backdrop-blur-md z-30">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
             <button
-              onClick={() => router.push("/tools")}
+              onClick={() => router.back()}
               className="text-sm sm:text-base text-white hover:text-gray-300 transition flex items-center gap-2"
             >
               ← Back
@@ -161,16 +161,20 @@ export default function AcquisitionChannelsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative rounded-2xl border border-white/20 bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-md overflow-hidden hover:border-white/40 transition-all duration-300 text-left w-full cursor-pointer"
-                  whileHover={{ scale: 1.02 }}
+                  className="group relative rounded-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 backdrop-blur-md overflow-hidden hover:border-white/20 hover:from-white/12 hover:to-white/8 transition-all duration-300 text-left w-full cursor-pointer shadow-[0_10px_40px_-24px_rgba(255,255,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
+                  whileHover={{ y: -6 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => router.push(`/client-acquisition/models/${channel.id}`)}
+                  style={{ fontFamily: "var(--font-benzin)" }}
                 >
+                  {/* Top accent line */}
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"></div>
+
                   {/* Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${channel.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${channel.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0`} />
                   
                   {/* Content */}
-                  <div className="relative p-6 sm:p-8">
+                  <div className="relative z-10 p-6 sm:p-8">
                     {/* Title */}
                     <div className="mb-4">
                       <h3
@@ -212,11 +216,17 @@ export default function AcquisitionChannelsPage() {
                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
                     {/* Click Indicator */}
-                    <div className="flex items-center gap-2 text-white/60 group-hover:text-white/80 transition-colors mt-4">
+                    <div className="flex items-center gap-2 text-white/60 group-hover:text-white transition-colors mt-4 relative z-10">
                       <span className="text-sm">View Models</span>
                       <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
+                    </div>
+
+                    {/* Background Ambient Glow */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0">
+                      <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -translate-y-1/2"></div>
+                      <div className="absolute bottom-0 right-1/4 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl translate-y-1/2"></div>
                     </div>
                   </div>
                 </motion.button>

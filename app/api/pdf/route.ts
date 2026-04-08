@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
       await browser.close();
 
       // Return PDF with proper headers so browser opens it in PDF viewer
-      return new NextResponse(pdfBuffer, {
+      return new NextResponse(Buffer.from(pdfBuffer), {
         headers: {
           "Content-Type": "application/pdf",
           "Content-Disposition": `inline; filename="${modelId}-${type}.pdf"`,

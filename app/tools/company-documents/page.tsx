@@ -1,0 +1,143 @@
+"use client";
+
+import { ProtectedRoute } from "@/components/auth/protected-route";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const containerVariants = {
+	hidden: { opacity: 0, y: 12 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: {
+			duration: 0.6,
+			ease: [0.25, 0.1, 0.25, 1] as const,
+			staggerChildren: 0.08,
+			delayChildren: 0.2,
+		},
+	},
+};
+
+const itemVariants = {
+	hidden: { opacity: 0, y: 12, scale: 0.98 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		scale: 1,
+		transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const },
+	},
+};
+
+const allDocumentButtons = [
+	{ label: "The Ask", number: "01", href: "/tools/company-documents/the-ask", askOnly: true },
+	{ label: "Pvt Ltd. documents", number: "02", href: "/tools/company-documents/pvt-ltd", askOnly: false },
+	{ label: "Founders CV", number: "03", href: "", askOnly: false },
+];
+
+export default function CompanyDocumentsPage() {
+	const router = useRouter();
+	const [hideAsk, setHideAsk] = useState(false);
+
+	useEffect(() => {
+		setHideAsk(sessionStorage.getItem("restrictAsk") === "true");
+	}, []);
+
+	const documentButtons = hideAsk
+		? allDocumentButtons.filter((b) => !b.askOnly)
+		: allDocumentButtons;
+
+	return (
+		<ProtectedRoute>
+			<div className="relative min-h-screen bg-black text-white">
+				{/* Header */}
+				<header className="sticky top-0 bg-black/85 backdrop-blur-sm border-b border-white/10 z-30">
+					<div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-5 sm:px-8">
+						<button
+							onClick={() => router.back()}
+							className="text-sm text-gray-400 hover:text-white transition flex items-center gap-2 font-medium flex-shrink-0"
+							style={{ fontFamily: "var(--font-benzin)" }}
+						>
+							← Back
+						</button>
+						<h1
+							className="text-lg sm:text-3xl font-semibold text-white truncate min-w-0 mx-2"
+							style={{ fontFamily: "var(--font-benzin)" }}
+						>
+							Company Documents
+						</h1>
+						<div className="w-6 sm:w-8 flex-shrink-0" aria-hidden="true"></div>
+					</div>
+				</header>
+
+				{/* Main Content */}
+				<main className="relative z-10 py-16 sm:py-20">
+					<section className="relative mx-auto max-w-6xl px-6 sm:px-8">
+						<div className="absolute inset-0 -z-10 opacity-60">
+							<div className="absolute -top-32 -right-24 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+							<div className="absolute -bottom-28 -left-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
+						</div>
+						<motion.div
+							variants={containerVariants}
+							initial="hidden"
+							animate="visible"
+							className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+						>
+							{documentButtons.map(({ label, number, href }, index) => (
+								<motion.button
+									key={label}
+									variants={itemVariants}
+									onClick={() => {
+										if (href) router.push(href);
+									}}
+									className="group relative w-full rounded-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 p-6 sm:p-7 text-left overflow-hidden transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20 shadow-[0_10px_40px_-24px_rgba(255,255,255,0.45)]"
+									style={{ fontFamily: "var(--font-benzin)" }}
+									whileHover={{ y: -6 }}
+									whileTap={{ scale: 0.98 }}
+								>
+									{/* Top accent line */}
+									<div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+									<div className="mb-4 flex items-center justify-between">
+										<div className="text-[11px] font-semibold tracking-[0.18em] text-blue-300/80 uppercase">
+											Document
+										</div>
+										<div className="text-xl sm:text-2xl font-bold text-white/15 group-hover:text-white/30 transition-colors duration-300">
+											{number}
+										</div>
+									</div>
+
+									<div className="space-y-3">
+										<h3 className="text-lg sm:text-xl font-semibold text-white leading-snug group-hover:text-blue-200 transition-colors duration-300">
+											{label}
+										</h3>
+										<div className="w-10 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+									</div>
+
+									<div className="absolute bottom-5 right-5 w-9 h-9 border border-white/10 rounded-full group-hover:border-blue-500/50 transition-colors duration-300 flex items-center justify-center">
+										<motion.span
+											className="text-base text-gray-300 group-hover:text-white"
+											animate={{ x: [0, 4, 0] }}
+											transition={{
+												duration: 1.6,
+												repeat: Infinity,
+												delay: index * 0.2,
+											}}
+										>
+											→
+										</motion.span>
+									</div>
+
+									<div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+										<div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -translate-y-1/2"></div>
+										<div className="absolute bottom-0 right-1/4 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl translate-y-1/2"></div>
+									</div>
+								</motion.button>
+							))}
+						</motion.div>
+					</section>
+				</main>
+			</div>
+		</ProtectedRoute>
+	);
+}
