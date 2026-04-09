@@ -62,11 +62,11 @@ export async function POST(request: Request) {
 		);
 	}
 
-	const builtInNamed: Record<string, { name: string; tz?: string; restrictAsk?: boolean }> = {
+	const builtInNamed: Record<string, { name: string; tz?: string; restrictAsk?: boolean; chatEnabled?: boolean }> = {
 		BPScott27: { name: "Scott", tz: "Asia/Dubai" },
 		BPVikas27: { name: "Vikas" },
 		BPinvestor27: { name: "Investor" },
-		BPKapil27: { name: "Kapil Mittal" },
+		BPKapil27: { name: "Kapil Mittal", chatEnabled: true },
 		BPZulfiqar27: { name: "Zulfiqar", restrictAsk: true },
 		BPSparsh27: { name: "Sparsh", restrictAsk: true },
 		BPYuri27: { name: "Yuri", tz: "America/New_York" },
@@ -96,15 +96,18 @@ export async function POST(request: Request) {
 	}
 
 	const namedRestrictAsk: Record<string, boolean> = {};
+	const namedChatEnabled: Record<string, boolean> = {};
 
 	for (const [pw, cfg] of Object.entries(builtInNamed)) {
 		if (cfg.restrictAsk) namedRestrictAsk[pw] = true;
+		if (cfg.chatEnabled) namedChatEnabled[pw] = true;
 	}
 
 	const trimmedPw = password.trim();
 	const greetName = namedPasswords[trimmedPw] ?? null;
 	const greetTimezone = namedTimezones[trimmedPw] ?? null;
 	const restrictAsk = namedRestrictAsk[trimmedPw] ?? false;
+	const chatEnabled = namedChatEnabled[trimmedPw] ?? false;
 
 	const credentialMatrix: CredentialConfig[] = [
 		{ role: "admin", passwordEnv: process.env.ADMIN_PASSWORD },
@@ -149,6 +152,7 @@ export async function POST(request: Request) {
 		...(greetName ? { greetName } : {}),
 		...(greetTimezone ? { greetTimezone } : {}),
 		...(restrictAsk ? { restrictAsk: true } : {}),
+		...(chatEnabled ? { chatEnabled: true } : {}),
 	});
 
 	response.cookies.set("bp_auth_token", match.token, {

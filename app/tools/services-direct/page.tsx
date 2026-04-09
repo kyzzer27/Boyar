@@ -347,12 +347,9 @@ export default function ServicesDirectPage() {
       >
         <header className="fixed top-0 left-0 right-0 z-50 flex flex-col pt-3 pb-2 px-5 bg-black/80 backdrop-blur-sm">
           <div className="flex items-center justify-between">
-            <Link
-              href="/tools"
-              className="text-sm text-white/80 hover:text-white transition-colors z-50"
-            >
+            <button onClick={() => router.back()} className="text-sm text-white/80 hover:text-white transition-colors z-50">
               ← Back
-            </Link>
+              </button>
             <div className="relative">
             <button
               type="button"

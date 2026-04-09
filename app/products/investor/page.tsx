@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, useInView, useMotionValue } from "framer-motion";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface Product {
   id: number;
@@ -378,6 +378,7 @@ function SectionIndicator({ currentSection, totalSections }: { currentSection: n
 }
 
 export default function ProductsInvestorPage() {
+  const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentSection, setCurrentSection] = useState(1);
   const [isMounted, setIsMounted] = useState(false);
@@ -440,14 +441,13 @@ export default function ProductsInvestorPage() {
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white overflow-hidden">
-        <CircularBackground />
         
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 backdrop-blur-md z-30">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-            <Link href="/tools" className="text-sm sm:text-base text-white hover:text-gray-300 transition flex items-center gap-2">
+            <button onClick={() => router.back()} className="text-sm sm:text-base text-white hover:text-gray-300 transition flex items-center gap-2">
               ← Back
-            </Link>
+              </button>
             <h1
               className="text-lg sm:text-xl md:text-2xl font-medium text-white"
               style={{ fontFamily: 'var(--font-benzin)' }}

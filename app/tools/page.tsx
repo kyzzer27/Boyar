@@ -78,9 +78,11 @@ function GreetingOverlay({ name, timezone, onComplete }: { name: string; timezon
       className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
       style={{
         background: "#000",
-        transition: "opacity 0.8s ease-out, filter 1s ease-out",
+        transition: "opacity 0.6s ease-out",
         opacity: phase === "exit" ? 0 : 1,
-        filter: phase === "exit" ? "blur(20px)" : "blur(0px)",
+        willChange: "opacity",
+        transform: "translateZ(0)",
+        backfaceVisibility: "hidden",
       }}
     >
       <div
@@ -89,7 +91,9 @@ function GreetingOverlay({ name, timezone, onComplete }: { name: string; timezon
           fontFamily: "'Avenir', 'Avenir Next', 'Nunito Sans', sans-serif",
           transition: "transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease-out",
           opacity: phase === "enter" ? 0 : 1,
-          transform: phase === "enter" ? "translateY(30px) scale(0.96)" : "translateY(0) scale(1)",
+          transform: phase === "enter" ? "translate3d(0,30px,0) scale(0.96)" : "translate3d(0,0,0) scale(1)",
+          willChange: "transform, opacity",
+          backfaceVisibility: "hidden",
         }}
       >
         <p
@@ -248,9 +252,9 @@ export default function ToolsPage() {
         
         <header className="border-b border-white/10 bg-black relative z-10">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
-            <Link href="/" className="text-sm sm:text-base text-white hover:text-gray-300 transition">
+            <button onClick={() => router.back()} className="text-sm sm:text-base text-white hover:text-gray-300 transition">
               ← Back
-            </Link>
+              </button>
             <h1
               className="text-lg sm:text-xl md:text-2xl font-medium text-white"
               style={{ fontFamily: 'var(--font-benzin)' }}

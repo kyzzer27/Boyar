@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
@@ -82,11 +81,10 @@ export default function TrueCacHubPage() {
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
-        <CircularBackground />
 
         <header className="relative z-10 border-b border-white/[0.06] bg-black/80 backdrop-blur-lg">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8 lg:px-10">
-            <Link href="/tools" className="text-[13px] text-white/50 hover:text-white/90 transition-colors duration-200 tracking-wide">← Back to Tools</Link>
+            <button onClick={() => router.back()} className="text-[13px] text-white/50 hover:text-white/90 transition-colors duration-200 tracking-wide">← Back</button>
             <div className="text-center">
               <p className="text-[10px] uppercase tracking-[0.5em] text-[#c9a55c]/80 font-medium">Boyar Partners · CAC Module</p>
               <h1 className="mt-1 text-xl sm:text-2xl font-semibold text-white tracking-tight" style={{ fontFamily: "var(--font-benzin)" }}>True CAC — Institutional Projection</h1>

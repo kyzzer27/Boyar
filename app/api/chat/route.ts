@@ -1,12 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 import pageRegistry from "@/lib/chatbot/page-registry.json";
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+// ── Load ALL available Gemini API keys into a pool ──
+// Supports: GEMINI_API_KEY, GEMINI_API_KEY_1 .. GEMINI_API_KEY_10
+const GEMINI_API_KEYS: string[] = [];
+if (process.env.GEMINI_API_KEY) GEMINI_API_KEYS.push(process.env.GEMINI_API_KEY);
+for (let i = 1; i <= 10; i++) {
+  const k = process.env[`GEMINI_API_KEY_${i}`];
+  if (k) GEMINI_API_KEYS.push(k);
+}
+let geminiKeyIndex = 0; // round-robin pointer
+
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 
 const GEMINI_MODEL = "gemini-2.5-flash";
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
 const DEEPSEEK_URL = "https://api.deepseek.com/chat/completions";
+
+function geminiUrl(apiKey: string) {
+  return `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
+}
 
 // ============================================================
 // PAGE REGISTRY TYPES
@@ -406,25 +418,45 @@ async function callGemini(messages: ChatMessage[], systemPrompt: string, useGrou
     body.tools = [{ google_search: {} }];
   }
 
-  const res = await fetch(GEMINI_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+  // Try each key in the pool, rotating on quota/auth errors
+  const totalKeys = GEMINI_API_KEYS.length;
+  for (let attempt = 0; attempt < totalKeys; attempt++) {
+    const keyIdx = (geminiKeyIndex + attempt) % totalKeys;
+    const apiKey = GEMINI_API_KEYS[keyIdx];
+    const url = geminiUrl(apiKey);
 
-  if (!res.ok) {
-    const err = await res.text();
-    console.error("Gemini error:", res.status, err);
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    if (res.ok) {
+      // Advance pointer so next call starts with next key (round-robin)
+      geminiKeyIndex = (keyIdx + 1) % totalKeys;
+      const data = await res.json();
+      return (
+        data?.candidates?.[0]?.content?.parts
+          ?.filter((p: { text?: string }) => p.text)
+          .map((p: { text: string }) => p.text)
+          .join("\n") ?? ""
+      );
+    }
+
+    const errText = await res.text();
+    console.error(`Gemini key ${keyIdx + 1}/${totalKeys} error (${res.status}):`, errText.slice(0, 200));
+
+    // If quota exhausted (429) or auth error (401/403), try next key
+    if (res.status === 429 || res.status === 401 || res.status === 403) {
+      console.log(`Key ${keyIdx + 1} exhausted/invalid, trying next key...`);
+      continue;
+    }
+
+    // For other errors (500, etc.), don't retry with another key
     throw new Error(`Gemini error: ${res.status}`);
   }
 
-  const data = await res.json();
-  return (
-    data?.candidates?.[0]?.content?.parts
-      ?.filter((p: { text?: string }) => p.text)
-      .map((p: { text: string }) => p.text)
-      .join("\n") ?? ""
-  );
+  throw new Error(`All ${totalKeys} Gemini API keys exhausted`);
 }
 
 // ============================================================
@@ -432,7 +464,7 @@ async function callGemini(messages: ChatMessage[], systemPrompt: string, useGrou
 // ============================================================
 
 export async function POST(req: NextRequest) {
-  if (!DEEPSEEK_API_KEY && !GEMINI_API_KEY) {
+  if (!DEEPSEEK_API_KEY && GEMINI_API_KEYS.length === 0) {
     return NextResponse.json({ error: "No API keys configured." }, { status: 500 });
   }
 
@@ -455,15 +487,15 @@ export async function POST(req: NextRequest) {
         reply = await callDeepSeek(messages, systemPrompt);
         model = "deepseek-v3.2";
       } catch {
-        if (GEMINI_API_KEY) {
+        if (GEMINI_API_KEYS.length > 0) {
           reply = await callGemini(messages, systemPrompt, useGrounding);
-          model = "gemini-2.5-flash (fallback)";
+          model = `gemini-2.5-flash (fallback, ${GEMINI_API_KEYS.length} keys)`;
         }
       }
-    } else if (GEMINI_API_KEY) {
+    } else if (GEMINI_API_KEYS.length > 0) {
       try {
         reply = await callGemini(messages, systemPrompt, useGrounding);
-        model = "gemini-2.5-flash";
+        model = `gemini-2.5-flash (${GEMINI_API_KEYS.length} keys)`;
       } catch {
         if (DEEPSEEK_API_KEY) {
           reply = await callDeepSeek(messages, systemPrompt);

@@ -795,7 +795,7 @@ export default function CompanyFormationTablePage() {
 							className="text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-gray-900"
 							style={{ fontFamily: "var(--font-benzin)" }}
 						>
-							← Back to Company Formation
+							← Back
 						</button>
 						<p className="hidden text-xs uppercase tracking-[0.35em] text-gray-500 sm:block">Table View</p>
 						<div className="w-[120px]" aria-hidden="true" />

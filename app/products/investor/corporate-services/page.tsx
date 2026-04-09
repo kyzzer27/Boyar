@@ -16,7 +16,6 @@ import {
 	GuernseyFlag,
 } from "@/components/flags";
 import { FlagImage } from "@/components/flags/flag-image";
-import { CircularBackground } from "@/components/motion/circular-background";
 import { geoMercator, geoPath } from "d3-geo";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
@@ -568,7 +567,7 @@ function WorldMap({
 					<>
 						{/* Backdrop */}
 						<motion.div
-							className='fixed inset-0 bg-black/70 backdrop-blur-md z-40'
+							className='fixed inset-0 bg-black/85 z-40'
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}
@@ -585,7 +584,8 @@ function WorldMap({
 							onClick={(e) => e.stopPropagation()}
 						>
 							<motion.div
-								className='bg-black/95 border-2 border-white/30 rounded-2xl p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto'
+								className='bg-black border-2 border-white/30 rounded-2xl p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto'
+									style={{ willChange: "transform", transform: "translateZ(0)", contain: "content", WebkitOverflowScrolling: "touch" } as any}
 								initial={{ y: 50, opacity: 0 }}
 								animate={{ y: 0, opacity: 1 }}
 								transition={{ delay: 0.1 }}
@@ -613,16 +613,13 @@ function WorldMap({
 											jurisdiction.id,
 										);
 										return (
-											<motion.div
+											<div
 												key={jurisdiction.id}
-												className={`px-4 py-3 rounded-lg border transition ${
+												className={`px-4 py-3 rounded-lg border transition-colors duration-150 ${
 													hasData
 														? "border-white/20 bg-white/5 hover:bg-white/10 cursor-pointer"
 														: "border-white/10 bg-white/5 opacity-50 cursor-not-allowed"
 												}`}
-												initial={{ opacity: 0, x: -20 }}
-												animate={{ opacity: 1, x: 0 }}
-												transition={{ delay: index * 0.05 }}
 												onClick={() => {
 													if (hasData) {
 														onJurisdictionSelect?.(jurisdiction.id);
@@ -641,7 +638,7 @@ function WorldMap({
 														</span>
 													)}
 												</div>
-											</motion.div>
+											</div>
 										);
 									})}
 								</div>
@@ -756,7 +753,6 @@ export default function CorporateServicesPage() {
 	return (
 		<ProtectedRoute>
 			<div className='relative min-h-screen bg-black text-white'>
-				<CircularBackground />
 
 				{/* Header - Mobile Responsive - Hidden in fullscreen */}
 				{!isMapFullscreen && (
@@ -1024,14 +1020,14 @@ export default function CorporateServicesPage() {
 								initial={{ opacity: 0, scale: 0.9 }}
 								animate={{ opacity: 1, scale: 1 }}
 								exit={{ opacity: 0, scale: 0.9 }}
-								transition={{ type: "spring", damping: 25, stiffness: 300 }}
+								transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
 								onClick={(e) => e.stopPropagation()}
 							>
 								<motion.div
 									className='bg-black/95 border-2 border-white/30 rounded-2xl p-6 sm:p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto'
-									initial={{ y: 50, opacity: 0 }}
+									initial={{ y: 20, opacity: 0 }}
 									animate={{ y: 0, opacity: 1 }}
-									transition={{ delay: 0.1 }}
+									transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
 								>
 									{selectedJurisdiction === "bahamas" && (
 										<>

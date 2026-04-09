@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
 
 const projectionSteps = [
   { label: "Year 1", path: "/revenue/year-1" },
@@ -113,12 +112,11 @@ export default function CorporateServicesPage() {
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
-        <CircularBackground />
 
         <header className="relative z-10 border-b border-white/10 bg-black/90">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-5 sm:px-6 lg:px-8">
             <Link href="/tools" className="text-sm text-white/70 transition hover:text-white">
-              ← Back to Revenue Projection
+              ← Back
             </Link>
             <motion.a
               href="/files/Boyar_Partners_Revenue_Projection_2026_v3_1.xlsx"
@@ -191,7 +189,7 @@ export default function CorporateServicesPage() {
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <OrbitButton
                 label="Combined"
-                onClick={() => router.push("/revenue/combined")}
+                onClick={() => router.back()}
                 index={5}
                 size="h-24 w-24 sm:h-28 sm:w-28"
                 hoveredButton={hoveredButton}

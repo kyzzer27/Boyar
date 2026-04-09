@@ -13,7 +13,7 @@ export default function TestPage() {
             href="/tools"
             className="rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs uppercase tracking-[0.14em] text-white/85 backdrop-blur transition hover:border-white/40 hover:text-white"
           >
-            Back to Tools
+            Back
           </Link>
         </div>
         <TestScrollMorphHeroPage />

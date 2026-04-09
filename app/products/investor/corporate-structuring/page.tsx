@@ -144,7 +144,7 @@ export default function CorporateStructuringPage() {
 										d='M15 19l-7-7 7-7'
 									/>
 								</svg>
-								Back to Private Clients
+								Back
 							</button>
 						</div>
 					</div>

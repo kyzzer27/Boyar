@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface RegionalAllocation {
   region: string;
@@ -153,6 +153,7 @@ function buildGenericPie<T extends { color: string }>(data: T[], valueKey: keyof
 const fadeUp = { initial: { opacity: 0, y: 28 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as const } };
 
 export default function CACMarketingPage() {
+  const router = useRouter();
   const maxClicks = Math.max(...cpcBreakdown.map((item) => item.clicks));
   const pieGradient = `conic-gradient(${buildPieGradient()})`;
   const [showDownloadPrompt, setShowDownloadPrompt] = useState(false);
@@ -172,13 +173,12 @@ export default function CACMarketingPage() {
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
-        <CircularBackground />
 
         <header className="relative z-10 border-b border-white/[0.06] bg-black/80 backdrop-blur-lg">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8 lg:px-10">
-            <Link href="/tools" className="text-[13px] text-white/70 hover:text-white/90 transition-colors duration-200 tracking-wide">
-              ← Back to Tools
-            </Link>
+            <button onClick={() => router.back()} className="text-[13px] text-white/70 hover:text-white/90 transition-colors duration-200 tracking-wide">
+              ← Back
+              </button>
             <div className="text-center">
               <p className="text-[10px] uppercase tracking-[0.5em] text-[#c9a55c]/90 font-medium">Boyar Partners · CAC Module</p>
               <h1 className="mt-1 text-xl sm:text-2xl font-semibold text-white tracking-tight" style={{ fontFamily: "var(--font-benzin)" }}>

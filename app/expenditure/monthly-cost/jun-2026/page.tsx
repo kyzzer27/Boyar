@@ -1,7 +1,6 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -185,7 +184,6 @@ export default function June2026MonthlyCostPage() {
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
-        <CircularBackground />
 
         <header className="relative z-10 border-b border-white/10 bg-black/90">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
@@ -193,7 +191,7 @@ export default function June2026MonthlyCostPage() {
               onClick={() => router.back()}
               className="text-sm text-white/70 hover:text-white transition"
             >
-              ← Back to Monthly Cost
+              ← Back
             </button>
             <div className="text-center flex-1">
               <p className="text-xs uppercase tracking-[0.3em] text-white/60">

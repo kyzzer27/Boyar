@@ -96,19 +96,24 @@ export function TrajectoryDetailsPanel({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 z-[200] bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 z-[200] bg-black/60"
           />
 
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            transition={{ type: "tween", duration: 0.38, ease: [0.22, 0.61, 0.36, 1] }}
             className="fixed top-0 bottom-0 right-0 z-[210] w-full bg-[#FDFBEE] shadow-2xl overflow-y-auto"
-            style={{ 
+            style={{
               color: "#1a1a1a",
-              fontFamily: "'Avenir', 'Inter', sans-serif"
+              fontFamily: "'Avenir', 'Inter', sans-serif",
+              backfaceVisibility: "hidden",
+              WebkitOverflowScrolling: "touch",
+              willChange: "transform",
+              transform: "translateZ(0)",
             }}
           >
             <div className="trajectory-panel-wrapper min-h-full pb-20 relative">
@@ -723,7 +728,7 @@ export function TrajectoryDetailsPanel({
                 -webkit-font-smoothing: antialiased;
               }
               .red { color: var(--accent); }
-              .header { position: sticky; top: 0; left: 0; right: 0; z-index: 100; background: rgba(253,251,238,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+              .header { position: sticky; top: 0; left: 0; right: 0; z-index: 100; background: rgba(253,251,238,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); will-change: transform; }
               .header-inner { max-width: 1400px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
               .logo { font-weight: 800; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--black); }
               .header-subtitle { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); font-weight: 500; }
@@ -731,12 +736,12 @@ export function TrajectoryDetailsPanel({
               .hero-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 20px; font-weight: 800; }
               .hero h1 { font-size: 48px; font-weight: 800; line-height: 1.1; color: var(--black); margin-bottom: 20px; max-width: 700px; }
               .hero p { font-size: 16px; color: var(--text-muted); max-width: 560px; line-height: 1.8; }
-              .tabs-container { position: sticky; top: 56px; z-index: 90; background: rgba(253,251,238,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+              .tabs-container { position: sticky; top: 56px; z-index: 90; background: rgba(253,251,238,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); will-change: transform; }
               .tabs { max-width: 1400px; margin: 0 auto; padding: 0 48px; display: flex; overflow-x: auto; scrollbar-width: none; }
               .tab { padding: 18px 32px; font-size: 15px; font-weight: 800; letter-spacing: 1px; color: var(--text-dim); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.3s ease; white-space: nowrap; }
               .tab:hover { color: var(--text-muted); }
               .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-              .subtabs-container { position: sticky; top: 112px; z-index: 80; background: rgba(247,245,232,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+              .subtabs-container { position: sticky; top: 112px; z-index: 80; background: rgba(247,245,232,0.98); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); will-change: transform; }
               .subtabs { max-width: 1400px; margin: 0 auto; padding: 0 48px; display: flex; overflow-x: auto; scrollbar-width: none; }
               .subtab { padding: 12px 20px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim); cursor: pointer; border-bottom: 1px solid transparent; transition: all 0.25s ease; white-space: nowrap; flex-shrink: 0; }
               .subtab:hover { color: var(--text-muted); }

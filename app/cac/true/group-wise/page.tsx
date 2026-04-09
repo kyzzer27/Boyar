@@ -2,8 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const TOTAL_CAC_POOL_USD = 31200;
@@ -70,8 +69,8 @@ const COST_ATTRIBUTION = [
 const usdFormatter = (value: number, decimals = 0) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: decimals, maximumFractionDigits: decimals }).format(value);
 
-const stagger = (i: number) => ({ initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.5, delay: i * 0.06, ease: [0.25, 0.46, 0.45, 0.94] } });
-const fadeUp = { initial: { opacity: 0, y: 28 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-40px" }, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] } };
+const stagger = (i: number) => ({ initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.5, delay: i * 0.06, ease: [0.25, 0.46, 0.45, 0.94] as const } });
+const fadeUp = { initial: { opacity: 0, y: 28 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-40px" }, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as const } };
 
 function Collapsible({ title, children }: { title: string; children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -97,6 +96,7 @@ const maxTrueCac = Math.max(...TRUE_CAC_TABLE.map((r) => r.trueCac));
 const totalAbsorbed = TRUE_CAC_TABLE.reduce((s, r) => s + r.totalAbsorbed, 0);
 
 export default function GroupWiseCacPage() {
+  const router = useRouter();
   const [hoveredService, setHoveredService] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"table" | "chart">("chart");
 
@@ -113,12 +113,11 @@ export default function GroupWiseCacPage() {
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
-        <CircularBackground />
 
         {/* Header */}
         <header className="relative z-10 border-b border-white/[0.06] bg-black/80 backdrop-blur-lg">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8 lg:px-10">
-            <Link href="/cac/true" className="text-[13px] text-white/50 hover:text-white/90 transition-colors duration-200 tracking-wide">← Back to True CAC</Link>
+            <button onClick={() => router.back()} className="text-[13px] text-white/50 hover:text-white/90 transition-colors duration-200 tracking-wide">← Back</button>
             <div className="text-center">
               <p className="text-[10px] uppercase tracking-[0.5em] text-[#c9a55c]/80 font-medium">Boyar Partners · True CAC</p>
               <h1 className="mt-1 text-xl sm:text-2xl font-semibold text-white tracking-tight" style={{ fontFamily: "var(--font-benzin)" }}>Group-wise CAC — Activity-Based Allocation</h1>
@@ -266,7 +265,7 @@ export default function GroupWiseCacPage() {
                           initial={{ width: 0 }}
                           whileInView={{ width: `${widthPct}%` }}
                           viewport={{ once: true }}
-                          transition={{ duration: 0.7, delay: 0.1 + i * 0.06, ease: [0.25, 0.46, 0.45, 0.94] }}
+                          transition={{ duration: 0.7, delay: 0.1 + i * 0.06, ease: [0.25, 0.46, 0.45, 0.94] as const }}
                         />
                         <div className="absolute inset-y-0 left-0 flex items-center px-3 z-10">
                           <span className="text-[11px] font-medium text-white/90 tabular-nums">{usdFormatter(row.trueCac)}</span>

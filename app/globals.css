@@ -42,10 +42,15 @@
 	/* Smooth scrolling with performance */
 	html {
 		scroll-behavior: smooth;
+		text-rendering: optimizeSpeed;
 	}
 
-	/* GPU acceleration for animated elements */
-	[data-motion],
+	html,
+	body {
+		overscroll-behavior-y: none;
+	}
+
+	/* GPU acceleration hint for explicit motion components only */
 	.motion-safe {
 		will-change: transform;
 		transform: translateZ(0);
@@ -57,15 +62,10 @@
 		contain: layout style paint;
 	}
 
-	/* Smooth scrolling with hardware acceleration */
+	/* Smooth font rendering */
 	* {
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-	}
-
-	/* Optimize transforms */
-	[style*="transform"] {
-		will-change: transform;
 	}
 
 	/* Respect user's motion preferences */
@@ -82,6 +82,36 @@
 
 .text-glow {
 	text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+}
+
+/* Dashboard circular tabs — GPU-only rotation (no React re-renders) */
+@keyframes dashboard-orbit-rotate {
+	to {
+		transform: translateZ(0) rotate(360deg);
+	}
+}
+@keyframes dashboard-orbit-counter-rotate {
+	to {
+		transform: rotate(-360deg);
+	}
+}
+.dashboard-orbit {
+	animation: dashboard-orbit-rotate 90s linear infinite;
+	transform-origin: center center;
+	backface-visibility: hidden;
+}
+.dashboard-orbit-counter {
+	display: inline-block;
+	animation: dashboard-orbit-counter-rotate 90s linear infinite;
+	transform-origin: center center;
+	backface-visibility: hidden;
+	will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+	.dashboard-orbit,
+	.dashboard-orbit-counter {
+		animation: none !important;
+	}
 }
 
 .card-sheen {
@@ -156,7 +186,6 @@
 .custom-scrollbar::-webkit-scrollbar-track {
 	background: rgba(0, 0, 0, 0.5);
 	border-radius: 5px;
-	backdrop-filter: blur(4px);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {

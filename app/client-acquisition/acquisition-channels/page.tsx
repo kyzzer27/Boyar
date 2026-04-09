@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface AcquisitionChannel {
   id: string;
@@ -107,11 +107,33 @@ const acquisitionChannels: AcquisitionChannel[] = [
 
 export default function AcquisitionChannelsPage() {
   const router = useRouter();
+  const [animState, setAnimState] = useState<"loading" | "animate" | "skip">("loading");
+
+  useEffect(() => {
+    const fromGroup = sessionStorage.getItem("acq-from-group");
+    if (fromGroup) {
+      sessionStorage.removeItem("acq-from-group");
+      setAnimState("skip");
+    } else {
+      setAnimState("animate");
+    }
+  }, []);
+
+  const skipAnimation = animState === "skip";
+
+  if (animState === "loading") {
+    return <div className="min-h-screen bg-black" />;
+  }
+
+  const handleGroupClick = (groupId: string) => {
+    // Set flag so animation is skipped when coming back
+    sessionStorage.setItem("acq-from-group", "true");
+    router.push(`/client-acquisition/models/${groupId}`);
+  };
 
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
-        <CircularBackground />
         
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 backdrop-blur-md z-30">
@@ -137,7 +159,7 @@ export default function AcquisitionChannelsPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Header Section */}
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={skipAnimation ? false : { opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="text-center mb-12 sm:mb-16"
@@ -158,13 +180,13 @@ export default function AcquisitionChannelsPage() {
               {acquisitionChannels.map((channel, index) => (
                 <motion.button
                   key={channel.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={skipAnimation ? false : { opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: skipAnimation ? 0 : index * 0.1 }}
                   className="group relative rounded-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 backdrop-blur-md overflow-hidden hover:border-white/20 hover:from-white/12 hover:to-white/8 transition-all duration-300 text-left w-full cursor-pointer shadow-[0_10px_40px_-24px_rgba(255,255,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
                   whileHover={{ y: -6 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => router.push(`/client-acquisition/models/${channel.id}`)}
+                  onClick={() => handleGroupClick(channel.id)}
                   style={{ fontFamily: "var(--font-benzin)" }}
                 >
                   {/* Top accent line */}
@@ -235,9 +257,9 @@ export default function AcquisitionChannelsPage() {
 
             {/* Summary Section */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={skipAnimation ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1 }}
+              transition={{ duration: 0.6, delay: skipAnimation ? 0 : 1 }}
               className="mt-12 sm:mt-16 p-6 sm:p-8 rounded-2xl border border-white/20 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-md"
             >
               <h3

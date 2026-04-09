@@ -4,9 +4,6 @@ import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "re
 import { motion, AnimatePresence } from "framer-motion";
 import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
-// Local topojson – same dataset family as corporate services map
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const world110m = require("../../data/world-110m.json");
 
 type Region = "APAC" | "EU" | "NorthAmerica" | "ROW";
 
@@ -334,17 +331,49 @@ export const TrajectoryMap = forwardRef<TrajectoryMapHandle, TrajectoryMapProps>
   }, []);
 
   useEffect(() => {
-    // Convert bundled TopoJSON to GeoJSON once on mount – no network dependency
-    try {
-      const geojson = feature(
-        world110m,
-        // @ts-expect-error topojson structure
-        (world110m as any).objects.countries,
-      ) as WorldData;
-      setWorldData(geojson);
-    } catch {
-      setWorldData({ type: "FeatureCollection", features: [] });
-    }
+    // Fetch Natural Earth 110m topojson at runtime (same dataset as corporate services map)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+    fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json", {
+      signal: controller.signal,
+    })
+      .then((res) => {
+        clearTimeout(timeoutId);
+        if (!res.ok) throw new Error("Network response was not ok");
+        return res.json();
+      })
+      .then((topo) => {
+        const geojson = feature(topo, topo.objects.countries) as unknown as WorldData;
+        setWorldData(geojson);
+      })
+      .catch(() => {
+        clearTimeout(timeoutId);
+        // Fallback CDN
+        const fallback = new AbortController();
+        const fallbackTimeout = setTimeout(() => fallback.abort(), 5000);
+        fetch("https://unpkg.com/world-atlas@2.0.2/countries-110m.json", {
+          signal: fallback.signal,
+        })
+          .then((res) => {
+            clearTimeout(fallbackTimeout);
+            if (!res.ok) throw new Error("Fallback response not ok");
+            return res.json();
+          })
+          .then((topo) => {
+            const geojson = feature(topo, topo.objects.countries) as unknown as WorldData;
+            setWorldData(geojson);
+          })
+          .catch(() => {
+            clearTimeout(fallbackTimeout);
+            setWorldData({ type: "FeatureCollection", features: [] });
+          });
+      });
+
+    return () => {
+      clearTimeout(timeoutId);
+      controller.abort();
+    };
   }, []);
 
   const isMobile =

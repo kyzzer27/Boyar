@@ -1193,12 +1193,14 @@ export default function TrajectorySkipPage() {
                                 className="flex flex-col items-start justify-start overflow-hidden p-1 sm:p-3 md:p-4 text-left"
                                 style={{
                                   width: "100%",
-                                  height: `${maxH * barEased}%`,
+                                  height: `${maxH}%`,
                                   backgroundColor: i < 3 ? "#B10000" : "#FF0000",
                                   borderRadius: 0,
                                   opacity: barEased > 0 ? 1 : 0,
-                                  transformOrigin: "bottom center",
-                                  willChange: "height, opacity",
+                                  clipPath: `inset(${(1 - barEased) * 100}% 0 0 0)`,
+                                  WebkitClipPath: `inset(${(1 - barEased) * 100}% 0 0 0)`,
+                                  willChange: "clip-path, opacity",
+                                  transform: "translateZ(0)",
                                 }}
                               >
                                 {barEased > 0.1 && (

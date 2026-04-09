@@ -5,7 +5,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { motion } from "framer-motion";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
+import { useRouter } from "next/navigation";
 
 interface EMITier {
   name: string;
@@ -162,6 +162,7 @@ function classNames(...values: Array<string | false | null | undefined>) {
 }
 
 export default function BankingProjectionPage() {
+  const router = useRouter();
   const [chartReady, setChartReady] = useState(false);
   const bubbleCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const lineCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -479,7 +480,6 @@ export default function BankingProjectionPage() {
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
-        <CircularBackground />
         <Script
           src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"
           strategy="afterInteractive"
@@ -488,9 +488,9 @@ export default function BankingProjectionPage() {
 
         <header className="relative z-10 border-b border-white/10 bg-black/90">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-5 sm:px-6 lg:px-8">
-            <Link href="/tools" className="text-sm text-white/70 transition hover:text-white">
-              ← Back to Revenue Projection
-            </Link>
+            <button onClick={() => router.back()} className="text-sm text-white/70 transition hover:text-white">
+              ← Back
+              </button>
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-white/60">Banking Revenue</p>
               <h1 className="text-2xl font-semibold text-white" style={{ fontFamily: "var(--font-benzin)" }}>

@@ -14,8 +14,9 @@ export default function ChatWidget() {
 
   useEffect(() => {
     const isAuthenticated = sessionStorage.getItem("isAuthenticated") === "true";
+    const chatEnabled = sessionStorage.getItem("chatEnabled") === "true";
     const isHiddenPage = pathname === "/" || pathname === "/login";
-    setIsVisible(isAuthenticated && !isHiddenPage);
+    setIsVisible(isAuthenticated && chatEnabled && !isHiddenPage);
   }, [pathname]);
   const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);

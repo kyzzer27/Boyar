@@ -47,6 +47,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
         greetName?: string;
         greetTimezone?: string;
         restrictAsk?: boolean;
+        chatEnabled?: boolean;
       } = await res.json();
 
       if (!res.ok || !data.role) {
@@ -67,6 +68,11 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
         sessionStorage.setItem("restrictAsk", "true");
       } else {
         sessionStorage.removeItem("restrictAsk");
+      }
+      if (data.chatEnabled) {
+        sessionStorage.setItem("chatEnabled", "true");
+      } else {
+        sessionStorage.removeItem("chatEnabled");
       }
 
       router.push(data.redirect || "/tools");

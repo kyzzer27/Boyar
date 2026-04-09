@@ -3,7 +3,6 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
 import { motion, useInView } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
@@ -119,7 +118,6 @@ export default function BurnRateSummaryPage() {
 	return (
 		<ProtectedRoute>
 			<div className='relative min-h-screen bg-black text-white overflow-hidden'>
-				<CircularBackground />
 				<div className='relative z-10'>
 					{/* Header */}
 					<header className='border-b border-white/10 bg-black/40 '>
@@ -142,7 +140,7 @@ export default function BurnRateSummaryPage() {
 											d='M15 19l-7-7 7-7'
 										/>
 									</svg>
-									Back to Expenditure
+									Back
 								</button>
 								<h1
 									className='text-xl sm:text-2xl font-semibold'

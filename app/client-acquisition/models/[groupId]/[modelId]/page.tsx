@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
 import { useRouter, useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -46,10 +45,6 @@ const modelDetails: { [key: string]: { name: string; groupName: string } } = {
   "youtube-expertise": {
     name: "YouTube Expertise Positioning",
     groupName: "Authority, Thought Leadership & Brand Positioning",
-  },
-  "thought-leadership-media": {
-    name: "Thought Leadership & Media Authority",
-    groupName: "Group 2 — Authority, Thought Leadership & Brand Positioning",
   },
   "commission-based-representative": {
     name: "Commission-Based Representative Channel",
@@ -207,10 +202,6 @@ const modelButtons: { [key: string]: Array<{ id: string; label: string }> } = {
     { id: "execution-playbook", label: "Execution Playbook" },
   ],
   "offshore-masterclass": [
-    { id: "what-is-it", label: "What is it" },
-    { id: "execution-playbook", label: "Execution Playbook" },
-  ],
-  "thought-leadership-media": [
     { id: "what-is-it", label: "What is it" },
     { id: "execution-playbook", label: "Execution Playbook" },
   ],
@@ -416,7 +407,6 @@ export default function ModelDetailPage() {
     "thought-leadership": "thought-leadership-media",
     "media-authority": "thought-leadership-media",
     "thought-leadership-media-model": "thought-leadership-media",
-    "thought-leadership-media-1": "thought-leadership-media",
     "offshore-masterclass-series": "offshore-masterclass",
     "offshore-masterclass-model": "offshore-masterclass",
     "offshore-masterclass-1": "offshore-masterclass",
@@ -503,26 +493,12 @@ export default function ModelDetailPage() {
     "nurture-automation": "multi-touch-nurture",
     "multi-touch": "multi-touch-nurture",
     "nurture": "multi-touch-nurture",
-    "referral-introducer-networks": "referral-introducer-networks",
-    "referral-introducer": "referral-introducer-networks",
-    "referral-network": "referral-introducer-networks",
-    "introducer-network": "referral-introducer-networks",
-    "partner-network": "referral-introducer-networks",
-    "family-office-acquisition": "family-office-acquisition",
-    "family-office": "family-office-acquisition",
-    "fo-acquisition": "family-office-acquisition",
-    "fo-network": "family-office-acquisition",
-    "boutique-vc-angel": "boutique-vc-angel",
-    "boutique-vc": "boutique-vc-angel",
-    "vc-angel": "boutique-vc-angel",
-    "vc-syndicate": "boutique-vc-angel",
-    "angel-syndicate": "boutique-vc-angel",
-  "cfo-gc-roundtable": "cfo-gc-roundtable",
+    "cfo-gc-roundtable": "cfo-gc-roundtable",
     "cfo-gc-executive-roundtable": "cfo-gc-roundtable",
     "cfo-roundtable": "cfo-gc-roundtable",
-  "gc-roundtable": "cfo-gc-roundtable",
-  "cfo-gc-roundtable-model": "cfo-gc-roundtable",
-  "cfo-gc-acquisition": "cfo-gc-roundtable",
+    "gc-roundtable": "cfo-gc-roundtable",
+    "cfo-gc-roundtable-model": "cfo-gc-roundtable",
+    "cfo-gc-acquisition": "cfo-gc-roundtable",
     "algorithmic-linkedin-content": "algorithmic-linkedin-content",
     "algorithmic-linkedin": "algorithmic-linkedin-content",
     "linkedin-content-distribution": "algorithmic-linkedin-content",
@@ -594,7 +570,6 @@ export default function ModelDetailPage() {
     return (
       <ProtectedRoute>
         <div className="relative min-h-screen bg-black text-white flex items-center justify-center">
-          <CircularBackground />
           <div className="relative z-10 text-center">
             <h1 className="text-2xl font-bold mb-4">Model not found</h1>
             <button
@@ -612,7 +587,6 @@ export default function ModelDetailPage() {
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
-        <CircularBackground />
         
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 backdrop-blur-md z-30">
@@ -900,6 +874,9 @@ export default function ModelDetailPage() {
                       <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-benzin)' }}>
                         Execution Playbook
                       </h3>
+                    </div>
+                  )}
+
                   {selectedButton === "what-is-it" && modelId === "offshore-masterclass" && (
                     <div>
                       <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-benzin)' }}>
@@ -943,6 +920,12 @@ export default function ModelDetailPage() {
                       </motion.button>
                     </div>
                   )}
+
+                  {selectedButton === "execution-playbook" && modelId === "linkedin-executive-outreach" && (
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-benzin)' }}>
+                        Execution Playbook
+                      </h3>
                       <p className="text-gray-300 leading-relaxed mb-4">
                         Comprehensive execution playbook covering tools, workflows, scripts, governance, and KPI system for LinkedIn Executive Outreach implementation.
                       </p>

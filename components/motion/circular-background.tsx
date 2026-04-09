@@ -71,41 +71,60 @@ function CircularBackgroundComponent() {
         isolation: "isolate",
       }}
     >
-      {/* Orbs — CSS animated */}
+      {/* Orbs — CSS animated. Blur lives on a static inner layer so the
+          GPU only composites transform/opacity on the animated wrapper. */}
       {orbs.map((orb) => (
         <div
           key={`orb-${orb.id}`}
-          className="absolute rounded-full"
+          className="absolute"
           style={{
             width: orb.size,
             height: orb.size,
             left: orb.x,
             top: orb.y,
-            background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 50%, transparent 100%)",
-            border: "1px solid rgba(255,255,255,0.15)",
-            filter: "blur(2px)",
             backfaceVisibility: "hidden",
+            willChange: "transform, opacity",
+            contain: "layout paint",
             ["--mx" as string]: `${orb.moveX}px`,
             ["--my" as string]: `${orb.moveY}px`,
             animation: `bg-orb-drift ${orb.duration}s ease-in-out ${orb.delay}s infinite`,
           }}
-        />
+        >
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 50%, transparent 100%)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              filter: "blur(2px)",
+              transform: "translateZ(0)",
+            }}
+          />
+        </div>
       ))}
 
-      {/* Center glow — CSS animated */}
+      {/* Center glow — blur on static inner layer. */}
       <div
-        className="absolute rounded-full"
+        className="absolute"
         style={{
           width: 500,
           height: 500,
           left: "50%",
           top: "50%",
-          background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 50%, transparent 70%)",
-          filter: "blur(20px)",
           backfaceVisibility: "hidden",
+          willChange: "transform, opacity",
+          contain: "layout paint",
           animation: "bg-center-pulse 4s ease-in-out infinite",
         }}
-      />
+      >
+        <div
+          className="absolute inset-0 rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 50%, transparent 70%)",
+            filter: "blur(20px)",
+            transform: "translateZ(0)",
+          }}
+        />
+      </div>
 
       {/* Grid */}
       <svg
@@ -133,8 +152,10 @@ function CircularBackgroundComponent() {
             border: "2px solid rgba(255,255,255,0.2)",
             borderRadius: s.isCircle ? "50%" : "25%",
             background: "rgba(255,255,255,0.05)",
-            boxShadow: "0 0 15px rgba(255,255,255,0.1)",
             backfaceVisibility: "hidden",
+            willChange: "transform, opacity",
+            transform: "translateZ(0)",
+            contain: "layout paint",
             animation: `bg-shape-float ${s.duration}s ease-in-out ${s.delay}s infinite`,
           }}
         />

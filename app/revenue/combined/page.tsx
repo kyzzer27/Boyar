@@ -4,8 +4,8 @@ import Link from "next/link";
 import Script from "next/script";
 import { motion } from "framer-motion";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface YearProjection {
   label: string;
@@ -123,6 +123,7 @@ const combinedInsights = [
 ];
 
 export default function CombinedProjectionPage() {
+  const router = useRouter();
   const peakYear = projections.reduce((prev, curr) => (curr.totalUsd > prev.totalUsd ? curr : prev), projections[0]);
   const [chartReady, setChartReady] = useState(false);
   const chartCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -224,7 +225,6 @@ export default function CombinedProjectionPage() {
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
-        <CircularBackground />
         <Script
           src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"
           strategy="afterInteractive"
@@ -233,9 +233,9 @@ export default function CombinedProjectionPage() {
 
         <header className="relative z-10 border-b border-white/10 bg-black/90">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-5 sm:px-6 lg:px-8">
-            <Link href="/revenue/corporate-services" className="text-sm text-white/70 transition hover:text-white">
-              ← Back to Corporate Services
-            </Link>
+            <button onClick={() => router.back()} className="text-sm text-white/70 transition hover:text-white">
+              ← Back
+              </button>
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-white/50">Combined Projection</p>
               <h1 className="text-2xl font-semibold text-white" style={{ fontFamily: "var(--font-benzin)" }}>

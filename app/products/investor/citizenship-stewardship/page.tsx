@@ -818,7 +818,7 @@ export default function CitizenshipStewardshipPage() {
                   Jurisdictional compliance — each programme engagement is executed under the regulatory requirements of the specific country
                 </li>
                 <li>
-                  <span class="benefit-icon">›</span>
+                  <span className="benefit-icon">›</span>
                   Reduced execution risk through structured project management, milestone tracking, and documentation control
                 </li>
                 <li>

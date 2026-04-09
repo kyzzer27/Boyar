@@ -2,8 +2,8 @@
 
 import dynamic from "next/dynamic";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // Use simple iframe-based PDF viewer - more reliable, no version issues
 const PDFViewer = dynamic(() => import("@/components/pdf/pdf-viewer-simple"), {
@@ -16,6 +16,7 @@ const PDFViewer = dynamic(() => import("@/components/pdf/pdf-viewer-simple"), {
 });
 
 export default function PitchPage() {
+  const router = useRouter();
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = "/pitch-deck.pdf";
@@ -29,14 +30,13 @@ export default function PitchPage() {
     <ProtectedRoute>
       <div className="min-h-screen bg-black text-white relative">
         {/* Background Motion */}
-        <CircularBackground />
         
         {/* Header */}
         <header className="border-b border-white/10 bg-black relative z-10">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8 gap-2">
-            <Link href="/tools" className="text-sm sm:text-base text-white hover:text-gray-300 transition flex items-center gap-1 sm:gap-2 flex-shrink-0">
+            <button onClick={() => router.back()} className="text-sm sm:text-base text-white hover:text-gray-300 transition flex items-center gap-1 sm:gap-2 flex-shrink-0">
               ← Back
-            </Link>
+              </button>
             <h1
               className="text-lg sm:text-xl md:text-2xl font-medium text-white text-center flex-1"
               style={{ fontFamily: 'var(--font-benzin)' }}

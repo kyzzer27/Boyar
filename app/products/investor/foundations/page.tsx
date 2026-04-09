@@ -239,7 +239,7 @@ export default function FoundationsPage() {
 							<span className='inline-block transition-transform group-hover:-translate-x-1'>
 								←
 							</span>
-							<span>Back to Services</span>
+							<span>Back</span>
 						</button>
 						<div className='flex items-center gap-3'>
 							<div className='h-8 w-px bg-slate-300'></div>

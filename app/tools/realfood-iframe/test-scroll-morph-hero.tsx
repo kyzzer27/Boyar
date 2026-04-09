@@ -126,11 +126,26 @@ const lerp = (a: number, b: number, t: number) => a * (1 - t) + b * t;
 function IntroAnimation() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const skipIntro = searchParams.get("skipIntro") === "true";
+  const skipFromParam = searchParams.get("skipIntro") === "true";
+
+  // Skip intro and restore last card when returning from a group page
+  const [returnState] = useState(() => {
+    if (typeof window !== "undefined") {
+      const flag = sessionStorage.getItem("acq-cards-from-group");
+      if (flag) {
+        const idx = sessionStorage.getItem("acq-cards-last-index");
+        sessionStorage.removeItem("acq-cards-from-group");
+        sessionStorage.removeItem("acq-cards-last-index");
+        return { skip: true, lastCard: idx !== null ? parseInt(idx, 10) : null };
+      }
+    }
+    return { skip: false, lastCard: null };
+  });
+  const skipIntro = skipFromParam || returnState.skip;
 
   const [introPhase, setIntroPhase] = useState<"scatter" | "line" | "circle">(skipIntro ? "circle" : "scatter");
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(returnState.lastCard);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -353,7 +368,7 @@ function IntroAnimation() {
       >
         <AnimatePresence>
           {showPreview && hoveredCard !== null ? (
-            <PreviewCard src={BASE_IMAGES[hoveredCard]} index={hoveredCard} onClick={() => router.push(GROUP_URLS[hoveredCard!])} />
+            <PreviewCard src={BASE_IMAGES[hoveredCard]} index={hoveredCard} onClick={() => { sessionStorage.setItem("acq-cards-from-group", "true"); sessionStorage.setItem("acq-cards-last-index", String(hoveredCard)); router.push(GROUP_URLS[hoveredCard!]); }} />
           ) : null}
         </AnimatePresence>
       </div>
@@ -423,7 +438,7 @@ function IntroAnimation() {
                 if (morphValue > 0.9) setHoveredCard(idx);
               }}
               onHoverEnd={() => {}}
-              onClick={() => router.push(GROUP_URLS[i])}
+              onClick={() => { sessionStorage.setItem("acq-cards-from-group", "true"); sessionStorage.setItem("acq-cards-last-index", String(i)); router.push(GROUP_URLS[i]); }}
             />
           );
         })}

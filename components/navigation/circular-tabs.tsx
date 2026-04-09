@@ -216,17 +216,20 @@ function CacNavButton({ label, onClick, index }: { label: string; onClick: () =>
   return (
     <motion.button
       ref={buttonRef}
-      className="group relative w-32 sm:w-36 aspect-square rounded-full border border-white/10 bg-gradient-to-br from-white/8 to-white/3 text-center flex flex-col items-center justify-center tracking-wide transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 shadow-md"
+      className="group relative w-32 sm:w-36 aspect-square rounded-full border border-white/10 bg-gradient-to-br from-white/8 to-white/3 text-center flex flex-col items-center justify-center tracking-wide transition-colors duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 shadow-md"
       style={{
         boxShadow: isHovered
           ? "0 0 15px rgba(59, 130, 246, 0.3), 0 0 30px rgba(59, 130, 246, 0.15)"
           : "0 0 12px rgba(59, 130, 246, 0.10), 0 0 30px rgba(59, 130, 246, 0.05)",
         fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif",
+        willChange: "transform",
+        transform: "translateZ(0)",
+        backfaceVisibility: "hidden",
       }}
       initial={{ opacity: 0, scale: 0.6, y: 16 }}
-      animate={{ opacity: 1, scale: 1, y: 0, filter: "grayscale(0.6)" }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.25 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ scale: 1.05, filter: "grayscale(0)", transition: { duration: 0.3 } }}
+      whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
       whileTap={{ scale: 0.95 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -292,18 +295,21 @@ function AcquisitionButton({ option, index, router, setShowOnboardingModal, setA
     <motion.button
       ref={buttonRef}
       key={option}
-      className="group relative w-full aspect-square rounded-full border border-white/10 bg-gradient-to-br from-white/8 to-white/3 flex flex-col items-center justify-center transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 overflow-hidden"
-      style={{ 
+      className="group relative w-full aspect-square rounded-full border border-white/10 bg-gradient-to-br from-white/8 to-white/3 flex flex-col items-center justify-center transition-colors duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 overflow-hidden"
+      style={{
         fontFamily: 'var(--font-benzin)',
-        willChange: "transform, opacity"
+        willChange: "transform",
+        transform: "translateZ(0)",
+        backfaceVisibility: "hidden",
       }}
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
       whileTap={{ scale: 0.96 }}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
-        opacity: { delay: index * 0.1 },
-        scale: { delay: index * 0.1 },
+        duration: 0.5,
+        delay: index * 0.1,
+        ease: [0.16, 1, 0.3, 1],
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -449,7 +455,6 @@ export function CircularTabs({
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<string | null>(initialActiveTab);
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
-  const [rotation, setRotation] = useState(0);
   const [restrictionNotice, setRestrictionNotice] = useState<string | null>(null);
   const [activeRevenueSegment, setActiveRevenueSegment] = useState<string | null>(initialRevenueSegment);
   const [showOnboardingModal, setShowOnboardingModal] = useState(false);
@@ -474,22 +479,9 @@ export function CircularTabs({
   const isMobile = dimensions.width < 400;
   const radius = dimensions.width * (isMobile ? 0.37 : 0.40);
 
-  useEffect(() => {
-    // Auto-rotate the entire circle slowly - Optimized with requestAnimationFrame
-    let animationFrameId: number;
-    let lastTime = performance.now();
-    
-    const animate = (currentTime: number) => {
-      const deltaTime = currentTime - lastTime;
-      lastTime = currentTime;
-      
-      setRotation((prev) => (prev + 0.2 * (deltaTime / 50)) % 360);
-      animationFrameId = requestAnimationFrame(animate);
-    };
-    
-    animationFrameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []);
+  // Rotation is now handled purely by CSS animation on a wrapper
+  // (see `.dashboard-orbit` in globals.css). This avoids per-frame
+  // React re-renders and is fully GPU-composited.
 
   const getTabPosition = (index: number, offset: number = 0) => {
     const angle = ((index * 2 * Math.PI) / tabs.length - Math.PI / 2) + (offset * Math.PI / 180);
@@ -552,7 +544,6 @@ export function CircularTabs({
           }}
           animate={{
             scale: activeTab ? 1.15 : 1,
-            rotate: rotation,
           }}
           transition={{ duration: 0.3 }}
         >
@@ -565,9 +556,18 @@ export function CircularTabs({
           </motion.span>
         </motion.div>
 
+        {/* Rotating wrapper for tabs + connecting lines (GPU-only CSS rotation) */}
+        <div
+          className="dashboard-orbit absolute inset-0 pointer-events-none"
+          style={{
+            willChange: "transform",
+            transform: "translateZ(0)",
+            transformOrigin: "center center",
+          }}
+        >
         {/* Circular Tabs */}
         {tabs.map((tab, index) => {
-          const { x, y } = getTabPosition(index, rotation);
+          const { x, y } = getTabPosition(index, 0);
           const isActive = activeTab === tab.id;
           const isHovered = hoveredTab === tab.id;
           const isRestricted = isInvestorLite && tab.id === "documents";
@@ -575,7 +575,7 @@ export function CircularTabs({
           return (
             <motion.button
               key={tab.id}
-              className={`absolute rounded-full border-2 bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-md flex flex-col items-center justify-center gap-1 text-white z-20 ${
+              className={`absolute rounded-full border-2 bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-md flex flex-col items-center justify-center gap-1 text-white z-20 pointer-events-auto ${
                 isRestricted ? "cursor-not-allowed opacity-70" : "cursor-pointer"
               }`}
               style={{
@@ -636,7 +636,7 @@ export function CircularTabs({
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <span className="text-[8px] sm:text-[10px] md:text-xs font-medium text-center px-1 sm:px-2">{tab.label}</span>
+              <span className="dashboard-orbit-counter text-[8px] sm:text-[10px] md:text-xs font-medium text-center px-1 sm:px-2">{tab.label}</span>
             </motion.button>
           );
         })}
@@ -644,7 +644,7 @@ export function CircularTabs({
         {/* Connecting Lines - Glowing Green */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" style={{ zIndex: 5 }} viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}>
           <defs>
-            <filter id="glow">
+            <filter id="glow" x="0" y="0" width={dimensions.width} height={dimensions.height} filterUnits="userSpaceOnUse">
               <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
               <feMerge>
                 <feMergeNode in="coloredBlur"/>
@@ -653,7 +653,7 @@ export function CircularTabs({
             </filter>
           </defs>
           {tabs.map((tab, index) => {
-            const { x, y } = getTabPosition(index, rotation);
+            const { x, y } = getTabPosition(index, 0);
             const isHighlighted = hoveredTab === tab.id || activeTab === tab.id;
             // Calculate line start at edge of center circle
             const dist = Math.sqrt(x * x + y * y);
@@ -684,6 +684,8 @@ export function CircularTabs({
             );
           })}
         </svg>
+        </div>
+        {/* End dashboard-orbit wrapper */}
 
       </div>
 
@@ -693,27 +695,34 @@ export function CircularTabs({
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/70 backdrop-blur-md z-30"
+              className="fixed inset-0 bg-black/85 z-30"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={() => setActiveTab(null)}
             />
 
             {/* Modal Content */}
             <motion.div
-              className="fixed inset-0 flex items-center justify-center z-40 p-4 sm:p-6"
-              initial={{ opacity: 0, scale: 0.8, y: 50 }}
+              className="fixed inset-0 flex items-center justify-center z-40 p-4 sm:p-6 pointer-events-none"
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 50 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
               <motion.div
-                className="bg-black/95 border-2 border-white/30 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 max-w-lg w-full backdrop-blur-xl shadow-2xl max-h-[90vh] overflow-y-auto"
-                initial={{ y: 50, opacity: 0 }}
+                className="bg-black border-2 border-white/30 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto pointer-events-auto"
+                initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.1 }}
+                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  willChange: "transform",
+                  transform: "translateZ(0)",
+                  contain: "content",
+                  WebkitOverflowScrolling: "touch",
+                }}
               >
                 <div className="flex items-center justify-between mb-4 sm:mb-6">
                   <div className="flex items-center gap-2 sm:gap-4">

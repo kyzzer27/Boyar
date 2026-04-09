@@ -55,7 +55,7 @@ export default function OnQuotePricingPage() {
 									d="M15 19l-7-7 7-7"
 								/>
 							</svg>
-							Back to Pricing
+							Back
 						</button>
 						<h1
 							className="min-w-0 flex-1 text-center text-xl font-semibold text-gray-900 sm:text-2xl"

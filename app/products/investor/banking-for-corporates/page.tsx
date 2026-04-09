@@ -541,7 +541,7 @@ export default function BankingForCorporatesPage() {
 								className='inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg transition-all duration-300'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
-								Back to Banking
+								Back
 								<span>→</span>
 							</button>
 						</motion.div>

@@ -33,6 +33,7 @@ export default function LoginPage() {
 				greetName?: string;
 				greetTimezone?: string;
 				restrictAsk?: boolean;
+				chatEnabled?: boolean;
 			} = await response.json();
 
 			if (!response.ok || !data.success) {
@@ -56,6 +57,11 @@ export default function LoginPage() {
 				sessionStorage.setItem("restrictAsk", "true");
 			} else {
 				sessionStorage.removeItem("restrictAsk");
+			}
+			if (data.chatEnabled) {
+				sessionStorage.setItem("chatEnabled", "true");
+			} else {
+				sessionStorage.removeItem("chatEnabled");
 			}
 
 			router.push(data.redirect || "/tools");

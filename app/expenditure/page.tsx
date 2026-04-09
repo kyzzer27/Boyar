@@ -30,6 +30,8 @@ export default function ExpenditurePage() {
   useEffect(() => {
     // Start the eye-opening reveal animation with initial delay
     const startTime = Date.now();
+    let animationId: number;
+    let done = false;
     
     // Cubic bezier easing function for smooth, elegant motion
     const cubicBezier = (t: number, x1: number, y1: number, x2: number, y2: number): number => {
@@ -67,12 +69,14 @@ export default function ExpenditurePage() {
     };
     
     const animate = () => {
+      if (done) return;
+      
       const elapsed = (Date.now() - startTime) / 1000;
       
       // Account for initial delay
       if (elapsed < ANIMATION_CONFIG.initialDelay) {
         setRevealProgress(0);
-        requestAnimationFrame(animate);
+        animationId = requestAnimationFrame(animate);
         return;
       }
       
@@ -87,11 +91,18 @@ export default function ExpenditurePage() {
       setRevealProgress(easedProgress);
       
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        animationId = requestAnimationFrame(animate);
+      } else {
+        done = true;
       }
     };
     
-    requestAnimationFrame(animate);
+    animationId = requestAnimationFrame(animate);
+    
+    return () => {
+      done = true;
+      cancelAnimationFrame(animationId);
+    };
   }, []);
 
   useEffect(() => {
@@ -256,7 +267,6 @@ export default function ExpenditurePage() {
           preload="auto"
           loop
           muted={isMuted}
-          volume={isMuted ? 0 : 1}
           onError={(e) => {
             console.error("Audio loading error:", e);
           }}

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
+import { useRouter } from "next/navigation";
 
 interface RevenueRow {
   service: string;
@@ -180,19 +180,19 @@ function RevenueByServiceBarChart({ revenueRows, maxRevenue, usdFormatter }: Rev
 }
 
 export default function YearTwoRevenuePage() {
+  const router = useRouter();
   const pieGradient = `conic-gradient(${buildPieGradient()})`;
   const maxRevenue = Math.max(...revenueRows.map((row) => row.total));
 
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
-        <CircularBackground />
 
         <header className="relative z-10 border-b border-white/10 bg-black/90">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-5 sm:px-6 lg:px-8">
-            <Link href="/revenue/corporate-services" className="text-sm text-white/70 transition hover:text-white">
-              ← Back to Corporate Services
-            </Link>
+            <button onClick={() => router.back()} className="text-sm text-white/70 transition hover:text-white">
+              ← Back
+              </button>
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-white/50">Year 2 Projection</p>
               <h1 className="text-2xl font-semibold text-white" style={{ fontFamily: "var(--font-benzin)" }}>

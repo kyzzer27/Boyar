@@ -42,14 +42,14 @@ export default function BankingPricingPage() {
 	const [group2JurisdictionFilter, setGroup2JurisdictionFilter] = useState<string>("");
 	const [showPricingFactors, setShowPricingFactors] = useState(false);
 
-	const rowsForGroup = useMemo(() => {
-		if (activeGroup === "2") return bankingGroup2Rows;
+	const rowsForGroup: (BankingPricingRow | BankingGroup2Row)[] = useMemo(() => {
+		if (activeGroup === "2") return [...bankingGroup2Rows];
 		if (activeGroup === "3") return [];
-		return bankingPricingRows;
+		return [...bankingPricingRows];
 	}, [activeGroup]);
 
-	const filteredRows = useMemo(() => {
-		let base = rowsForGroup;
+	const filteredRows: (BankingPricingRow | BankingGroup2Row)[] = useMemo(() => {
+		let base: (BankingPricingRow | BankingGroup2Row)[] = rowsForGroup;
 		if (activeGroup === "2" && group2JurisdictionFilter) {
 			base = base.filter((row) => row.jurisdiction === group2JurisdictionFilter);
 		} else if (activeRegion !== "All regions") {
@@ -72,7 +72,7 @@ export default function BankingPricingPage() {
 	}, [activeRegion, activeGroup, group2JurisdictionFilter, query, rowsForGroup]);
 
 	const rowsByJurisdiction = useMemo(() => {
-		const map = new Map<string, typeof filteredRows>();
+		const map = new Map<string, (BankingPricingRow | BankingGroup2Row)[]>();
 		for (const row of filteredRows) {
 			const list = map.get(row.jurisdiction) ?? [];
 			list.push(row);
@@ -95,7 +95,7 @@ export default function BankingPricingPage() {
 							<svg className="h-4 w-4 shrink-0 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
 								<path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
 							</svg>
-							Back to Pricing
+							Back
 						</button>
 						<h1
 							className="min-w-0 flex-1 text-center text-xl font-semibold text-gray-900 sm:text-2xl"

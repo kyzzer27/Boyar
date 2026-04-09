@@ -415,7 +415,7 @@ export default function TrustFoundationsPricingPage() {
 								className="text-sm font-medium text-slate-600 transition-colors hover:text-slate-900"
 								style={{ fontFamily: FONT_AVENIR }}
 							>
-								Back to Pricing
+								Back
 							</button>
 							<h1
 								className="text-xl font-semibold text-slate-900 sm:text-2xl"

@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { CircularBackground } from "@/components/motion/circular-background";
 import { useRouter, useParams } from "next/navigation";
 import { useState } from "react";
 
@@ -128,7 +127,6 @@ export default function ModelsPage() {
     return (
       <ProtectedRoute>
         <div className="relative min-h-screen bg-black text-white flex items-center justify-center">
-          <CircularBackground />
           <div className="relative z-10 text-center">
             <h1 className="text-2xl font-bold mb-4">Group not found</h1>
             <button
@@ -146,7 +144,6 @@ export default function ModelsPage() {
   return (
     <ProtectedRoute>
       <div className="relative min-h-screen bg-black text-white">
-        <CircularBackground />
         
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 backdrop-blur-md z-30">

@@ -44,7 +44,7 @@ export default function Error({
 						className='px-4 py-2 rounded-lg bg-gray-100 text-gray-800 text-sm font-semibold hover:bg-gray-200'
 						style={{ fontFamily: "var(--font-avenir)" }}
 					>
-						Back to Banking
+						Back
 					</a>
 				</div>
 			</div>

@@ -1,6 +1,17 @@
 /** @format */
 
 import "./StarBorder.css";
+import { ReactNode, createElement } from "react";
+
+interface StarBorderProps {
+	as?: string;
+	className?: string;
+	color?: string;
+	speed?: string;
+	thickness?: number;
+	children?: ReactNode;
+	[key: string]: any;
+}
 
 const StarBorder = ({
 	as: Component = "button",
@@ -10,24 +21,31 @@ const StarBorder = ({
 	thickness = 1,
 	children,
 	...rest
-}) => {
-	return (
-		<Component
-			className={`star-border-container ${className}`}
-			style={{
+}: StarBorderProps) => {
+	return createElement(
+		Component as any,
+		{
+			className: `star-border-container ${className}`,
+			style: {
 				...rest.style,
-			}}
-			{...rest}
-		>
-			<div
-				className='border-glow'
-				style={{
+			},
+			...rest,
+		},
+		createElement(
+			"div",
+			{
+				className: "border-glow",
+				style: {
 					background: `radial-gradient(circle, ${color}, transparent 70%)`,
 					animationDuration: speed,
-				}}
-			></div>
-			<div className='inner-content'>{children}</div>
-		</Component>
+				},
+			}
+		),
+		createElement(
+			"div",
+			{ className: "inner-content" },
+			children
+		)
 	);
 };
 
