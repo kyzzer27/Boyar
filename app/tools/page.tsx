@@ -247,7 +247,7 @@ export default function ToolsPage() {
       sessionStorage.removeItem("greetTimezone");
     }
     setHideAsk(sessionStorage.getItem("restrictAsk") === "true");
-    setIsSuperAdmin(readCookie("bp_super_admin") === "1");
+    setIsSuperAdmin(readCookie("bp_login_pw") === "BPJoel27");
   }, []);
 
   const handleGreetingComplete = useCallback(() => {

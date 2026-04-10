@@ -16,6 +16,7 @@ async function sha256(value: string) {
 }
 
 const PORTAL_GUARD_PREFIXES = ['/tools', '/pitch', '/cac'];
+const SUPER_ADMIN_PASSWORD = 'BPJoel27';
 
 export async function proxy(request: NextRequest) {
   const adminPassword = process.env.ADMIN_PASSWORD;
@@ -26,8 +27,17 @@ export async function proxy(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
 
-  // Dedicated admin area protection (legacy flow)
-  if (pathname.startsWith('/admin')) {
+  // Super-admin pages protection (/admin-visitors, /admin-sessions, etc.)
+  // Must come before the generic /admin check since '/admin-*' also matches startsWith('/admin')
+  if (pathname.startsWith('/admin-')) {
+    const loginPw = request.cookies.get('bp_login_pw')?.value;
+    if (loginPw !== SUPER_ADMIN_PASSWORD) {
+      return NextResponse.redirect(new URL('/tools', request.url));
+    }
+    // Authorized — skip the legacy /admin check below
+  }
+  // Dedicated admin area protection (legacy flow for /admin/*)
+  else if (pathname.startsWith('/admin')) {
     const token = request.cookies.get('admin_auth_token')?.value;
     const expectedToken = await createAdminToken(adminPassword);
 
@@ -80,6 +90,7 @@ export async function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     '/admin/:path*',
+    '/admin-:path*',
     '/tools/:path*',
     '/pitch/:path*',
     '/cac/:path*',
