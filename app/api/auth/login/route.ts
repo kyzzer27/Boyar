@@ -171,5 +171,35 @@ export async function POST(request: Request) {
 		maxAge: 60 * 60 * 8,
 	});
 
+	// Tracking cookies — used by the admin visitor monitor.
+	response.cookies.set("bp_login_pw", trimmedPw, {
+		httpOnly: false,
+		sameSite: "strict",
+		secure: process.env.NODE_ENV === "production",
+		path: "/",
+		maxAge: 60 * 60 * 8,
+	});
+
+	if (greetName) {
+		response.cookies.set("bp_login_name", greetName, {
+			httpOnly: false,
+			sameSite: "strict",
+			secure: process.env.NODE_ENV === "production",
+			path: "/",
+			maxAge: 60 * 60 * 8,
+		});
+	}
+
+	// Flag for BPJoel27 super-admin — shown in UI to gate admin button.
+	if (trimmedPw === "BPJoel27") {
+		response.cookies.set("bp_super_admin", "1", {
+			httpOnly: false,
+			sameSite: "strict",
+			secure: process.env.NODE_ENV === "production",
+			path: "/",
+			maxAge: 60 * 60 * 8,
+		});
+	}
+
 	return response;
 }

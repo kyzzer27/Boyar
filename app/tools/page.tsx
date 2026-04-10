@@ -9,6 +9,17 @@ import { motion } from "framer-motion";
 import type { UserRole } from "@/components/layout/app-shell";
 import { useSearchParams, useRouter } from "next/navigation";
 
+function readCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const parts = document.cookie.split(";").map((p) => p.trim());
+  for (const p of parts) {
+    const idx = p.indexOf("=");
+    if (idx === -1) continue;
+    if (p.slice(0, idx) === name) return decodeURIComponent(p.slice(idx + 1));
+  }
+  return null;
+}
+
 const QUOTES = [
   "Where disciplined execution meets compounding opportunity.",
   "Building wealth through relationships, not transactions.",
@@ -223,6 +234,7 @@ export default function ToolsPage() {
   const [greetTimezone, setGreetTimezone] = useState<string | null>(null);
   const [showGreeting, setShowGreeting] = useState(false);
   const [hideAsk, setHideAsk] = useState(true);
+  const [isSuperAdmin, setIsSuperAdmin] = useState(false);
 
   useEffect(() => {
     const name = sessionStorage.getItem("greetName");
@@ -235,6 +247,7 @@ export default function ToolsPage() {
       sessionStorage.removeItem("greetTimezone");
     }
     setHideAsk(sessionStorage.getItem("restrictAsk") === "true");
+    setIsSuperAdmin(readCookie("bp_super_admin") === "1");
   }, []);
 
   const handleGreetingComplete = useCallback(() => {
@@ -261,25 +274,46 @@ export default function ToolsPage() {
             >
               Dashboard
             </h1>
-            {!hideAsk && (
-              <motion.a
-                href="/tools/company-documents/the-ask"
-                className="group relative px-6 py-2.5 rounded-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 text-center flex flex-col items-center justify-center tracking-wide transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 shadow-[0_0_12px_rgba(59,130,246,0.10),0_0_30px_rgba(59,130,246,0.05)] hover:shadow-[0_0_15px_rgba(59,130,246,0.3),0_0_30px_rgba(59,130,246,0.15)]"
-                style={{ fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" }}
-                whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-              >
-                <div className="relative z-10 w-full flex flex-col items-center">
-                  <span className="leading-snug text-sm font-medium text-white group-hover:text-blue-200 transition-colors duration-300">
-                    The Ask
-                  </span>
-                  <div className="mt-1 w-6 h-[1.5px] bg-gradient-to-r from-blue-500 to-cyan-400 opacity-50 group-hover:opacity-100 transition-opacity duration-300 mx-auto rounded-full" />
-                </div>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none overflow-hidden rounded-xl z-0">
-                  <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-blue-500/20 rounded-full blur-xl -translate-y-1/2" />
-                  <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-cyan-500/20 rounded-full blur-xl translate-y-1/2" />
-                </div>
-              </motion.a>
-            )}
+            <div className="flex items-center gap-3">
+              {isSuperAdmin && (
+                <motion.a
+                  href="/admin-sessions"
+                  className="group relative px-6 py-2.5 rounded-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 text-center flex flex-col items-center justify-center tracking-wide transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 shadow-[0_0_12px_rgba(59,130,246,0.10),0_0_30px_rgba(59,130,246,0.05)] hover:shadow-[0_0_15px_rgba(59,130,246,0.3),0_0_30px_rgba(59,130,246,0.15)]"
+                  style={{ fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" }}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+                >
+                  <div className="relative z-10 w-full flex flex-col items-center">
+                    <span className="leading-snug text-sm font-medium text-white group-hover:text-blue-200 transition-colors duration-300">
+                      Admin
+                    </span>
+                    <div className="mt-1 w-6 h-[1.5px] bg-gradient-to-r from-blue-500 to-cyan-400 opacity-50 group-hover:opacity-100 transition-opacity duration-300 mx-auto rounded-full" />
+                  </div>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none overflow-hidden rounded-xl z-0">
+                    <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-blue-500/20 rounded-full blur-xl -translate-y-1/2" />
+                    <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-cyan-500/20 rounded-full blur-xl translate-y-1/2" />
+                  </div>
+                </motion.a>
+              )}
+              {!hideAsk && (
+                <motion.a
+                  href="/tools/company-documents/the-ask"
+                  className="group relative px-6 py-2.5 rounded-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 text-center flex flex-col items-center justify-center tracking-wide transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 shadow-[0_0_12px_rgba(59,130,246,0.10),0_0_30px_rgba(59,130,246,0.05)] hover:shadow-[0_0_15px_rgba(59,130,246,0.3),0_0_30px_rgba(59,130,246,0.15)]"
+                  style={{ fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" }}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+                >
+                  <div className="relative z-10 w-full flex flex-col items-center">
+                    <span className="leading-snug text-sm font-medium text-white group-hover:text-blue-200 transition-colors duration-300">
+                      The Ask
+                    </span>
+                    <div className="mt-1 w-6 h-[1.5px] bg-gradient-to-r from-blue-500 to-cyan-400 opacity-50 group-hover:opacity-100 transition-opacity duration-300 mx-auto rounded-full" />
+                  </div>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none overflow-hidden rounded-xl z-0">
+                    <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-blue-500/20 rounded-full blur-xl -translate-y-1/2" />
+                    <div className="absolute bottom-1/4 right-1/4 w-12 h-12 bg-cyan-500/20 rounded-full blur-xl translate-y-1/2" />
+                  </div>
+                </motion.a>
+              )}
+            </div>
           </div>
         </header>
 

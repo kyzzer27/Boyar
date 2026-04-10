@@ -10,15 +10,63 @@ export interface AppShellProps {
   readonly children: React.ReactNode;
 }
 
+function readCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const parts = document.cookie.split(";").map((p) => p.trim());
+  for (const p of parts) {
+    const idx = p.indexOf("=");
+    if (idx === -1) continue;
+    if (p.slice(0, idx) === name) return decodeURIComponent(p.slice(idx + 1));
+  }
+  return null;
+}
+
+function getOrCreateSessionId(): string {
+  if (typeof window === "undefined") return "";
+  try {
+    let id = sessionStorage.getItem("bp_visitor_sid");
+    if (!id) {
+      id = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+      sessionStorage.setItem("bp_visitor_sid", id);
+    }
+    return id;
+  } catch {
+    return `${Date.now()}-${Math.random()}`;
+  }
+}
+
 export function AppShell({ children }: AppShellProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [headerVisible, setHeaderVisible] = useState(false);
+  const [isSuperAdmin, setIsSuperAdmin] = useState(false);
 
   useEffect(() => {
     setHeaderVisible(true);
     if (videoRef.current) {
       videoRef.current.play().catch(() => {});
     }
+
+    // Super admin gate for the admin button
+    setIsSuperAdmin(readCookie("bp_super_admin") === "1");
+
+    // Visitor heartbeat
+    const sessionId = getOrCreateSessionId();
+    if (!sessionId) return;
+    const timezone =
+      Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown";
+
+    const beat = () => {
+      fetch("/api/track-visitor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, timezone }),
+        credentials: "same-origin",
+        keepalive: true,
+      }).catch(() => {});
+    };
+    beat();
+    const interval = setInterval(beat, 15000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -85,6 +133,7 @@ export function AppShell({ children }: AppShellProps) {
         <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-14">
           {children}
         </main>
+
       </div>
     </div>
   );
