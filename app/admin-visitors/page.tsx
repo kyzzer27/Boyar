@@ -1,7 +1,19 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { AppShell } from "@/components/layout/app-shell";
+
+function readCookie(name: string): string | null {
+	if (typeof document === "undefined") return null;
+	const parts = document.cookie.split(";").map((p) => p.trim());
+	for (const p of parts) {
+		const idx = p.indexOf("=");
+		if (idx === -1) continue;
+		if (p.slice(0, idx) === name) return decodeURIComponent(p.slice(idx + 1));
+	}
+	return null;
+}
 
 interface VisitorSession {
 	id: string;
@@ -47,26 +59,35 @@ function formatInTimezone(epoch: number, tz: string): string {
 }
 
 export default function AdminVisitorsPage() {
-	const [password, setPassword] = useState("");
-	const [authed, setAuthed] = useState(false);
+	const router = useRouter();
+	const [authorized, setAuthorized] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [sessions, setSessions] = useState<VisitorSession[]>([]);
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const [serverTime, setServerTime] = useState<number>(Date.now());
 	const [now, setNow] = useState<number>(Date.now());
 
+	/* Auth check — must have super-admin cookie (set only for BPJoel27) */
+	useEffect(() => {
+		if (readCookie("bp_super_admin") === "1") {
+			setAuthorized(true);
+		} else {
+			router.replace("/tools");
+		}
+	}, [router]);
+
 	const fetchVisitors = useCallback(
-		async (pw: string) => {
+		async () => {
 			setLoading(true);
 			setError(null);
 			try {
 				const res = await fetch("/api/admin/visitors", {
-					headers: { "x-admin-password": pw },
 					cache: "no-store",
+					credentials: "same-origin",
 				});
 				if (res.status === 401) {
-					setError("Invalid admin password.");
-					setAuthed(false);
+					setError("Unauthorized.");
+					setAuthorized(false);
 					return;
 				}
 				if (!res.ok) {
@@ -76,7 +97,6 @@ export default function AdminVisitorsPage() {
 				const data = await res.json();
 				setSessions(data.sessions ?? []);
 				setServerTime(data.serverTime ?? Date.now());
-				setAuthed(true);
 			} catch {
 				setError("Network error.");
 			} finally {
@@ -86,55 +106,23 @@ export default function AdminVisitorsPage() {
 		[]
 	);
 
-	const handleLogin = (e: React.FormEvent) => {
-		e.preventDefault();
-		fetchVisitors(password);
-	};
-
 	useEffect(() => {
-		if (!authed) return;
-		const interval = setInterval(() => fetchVisitors(password), 5000);
+		if (!authorized) return;
+		fetchVisitors();
+		const interval = setInterval(() => fetchVisitors(), 5000);
 		return () => clearInterval(interval);
-	}, [authed, password, fetchVisitors]);
+	}, [authorized, fetchVisitors]);
 
 	useEffect(() => {
 		const t = setInterval(() => setNow(Date.now()), 1000);
 		return () => clearInterval(t);
 	}, []);
 
-	if (!authed) {
+	if (!authorized) {
 		return (
-			<AppShell>
-				<div className="flex min-h-[60vh] items-center justify-center">
-					<form
-						onSubmit={handleLogin}
-						className="w-full max-w-md rounded-2xl border border-white/20 bg-black/70 p-8 backdrop-blur-md"
-					>
-						<h1 className="mb-2 text-2xl font-medium text-white">Admin Access</h1>
-						<p className="mb-6 text-sm text-white/60">
-							Visitor monitor — restricted to super admin.
-						</p>
-						<input
-							type="password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							placeholder="Admin password"
-							className="w-full rounded-lg border border-white/20 bg-black/40 px-4 py-3 text-white outline-none focus:border-white/50"
-							autoFocus
-						/>
-						{error && (
-							<p className="mt-3 text-sm text-red-400">{error}</p>
-						)}
-						<button
-							type="submit"
-							disabled={loading}
-							className="mt-5 w-full rounded-lg bg-white px-4 py-3 font-medium text-black transition hover:bg-white/90 disabled:opacity-50"
-						>
-							{loading ? "Verifying..." : "Unlock"}
-						</button>
-					</form>
-				</div>
-			</AppShell>
+			<div className="min-h-screen bg-black flex items-center justify-center">
+				<p className="text-white/50 text-sm">Redirecting...</p>
+			</div>
 		);
 	}
 
@@ -148,7 +136,7 @@ export default function AdminVisitorsPage() {
 					</p>
 				</div>
 				<button
-					onClick={() => fetchVisitors(password)}
+					onClick={() => fetchVisitors()}
 					className="rounded-lg border border-white/30 bg-white/10 px-4 py-2 text-sm text-white hover:bg-white/20"
 				>
 					Refresh
