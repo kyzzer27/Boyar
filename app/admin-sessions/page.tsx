@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 /* ── Types ─────────────────────────────────────────────── */
@@ -21,6 +21,7 @@ interface VisitorSession {
 interface EndedSession extends VisitorSession {
 	endedAt: number;
 	duration: number;
+	endedReason?: "logout" | "stale" | "manual";
 }
 
 /* ── Helpers ───────────────────────────────────────────── */
@@ -66,9 +67,33 @@ function formatInTimezone(epoch: number, tz: string): string {
 	}
 }
 
+/** Returns YYYY-MM-DD for the given epoch in the viewer's local timezone. */
+function toLocalDateKey(epoch: number): string {
+	const d = new Date(epoch);
+	const y = d.getFullYear();
+	const m = String(d.getMonth() + 1).padStart(2, "0");
+	const day = String(d.getDate()).padStart(2, "0");
+	return `${y}-${m}-${day}`;
+}
+
 /* ── Page ──────────────────────────────────────────────── */
 
 type Tab = "live" | "previous";
+const ALL_PASSWORDS = "__all__";
+
+// Fixed list of passwords shown in the filter dropdown — always available
+// regardless of whether anyone has logged in with them yet.
+const KNOWN_PASSWORDS = [
+	"BPAnjali27",
+	"BPInderjeet27",
+	"BPKapil27",
+	"BPZulfiqar27",
+	"BPSparsh27",
+	"BPYuri27",
+	"BPScott27",
+	"BPSam27",
+	"BPInvestor27",
+] as const;
 
 export default function AdminSessionsPage() {
 	const router = useRouter();
@@ -77,9 +102,14 @@ export default function AdminSessionsPage() {
 	const [sessions, setSessions] = useState<VisitorSession[]>([]);
 	const [history, setHistory] = useState<EndedSession[]>([]);
 	const [serverTime, setServerTime] = useState<number>(Date.now());
+	const [persistent, setPersistent] = useState<boolean>(false);
 	const [now, setNow] = useState<number>(Date.now());
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
+
+	// Filters
+	const [dateFilter, setDateFilter] = useState<string>(""); // YYYY-MM-DD or ""
+	const [passwordFilter, setPasswordFilter] = useState<string>(ALL_PASSWORDS);
 
 	/* Auth check — must have super-admin cookie */
 	useEffect(() => {
@@ -93,7 +123,10 @@ export default function AdminSessionsPage() {
 	/* Fetch data */
 	const fetchData = useCallback(async () => {
 		try {
-			const res = await fetch("/api/admin/visitors", { cache: "no-store", credentials: "same-origin" });
+			const res = await fetch("/api/admin/visitors", {
+				cache: "no-store",
+				credentials: "same-origin",
+			});
 			if (!res.ok) {
 				setError("Failed to load sessions.");
 				return;
@@ -102,6 +135,7 @@ export default function AdminSessionsPage() {
 			setSessions(data.sessions ?? []);
 			setHistory(data.history ?? []);
 			setServerTime(data.serverTime ?? Date.now());
+			setPersistent(Boolean(data.persistent));
 			setError(null);
 		} catch {
 			setError("Network error.");
@@ -122,6 +156,33 @@ export default function AdminSessionsPage() {
 		const t = setInterval(() => setNow(Date.now()), 1000);
 		return () => clearInterval(t);
 	}, []);
+
+	/* Password filter options = fixed known list + anything new we've seen. */
+	const passwordOptions = useMemo(() => {
+		const set = new Set<string>(KNOWN_PASSWORDS);
+		for (const s of sessions) if (s.password) set.add(s.password);
+		for (const s of history) if (s.password) set.add(s.password);
+		return Array.from(set).sort();
+	}, [sessions, history]);
+
+	/* Apply filters */
+	const filteredSessions = useMemo(() => {
+		return sessions.filter((s) => {
+			if (dateFilter && toLocalDateKey(s.loginAt) !== dateFilter) return false;
+			if (passwordFilter !== ALL_PASSWORDS && s.password !== passwordFilter) return false;
+			return true;
+		});
+	}, [sessions, dateFilter, passwordFilter]);
+
+	const filteredHistory = useMemo(() => {
+		return history.filter((s) => {
+			if (dateFilter && toLocalDateKey(s.loginAt) !== dateFilter) return false;
+			if (passwordFilter !== ALL_PASSWORDS && s.password !== passwordFilter) return false;
+			return true;
+		});
+	}, [history, dateFilter, passwordFilter]);
+
+	const filtersActive = Boolean(dateFilter) || passwordFilter !== ALL_PASSWORDS;
 
 	if (!authorized) {
 		return (
@@ -161,21 +222,82 @@ export default function AdminSessionsPage() {
 
 			<div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 				{/* Tabs */}
-				<div className="flex items-center gap-1 mb-6 p-1 rounded-xl bg-white/5 border border-white/10 w-fit">
+				<div className="flex items-center gap-1 mb-4 p-1 rounded-xl bg-white/5 border border-white/10 w-fit">
 					<TabButton
 						active={tab === "live"}
 						onClick={() => setTab("live")}
 						label="Live Sessions"
-						count={sessions.length}
+						count={filteredSessions.length}
 						pulse
 					/>
 					<TabButton
 						active={tab === "previous"}
 						onClick={() => setTab("previous")}
 						label="Previous Sessions"
-						count={history.length}
+						count={filteredHistory.length}
 					/>
 				</div>
+
+				{/* Filters */}
+				<div className="mb-6 rounded-xl border border-white/10 bg-white/[0.02] p-4">
+					<div className="flex flex-wrap items-end gap-4">
+						<div className="flex flex-col">
+							<label className="text-[11px] uppercase tracking-wider text-white/35 mb-1">
+								Filter by date (login)
+							</label>
+							<input
+								type="date"
+								value={dateFilter}
+								onChange={(e) => setDateFilter(e.target.value)}
+								className="rounded-lg border border-white/15 bg-black/40 px-3 py-2 text-sm text-white focus:outline-none focus:border-white/40"
+							/>
+						</div>
+
+						<div className="flex flex-col">
+							<label className="text-[11px] uppercase tracking-wider text-white/35 mb-1">
+								Filter by password
+							</label>
+							<select
+								value={passwordFilter}
+								onChange={(e) => setPasswordFilter(e.target.value)}
+								className="rounded-lg border border-white/15 bg-black/40 px-3 py-2 text-sm text-white focus:outline-none focus:border-white/40 min-w-[180px]"
+							>
+								<option value={ALL_PASSWORDS}>All passwords</option>
+								{passwordOptions.map((p) => (
+									<option key={p} value={p}>
+										{p}
+									</option>
+								))}
+							</select>
+						</div>
+
+						{filtersActive && (
+							<button
+								type="button"
+								onClick={() => {
+									setDateFilter("");
+									setPasswordFilter(ALL_PASSWORDS);
+								}}
+								className="rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white transition"
+							>
+								Clear filters
+							</button>
+						)}
+
+						<div className="ml-auto text-xs text-white/40">
+							{tab === "live"
+								? `${filteredSessions.length} of ${sessions.length} live`
+								: `${filteredHistory.length} of ${history.length} previous`}
+						</div>
+					</div>
+				</div>
+
+				{!persistent && (
+					<div className="mb-4 rounded-lg border border-yellow-500/30 bg-yellow-500/10 px-4 py-3 text-sm text-yellow-200">
+						Persistent storage is not configured. Sessions are being stored in server memory only and will reset
+						on deploy or cold start. Set up Vercel KV (KV_REST_API_URL + KV_REST_API_TOKEN) to enable persistence.
+					</div>
+				)}
 
 				{error && (
 					<div className="mb-4 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
@@ -186,9 +308,9 @@ export default function AdminSessionsPage() {
 				{loading ? (
 					<div className="text-center text-white/50 py-20 text-sm">Loading sessions...</div>
 				) : tab === "live" ? (
-					<LiveSessions sessions={sessions} now={now} />
+					<LiveSessions sessions={filteredSessions} now={now} />
 				) : (
-					<PreviousSessions history={history} />
+					<PreviousSessions history={filteredHistory} />
 				)}
 
 				<p className="mt-8 text-center text-xs text-white/30">
@@ -247,7 +369,7 @@ function LiveSessions({ sessions, now }: { sessions: VisitorSession[]; now: numb
 	if (sessions.length === 0) {
 		return (
 			<div className="rounded-xl border border-white/10 bg-white/[0.02] p-12 text-center text-white/40">
-				No active sessions right now.
+				No active sessions match the current filters.
 			</div>
 		);
 	}
@@ -316,7 +438,7 @@ function PreviousSessions({ history }: { history: EndedSession[] }) {
 	if (history.length === 0) {
 		return (
 			<div className="rounded-xl border border-white/10 bg-white/[0.02] p-12 text-center text-white/40">
-				No previous sessions recorded yet. Sessions appear here after visitors leave.
+				No previous sessions match the current filters.
 			</div>
 		);
 	}
@@ -340,7 +462,11 @@ function PreviousSessions({ history }: { history: EndedSession[] }) {
 								</span>
 							)}
 							<span className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs text-white/40">
-								Ended
+								{s.endedReason === "logout"
+									? "Logged out"
+									: s.endedReason === "stale"
+									? "Timed out"
+									: "Ended"}
 							</span>
 						</div>
 						<span className="font-mono text-xs text-white/30">

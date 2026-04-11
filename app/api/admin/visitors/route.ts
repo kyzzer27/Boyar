@@ -1,12 +1,20 @@
 /** @format */
 
 import { NextResponse } from "next/server";
-import { visitorStore, pruneStale } from "@/lib/visitor-store";
+import {
+	getLiveSessions,
+	getHistory,
+	pruneStale,
+	isKvConfigured,
+} from "@/lib/visitor-store";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const ADMIN_PASSWORD = "BPJoel27";
 
 export async function GET(request: Request) {
-	// Accept auth via header OR login-password cookie matching admin password
+	// Accept auth via header OR login-password cookie matching admin password.
 	const headerAuth = request.headers.get("x-admin-password") ?? "";
 	const cookieHeader = request.headers.get("cookie") ?? "";
 	const loginPw = cookieHeader
@@ -19,20 +27,24 @@ export async function GET(request: Request) {
 		return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 	}
 
-	pruneStale();
+	try {
+		await pruneStale();
+		const liveRaw = await getLiveSessions();
+		const history = await getHistory();
 
-	const sessions = Array.from(visitorStore.sessions.values()).sort(
-		(a, b) => b.loginAt - a.loginAt
-	);
+		const sessions = liveRaw.sort((a, b) => b.loginAt - a.loginAt);
 
-	const history = visitorStore.history ?? [];
-
-	return NextResponse.json({
-		ok: true,
-		count: sessions.length,
-		historyCount: history.length,
-		serverTime: Date.now(),
-		sessions,
-		history,
-	});
+		return NextResponse.json({
+			ok: true,
+			persistent: isKvConfigured(),
+			count: sessions.length,
+			historyCount: history.length,
+			serverTime: Date.now(),
+			sessions,
+			history,
+		});
+	} catch (err) {
+		console.error("admin visitors GET failed", err);
+		return NextResponse.json({ error: "store unavailable" }, { status: 500 });
+	}
 }

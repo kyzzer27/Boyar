@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
 
 export type UserRole = "admin" | "investor" | "investor-lite";
 
@@ -36,9 +37,13 @@ function getOrCreateSessionId(): string {
 }
 
 export function AppShell({ children }: AppShellProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const videoRef = useRef<HTMLVideoElement>(null);
   const [headerVisible, setHeaderVisible] = useState(false);
   const [isSuperAdmin, setIsSuperAdmin] = useState(false);
+  const [isAuthed, setIsAuthed] = useState(false);
 
   useEffect(() => {
     setHeaderVisible(true);
@@ -48,6 +53,7 @@ export function AppShell({ children }: AppShellProps) {
 
     // Super admin gate for the admin button
     setIsSuperAdmin(readCookie("bp_super_admin") === "1");
+    setIsAuthed(Boolean(readCookie("bp_auth_flag")));
 
     // Visitor heartbeat
     const sessionId = getOrCreateSessionId();
@@ -66,8 +72,54 @@ export function AppShell({ children }: AppShellProps) {
     };
     beat();
     const interval = setInterval(beat, 15000);
-    return () => clearInterval(interval);
+
+    // End the session cleanly when the user actually leaves (closes the tab,
+    // navigates away, puts the phone to sleep). sendBeacon is the only
+    // transport that survives an unloading page on modern browsers.
+    const endOnUnload = () => {
+      try {
+        const payload = JSON.stringify({ sessionId });
+        const blob = new Blob([payload], { type: "application/json" });
+        navigator.sendBeacon?.("/api/auth/logout", blob);
+      } catch {
+        /* noop */
+      }
+    };
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "hidden") endOnUnload();
+    };
+    window.addEventListener("pagehide", endOnUnload);
+    window.addEventListener("beforeunload", endOnUnload);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("pagehide", endOnUnload);
+      window.removeEventListener("beforeunload", endOnUnload);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
   }, []);
+
+  const handleLogout = async () => {
+    const sessionId =
+      typeof window !== "undefined" ? sessionStorage.getItem("bp_visitor_sid") : null;
+    try {
+      await fetch("/api/auth/logout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId }),
+        credentials: "same-origin",
+      });
+    } catch {
+      /* noop */
+    }
+    try {
+      sessionStorage.clear();
+    } catch {
+      /* noop */
+    }
+    router.replace("/login");
+  };
 
   return (
     <div className="relative min-h-screen bg-black text-white">
@@ -128,6 +180,27 @@ export function AppShell({ children }: AppShellProps) {
             >
               Investors Intelligence
             </p>
+            {!isHomePage && (
+              <div className="flex items-center gap-2">
+                {isSuperAdmin && (
+                  <Link
+                    href="/admin-sessions"
+                    className="rounded-lg border border-white/20 bg-white/5 px-3 py-1.5 text-xs sm:text-sm text-white/80 hover:bg-white/10 hover:text-white transition whitespace-nowrap"
+                  >
+                    Admin
+                  </Link>
+                )}
+                {isAuthed && (
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="rounded-lg border border-white/20 bg-white/5 px-3 py-1.5 text-xs sm:text-sm text-white/80 hover:bg-white/10 hover:text-white transition whitespace-nowrap"
+                  >
+                    Logout
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </header>
         <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-14">

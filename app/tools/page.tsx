@@ -230,6 +230,7 @@ function ToolsContent() {
 }
 
 export default function ToolsPage() {
+  const router = useRouter();
   const [greetName, setGreetName] = useState<string | null>(null);
   const [greetTimezone, setGreetTimezone] = useState<string | null>(null);
   const [showGreeting, setShowGreeting] = useState(false);

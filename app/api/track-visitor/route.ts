@@ -1,16 +1,33 @@
 /** @format */
 
 import { NextResponse } from "next/server";
-import { visitorStore, detectPlatform, pruneStale, type VisitorSession } from "@/lib/visitor-store";
+import {
+	upsertSession,
+	detectPlatform,
+	pruneStale,
+	type VisitorSession,
+} from "@/lib/visitor-store";
+
+// Force node runtime so we can use @vercel/kv.
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 function getClientIp(request: Request): string {
-	const headers = request.headers;
-	const forwarded = headers.get("x-forwarded-for");
+	const h = request.headers;
+
+	// Vercel's trusted client IP header is the most reliable.
+	const vercel = h.get("x-vercel-forwarded-for");
+	if (vercel) return vercel.split(",")[0].trim();
+
+	const forwarded = h.get("x-forwarded-for");
 	if (forwarded) return forwarded.split(",")[0].trim();
-	const real = headers.get("x-real-ip");
+
+	const real = h.get("x-real-ip");
 	if (real) return real.trim();
-	const cf = headers.get("cf-connecting-ip");
+
+	const cf = h.get("cf-connecting-ip");
 	if (cf) return cf.trim();
+
 	return "unknown";
 }
 
@@ -31,6 +48,11 @@ export async function POST(request: Request) {
 	const body = await request.json().catch(() => ({}));
 	const sessionId: string = typeof body.sessionId === "string" ? body.sessionId : "";
 	const timezone: string = typeof body.timezone === "string" ? body.timezone : "Unknown";
+
+	if (!sessionId) {
+		return NextResponse.json({ error: "sessionId required" }, { status: 400 });
+	}
+
 	const cookieName = readCookie(request, "bp_login_name");
 	const cookiePw = readCookie(request, "bp_login_pw");
 	const cookieRole = readCookie(request, "bp_auth_flag");
@@ -38,41 +60,32 @@ export async function POST(request: Request) {
 	const role: string | null = cookieRole ?? (typeof body.role === "string" ? body.role : null);
 	const password: string | null = cookiePw;
 
-	if (!sessionId) {
-		return NextResponse.json({ error: "sessionId required" }, { status: 400 });
-	}
-
 	const ip = getClientIp(request);
 	const userAgent = request.headers.get("user-agent") ?? "";
 	const platform = detectPlatform(userAgent);
 	const now = Date.now();
 
-	const existing = visitorStore.sessions.get(sessionId);
-	if (existing) {
-		existing.lastSeen = now;
-		existing.ip = ip;
-		existing.userAgent = userAgent;
-		existing.platform = platform;
-		existing.timezone = timezone;
-		if (name) existing.name = name;
-		if (role) existing.role = role;
-		if (password) existing.password = password;
-	} else {
-		const session: VisitorSession = {
-			id: sessionId,
-			ip,
-			userAgent,
-			platform,
-			timezone,
-			loginAt: now,
-			lastSeen: now,
-			name,
-			role,
-			password,
-		};
-		visitorStore.sessions.set(sessionId, session);
+	const session: VisitorSession = {
+		id: sessionId,
+		ip,
+		userAgent,
+		platform,
+		timezone,
+		loginAt: now, // ignored on merge if session already exists
+		lastSeen: now,
+		name,
+		role,
+		password,
+	};
+
+	try {
+		await upsertSession(session);
+		// Fire-and-forget prune; don't block the heartbeat.
+		pruneStale().catch(() => {});
+	} catch (err) {
+		console.error("track-visitor upsert failed", err);
+		return NextResponse.json({ error: "store unavailable" }, { status: 500 });
 	}
 
-	pruneStale();
 	return NextResponse.json({ ok: true });
 }
