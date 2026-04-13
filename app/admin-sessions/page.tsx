@@ -161,7 +161,9 @@ export default function AdminSessionsPage() {
 	const [now, setNow] = useState<number>(Date.now());
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
+	const [consecutiveFailures, setConsecutiveFailures] = useState(0);
 	const [actionBusy, setActionBusy] = useState<string | null>(null);
+	const [lastSuccessAt, setLastSuccessAt] = useState<number | null>(null);
 
 	// Filters
 	const [dateFilter, setDateFilter] = useState<string>(""); // YYYY-MM-DD or ""
@@ -176,15 +178,22 @@ export default function AdminSessionsPage() {
 		}
 	}, [router]);
 
-	/* Fetch data */
+	/* Fetch data — tolerant of intermittent KV/serverless hiccups.
+	 * Only surfaces an error after 3 consecutive failures so a single
+	 * cold-start or transient blip doesn't flash a scary banner. */
 	const fetchData = useCallback(async () => {
+		// Abort the request if it takes longer than 8s (KV cold-start safety net)
+		const controller = new AbortController();
+		const timeoutId = setTimeout(() => controller.abort(), 8000);
+
 		try {
 			const res = await fetch("/api/admin/visitors", {
 				cache: "no-store",
 				credentials: "same-origin",
+				signal: controller.signal,
 			});
 			if (!res.ok) {
-				setError("Failed to load sessions.");
+				setConsecutiveFailures((n) => n + 1);
 				return;
 			}
 			const data = await res.json();
@@ -196,12 +205,28 @@ export default function AdminSessionsPage() {
 			setServerTime(data.serverTime ?? Date.now());
 			setPersistent(Boolean(data.persistent));
 			setError(null);
+			setConsecutiveFailures(0);
+			setLastSuccessAt(Date.now());
 		} catch {
-			setError("Network error.");
+			setConsecutiveFailures((n) => n + 1);
 		} finally {
+			clearTimeout(timeoutId);
 			setLoading(false);
 		}
 	}, []);
+
+	/* Only show the error banner after 3 consecutive failures (≈15s) */
+	useEffect(() => {
+		if (consecutiveFailures >= 3) {
+			setError(
+				lastSuccessAt
+					? `Connection unstable — last successful update ${Math.floor(
+							(Date.now() - lastSuccessAt) / 1000
+					  )}s ago. Retrying...`
+					: "Failed to load sessions. Retrying..."
+			);
+		}
+	}, [consecutiveFailures, lastSuccessAt]);
 
 	useEffect(() => {
 		if (!authorized) return;
