@@ -3,8 +3,11 @@
 import { NextResponse } from "next/server";
 import {
 	upsertSession,
+	deleteSession,
 	detectPlatform,
 	pruneStale,
+	ADMIN_PASSWORDS,
+	nameForPassword,
 	type VisitorSession,
 } from "@/lib/visitor-store";
 
@@ -56,9 +59,23 @@ export async function POST(request: Request) {
 	const cookieName = readCookie(request, "bp_login_name");
 	const cookiePw = readCookie(request, "bp_login_pw");
 	const cookieRole = readCookie(request, "bp_auth_flag");
-	const name: string | null = cookieName ?? (typeof body.name === "string" ? body.name : null);
-	const role: string | null = cookieRole ?? (typeof body.role === "string" ? body.role : null);
 	const password: string | null = cookiePw;
+	const role: string | null = cookieRole ?? (typeof body.role === "string" ? body.role : null);
+	const name: string | null =
+		cookieName ??
+		nameForPassword(password) ??
+		(typeof body.name === "string" ? body.name : null);
+
+	// Admin sessions are never tracked. If the session was created pre-login
+	// and is now being upgraded to admin, also remove the pre-existing record.
+	if (password && ADMIN_PASSWORDS.has(password)) {
+		try {
+			await deleteSession(sessionId);
+		} catch {
+			/* noop */
+		}
+		return NextResponse.json({ ok: true, skipped: "admin" });
+	}
 
 	const ip = getClientIp(request);
 	const userAgent = request.headers.get("user-agent") ?? "";

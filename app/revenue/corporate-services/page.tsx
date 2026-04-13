@@ -189,7 +189,7 @@ export default function CorporateServicesPage() {
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               <OrbitButton
                 label="Combined"
-                onClick={() => router.back()}
+                onClick={() => router.push("/revenue/combined")}
                 index={5}
                 size="h-24 w-24 sm:h-28 sm:w-28"
                 hoveredButton={hoveredButton}

@@ -22,20 +22,6 @@ function readCookie(name: string): string | null {
   return null;
 }
 
-function getOrCreateSessionId(): string {
-  if (typeof window === "undefined") return "";
-  try {
-    let id = sessionStorage.getItem("bp_visitor_sid");
-    if (!id) {
-      id = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
-      sessionStorage.setItem("bp_visitor_sid", id);
-    }
-    return id;
-  } catch {
-    return `${Date.now()}-${Math.random()}`;
-  }
-}
-
 export function AppShell({ children }: AppShellProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -55,49 +41,9 @@ export function AppShell({ children }: AppShellProps) {
     setIsSuperAdmin(readCookie("bp_super_admin") === "1");
     setIsAuthed(Boolean(readCookie("bp_auth_flag")));
 
-    // Visitor heartbeat
-    const sessionId = getOrCreateSessionId();
-    if (!sessionId) return;
-    const timezone =
-      Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown";
-
-    const beat = () => {
-      fetch("/api/track-visitor", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId, timezone }),
-        credentials: "same-origin",
-        keepalive: true,
-      }).catch(() => {});
-    };
-    beat();
-    const interval = setInterval(beat, 15000);
-
-    // End the session cleanly when the user actually leaves (closes the tab,
-    // navigates away, puts the phone to sleep). sendBeacon is the only
-    // transport that survives an unloading page on modern browsers.
-    const endOnUnload = () => {
-      try {
-        const payload = JSON.stringify({ sessionId });
-        const blob = new Blob([payload], { type: "application/json" });
-        navigator.sendBeacon?.("/api/auth/logout", blob);
-      } catch {
-        /* noop */
-      }
-    };
-    const onVisibilityChange = () => {
-      if (document.visibilityState === "hidden") endOnUnload();
-    };
-    window.addEventListener("pagehide", endOnUnload);
-    window.addEventListener("beforeunload", endOnUnload);
-    document.addEventListener("visibilitychange", onVisibilityChange);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener("pagehide", endOnUnload);
-      window.removeEventListener("beforeunload", endOnUnload);
-      document.removeEventListener("visibilitychange", onVisibilityChange);
-    };
+    // NOTE: Visitor heartbeat lives in <VisitorTracker /> (mounted from the
+    // root layout) so that every route — including /login and pages that
+    // don't use AppShell — is tracked.
   }, []);
 
   const handleLogout = async () => {
@@ -107,7 +53,7 @@ export function AppShell({ children }: AppShellProps) {
       await fetch("/api/auth/logout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId }),
+        body: JSON.stringify({ sessionId, endedAt: Date.now() }),
         credentials: "same-origin",
       });
     } catch {

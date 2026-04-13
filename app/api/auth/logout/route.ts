@@ -13,18 +13,24 @@ export const dynamic = "force-dynamic";
  */
 export async function POST(request: Request) {
 	let sessionId = "";
+	let clientEndedAt: number | undefined;
+
+	const applyBody = (parsed: unknown) => {
+		if (!parsed || typeof parsed !== "object") return;
+		const obj = parsed as Record<string, unknown>;
+		if (typeof obj.sessionId === "string") sessionId = obj.sessionId;
+		if (typeof obj.endedAt === "number" && Number.isFinite(obj.endedAt)) {
+			clientEndedAt = obj.endedAt;
+		}
+	};
 
 	try {
-		const body = await request.json();
-		if (typeof body?.sessionId === "string") sessionId = body.sessionId;
+		applyBody(await request.json());
 	} catch {
 		// Also support sendBeacon which may arrive as text/plain
 		try {
 			const text = await request.text();
-			if (text) {
-				const parsed = JSON.parse(text);
-				if (typeof parsed?.sessionId === "string") sessionId = parsed.sessionId;
-			}
+			if (text) applyBody(JSON.parse(text));
 		} catch {
 			/* noop */
 		}
@@ -32,7 +38,7 @@ export async function POST(request: Request) {
 
 	if (sessionId) {
 		try {
-			await endSession(sessionId, "logout");
+			await endSession(sessionId, "logout", clientEndedAt);
 		} catch (err) {
 			console.error("logout endSession failed", err);
 		}

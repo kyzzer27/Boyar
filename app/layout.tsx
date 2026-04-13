@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Cinzel } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import ChatWidget from "@/components/chatbot/ChatWidget";
+import VisitorTracker from "@/components/visitor-tracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,6 +47,7 @@ export default function RootLayout({
           src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js" 
           strategy="beforeInteractive" 
         />
+        <VisitorTracker />
         {children}
         <ChatWidget />
       </body>
