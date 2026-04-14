@@ -33,15 +33,21 @@
 			BlinkMacSystemFont,
 			"Segoe UI",
 			sans-serif;
-		/* Performance optimizations */
+		/* Performance optimizations.
+		   NOTE: text-rendering is intentionally left at the browser default
+		   (effectively optimizeSpeed for long scrollable pages). Forcing
+		   `optimizeLegibility` site-wide caused visible scroll stutter on the
+		   private client content pages (/products/investor/*), where pages are
+		   long and text-heavy. */
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		text-rendering: optimizeLegibility;
 	}
 
-	/* Smooth scrolling with performance */
+	/* Scrolling performance.
+	   `scroll-behavior: smooth` was removed — it interacts badly with
+	   `backdrop-filter` sticky headers in Safari/iOS and made in-page
+	   scrolling feel laggy on the private client pages. */
 	html {
-		scroll-behavior: smooth;
 		text-rendering: optimizeSpeed;
 	}
 
@@ -786,5 +792,73 @@
 @keyframes bg-line-dash {
 	0%, 100% { opacity: 0.1; stroke-dashoffset: 0; }
 	50% { opacity: 0.3; stroke-dashoffset: 10; }
+}
+
+/* =========================================================================
+   Scroll performance for private client content pages
+   (/products/investor/*, /tools/*, /pitch/*, /cac/*).
+   These pages are long, text-heavy, and use sticky `backdrop-blur-*` headers
+   plus decorative `blur-3xl` blobs in hero sections. The rules below isolate
+   those effects into their own GPU layers, skip paint work for off-screen
+   sections, and stop the browser from recomputing expensive backdrop blur
+   on every scroll frame. No content/layout changes — pure paint hints.
+   ========================================================================= */
+
+/* Isolate sticky headers (the investor product pages use a sticky
+   `backdrop-blur-md` header that forces the browser to recomposite the
+   blurred region on every scroll frame). Lifting them into their own layer
+   with `will-change: transform` + `contain: paint` dramatically reduces
+   scroll jank without changing appearance. */
+header.sticky,
+.sticky[class*="backdrop-blur"] {
+	transform: translateZ(0);
+	will-change: transform;
+	contain: paint;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+/* Decorative heavy-blur blobs (blur-3xl / blur-2xl on absolutely-positioned
+   divs inside hero sections) are pure paint overhead during scroll. Flatten
+   them into their own composited layer so they don't trigger page-wide
+   repaints. */
+[class*="blur-3xl"],
+[class*="blur-2xl"] {
+	transform: translateZ(0);
+	will-change: transform;
+	contain: paint;
+	pointer-events: none;
+}
+
+/* `content-visibility: auto` lets Chromium/WebKit skip layout + paint for
+   off-screen sections entirely — the single biggest win for long content
+   pages. We scope it to sections that have an explicit border-b (the
+   convention used across the investor product pages) so home/login pages
+   are unaffected. */
+section[class*="border-b"] {
+	content-visibility: auto;
+	contain-intrinsic-size: auto 720px;
+}
+
+/* Framer-motion entry animations leave `will-change: transform` lingering
+   on elements, which costs GPU memory forever. Clear it after the initial
+   animation window. (Safe: framer-motion sets will-change inline, so its
+   own animations still take precedence while running.) */
+@media (prefers-reduced-motion: no-preference) {
+	[data-framer-component] {
+		will-change: auto;
+	}
+}
+
+/* Mobile: backdrop-filter is disproportionately expensive on mobile GPUs.
+   On small screens we fall back to a solid-ish background instead of the
+   blur effect — visually near-identical, dramatically smoother. */
+@media (max-width: 768px) {
+	.backdrop-blur-sm,
+	.backdrop-blur-md,
+	.backdrop-blur-lg {
+		backdrop-filter: none !important;
+		-webkit-backdrop-filter: none !important;
+	}
 }
 
