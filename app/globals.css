@@ -804,13 +804,29 @@
    on every scroll frame. No content/layout changes — pure paint hints.
    ========================================================================= */
 
-/* Isolate sticky headers (the investor product pages use a sticky
-   `backdrop-blur-md` header that forces the browser to recomposite the
-   blurred region on every scroll frame). Lifting them into their own layer
-   with `will-change: transform` + `contain: paint` dramatically reduces
-   scroll jank without changing appearance. */
+/* Kill expensive backdrop-filter effects everywhere on the site. They were
+   the single biggest source of scroll jank on the private client pages —
+   every scroll frame forced the GPU to resample+blur the pixels behind the
+   sticky header and any `backdrop-blur-*` section. The pages already have
+   near-opaque fallback backgrounds (`bg-white/90`, `bg-white/50`, etc.), so
+   dropping the blur is visually near-indistinguishable. */
+.backdrop-blur-none,
+.backdrop-blur-sm,
+.backdrop-blur,
+.backdrop-blur-md,
+.backdrop-blur-lg,
+.backdrop-blur-xl,
+.backdrop-blur-2xl,
+.backdrop-blur-3xl,
+[class*="backdrop-blur"] {
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+}
+
+/* Sticky headers get their own compositing layer so the rest of the page
+   scrolls without triggering a global recomposite. */
 header.sticky,
-.sticky[class*="backdrop-blur"] {
+.sticky {
 	transform: translateZ(0);
 	will-change: transform;
 	contain: paint;
@@ -818,12 +834,12 @@ header.sticky,
 	backface-visibility: hidden;
 }
 
-/* Decorative heavy-blur blobs (blur-3xl / blur-2xl on absolutely-positioned
-   divs inside hero sections) are pure paint overhead during scroll. Flatten
-   them into their own composited layer so they don't trigger page-wide
-   repaints. */
+/* Decorative `blur-3xl` / `blur-2xl` blobs in hero sections: flatten into
+   their own composited layer so they're painted once, not every scroll
+   frame, and make them non-interactive so they don't intercept hit-tests. */
 [class*="blur-3xl"],
-[class*="blur-2xl"] {
+[class*="blur-2xl"],
+[class*="blur-xl"] {
 	transform: translateZ(0);
 	will-change: transform;
 	contain: paint;
@@ -832,33 +848,21 @@ header.sticky,
 
 /* `content-visibility: auto` lets Chromium/WebKit skip layout + paint for
    off-screen sections entirely — the single biggest win for long content
-   pages. We scope it to sections that have an explicit border-b (the
-   convention used across the investor product pages) so home/login pages
-   are unaffected. */
-section[class*="border-b"] {
+   pages. Applied broadly to <section> elements (the convention used on
+   every investor product page and /tools sub-pages). The home page and
+   login page don't use <section> tags for their main layout, so this is
+   safe. */
+section {
 	content-visibility: auto;
 	contain-intrinsic-size: auto 720px;
 }
 
 /* Framer-motion entry animations leave `will-change: transform` lingering
-   on elements, which costs GPU memory forever. Clear it after the initial
-   animation window. (Safe: framer-motion sets will-change inline, so its
-   own animations still take precedence while running.) */
-@media (prefers-reduced-motion: no-preference) {
-	[data-framer-component] {
-		will-change: auto;
-	}
-}
-
-/* Mobile: backdrop-filter is disproportionately expensive on mobile GPUs.
-   On small screens we fall back to a solid-ish background instead of the
-   blur effect — visually near-identical, dramatically smoother. */
-@media (max-width: 768px) {
-	.backdrop-blur-sm,
-	.backdrop-blur-md,
-	.backdrop-blur-lg {
-		backdrop-filter: none !important;
-		-webkit-backdrop-filter: none !important;
-	}
+   on every animated element, which costs GPU memory forever and forces a
+   compositing layer per element. Clear it after mount. Framer-motion sets
+   will-change inline while animating, which takes precedence, so this only
+   affects post-animation idle state. */
+[data-framer-component] {
+	will-change: auto;
 }
 
