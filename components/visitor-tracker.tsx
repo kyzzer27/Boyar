@@ -58,27 +58,37 @@ export default function VisitorTracker() {
     // transport that survives an unloading page on modern browsers. We include
     // the client's current timestamp so the server can record an accurate
     // duration even if processing lags.
+    //
+    // IMPORTANT: we send `keepAuth: true` so the logout endpoint records the
+    // session end WITHOUT clearing the auth cookies. Otherwise transient
+    // events like mobile tab switches, focus loss, or even some in-app SPA
+    // navigations would wipe the user's auth and the next click would bounce
+    // them back to the home page.
     const endOnUnload = () => {
       try {
-        const payload = JSON.stringify({ sessionId, endedAt: Date.now() });
+        const payload = JSON.stringify({
+          sessionId,
+          endedAt: Date.now(),
+          keepAuth: true,
+        });
         const blob = new Blob([payload], { type: "application/json" });
         navigator.sendBeacon?.("/api/auth/logout", blob);
       } catch {
         /* noop */
       }
     };
-    const onVisibilityChange = () => {
-      if (document.visibilityState === "hidden") endOnUnload();
-    };
+    // We deliberately do NOT listen for `visibilitychange` here. On mobile and
+    // desktop alike, `visibilitychange → hidden` fires for plenty of cases
+    // where the user has not actually left the app (tab switch, app switch,
+    // file download, OS share sheet, etc.). `pagehide` is the reliable signal
+    // for an actual page teardown and is what we use instead.
     window.addEventListener("pagehide", endOnUnload);
     window.addEventListener("beforeunload", endOnUnload);
-    document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
       clearInterval(interval);
       window.removeEventListener("pagehide", endOnUnload);
       window.removeEventListener("beforeunload", endOnUnload);
-      document.removeEventListener("visibilitychange", onVisibilityChange);
     };
   }, []);
 

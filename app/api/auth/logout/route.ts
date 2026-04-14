@@ -14,6 +14,12 @@ export const dynamic = "force-dynamic";
 export async function POST(request: Request) {
 	let sessionId = "";
 	let clientEndedAt: number | undefined;
+	// When `keepAuth` is true the caller (e.g. the global visitor heartbeat
+	// firing on visibilitychange/pagehide) wants to end the visitor record but
+	// must NOT clear the auth cookies. Otherwise transient visibility changes
+	// (mobile tab switches, focus loss, file downloads) silently log users out
+	// and the next click bounces them back to the home page.
+	let keepAuth = false;
 
 	const applyBody = (parsed: unknown) => {
 		if (!parsed || typeof parsed !== "object") return;
@@ -22,6 +28,7 @@ export async function POST(request: Request) {
 		if (typeof obj.endedAt === "number" && Number.isFinite(obj.endedAt)) {
 			clientEndedAt = obj.endedAt;
 		}
+		if (obj.keepAuth === true) keepAuth = true;
 	};
 
 	try {
@@ -46,21 +53,24 @@ export async function POST(request: Request) {
 
 	const response = NextResponse.json({ ok: true });
 
-	// Clear all auth/tracking cookies.
-	const cookiesToClear = [
-		"bp_auth_token",
-		"bp_auth_flag",
-		"bp_login_pw",
-		"bp_login_name",
-		"bp_super_admin",
-	];
-	for (const name of cookiesToClear) {
-		response.cookies.set(name, "", {
-			path: "/",
-			maxAge: 0,
-			sameSite: "strict",
-			secure: process.env.NODE_ENV === "production",
-		});
+	if (!keepAuth) {
+		// Clear all auth/tracking cookies — only on a real logout, not on a
+		// visibilitychange/pagehide beacon.
+		const cookiesToClear = [
+			"bp_auth_token",
+			"bp_auth_flag",
+			"bp_login_pw",
+			"bp_login_name",
+			"bp_super_admin",
+		];
+		for (const name of cookiesToClear) {
+			response.cookies.set(name, "", {
+				path: "/",
+				maxAge: 0,
+				sameSite: "strict",
+				secure: process.env.NODE_ENV === "production",
+			});
+		}
 	}
 
 	return response;

@@ -4,66 +4,83 @@
 
 import type { UserRole } from "@/components/layout/app-shell";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 interface ProtectedRouteProps {
 	children: React.ReactNode;
 	allowedRoles?: UserRole[];
 }
 
+// Run the auth check synchronously *before* paint on the client so that
+// already-authenticated users never see a spinner flash when navigating
+// between protected pages. Falls back to useEffect during SSR to avoid
+// React's "useLayoutEffect on the server" warning.
+const useIsoLayoutEffect =
+	typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+interface AuthState {
+	checked: boolean;
+	authenticated: boolean;
+}
+
+function readAuthSync(allowedRoles?: UserRole[]): AuthState {
+	if (typeof window === "undefined") {
+		return { checked: false, authenticated: false };
+	}
+
+	const authStatus = sessionStorage.getItem("isAuthenticated");
+	const storedRole = sessionStorage.getItem("userRole") as UserRole | null;
+
+	const flagCookie = document.cookie
+		.split(";")
+		.map((c) => c.trim())
+		.find((c) => c.startsWith("bp_auth_flag="));
+	const cookieRole = flagCookie
+		? (flagCookie.split("=")[1] as UserRole)
+		: null;
+
+	const effectiveRole = storedRole ?? cookieRole;
+	const passesRole =
+		!allowedRoles || (effectiveRole && allowedRoles.includes(effectiveRole));
+
+	const isAuthed =
+		(authStatus === "true" && passesRole) ||
+		(Boolean(cookieRole) && Boolean(passesRole));
+
+	if (isAuthed && !storedRole && cookieRole) {
+		sessionStorage.setItem("isAuthenticated", "true");
+		sessionStorage.setItem("userRole", cookieRole);
+	}
+
+	return { checked: true, authenticated: Boolean(isAuthed) };
+}
+
 export function ProtectedRoute({
 	children,
 	allowedRoles,
 }: ProtectedRouteProps) {
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
-	const [isLoading, setIsLoading] = useState(true);
+	// Lazy initializer runs once per mount on the client and is what eliminates
+	// the spinner flash on intra-portal navigation.
+	const [authState, setAuthState] = useState<AuthState>(() =>
+		readAuthSync(allowedRoles)
+	);
 	const router = useRouter();
 
-	useEffect(() => {
-		const authStatus = sessionStorage.getItem("isAuthenticated");
-		const storedRole = sessionStorage.getItem("userRole") as UserRole | null;
-
-		const flagCookie =
-			typeof document !== "undefined"
-				? document.cookie
-						.split(";")
-						.map((c) => c.trim())
-						.find((c) => c.startsWith("bp_auth_flag="))
-				: undefined;
-		const cookieRole = flagCookie
-			? (flagCookie.split("=")[1] as UserRole)
-			: null;
-
-		const effectiveRole = storedRole ?? cookieRole;
-		const passesRole =
-			!allowedRoles || (effectiveRole && allowedRoles.includes(effectiveRole));
-
-		if (
-			(authStatus === "true" && passesRole) ||
-			(cookieRole && passesRole)
-		) {
-			if (!storedRole && cookieRole) {
-				sessionStorage.setItem("isAuthenticated", "true");
-				sessionStorage.setItem("userRole", cookieRole);
-			}
-			setIsAuthenticated(true);
+	// Re-validate on the client before first paint to cover edge cases where
+	// the lazy initializer ran during a server render (checked === false).
+	useIsoLayoutEffect(() => {
+		if (!authState.checked) {
+			setAuthState(readAuthSync(allowedRoles));
 		}
+	}, [allowedRoles, authState.checked]);
 
-		setIsLoading(false);
-	}, [allowedRoles]);
-
-	if (isLoading) {
-		return (
-			<div className='min-h-screen bg-black text-white flex items-center justify-center'>
-				<div className='text-center'>
-					<div className='w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin mx-auto mb-4' />
-					<p className='text-gray-400'>Verifying access...</p>
-				</div>
-			</div>
-		);
+	if (!authState.checked) {
+		// SSR / very first paint — render nothing instead of a spinner so
+		// users don't perceive a "verifying access" delay on every navigation.
+		return null;
 	}
 
-	if (!isAuthenticated) {
+	if (!authState.authenticated) {
 		return (
 			<div className='min-h-screen bg-black text-white flex items-center justify-center px-6'>
 				<div className='max-w-md w-full bg-black/85 border border-white/10 rounded-xl p-6'>
