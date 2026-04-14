@@ -193,6 +193,16 @@ export default function AdminSessionsPage() {
 				signal: controller.signal,
 			});
 			if (!res.ok) {
+				// Try to read the error detail for diagnostics
+				let detail = `HTTP ${res.status}`;
+				try {
+					const errBody = await res.json();
+					if (errBody?.detail) detail = `HTTP ${res.status}: ${errBody.detail}`;
+					else if (errBody?.error) detail = `HTTP ${res.status}: ${errBody.error}`;
+				} catch {
+					/* ignore */
+				}
+				console.warn("admin visitors fetch failed:", detail);
 				setConsecutiveFailures((n) => n + 1);
 				return;
 			}

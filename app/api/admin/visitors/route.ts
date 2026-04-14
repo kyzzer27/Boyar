@@ -33,9 +33,17 @@ export async function GET(request: Request) {
 	}
 
 	try {
-		await pruneStale();
-		const liveRaw = await getLiveSessions();
-		const historyRaw = await getHistory();
+		// Run pruneStale in parallel with reads, and don't fail the whole
+		// request if pruning hits a transient KV hiccup. Stale sessions will
+		// be cleaned up on the next successful poll.
+		const [, liveRaw, historyRaw] = await Promise.all([
+			pruneStale().catch((e) => {
+				console.warn("pruneStale failed (non-fatal):", e);
+				return undefined;
+			}),
+			getLiveSessions(),
+			getHistory(),
+		]);
 
 		// Defense in depth — never leak admin sessions even if somehow stored.
 		const sessions = liveRaw
@@ -87,8 +95,17 @@ export async function GET(request: Request) {
 			history,
 		});
 	} catch (err) {
-		console.error("admin visitors GET failed", err);
-		return NextResponse.json({ error: "store unavailable" }, { status: 500 });
+		const message = err instanceof Error ? err.message : String(err);
+		const stack = err instanceof Error ? err.stack : undefined;
+		console.error("admin visitors GET failed", { message, stack });
+		return NextResponse.json(
+			{
+				error: "store unavailable",
+				detail: message,
+				kvConfigured: isKvConfigured(),
+			},
+			{ status: 500 }
+		);
 	}
 }
 
