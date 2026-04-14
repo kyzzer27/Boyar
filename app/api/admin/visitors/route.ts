@@ -16,15 +16,32 @@ export const dynamic = "force-dynamic";
 
 const ADMIN_PASSWORD = "BPJoel27";
 
+function readCookie(cookieHeader: string, name: string): string {
+	const match = cookieHeader
+		.split(";")
+		.map((c) => c.trim())
+		.find((c) => c.startsWith(`${name}=`));
+	if (!match) return "";
+	const eq = match.indexOf("=");
+	return decodeURIComponent(match.slice(eq + 1));
+}
+
 function isAuthorized(request: Request): boolean {
 	const headerAuth = request.headers.get("x-admin-password") ?? "";
 	const cookieHeader = request.headers.get("cookie") ?? "";
-	const loginPw = cookieHeader
-		.split(";")
-		.map((c) => c.trim())
-		.find((c) => c.startsWith("bp_login_pw="));
-	const loginPwValue = loginPw ? decodeURIComponent(loginPw.split("=")[1] ?? "") : "";
-	return headerAuth === ADMIN_PASSWORD || loginPwValue === ADMIN_PASSWORD;
+	const loginPw = readCookie(cookieHeader, "bp_login_pw");
+	const superAdmin = readCookie(cookieHeader, "bp_super_admin");
+
+	// Accept any of:
+	//  1. x-admin-password header (used by server-side calls)
+	//  2. bp_login_pw cookie set to the admin password (legacy)
+	//  3. bp_super_admin=1 cookie (set by the admin-login flow and the
+	//     cookie the admin page itself gates rendering on)
+	return (
+		headerAuth === ADMIN_PASSWORD ||
+		loginPw === ADMIN_PASSWORD ||
+		superAdmin === "1"
+	);
 }
 
 export async function GET(request: Request) {
