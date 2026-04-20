@@ -3,7 +3,7 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { motion } from "framer-motion";
+import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
 
 const containerVariants = {
@@ -37,7 +37,7 @@ export default function LicensingPage() {
 		<ProtectedRoute>
 			<div className='relative min-h-screen bg-black text-white'>
 				{/* Header */}
-				<header className='sticky top-0 bg-black/85 backdrop-blur-sm border-b border-white/10 z-30'>
+				<header className='sticky top-0 bg-black/85  border-b border-white/10 z-30'>
 					<div className='mx-auto flex max-w-5xl items-center justify-between px-6 py-5 sm:px-8'>
 						<button
 							onClick={() => router.back()}
@@ -74,7 +74,7 @@ export default function LicensingPage() {
 								onClick={() => {
 									router.push("/products/investor/licensing-for-corporates");
 								}}
-								className='group relative w-full rounded-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 p-6 sm:p-7 text-left overflow-hidden transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20 shadow-[0_10px_40px_-24px_rgba(255,255,255,0.45)]'
+								className='group relative w-full rounded-xl border border-white/10 bg-gradient-to-br from-white/8 to-white/3 p-6 sm:p-7 text-left overflow-hidden transition-colors duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20 shadow-[0_10px_40px_-24px_rgba(255,255,255,0.45)]'
 								style={{ fontFamily: "var(--font-benzin)" }}
 								whileHover={{ y: -6 }}
 								whileTap={{ scale: 0.98 }}

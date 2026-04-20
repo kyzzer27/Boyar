@@ -3,7 +3,7 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
@@ -541,12 +541,12 @@ export default function BankingForPrivateClientsPage() {
 		<ProtectedRoute>
 			<div className='min-h-screen bg-white'>
 				{/* Enhanced Header */}
-				<header className='sticky top-0 bg-white/95 backdrop-blur-md border-b border-gray-200 z-40 shadow-sm'>
+				<header className='sticky top-0 bg-white/95 border-b border-gray-200 z-40 shadow-sm'>
 					<div className='mx-auto max-w-7xl px-6 py-5 sm:px-8'>
 						<div className='flex items-center justify-between'>
 							<button
 								onClick={() => router.back()}
-								className='group text-sm text-gray-600 hover:text-gray-900 transition-all flex items-center gap-2 font-medium'
+								className='group text-sm text-gray-600 hover:text-gray-900 transition-colors flex items-center gap-2 font-medium'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								<span className='inline-block transition-transform group-hover:-translate-x-1'>
@@ -592,7 +592,7 @@ export default function BankingForPrivateClientsPage() {
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.5, delay: idx * 0.1 }}
-									className='bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1'
+									className='bg-white rounded-xl p-6 shadow-lg border border-gray-100 transition-colors duration-300 hover:-translate-y-1'
 								>
 									<div
 										className='text-3xl font-bold bg-gradient-to-br from-slate-900 to-slate-600 bg-clip-text text-transparent mb-1'
@@ -741,7 +741,7 @@ export default function BankingForPrivateClientsPage() {
 											initial={{ opacity: 0, y: 20 }}
 											animate={{ opacity: 1, y: 0 }}
 											transition={{ duration: 0.5, delay: idx * 0.1 }}
-											className='group bg-white rounded-xl p-6 border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-slate-300'
+											className='group bg-white rounded-xl p-6 border border-gray-200 shadow-md transition-colors duration-300 hover:-translate-y-1 hover:border-slate-300'
 										>
 											<div className='flex items-center gap-3 mb-4'>
 												<div className='w-10 h-10 rounded-lg bg-gradient-to-br from-slate-900 to-slate-600 flex items-center justify-center text-white font-bold text-sm'>
@@ -995,14 +995,14 @@ export default function BankingForPrivateClientsPage() {
 											placeholder='Search by region...'
 											value={searchTerm}
 											onChange={(e) => handleSearchChange(e.target.value)}
-											className='w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent text-sm text-gray-900 placeholder:text-gray-400 caret-gray-900 transition-all'
+											className='w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent text-sm text-gray-900 placeholder:text-gray-400 caret-gray-900 transition-colors'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										/>
 									</div>
 									<div className='flex gap-2 flex-wrap'>
 										<button
 											onClick={() => handleFilterVisitChange("all")}
-											className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+											className={`px-5 py-3 rounded-xl text-sm font-semibold transition-colors duration-300 ${
 												filterVisit === "all"
 													? "bg-gradient-to-r from-slate-900 to-slate-700 text-white shadow-lg shadow-slate-900/30"
 													: "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md"
@@ -1013,7 +1013,7 @@ export default function BankingForPrivateClientsPage() {
 										</button>
 										<button
 											onClick={() => handleFilterVisitChange("not-required")}
-											className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+											className={`px-5 py-3 rounded-xl text-sm font-semibold transition-colors duration-300 ${
 												filterVisit === "not-required"
 													? "bg-gradient-to-r from-slate-900 to-slate-700 text-white shadow-lg shadow-slate-900/30"
 													: "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md"
@@ -1024,7 +1024,7 @@ export default function BankingForPrivateClientsPage() {
 										</button>
 										<button
 											onClick={() => handleFilterVisitChange("required")}
-											className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+											className={`px-5 py-3 rounded-xl text-sm font-semibold transition-colors duration-300 ${
 												filterVisit === "required"
 													? "bg-gradient-to-r from-slate-900 to-slate-700 text-white shadow-lg shadow-slate-900/30"
 													: "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md"
@@ -1050,7 +1050,7 @@ export default function BankingForPrivateClientsPage() {
 									<div className='flex flex-wrap gap-2'>
 										<button
 											onClick={() => handleFilterCurrencyChange("all")}
-											className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-300 ${
+											className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors duration-300 ${
 												filterCurrency === "all"
 													? "bg-gradient-to-r from-slate-900 to-slate-700 text-white shadow-md"
 													: "bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900"
@@ -1063,7 +1063,7 @@ export default function BankingForPrivateClientsPage() {
 											onClick={() =>
 												handleFilterCurrencyChange("Multicurrency")
 											}
-											className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-300 border ${
+											className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors duration-300 border ${
 												filterCurrency === "Multicurrency"
 													? "bg-gradient-to-r from-slate-900 to-slate-700 text-white shadow-md border-slate-900"
 													: "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-gray-300"
@@ -1079,7 +1079,7 @@ export default function BankingForPrivateClientsPage() {
 												<button
 													key={currency}
 													onClick={() => handleFilterCurrencyChange(currency)}
-													className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all duration-300 ${
+													className={`px-3 py-2 rounded-lg text-xs font-semibold transition-colors duration-300 ${
 														filterCurrency === currency
 															? "bg-slate-900 text-white shadow-md scale-105"
 															: "bg-gray-50 text-gray-600 hover:bg-gray-100 hover:text-gray-900 border border-gray-200"
@@ -1105,7 +1105,7 @@ export default function BankingForPrivateClientsPage() {
 										exit={{ opacity: 0, y: -10 }}
 										transition={{ duration: 0.3, delay: index * 0.02 }}
 									>
-										<div className='group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-slate-300 hover:shadow-xl transition-all duration-300'>
+										<div className='group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-slate-300 transition-colors duration-300'>
 											<button
 												onClick={() =>
 													setExpandedCard(
@@ -1114,7 +1114,7 @@ export default function BankingForPrivateClientsPage() {
 															: jurisdiction.region
 													)
 												}
-												className='w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-300'
+												className='w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-colors duration-300'
 											>
 												<div className='flex items-center gap-4 flex-1'>
 													<div className='w-12 h-12 rounded-lg bg-gradient-to-br from-slate-900 to-slate-600 flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300'>

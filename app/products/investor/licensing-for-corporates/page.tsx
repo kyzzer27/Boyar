@@ -3,7 +3,7 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { motion } from "framer-motion";
+import { motion } from "@/components/motion/lite-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -265,7 +265,7 @@ export default function LicensingForCorporatesPage() {
 	return (
 		<ProtectedRoute>
 			<div className='relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50'>
-				<header className='sticky top-0 bg-white/95 backdrop-blur-md border-b border-slate-200 z-50 shadow-sm'>
+				<header className='sticky top-0 bg-white/95 border-b border-slate-200 z-50 shadow-sm'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8'>
 						<button
 							onClick={() => router.back()}
@@ -413,7 +413,7 @@ export default function LicensingForCorporatesPage() {
 									requirements, staffing obligations, and optional
 									infrastructure.
 								</p>
-								<div className='inline-block bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20'>
+								<div className='inline-block bg-white/10  rounded-lg px-4 py-2 border border-white/20'>
 									<p className='text-sm font-medium'>
 										Pricing is available at the time of enquiry
 									</p>
@@ -440,7 +440,7 @@ export default function LicensingForCorporatesPage() {
 										<button
 											key={category}
 											onClick={() => setSelectedFilter(category)}
-											className={`px-5 py-2.5 rounded-lg font-medium transition-all duration-300 ${
+											className={`px-5 py-2.5 rounded-lg font-medium transition-colors duration-300 ${
 												selectedFilter === category
 													? "bg-slate-900 text-white shadow-lg"
 													: "bg-white text-slate-600 hover:bg-slate-50 border-2 border-slate-200 hover:border-slate-300"
@@ -482,7 +482,7 @@ export default function LicensingForCorporatesPage() {
 											href={`/products/investor/licensing-for-corporates/proposals/${license.slug}`}
 											className='block group'
 										>
-											<div className='bg-white rounded-xl p-6 shadow-lg border-2 border-slate-200 hover:border-slate-900 hover:shadow-xl transition-all duration-300 h-full'>
+											<div className='bg-white rounded-xl p-6 shadow-lg border-2 border-slate-200 hover:border-slate-900 hover:shadow-xl transition-colors duration-300 h-full'>
 												<div className='flex items-start justify-between mb-4'>
 													<div className='flex-1'>
 														<h3

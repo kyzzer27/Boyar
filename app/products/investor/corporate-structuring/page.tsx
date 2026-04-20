@@ -3,7 +3,7 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { motion } from "framer-motion";
+import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
 
 const jurisdictions = [
@@ -124,7 +124,7 @@ export default function CorporateStructuringPage() {
 		<ProtectedRoute>
 			<div className='min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100'>
 				{/* Header */}
-				<div className='border-b border-gray-100 bg-white/80 backdrop-blur-sm'>
+				<div className='border-b border-gray-100 bg-white/80 '>
 					<div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
 						<div className='flex h-16 items-center justify-between'>
 							<button

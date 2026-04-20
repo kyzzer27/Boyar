@@ -3,7 +3,7 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { motion } from "framer-motion";
+import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
 
 export default function AccountingPage() {
@@ -13,7 +13,7 @@ export default function AccountingPage() {
 		<ProtectedRoute>
 			<div className='relative min-h-screen bg-white text-slate-900'>
 				{/* Header */}
-				<header className='sticky top-0 bg-white/95 backdrop-blur-sm border-b border-slate-200 z-30'>
+				<header className='sticky top-0 bg-white/95  border-b border-slate-200 z-30'>
 					<div className='mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-8'>
 						<button
 							onClick={() => router.back()}

@@ -3,7 +3,7 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { motion } from "framer-motion";
+import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
 
 interface ServiceItem {
@@ -208,7 +208,7 @@ export default function FiduciaryDirectorshipPage() {
 		<ProtectedRoute>
 			<div className='min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100'>
 				{/* Header */}
-				<header className='sticky top-0 bg-white/90 backdrop-blur-md border-b border-slate-200/80 z-30 shadow-sm'>
+				<header className='sticky top-0 bg-white/95 border-b border-slate-200/80 z-30 shadow-sm'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-5 sm:px-8'>
 						<button
 							onClick={() => router.back()}
@@ -284,7 +284,7 @@ export default function FiduciaryDirectorshipPage() {
 				</section>
 
 				{/* Jurisdictional Coverage */}
-				<section className='border-b border-slate-200 bg-white/50 backdrop-blur-sm'>
+				<section className='border-b border-slate-200 bg-white/50 '>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -330,7 +330,7 @@ export default function FiduciaryDirectorshipPage() {
 				{fiduciaryServices.map((category, categoryIndex) => (
 					<section
 						key={categoryIndex}
-						className={`border-b border-slate-200 ${categoryIndex % 2 === 1 ? "bg-white/50 backdrop-blur-sm" : ""}`}
+						className={`border-b border-slate-200 ${categoryIndex % 2 === 1 ? "bg-white/50 " : ""}`}
 					>
 						<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 							<motion.div
@@ -363,7 +363,7 @@ export default function FiduciaryDirectorshipPage() {
 											duration: 0.4,
 											delay: 0.3 + idx * 0.06,
 										}}
-										className='bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-blue-200 hover:shadow-md transition-all'
+										className='bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-blue-200 transition-colors'
 									>
 										<div className='flex items-start gap-6 p-6'>
 											<div className='flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-lg font-bold shadow-lg shadow-blue-500/20'>
@@ -435,7 +435,7 @@ export default function FiduciaryDirectorshipPage() {
 									initial={{ opacity: 0, x: -20 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ duration: 0.4, delay: 0.3 + idx * 0.06 }}
-									className='flex items-start gap-3 bg-white/70 backdrop-blur-sm rounded-xl p-5 border border-slate-200/60'
+									className='flex items-start gap-3 bg-white/70  rounded-xl p-5 border border-slate-200/60'
 								>
 									<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-blue-500 mt-2'></div>
 									<p
@@ -451,7 +451,7 @@ export default function FiduciaryDirectorshipPage() {
 				</section>
 
 				{/* Operational Note */}
-				<section className='border-b border-slate-200 bg-white/50 backdrop-blur-sm'>
+				<section className='border-b border-slate-200 bg-white/50 '>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}

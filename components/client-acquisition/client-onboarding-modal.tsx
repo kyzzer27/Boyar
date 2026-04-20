@@ -24,19 +24,21 @@ interface ClientOnboardingModalProps {
 
 export function ClientOnboardingModal({ isOpen, onClose }: ClientOnboardingModalProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const progressRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState<string>("section-1");
-  const rafRef = useRef<number>(0);
 
+  // Update the progress bar width directly via the DOM — NOT through React
+  // state — so scrolling never triggers a component re-render. This was the
+  // single biggest source of scroll jank: setScrollProgress() caused a full
+  // re-render on every animation frame while scrolling.
   const updateProgress = useCallback(() => {
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    rafRef.current = requestAnimationFrame(() => {
-      const el = scrollRef.current;
-      if (!el) return;
-      const { scrollTop, scrollHeight, clientHeight } = el;
-      const total = scrollHeight - clientHeight;
-      setScrollProgress(total > 0 ? Math.min((scrollTop / total) * 100, 100) : 0);
-    });
+    const el = scrollRef.current;
+    const bar = progressRef.current;
+    if (!el || !bar) return;
+    const { scrollTop, scrollHeight, clientHeight } = el;
+    const total = scrollHeight - clientHeight;
+    const pct = total > 0 ? Math.min((scrollTop / total) * 100, 100) : 0;
+    bar.style.width = `${pct}%`;
   }, []);
 
   useEffect(() => {
@@ -82,7 +84,7 @@ export function ClientOnboardingModal({ isOpen, onClose }: ClientOnboardingModal
       {isOpen && (
         <>
           <motion.div
-            className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] bg-black/40"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -98,11 +100,14 @@ export function ClientOnboardingModal({ isOpen, onClose }: ClientOnboardingModal
             transition={{ type: "tween", duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Progress bar */}
+            {/* Progress bar — width is set directly by the scroll handler
+                via progressRef, never through React state, so scrolling
+                triggers zero re-renders. */}
             <div className="absolute left-0 right-0 top-0 z-[102] h-0.5 bg-[#E0DDD0] md:left-64">
               <div
-                className="h-full bg-[#FF0000]/60 transition-[width] duration-150 ease-out"
-                style={{ width: `${scrollProgress}%` }}
+                ref={progressRef}
+                className="h-full bg-[#FF0000]/60"
+                style={{ width: "0%", willChange: "width" }}
               />
             </div>
 
@@ -148,7 +153,7 @@ export function ClientOnboardingModal({ isOpen, onClose }: ClientOnboardingModal
 
             {/* Right content */}
             <div className="flex min-h-0 flex-1 flex-col bg-[#FDFBEE]">
-              <header className="sticky top-0 z-10 flex shrink-0 flex-col gap-2 border-b border-[#E0DDD0] bg-[#FDFBEE]/95 px-4 py-3 backdrop-blur-sm">
+              <header className="sticky top-0 z-10 flex shrink-0 flex-col gap-2 border-b border-[#E0DDD0] bg-[#FDFBEE] px-4 py-3">
                 <div className="flex items-center justify-between md:justify-end">
                   <div className="flex gap-1 overflow-x-auto pb-1 md:hidden">
                     {SECTIONS.map(({ id, num }) => {
@@ -186,7 +191,6 @@ export function ClientOnboardingModal({ isOpen, onClose }: ClientOnboardingModal
                 onScroll={updateProgress}
                 className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-8 md:px-10 md:py-12"
                 style={{
-                  scrollBehavior: "smooth",
                   WebkitOverflowScrolling: "touch",
                 }}
               >

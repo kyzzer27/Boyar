@@ -857,6 +857,15 @@ section {
 	contain-intrinsic-size: auto 720px;
 }
 
+/* Override for sections inside fixed overlays / modals (e.g. trajectory
+   details panel). content-visibility: auto doesn't reliably detect
+   visibility inside position:fixed scrolling containers and can hide
+   content that's actually on-screen. */
+[class*="fixed"] section,
+.trajectory-panel-wrapper section {
+	content-visibility: visible !important;
+}
+
 /* Framer-motion entry animations leave `will-change: transform` lingering
    on every animated element, which costs GPU memory forever and forces a
    compositing layer per element. Clear it after mount. Framer-motion sets
@@ -864,5 +873,54 @@ section {
    affects post-animation idle state. */
 [data-framer-component] {
 	will-change: auto;
+}
+
+/* lite-motion: zero-JS replacement for framer-motion mount animations.
+   Used by ~40 investor product pages instead of the heavy framer-motion
+   library. Runs entirely on the compositor thread (opacity + translate3d),
+   then cleans up — no lingering GPU layers, no will-change, no stacking
+   contexts after the animation completes. */
+@keyframes bp-fade-in-up {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 20px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+.bp-fade-in {
+	animation-name: bp-fade-in-up;
+	animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+	animation-fill-mode: both;
+}
+
+/* `transition-all` is the single biggest scroll-perf killer still lurking on
+   the private client content pages: when the user scrolls a mouse wheel,
+   the cursor passes across dozens of `.transition-all.hover:shadow-md`
+   cards, and the browser briefly enters :hover on each card as it moves
+   past the pointer — transitioning box-shadow, border, transform, filter,
+   and backdrop-filter every single frame. Replace the `all` property list
+   with just the cheap color-family properties, so hover flicker during
+   scroll no longer triggers GPU-heavy repaints. */
+.transition-all {
+	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity !important;
+}
+
+/* While the user is actively scrolling, pause hover transitions entirely.
+   The `body.scroll-lock` class is toggled by the tiny inline script at the
+   end of app/layout.tsx — this stops hover-flicker repaints from competing
+   with the scroll compositor thread. */
+body.scroll-lock *,
+body.scroll-lock *::before,
+body.scroll-lock *::after {
+	transition: none !important;
+	animation-play-state: paused !important;
+	pointer-events: none !important;
+}
+body.scroll-lock .sticky,
+body.scroll-lock header {
+	pointer-events: auto !important;
 }
 

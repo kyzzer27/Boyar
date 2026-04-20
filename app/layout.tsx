@@ -43,10 +43,42 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} antialiased`}
       >
-        <Script 
-          src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js" 
-          strategy="beforeInteractive" 
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"
+          strategy="beforeInteractive"
         />
+        {/*
+          Scroll-performance helper: adds `scroll-lock` to <body> while the
+          user is actively scrolling, removes it ~120ms after the last scroll
+          event. globals.css uses that class to pause hover transitions and
+          animations during scroll, which eliminates the scroll jank caused
+          by hover-flicker on dozens of cards in the private client content
+          pages. Inline + afterInteractive so it attaches without blocking
+          first paint.
+        */}
+        <Script id="bp-scroll-perf" strategy="afterInteractive">
+          {`
+            (function () {
+              if (typeof window === "undefined") return;
+              var body = document.body;
+              if (!body) return;
+              var t;
+              var locked = false;
+              var onScroll = function () {
+                if (!locked) {
+                  body.classList.add("scroll-lock");
+                  locked = true;
+                }
+                if (t) window.clearTimeout(t);
+                t = window.setTimeout(function () {
+                  body.classList.remove("scroll-lock");
+                  locked = false;
+                }, 120);
+              };
+              window.addEventListener("scroll", onScroll, { passive: true, capture: true });
+            })();
+          `}
+        </Script>
         <VisitorTracker />
         {children}
         <ChatWidget />

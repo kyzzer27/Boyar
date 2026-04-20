@@ -3,7 +3,7 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { motion } from "framer-motion";
+import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
 
 export default function LithuaniaCryptoProposalPage() {
@@ -27,7 +27,7 @@ export default function LithuaniaCryptoProposalPage() {
 	return (
 		<ProtectedRoute>
 			<div className='relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50'>
-				<header className='sticky top-0 bg-white/95 backdrop-blur-md border-b border-slate-200 z-50 shadow-sm'>
+				<header className='sticky top-0 bg-white/95 border-b border-slate-200 z-50 shadow-sm'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8'>
 						<button
 							onClick={() => router.back()}

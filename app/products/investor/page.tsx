@@ -318,7 +318,7 @@ function ProductSection({
                   window.location.href = "/products/investor/corporate-services";
                 }
               }}
-              className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white transition-all group"
+              className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white transition-colors group"
               style={{ fontFamily: 'var(--font-benzin)' }}
               whileHover={{ scale: 1.05, borderColor: product.color }}
               whileTap={{ scale: 0.95 }}
@@ -352,7 +352,7 @@ function SectionIndicator({ currentSection, totalSections }: { currentSection: n
         return (
           <motion.button
             key={i}
-            className={`w-3 h-3 rounded-full transition-all relative ${
+            className={`w-3 h-3 rounded-full transition-colors relative ${
               isActive ? "bg-white" : "bg-white/30"
             }`}
             animate={{
@@ -443,7 +443,7 @@ export default function ProductsInvestorPage() {
       <div className="relative min-h-screen bg-black text-white overflow-hidden">
         
         {/* Header */}
-        <header className="fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 backdrop-blur-md z-30">
+        <header className="fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 z-30">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
             <button onClick={() => router.back()} className="text-sm sm:text-base text-white hover:text-gray-300 transition flex items-center gap-2">
               ← Back
@@ -544,7 +544,7 @@ export default function ProductsInvestorPage() {
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
-                    className="text-center p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm"
+                    className="text-center p-6 rounded-2xl border border-white/10 bg-white/5 "
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}

@@ -44,8 +44,7 @@ export default function CitizenshipStewardshipPage() {
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.96);
             border-bottom: 1px solid var(--slate-200);
             box-shadow: 0 1px 3px rgba(0,0,0,0.04);
           }
@@ -174,8 +173,7 @@ export default function CitizenshipStewardshipPage() {
             padding: 72px 32px;
           }
           .cs-page .section-alt {
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(8px);
+            background: rgba(255,255,255,0.85);
           }
           
           /* ── SECTION HEADING ── */
@@ -212,11 +210,10 @@ export default function CitizenshipStewardshipPage() {
             display: flex;
             gap: 24px;
             align-items: flex-start;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s;
           }
           .cs-page .service-card:hover {
             border-color: #bfdbfe;
-            box-shadow: 0 4px 24px rgba(59,130,246,0.08);
           }
           .cs-page .service-num {
             flex-shrink: 0;

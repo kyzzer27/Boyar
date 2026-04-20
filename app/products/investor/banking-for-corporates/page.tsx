@@ -3,7 +3,7 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { motion } from "framer-motion";
+import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -305,7 +305,7 @@ function ServiceCard({
 			<div
 				className={`relative rounded-lg border ${
 					service.borderColor
-				} bg-white cursor-pointer transition-all duration-300 hover:border-gray-300 hover:shadow-lg ${
+				} bg-white cursor-pointer transition-colors duration-300 hover:border-gray-300 hover:shadow-lg ${
 					isExpanded ? "overflow-visible" : "overflow-hidden"
 				}`}
 				onClick={() => setIsExpanded(!isExpanded)}
@@ -407,7 +407,7 @@ export default function BankingForCorporatesPage() {
 		<ProtectedRoute>
 			<div className='min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50'>
 				{/* Header */}
-				<header className='sticky top-0 bg-white/80 backdrop-blur-md border-b border-gray-200 z-30'>
+				<header className='sticky top-0 bg-white/80 border-b border-gray-200 z-30'>
 					<div className='mx-auto max-w-7xl px-6 py-5 sm:px-8 flex items-center justify-between'>
 						<button
 							onClick={() => router.back()}
@@ -538,7 +538,7 @@ export default function BankingForCorporatesPage() {
 							</p>
 							<button
 								onClick={() => router.back()}
-								className='inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg transition-all duration-300'
+								className='inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg transition-colors duration-300'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Back

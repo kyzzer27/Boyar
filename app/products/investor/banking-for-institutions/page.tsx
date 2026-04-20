@@ -3,7 +3,7 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/protected-route";
-import { motion } from "framer-motion";
+import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
@@ -75,7 +75,7 @@ export default function BankingForInstitutionsPage() {
 				<header
 					className={`${
 						isExpanded ? "fixed top-0 left-0 right-0" : "sticky top-0"
-					} bg-neutral-950/85 backdrop-blur-sm border-b border-white/10 z-30`}
+					} bg-neutral-950/85  border-b border-white/10 z-30`}
 				>
 					<div className='mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-8'>
 						<button
@@ -141,7 +141,7 @@ export default function BankingForInstitutionsPage() {
 									onClick={() => {
 										setSelected(svc);
 									}}
-									className='group relative w-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/6 to-white/3 p-6 sm:p-7 text-left overflow-hidden transition-all duration-300 hover:border-white/20 hover:from-white/10 hover:to-white/6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20'
+									className='group relative w-full rounded-2xl border border-white/10 bg-gradient-to-br from-white/6 to-white/3 p-6 sm:p-7 text-left overflow-hidden transition-colors duration-300 hover:border-white/20 hover:from-white/10 hover:to-white/6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20'
 									style={{ fontFamily: "var(--font-benzin)" }}
 									whileHover={{ y: -6 }}
 									whileTap={{ scale: 0.98 }}

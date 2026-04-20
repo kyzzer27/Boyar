@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 interface TrajectoryDetailsPanelProps {
   isOpen: boolean;
@@ -54,10 +55,24 @@ export function TrajectoryDetailsPanel({
   onClose,
   initialYearIndex,
 }: TrajectoryDetailsPanelProps) {
-  const [activeYear, setActiveYear] = useState(YEAR_TABS[0].id);
-  const [activeSubtab, setActiveSubtab] = useState("");
+  // Derive the starting year and subtab synchronously from the prop so the
+  // very first render already has valid content (instead of a blank flash
+  // from activeSubtab === "").
+  const safeIndex =
+    initialYearIndex >= 0 && initialYearIndex < YEAR_TABS.length
+      ? initialYearIndex
+      : 0;
+  const [activeYear, setActiveYear] = useState(
+    () => YEAR_TABS[safeIndex].id
+  );
+  const [activeSubtab, setActiveSubtab] = useState(
+    () => SUBTABS[YEAR_TABS[safeIndex].id][0].id
+  );
+  const [mounted, setMounted] = useState(false);
 
-  // Update active year when panel opens with a specific index
+  useEffect(() => { setMounted(true); }, []);
+
+  // Update active year when panel opens with a different index
   useEffect(() => {
     if (isOpen && initialYearIndex >= 0 && initialYearIndex < YEAR_TABS.length) {
       const yearId = YEAR_TABS[initialYearIndex].id;
@@ -71,24 +86,32 @@ export function TrajectoryDetailsPanel({
     setActiveSubtab(SUBTABS[activeYear][0].id);
   }, [activeYear]);
 
-  // Lock body scroll when open
+  const panelRef = useRef<HTMLDivElement | null>(null);
+
+  // Lock body scroll when open + reset panel scroll to top
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      // Reset panel scroll to top so content is visible
+      requestAnimationFrame(() => {
+        panelRef.current?.scrollTo({ top: 0 });
+      });
     } else {
       document.body.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isOpen]);
+  }, [isOpen, initialYearIndex]);
 
   const scrollToTabs = () => {
     const el = document.getElementById("trajectory-detail-header");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  return (
+  if (!mounted) return null;
+
+  const panelContent = (
     <AnimatePresence>
       {isOpen && (
         <>
@@ -98,7 +121,8 @@ export function TrajectoryDetailsPanel({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 z-[200] bg-black/60"
+            className="fixed inset-0 bg-black/60"
+            style={{ zIndex: 99998 }}
           />
 
           <motion.div
@@ -106,14 +130,14 @@ export function TrajectoryDetailsPanel({
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.38, ease: [0.22, 0.61, 0.36, 1] }}
-            className="fixed top-0 bottom-0 right-0 z-[210] w-full bg-[#FDFBEE] shadow-2xl overflow-y-auto"
+            ref={panelRef}
+            className="fixed top-0 bottom-0 right-0 w-full shadow-2xl overflow-y-auto"
             style={{
+              zIndex: 99999,
+              backgroundColor: "#FDFBEE",
               color: "#1a1a1a",
               fontFamily: "'Avenir', 'Inter', sans-serif",
-              backfaceVisibility: "hidden",
               WebkitOverflowScrolling: "touch",
-              willChange: "transform",
-              transform: "translateZ(0)",
             }}
           >
             <div className="trajectory-panel-wrapper min-h-full pb-20 relative">
@@ -719,89 +743,90 @@ export function TrajectoryDetailsPanel({
                 --text-dim: #7a7a7a;
                 --accent: #FF0000;
                 --black: #000;
-                background: var(--bg);
-                color: var(--text);
-                font-family: 'Avenir', 'Inter', sans-serif;
+                background: var(--bg) !important;
+                color: var(--text) !important;
+                font-family: 'Avenir', 'Inter', sans-serif !important;
                 font-weight: 500;
                 line-height: 1.7;
                 font-size: 15px;
                 -webkit-font-smoothing: antialiased;
               }
-              .red { color: var(--accent); }
-              .header { position: sticky; top: 0; left: 0; right: 0; z-index: 100; background: rgba(253,251,238,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); will-change: transform; }
-              .header-inner { max-width: 1400px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
-              .logo { font-weight: 800; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--black); }
-              .header-subtitle { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); font-weight: 500; }
-              .hero { padding: 80px 48px 60px; max-width: 1400px; margin: 0 auto; position: relative; }
-              .hero-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 20px; font-weight: 800; }
-              .hero h1 { font-size: 48px; font-weight: 800; line-height: 1.1; color: var(--black); margin-bottom: 20px; max-width: 700px; }
-              .hero p { font-size: 16px; color: var(--text-muted); max-width: 560px; line-height: 1.8; }
-              .tabs-container { position: sticky; top: 56px; z-index: 90; background: rgba(253,251,238,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); will-change: transform; }
-              .tabs { max-width: 1400px; margin: 0 auto; padding: 0 48px; display: flex; overflow-x: auto; scrollbar-width: none; }
-              .tab { padding: 18px 32px; font-size: 15px; font-weight: 800; letter-spacing: 1px; color: var(--text-dim); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.3s ease; white-space: nowrap; }
-              .tab:hover { color: var(--text-muted); }
-              .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-              .subtabs-container { position: sticky; top: 112px; z-index: 80; background: rgba(247,245,232,0.98); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); will-change: transform; }
-              .subtabs { max-width: 1400px; margin: 0 auto; padding: 0 48px; display: flex; overflow-x: auto; scrollbar-width: none; }
-              .subtab { padding: 12px 20px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim); cursor: pointer; border-bottom: 1px solid transparent; transition: all 0.25s ease; white-space: nowrap; flex-shrink: 0; }
-              .subtab:hover { color: var(--text-muted); }
-              .subtab.active { color: var(--black); border-bottom-color: var(--black); }
-              .content-area { max-width: 1400px; margin: 0 auto; padding: 0 48px; }
-              .year-section { animation: fadeIn 0.4s ease; }
-              .sub-section { animation: fadeIn 0.3s ease; }
-              @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-              .year-header { padding: 48px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; }
-              .year-header h2 { font-size: 36px; font-weight: 800; color: var(--black); line-height: 1.15; }
-              .year-header .objective { font-size: 15px; color: var(--text-muted); line-height: 1.7; border-left: 2px solid var(--accent); padding-left: 24px; }
-              .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 40px; }
-              .stat-card { background: var(--surface); padding: 24px 20px; }
-              .stat-card .stat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; font-weight: 800; }
-              .stat-card .stat-value { font-size: 20px; font-weight: 800; color: var(--black); }
-              .stat-card .stat-value.accent { color: var(--accent); }
-              .block { margin-bottom: 36px; }
-              .block-title { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
-              .block-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-              .block p { color: var(--text); line-height: 1.85; margin-bottom: 14px; font-size: 14.5px; font-weight: 500; }
-              .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 36px; }
-              .moat-card { background: var(--surface); border: 1px solid var(--border); padding: 32px; margin-bottom: 24px; position: relative; overflow: hidden; }
-              .moat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); }
-              .moat-card h4 { font-size: 17px; font-weight: 800; color: var(--black); margin-bottom: 14px; line-height: 1.3; }
-              .moat-card p { color: var(--text-muted); line-height: 1.85; font-size: 14px; margin-bottom: 10px; font-weight: 500; }
-              .service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 36px; }
-              .service-item { background: var(--surface); padding: 22px; }
-              .service-item h5 { font-size: 13.5px; font-weight: 800; color: var(--black); margin-bottom: 6px; }
-              .service-item p { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; font-weight: 500; }
-              .gates { background: var(--surface); border: 1px solid var(--border); padding: 32px; margin-bottom: 36px; }
-              .gate { display: grid; grid-template-columns: 72px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: start; }
-              .gate:last-child { border-bottom: none; }
-              .gate-number { font-size: 11px; font-weight: 800; letter-spacing: 2px; color: var(--accent); padding-top: 2px; }
-              .gate-text { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; font-weight: 500; }
-              .gate-fallback { padding: 14px 0 0; font-size: 13px; color: var(--text-dim); font-style: italic; font-weight: 500; }
-              .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; margin-bottom: 36px; }
-              .kpi { border: 1px solid var(--border); padding: 18px; background: var(--surface); }
-              .kpi-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; font-weight: 800; }
-              .kpi-value { font-size: 15px; font-weight: 800; color: var(--black); }
-              .scenarios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 36px; }
-              .scenario { background: var(--surface); padding: 24px 20px; text-align: center; }
-              .scenario-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; font-weight: 800; }
-              .scenario-value { font-size: 22px; font-weight: 800; color: var(--black); margin-bottom: 6px; }
-              .scenario-value.bull { color: var(--accent); }
-              .scenario-desc { font-size: 11.5px; color: var(--text-dim); line-height: 1.5; font-weight: 500; }
-              .closing { padding: 36px 0 60px; border-top: 1px solid var(--border); margin-top: 36px; }
-              .closing h3 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; font-weight: 800; }
-              .closing p { font-size: 16px; color: var(--text); line-height: 1.8; max-width: 700px; font-weight: 500; }
-              .future-moats { background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.08); padding: 32px; margin-bottom: 36px; }
-              .future-moats h4 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; font-weight: 800; }
-              .future-moats p { color: var(--text-muted); line-height: 1.85; font-size: 14px; margin-bottom: 10px; font-weight: 500; }
+              .trajectory-panel-wrapper * { color: inherit; }
+              .trajectory-panel-wrapper .red { color: var(--accent) !important; }
+              .trajectory-panel-wrapper .header { position: sticky; top: 0; left: 0; right: 0; z-index: 100; background: rgba(253,251,238,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); will-change: transform; }
+              .trajectory-panel-wrapper .header-inner { max-width: 1400px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+              .trajectory-panel-wrapper .logo { font-weight: 800; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--black) !important; }
+              .trajectory-panel-wrapper .header-subtitle { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim) !important; font-weight: 500; }
+              .trajectory-panel-wrapper .hero { padding: 80px 48px 60px; max-width: 1400px; margin: 0 auto; position: relative; }
+              .trajectory-panel-wrapper .hero-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim) !important; margin-bottom: 20px; font-weight: 800; }
+              .trajectory-panel-wrapper .hero h1 { font-size: 48px; font-weight: 800; line-height: 1.1; color: var(--black) !important; margin-bottom: 20px; max-width: 700px; }
+              .trajectory-panel-wrapper .hero p { font-size: 16px; color: var(--text-muted) !important; max-width: 560px; line-height: 1.8; }
+              .trajectory-panel-wrapper .tabs-container { position: sticky; top: 56px; z-index: 90; background: rgba(253,251,238,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); will-change: transform; }
+              .trajectory-panel-wrapper .tabs { max-width: 1400px; margin: 0 auto; padding: 0 48px; display: flex; overflow-x: auto; scrollbar-width: none; }
+              .trajectory-panel-wrapper .tab { padding: 18px 32px; font-size: 15px; font-weight: 800; letter-spacing: 1px; color: var(--text-dim) !important; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.3s ease; white-space: nowrap; }
+              .trajectory-panel-wrapper .tab:hover { color: var(--text-muted) !important; }
+              .trajectory-panel-wrapper .tab.active { color: var(--accent) !important; border-bottom-color: var(--accent); }
+              .trajectory-panel-wrapper .subtabs-container { position: sticky; top: 112px; z-index: 80; background: rgba(247,245,232,0.98); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); will-change: transform; }
+              .trajectory-panel-wrapper .subtabs { max-width: 1400px; margin: 0 auto; padding: 0 48px; display: flex; overflow-x: auto; scrollbar-width: none; }
+              .trajectory-panel-wrapper .subtab { padding: 12px 20px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim) !important; cursor: pointer; border-bottom: 1px solid transparent; transition: all 0.25s ease; white-space: nowrap; flex-shrink: 0; }
+              .trajectory-panel-wrapper .subtab:hover { color: var(--text-muted) !important; }
+              .trajectory-panel-wrapper .subtab.active { color: var(--black) !important; border-bottom-color: var(--black); }
+              .trajectory-panel-wrapper .content-area { max-width: 1400px; margin: 0 auto; padding: 0 48px; }
+              .trajectory-panel-wrapper .year-section { animation: tpFadeIn 0.4s ease; }
+              .trajectory-panel-wrapper .sub-section { animation: tpFadeIn 0.3s ease; }
+              @keyframes tpFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+              .trajectory-panel-wrapper .year-header { padding: 48px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; }
+              .trajectory-panel-wrapper .year-header h2 { font-size: 36px; font-weight: 800; color: var(--black) !important; line-height: 1.15; }
+              .trajectory-panel-wrapper .year-header .objective { font-size: 15px; color: var(--text-muted) !important; line-height: 1.7; border-left: 2px solid var(--accent); padding-left: 24px; }
+              .trajectory-panel-wrapper .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 40px; }
+              .trajectory-panel-wrapper .stat-card { background: var(--surface); padding: 24px 20px; }
+              .trajectory-panel-wrapper .stat-card .stat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim) !important; margin-bottom: 6px; font-weight: 800; }
+              .trajectory-panel-wrapper .stat-card .stat-value { font-size: 20px; font-weight: 800; color: var(--black) !important; }
+              .trajectory-panel-wrapper .stat-card .stat-value.accent { color: var(--accent) !important; }
+              .trajectory-panel-wrapper .block { margin-bottom: 36px; }
+              .trajectory-panel-wrapper .block-title { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent) !important; margin-bottom: 16px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+              .trajectory-panel-wrapper .block-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+              .trajectory-panel-wrapper .block p { color: var(--text) !important; line-height: 1.85; margin-bottom: 14px; font-size: 14.5px; font-weight: 500; }
+              .trajectory-panel-wrapper .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 36px; }
+              .trajectory-panel-wrapper .moat-card { background: var(--surface); border: 1px solid var(--border); padding: 32px; margin-bottom: 24px; position: relative; overflow: hidden; }
+              .trajectory-panel-wrapper .moat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); }
+              .trajectory-panel-wrapper .moat-card h4 { font-size: 17px; font-weight: 800; color: var(--black) !important; margin-bottom: 14px; line-height: 1.3; }
+              .trajectory-panel-wrapper .moat-card p { color: var(--text-muted) !important; line-height: 1.85; font-size: 14px; margin-bottom: 10px; font-weight: 500; }
+              .trajectory-panel-wrapper .service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 36px; }
+              .trajectory-panel-wrapper .service-item { background: var(--surface); padding: 22px; }
+              .trajectory-panel-wrapper .service-item h5 { font-size: 13.5px; font-weight: 800; color: var(--black) !important; margin-bottom: 6px; }
+              .trajectory-panel-wrapper .service-item p { font-size: 12.5px; color: var(--text-dim) !important; line-height: 1.6; font-weight: 500; }
+              .trajectory-panel-wrapper .gates { background: var(--surface); border: 1px solid var(--border); padding: 32px; margin-bottom: 36px; }
+              .trajectory-panel-wrapper .gate { display: grid; grid-template-columns: 72px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: start; }
+              .trajectory-panel-wrapper .gate:last-child { border-bottom: none; }
+              .trajectory-panel-wrapper .gate-number { font-size: 11px; font-weight: 800; letter-spacing: 2px; color: var(--accent) !important; padding-top: 2px; }
+              .trajectory-panel-wrapper .gate-text { font-size: 13.5px; color: var(--text-muted) !important; line-height: 1.7; font-weight: 500; }
+              .trajectory-panel-wrapper .gate-fallback { padding: 14px 0 0; font-size: 13px; color: var(--text-dim) !important; font-style: italic; font-weight: 500; }
+              .trajectory-panel-wrapper .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; margin-bottom: 36px; }
+              .trajectory-panel-wrapper .kpi { border: 1px solid var(--border); padding: 18px; background: var(--surface); }
+              .trajectory-panel-wrapper .kpi-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim) !important; margin-bottom: 6px; font-weight: 800; }
+              .trajectory-panel-wrapper .kpi-value { font-size: 15px; font-weight: 800; color: var(--black) !important; }
+              .trajectory-panel-wrapper .scenarios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 36px; }
+              .trajectory-panel-wrapper .scenario { background: var(--surface); padding: 24px 20px; text-align: center; }
+              .trajectory-panel-wrapper .scenario-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim) !important; margin-bottom: 10px; font-weight: 800; }
+              .trajectory-panel-wrapper .scenario-value { font-size: 22px; font-weight: 800; color: var(--black) !important; margin-bottom: 6px; }
+              .trajectory-panel-wrapper .scenario-value.bull { color: var(--accent) !important; }
+              .trajectory-panel-wrapper .scenario-desc { font-size: 11.5px; color: var(--text-dim) !important; line-height: 1.5; font-weight: 500; }
+              .trajectory-panel-wrapper .closing { padding: 36px 0 60px; border-top: 1px solid var(--border); margin-top: 36px; }
+              .trajectory-panel-wrapper .closing h3 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim) !important; margin-bottom: 14px; font-weight: 800; }
+              .trajectory-panel-wrapper .closing p { font-size: 16px; color: var(--text) !important; line-height: 1.8; max-width: 700px; font-weight: 500; }
+              .trajectory-panel-wrapper .future-moats { background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.08); padding: 32px; margin-bottom: 36px; }
+              .trajectory-panel-wrapper .future-moats h4 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent) !important; margin-bottom: 16px; font-weight: 800; }
+              .trajectory-panel-wrapper .future-moats p { color: var(--text-muted) !important; line-height: 1.85; font-size: 14px; margin-bottom: 10px; font-weight: 500; }
               @media(max-width:900px) {
-                .header-inner, .tabs, .subtabs, .content-area, .hero { padding-left: 20px; padding-right: 20px; }
-                .hero h1 { font-size: 28px; }
-                .year-header { grid-template-columns: 1fr; gap: 20px; }
-                .year-header h2 { font-size: 24px; }
-                .two-col { grid-template-columns: 1fr; }
-                .scenarios { grid-template-columns: 1fr; }
-                .tab { padding: 16px 20px; }
-                .subtabs-container { top: 104px; }
+                .trajectory-panel-wrapper .header-inner, .trajectory-panel-wrapper .tabs, .trajectory-panel-wrapper .subtabs, .trajectory-panel-wrapper .content-area, .trajectory-panel-wrapper .hero { padding-left: 20px; padding-right: 20px; }
+                .trajectory-panel-wrapper .hero h1 { font-size: 28px; }
+                .trajectory-panel-wrapper .year-header { grid-template-columns: 1fr; gap: 20px; }
+                .trajectory-panel-wrapper .year-header h2 { font-size: 24px; }
+                .trajectory-panel-wrapper .two-col { grid-template-columns: 1fr; }
+                .trajectory-panel-wrapper .scenarios { grid-template-columns: 1fr; }
+                .trajectory-panel-wrapper .tab { padding: 16px 20px; }
+                .trajectory-panel-wrapper .subtabs-container { top: 104px; }
               }
             `}</style>
           </motion.div>
@@ -809,4 +834,6 @@ export function TrajectoryDetailsPanel({
       )}
     </AnimatePresence>
   );
+
+  return createPortal(panelContent, document.body);
 }

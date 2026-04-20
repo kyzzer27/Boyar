@@ -17,7 +17,7 @@ import {
 } from "@/components/flags";
 import { FlagImage } from "@/components/flags/flag-image";
 import { geoMercator, geoPath } from "d3-geo";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "@/components/motion/lite-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -384,7 +384,7 @@ function WorldMap({
 			{/* Button with arrow - Top Left - Responsive */}
 			<motion.button
 				onClick={() => setShowJurisdictionsList(!showJurisdictionsList)}
-				className='absolute top-2 left-2 sm:top-4 sm:left-4 z-30 px-2 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/30 bg-black/50 backdrop-blur-sm text-white hover:bg-white/10 transition-all flex items-center gap-1 sm:gap-2'
+				className='absolute top-2 left-2 sm:top-4 sm:left-4 z-30 px-2 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/30 bg-black/50  text-white hover:bg-white/10 transition-colors flex items-center gap-1 sm:gap-2'
 				style={{ fontFamily: "var(--font-benzin)" }}
 				whileHover={{ scale: 1.05 }}
 				whileTap={{ scale: 0.95 }}
@@ -412,7 +412,7 @@ function WorldMap({
 						onChange={handleInputChange}
 						onKeyPress={handleKeyPress}
 						placeholder='Search...'
-						className='px-2 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/30 bg-black/50 backdrop-blur-sm text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-all text-xs sm:text-sm w-full sm:w-auto min-w-[120px] sm:min-w-[200px]'
+						className='px-2 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/30 bg-black/50  text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors text-xs sm:text-sm w-full sm:w-auto min-w-[120px] sm:min-w-[200px]'
 						style={{ fontFamily: "var(--font-benzin)" }}
 					/>
 				</div>
@@ -436,7 +436,7 @@ function WorldMap({
 			{onFullscreenToggle && (
 				<motion.button
 					onClick={onFullscreenToggle}
-					className='absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-30 px-2 py-1.5 sm:px-3 sm:py-2 rounded-full border border-white/30 bg-black/50 backdrop-blur-sm text-white hover:bg-white/10 transition-all flex items-center gap-1 sm:gap-2'
+					className='absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-30 px-2 py-1.5 sm:px-3 sm:py-2 rounded-full border border-white/30 bg-black/50  text-white hover:bg-white/10 transition-colors flex items-center gap-1 sm:gap-2'
 					style={{ fontFamily: "var(--font-benzin)" }}
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
@@ -552,7 +552,7 @@ function WorldMap({
 						/>
 
 						<div
-							className='absolute bottom-full left-1/2 -translate-x-1/2 mb-2 sm:mb-3 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-black/90 backdrop-blur-sm text-white text-[10px] sm:text-xs whitespace-nowrap transition-opacity pointer-events-none z-30 border border-white/20 max-w-[150px] sm:max-w-none opacity-0 group-hover:opacity-100'
+							className='absolute bottom-full left-1/2 -translate-x-1/2 mb-2 sm:mb-3 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-black/90  text-white text-[10px] sm:text-xs whitespace-nowrap transition-opacity pointer-events-none z-30 border border-white/20 max-w-[150px] sm:max-w-none opacity-0 group-hover:opacity-100'
 						>
 							{jurisdiction.name}
 							<div className='absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90'></div>
@@ -756,7 +756,7 @@ export default function CorporateServicesPage() {
 
 				{/* Header - Mobile Responsive - Hidden in fullscreen */}
 				{!isMapFullscreen && (
-					<header className='fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 backdrop-blur-md z-30'>
+					<header className='fixed top-0 left-0 right-0 border-b border-white/10 bg-black/80 z-30'>
 						<div className='mx-auto flex max-w-7xl items-center justify-between px-3 py-2 sm:px-4 sm:py-4 lg:px-8'>
 							<Link
 								href='/tools/services-direct'
@@ -959,7 +959,7 @@ export default function CorporateServicesPage() {
 										className='group relative h-full'
 										style={{ fontFamily: "var(--font-benzin)" }}
 									>
-										<div className='relative h-full rounded-lg border border-white/10 bg-gradient-to-br from-white/8 to-white/3 p-7 sm:p-8 text-left overflow-hidden transition-all duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8'>
+										<div className='relative h-full rounded-lg border border-white/10 bg-gradient-to-br from-white/8 to-white/3 p-7 sm:p-8 text-left overflow-hidden transition-colors duration-300 hover:border-white/20 hover:from-white/12 hover:to-white/8'>
 											{/* Top accent line */}
 											<div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
 
@@ -986,7 +986,7 @@ export default function CorporateServicesPage() {
 
 											{/* Bottom right accent */}
 											<div className='absolute bottom-4 right-4 w-8 h-8 border border-white/10 rounded-full group-hover:border-blue-500/50 transition-colors duration-300 flex items-center justify-center'>
-												<div className='w-2 h-2 bg-blue-500/0 group-hover:bg-blue-500/60 rounded-full transition-all duration-300'></div>
+												<div className='w-2 h-2 bg-blue-500/0 group-hover:bg-blue-500/60 rounded-full transition-colors duration-300'></div>
 											</div>
 
 											{/* Hover glow effect */}
@@ -1007,7 +1007,7 @@ export default function CorporateServicesPage() {
 						<>
 							{/* Backdrop */}
 							<motion.div
-								className='fixed inset-0 bg-black/80 backdrop-blur-md z-50'
+								className='fixed inset-0 bg-black/80 z-50'
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								exit={{ opacity: 0 }}
