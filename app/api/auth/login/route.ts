@@ -76,6 +76,7 @@ export async function POST(request: Request) {
 		BPAmit27: { name: "Amit", tz: "Asia/Kolkata", chatEnabled: true },
 		BPSuraj27: { name: "Suraj", tz: "Asia/Kolkata", chatEnabled: true },
 		BPSachin27: { name: "Sachin", tz: "Asia/Kolkata", chatEnabled: true },
+		BPPankaj27: { name: "Pankaj", tz: "Asia/Kolkata", chatEnabled: true },
 		BPSam27: { name: "Sam", tz: "Europe/Copenhagen" },
 		BPInvestor27: { name: "__no_name__" },
 	};
