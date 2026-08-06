@@ -72,7 +72,7 @@ export async function proxy(request: NextRequest) {
       "BPScott27", "BPVikas27", "BPinvestor27", "BPKapil27",
       "BPZulfiqar27", "BPSparsh27", "BPYuri27", "BPInvestor27",
       "BPJoel27", "BPInderjeet27", "BPAnjali27", "BPSam27",
-      "BPAmit27", "BPSuraj27", "BPSachin27", "BPPankaj27", "BPAnkur27", "BPOjasva27",
+      "BPAmit27", "BPSuraj27", "BPSachin27", "BPPankaj27", "BPAnkur27", "BPOjasva27", "BPArron27",
     ];
     for (const pw of builtInPasswords) {
       const h = await sha256(pw);
