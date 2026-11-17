@@ -648,8 +648,6 @@ export function CircularTabs({
                 style={{
                   WebkitFontSmoothing: "antialiased",
                   MozOsxFontSmoothing: "grayscale",
-                  transform: "translateZ(0)",
-                  display: "inline-block",
                 }}
               >{tab.label}</span>
             </motion.button>
