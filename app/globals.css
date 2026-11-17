@@ -74,16 +74,10 @@
 		-moz-osx-font-smoothing: grayscale;
 	}
 
-	/* Respect user's motion preferences */
-	@media (prefers-reduced-motion: reduce) {
-		*,
-		*::before,
-		*::after {
-			animation-duration: 0.01ms !important;
-			animation-iteration-count: 1 !important;
-			transition-duration: 0.01ms !important;
-		}
-	}
+	/* Respect user's motion preferences – but keep decorative background
+	   motion (orbs, shapes, lines, center pulse) running so the dashboard
+	   looks consistent across Mac / Windows regardless of OS-level
+	   "reduce motion" settings. */
 }
 
 .text-glow {
