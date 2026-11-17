@@ -553,19 +553,13 @@ export function CircularTabs({
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            {/* Custom money-bag SVG — identical on all platforms */}
-            <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
-              {/* Bag body */}
-              <ellipse cx="36" cy="46" rx="22" ry="20" fill="#F4B400"/>
-              {/* Bag top neck */}
-              <rect x="27" y="28" width="18" height="12" rx="6" fill="#E6A000"/>
-              {/* Knot */}
-              <ellipse cx="36" cy="26" rx="8" ry="5" fill="#6D4C41"/>
-              {/* Dollar sign */}
-              <text x="36" y="52" textAnchor="middle" fontSize="18" fontWeight="bold" fill="#fff" fontFamily="Arial,sans-serif">$</text>
-              {/* Shine */}
-              <ellipse cx="27" cy="38" rx="5" ry="3" fill="#FFD54F" opacity="0.5" transform="rotate(-20,27,38)"/>
-            </svg>
+            {/* Twemoji 💰 — identical on Mac and Windows */}
+            <img
+              src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4b0.svg"
+              alt="💰"
+              style={{ width: "100%", height: "100%" }}
+              draggable={false}
+            />
           </motion.span>
         </motion.div>
 
