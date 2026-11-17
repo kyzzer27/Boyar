@@ -553,9 +553,9 @@ export function CircularTabs({
             animate={{ rotate: [0, 10, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            {/* Twemoji 💰 — identical on Mac and Windows */}
+            {/* Apple-style 💰 emoji via Apple CDN — identical on Mac and Windows */}
             <img
-              src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4b0.svg"
+              src="https://em-content.zobj.net/source/apple/391/money-bag_1f4b0.png"
               alt="💰"
               style={{ width: "100%", height: "100%" }}
               draggable={false}
@@ -582,7 +582,7 @@ export function CircularTabs({
           return (
             <motion.button
               key={tab.id}
-              className={`absolute rounded-full border-2 bg-gradient-to-br from-black/80 to-black/60 backdrop-blur-md flex flex-col items-center justify-center gap-1 text-white z-20 pointer-events-auto ${
+              className={`absolute rounded-full border-2 bg-gradient-to-br from-black/90 to-black/80 flex flex-col items-center justify-center gap-1 text-white z-20 pointer-events-auto ${
                 isRestricted ? "cursor-not-allowed opacity-70" : "cursor-pointer"
               }`}
               style={{
@@ -643,7 +643,15 @@ export function CircularTabs({
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <span className="dashboard-orbit-counter text-[8px] sm:text-[10px] md:text-xs font-medium text-center px-1 sm:px-2">{tab.label}</span>
+              <span
+                className="dashboard-orbit-counter text-[8px] sm:text-[10px] md:text-xs font-medium text-center px-1 sm:px-2"
+                style={{
+                  WebkitFontSmoothing: "antialiased",
+                  MozOsxFontSmoothing: "grayscale",
+                  transform: "translateZ(0)",
+                  display: "inline-block",
+                }}
+              >{tab.label}</span>
             </motion.button>
           );
         })}
