@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -109,7 +110,8 @@ export default function FamilyOfficePage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 p-8'>
+			<div className='offering-page min-h-screen bg-white p-8'>
+				<div className='offering-floating-mark'><OfferingMark /></div>
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -119,16 +121,16 @@ export default function FamilyOfficePage() {
 					{/* Header */}
 					<button
 						onClick={() => router.back()}
-						className='text-slate-600 hover:text-slate-900 text-sm mb-8 flex items-center gap-2'
+						className='text-offering-muted hover:text-offering-ink text-sm mb-8 flex items-center gap-2'
 					>
 						← Back
 					</button>
 
 					<div className='mb-16'>
-						<h1 className='text-5xl font-bold text-slate-900 mb-4'>
+						<h1 className='text-5xl font-semibold text-offering-ink mb-4'>
 							Family Office Solutions
 						</h1>
-						<p className='text-slate-600 text-lg max-w-3xl'>
+						<p className='text-offering-muted text-lg max-w-3xl'>
 							Comprehensive family office services designed to support
 							governance, wealth structuring, investments, reporting, and family
 							legacy planning.
@@ -142,7 +144,7 @@ export default function FamilyOfficePage() {
 						transition={{ delay: 0.1, duration: 0.6 }}
 						className='mb-16'
 					>
-						<h2 className='text-2xl font-bold text-slate-900 mb-6'>
+						<h2 className='text-2xl font-semibold text-offering-ink mb-6'>
 							Operating Model
 						</h2>
 						<div className='space-y-6'>
@@ -152,7 +154,7 @@ export default function FamilyOfficePage() {
 									initial={{ opacity: 0 }}
 									animate={{ opacity: 1 }}
 									transition={{ delay: 0.1 * idx, duration: 0.5 }}
-									className='text-slate-700 leading-relaxed'
+									className='text-offering-body leading-relaxed'
 								>
 									{paragraph}
 								</motion.p>
@@ -167,7 +169,7 @@ export default function FamilyOfficePage() {
 						transition={{ delay: 0.2, duration: 0.6 }}
 						className='mb-16'
 					>
-						<h2 className='text-2xl font-bold text-slate-900 mb-8'>
+						<h2 className='text-2xl font-semibold text-offering-ink mb-8'>
 							Scope of Services
 						</h2>
 						<motion.div
@@ -180,18 +182,18 @@ export default function FamilyOfficePage() {
 								<motion.div
 									key={service.num}
 									variants={itemVariants}
-									className='border border-slate-200 rounded-lg p-8 hover:border-blue-200 transition-colors'
+									className='border border-offering-line rounded-sm p-8 hover:border-offering-blue transition-colors'
 								>
-									<span className='inline-block bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 px-4 py-2 rounded-full text-sm font-bold mb-4'>
+									<span className='inline-block bg-offering-tint text-offering-blue px-4 py-2 rounded-full text-sm font-semibold mb-4'>
 										{service.num}
 									</span>
-									<h3 className='text-xl font-bold text-slate-900 mb-3'>
+									<h3 className='text-xl font-semibold text-offering-ink mb-3'>
 										{service.title}
 									</h3>
-									<p className='text-slate-600 text-sm mb-4'>
+									<p className='text-offering-muted text-sm mb-4'>
 										{service.definition}
 									</p>
-									<p className='text-slate-700 text-sm leading-relaxed'>
+									<p className='text-offering-body text-sm leading-relaxed'>
 										{service.purpose}
 									</p>
 								</motion.div>
@@ -206,7 +208,7 @@ export default function FamilyOfficePage() {
 						transition={{ delay: 0.3, duration: 0.6 }}
 						className='mb-16'
 					>
-						<h2 className='text-2xl font-bold text-slate-900 mb-8'>
+						<h2 className='text-2xl font-semibold text-offering-ink mb-8'>
 							Reporting Capabilities
 						</h2>
 						<motion.div
@@ -219,18 +221,18 @@ export default function FamilyOfficePage() {
 								<motion.div
 									key={capability.num}
 									variants={itemVariants}
-									className='border border-slate-200 rounded-lg p-8 hover:border-blue-200 transition-colors'
+									className='border border-offering-line rounded-sm p-8 hover:border-offering-blue transition-colors'
 								>
-									<span className='inline-block bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 px-4 py-2 rounded-full text-sm font-bold mb-4'>
+									<span className='inline-block bg-offering-tint text-offering-blue px-4 py-2 rounded-full text-sm font-semibold mb-4'>
 										{capability.num}
 									</span>
-									<h3 className='text-xl font-bold text-slate-900 mb-3'>
+									<h3 className='text-xl font-semibold text-offering-ink mb-3'>
 										{capability.title}
 									</h3>
-									<p className='text-slate-600 text-sm mb-4'>
+									<p className='text-offering-muted text-sm mb-4'>
 										{capability.definition}
 									</p>
-									<p className='text-slate-700 text-sm leading-relaxed'>
+									<p className='text-offering-body text-sm leading-relaxed'>
 										{capability.purpose}
 									</p>
 								</motion.div>
@@ -245,7 +247,7 @@ export default function FamilyOfficePage() {
 						transition={{ delay: 0.4, duration: 0.6 }}
 						className='mb-12'
 					>
-						<h2 className='text-2xl font-bold text-slate-900 mb-8'>
+						<h2 className='text-2xl font-semibold text-offering-ink mb-8'>
 							Advantages of Outsourced Partnership
 						</h2>
 						<motion.div
@@ -258,9 +260,9 @@ export default function FamilyOfficePage() {
 								<motion.div
 									key={idx}
 									variants={itemVariants}
-									className='border border-slate-200 rounded-lg p-6 hover:border-blue-200 transition-colors'
+									className='border border-offering-line rounded-sm p-6 hover:border-offering-blue transition-colors'
 								>
-									<p className='text-slate-700 text-sm leading-relaxed'>
+									<p className='text-offering-body text-sm leading-relaxed'>
 										{advantage}
 									</p>
 								</motion.div>

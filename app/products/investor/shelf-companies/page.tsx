@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -11,24 +12,24 @@ export default function ShelfCompaniesPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-white text-slate-900'>
+			<div className='offering-page relative min-h-screen bg-white text-offering-ink'>
 				{/* Header */}
-				<header className='sticky top-0 bg-white/95  border-b border-slate-200 z-30'>
+				<header className='offering-masthead sticky top-0 bg-white/95  border-b border-offering-line z-30'>
 					<div className='mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='text-sm text-slate-600 hover:text-slate-900 transition flex items-center gap-2 font-medium'
+							className='text-sm text-offering-muted hover:text-offering-ink transition flex items-center gap-2 font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							← Back
 						</button>
 						<h1
-							className='text-2xl sm:text-3xl font-semibold text-slate-900'
+							className='text-2xl sm:text-3xl font-semibold text-offering-ink'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							Shelf Companies (Ready-Made Entities) Services
 						</h1>
-						<div className='w-8'></div>
+						<div className='offering-mark-slot w-8'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -42,19 +43,19 @@ export default function ShelfCompaniesPage() {
 							transition={{ duration: 0.5 }}
 						>
 							<p
-								className='text-sm uppercase tracking-[0.2em] text-blue-600 mb-3 font-semibold'
+								className='text-sm uppercase tracking-[0.2em] text-offering-blue mb-3 font-semibold'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Outsourced / Availability-Based Offering
 							</p>
 							<h2
-								className='text-3xl sm:text-4xl font-semibold text-slate-900 mb-4'
+								className='text-3xl sm:text-4xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Pre-Incorporated Entities with Controlled Transfer
 							</h2>
 							<p
-								className='text-base text-slate-700 leading-relaxed mb-4'
+								className='text-base text-offering-body leading-relaxed mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Boyar Partners provides shelf company solutions in jurisdictions
@@ -64,7 +65,7 @@ export default function ShelfCompaniesPage() {
 								governance.
 							</p>
 							<div
-								className='bg-blue-50 border border-blue-200 rounded-lg p-6 text-sm text-slate-800 leading-relaxed'
+								className='bg-offering-tint border border-offering-line rounded-sm p-6 text-sm text-offering-ink leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								The objective is to support time-sensitive commercial needs
@@ -80,16 +81,16 @@ export default function ShelfCompaniesPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.05 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-3'
+								className='text-2xl font-semibold text-offering-ink mb-3'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Jurisdictional Coverage
 							</h3>
 							<p
-								className='text-sm text-slate-700 leading-relaxed mb-4'
+								className='text-sm text-offering-body leading-relaxed mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Services are offered subject to availability and statutory
@@ -105,7 +106,7 @@ export default function ShelfCompaniesPage() {
 								Switzerland, United Kingdom, and Wyoming.
 							</p>
 							<div
-								className='bg-blue-50 border border-blue-200 rounded p-4 text-sm text-slate-700'
+								className='bg-offering-tint border border-offering-line rounded p-4 text-sm text-offering-body'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Availability varies by jurisdiction, entity type, and
@@ -120,24 +121,24 @@ export default function ShelfCompaniesPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.1 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									01
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Provision of Ready-Made Companies
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Access to pre-incorporated entities with no trading or
@@ -147,15 +148,15 @@ export default function ShelfCompaniesPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Entities Include
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Legally formed and registered companies</li>
@@ -164,9 +165,9 @@ export default function ShelfCompaniesPage() {
 										<li>Clean statutory records</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Maintained by licensed local providers until client
@@ -183,24 +184,24 @@ export default function ShelfCompaniesPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.15 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									02
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Ownership & Control Transfer
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Controlled transfer of ownership and governance upon client
@@ -210,15 +211,15 @@ export default function ShelfCompaniesPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Includes
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Share transfer or issuance documentation</li>
@@ -228,9 +229,9 @@ export default function ShelfCompaniesPage() {
 										<li>Local registry alignment</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Transfers executed to ensure clear, documented continuity.
@@ -246,24 +247,24 @@ export default function ShelfCompaniesPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.2 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									03
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Constitutional Document Alignment
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Update or restate constitutional documents to reflect client
@@ -273,15 +274,15 @@ export default function ShelfCompaniesPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										May Include
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Memorandum & Articles amendments</li>
@@ -290,9 +291,9 @@ export default function ShelfCompaniesPage() {
 										<li>Partnership or shareholder agreements</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										All changes filed and recorded per local law.
@@ -308,24 +309,24 @@ export default function ShelfCompaniesPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.25 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									04
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Statutory Filings & Registry Updates
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Manage all post-transfer statutory filings and registry
@@ -334,9 +335,9 @@ export default function ShelfCompaniesPage() {
 								</div>
 							</div>
 
-							<div className='bg-white border border-slate-200 rounded p-5'>
+							<div className='bg-white border border-offering-line rounded p-5'>
 								<ul
-									className='space-y-2 text-sm text-slate-700'
+									className='space-y-2 text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									<li>Registry notifications</li>
@@ -346,9 +347,9 @@ export default function ShelfCompaniesPage() {
 								</ul>
 							</div>
 
-							<div className='bg-blue-50 border border-blue-200 rounded p-5 mt-6'>
+							<div className='bg-offering-tint border border-offering-line rounded p-5 mt-6'>
 								<p
-									className='text-sm text-slate-700'
+									className='text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Ensures entity remains fully compliant immediately following
@@ -364,24 +365,24 @@ export default function ShelfCompaniesPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.3 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									05
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Banking & Operational Readiness (Optional)
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Coordinate post-transfer operational setup where required.
@@ -390,15 +391,15 @@ export default function ShelfCompaniesPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Support May Include
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Banking introductions or account transition</li>
@@ -407,9 +408,9 @@ export default function ShelfCompaniesPage() {
 										<li>Economic substance classification and notifications</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Services scoped separately, aligned to regulatory
@@ -426,18 +427,18 @@ export default function ShelfCompaniesPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.35 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-4'
+								className='text-2xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Compliance & Regulatory Alignment
 							</h3>
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>No misleading corporate history represented</li>
@@ -451,9 +452,9 @@ export default function ShelfCompaniesPage() {
 										</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Shelf companies are not substitutes for compliance,
@@ -470,17 +471,17 @@ export default function ShelfCompaniesPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.4 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-3'
+								className='text-2xl font-semibold text-offering-ink mb-3'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Delivery & Oversight Model
 							</h3>
-							<div className='bg-white border border-slate-200 rounded p-5'>
+							<div className='bg-white border border-offering-line rounded p-5'>
 								<ul
-									className='space-y-2 text-sm text-slate-700'
+									className='space-y-2 text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									<li>Sourced from approved local providers</li>
@@ -501,10 +502,10 @@ export default function ShelfCompaniesPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.45 }}
-							className='bg-blue-50 border border-blue-300 rounded-lg p-10 text-center'
+							className='bg-offering-tint border border-offering-line rounded-sm p-10 text-center'
 						>
 							<p
-								className='text-xl text-slate-900 mb-4 font-semibold'
+								className='text-xl text-offering-ink mb-4 font-semibold'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								"Boyar Partners provides access to compliant, ready-made

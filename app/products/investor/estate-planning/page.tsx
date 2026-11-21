@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 
@@ -81,9 +82,10 @@ const estatePlanningServices = [
 export default function EstatePlanningPage() {
 	return (
 		<ProtectedRoute>
-			<div className='min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100'>
+			<div className='offering-page min-h-screen bg-white'>
+				<div className='offering-floating-mark'><OfferingMark /></div>
 				{/* Hero Section */}
-				<section className='border-b border-slate-200'>
+				<section className='border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -91,10 +93,10 @@ export default function EstatePlanningPage() {
 							transition={{ duration: 0.6 }}
 							className='space-y-6 max-w-4xl'
 						>
-							<div className='inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-1.5 border border-blue-200'>
-								<div className='h-2 w-2 rounded-full bg-blue-500'></div>
+							<div className='inline-flex items-center gap-2 rounded-sm bg-offering-tint px-4 py-1.5 border border-offering-line'>
+								<div className='h-2 w-2 rounded-full bg-offering-ink'></div>
 								<span
-									className='text-xs font-semibold text-blue-700 tracking-wide uppercase'
+									className='text-xs font-semibold text-offering-blue tracking-wide uppercase'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Estate Planning
@@ -102,18 +104,18 @@ export default function EstatePlanningPage() {
 							</div>
 
 							<h1
-								className='text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight'
+								className='text-4xl sm:text-5xl lg:text-6xl font-semibold text-offering-ink leading-tight'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Estate Planning
 								<br />
-								<span className='bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'>
+								<span className='text-offering-ink'>
 									Comprehensive Wealth Transfer
 								</span>
 							</h1>
 
 							<p
-								className='text-lg text-slate-600 leading-relaxed'
+								className='text-lg text-offering-muted leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Strategic estate planning services ensuring your assets are
@@ -125,7 +127,7 @@ export default function EstatePlanningPage() {
 				</section>
 
 				{/* Services Section */}
-				<section className='border-b border-slate-200'>
+				<section className='border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -134,13 +136,13 @@ export default function EstatePlanningPage() {
 							className='mb-12'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-4'
+								className='text-3xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Our Estate Planning Services
 							</h2>
 							<p
-								className='text-slate-600 max-w-4xl leading-relaxed'
+								className='text-offering-muted max-w-4xl leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Comprehensive planning to protect your legacy and ensure smooth
@@ -156,31 +158,31 @@ export default function EstatePlanningPage() {
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.4, delay: 0.4 + idx * 0.05 }}
-									className='bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-blue-200 transition-colors'
+									className='bg-white rounded-sm border border-offering-line overflow-hidden hover:border-offering-blue transition-colors'
 								>
 									<div className='flex items-start gap-6 p-6'>
-										<div className='flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-lg font-bold shadow-lg shadow-blue-500/20'>
+										<div className='flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-sm bg-offering-ink text-white text-lg font-semibold shadow-none'>
 											{service.num}
 										</div>
 										<div className='flex-1 min-w-0'>
 											<h3
-												className='text-lg font-bold text-slate-900 mb-2'
+												className='text-lg font-semibold text-offering-ink mb-2'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
 												{service.title}
 											</h3>
 											<p
-												className='text-sm text-slate-600 mb-3 font-medium'
+												className='text-sm text-offering-muted mb-3 font-medium'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
-												<span className='text-blue-600'>Key Definition:</span>{" "}
+												<span className='text-offering-blue'>Key Definition:</span>{" "}
 												{service.definition}
 											</p>
 											<p
-												className='text-sm text-slate-700 leading-relaxed'
+												className='text-sm text-offering-body leading-relaxed'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
-												<span className='font-semibold text-slate-900'>
+												<span className='font-semibold text-offering-ink'>
 													Purpose:
 												</span>{" "}
 												{service.purpose}
@@ -196,17 +198,17 @@ export default function EstatePlanningPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6, delay: 1.2 }}
-							className='mt-12 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 border border-blue-200'
+							className='mt-12 bg-offering-tint rounded-sm p-8 border border-offering-line'
 						>
 							<h3
-								className='text-xl font-bold text-slate-900 mb-4'
+								className='text-xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Why Estate Planning Matters
 							</h3>
-							<ul className='space-y-3 text-slate-700'>
+							<ul className='space-y-3 text-offering-body'>
 								<li className='flex items-start gap-3'>
-									<span className='text-blue-600 font-bold text-lg'>✓</span>
+									<span className='text-offering-blue font-semibold text-lg'>✓</span>
 									<span
 										className='leading-relaxed'
 										style={{ fontFamily: "var(--font-avenir)" }}
@@ -215,7 +217,7 @@ export default function EstatePlanningPage() {
 									</span>
 								</li>
 								<li className='flex items-start gap-3'>
-									<span className='text-blue-600 font-bold text-lg'>✓</span>
+									<span className='text-offering-blue font-semibold text-lg'>✓</span>
 									<span
 										className='leading-relaxed'
 										style={{ fontFamily: "var(--font-avenir)" }}
@@ -224,7 +226,7 @@ export default function EstatePlanningPage() {
 									</span>
 								</li>
 								<li className='flex items-start gap-3'>
-									<span className='text-blue-600 font-bold text-lg'>✓</span>
+									<span className='text-offering-blue font-semibold text-lg'>✓</span>
 									<span
 										className='leading-relaxed'
 										style={{ fontFamily: "var(--font-avenir)" }}
@@ -234,7 +236,7 @@ export default function EstatePlanningPage() {
 									</span>
 								</li>
 								<li className='flex items-start gap-3'>
-									<span className='text-blue-600 font-bold text-lg'>✓</span>
+									<span className='text-offering-blue font-semibold text-lg'>✓</span>
 									<span
 										className='leading-relaxed'
 										style={{ fontFamily: "var(--font-avenir)" }}

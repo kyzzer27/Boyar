@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -34,12 +35,12 @@ export default function BelizeBankingProposalPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50'>
-				<header className='sticky top-0 bg-white/95 border-b border-slate-200 z-50 shadow-sm'>
+			<div className='offering-page relative min-h-screen bg-white'>
+				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line z-50 shadow-none'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='group flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors font-medium'
+							className='group flex items-center gap-2 text-sm text-offering-muted hover:text-offering-ink transition-colors font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							<span className='group-hover:-translate-x-1 transition-transform duration-300'>
@@ -48,12 +49,12 @@ export default function BelizeBankingProposalPage() {
 							Back
 						</button>
 						<h1
-							className='text-2xl font-bold text-slate-900'
-							style={{ fontFamily: "var(--font-benzin)" }}
+							className='text-2xl font-semibold text-offering-ink'
+							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							BANKING LICENSE — BELIZE
 						</h1>
-						<div className='w-16' aria-hidden='true'></div>
+						<div className='offering-mark-slot w-16'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -66,11 +67,11 @@ export default function BelizeBankingProposalPage() {
 					>
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-6'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-3xl font-semibold text-offering-ink mb-6'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Belize International Banking License
 							</h2>
@@ -113,34 +114,34 @@ export default function BelizeBankingProposalPage() {
 								].map((item, idx) => (
 									<div
 										key={idx}
-										className='bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-4 border border-slate-200'
+										className='bg-offering-tint rounded-sm p-4 border border-offering-line'
 									>
-										<p className='text-xs font-bold text-slate-600 uppercase tracking-wider mb-1'>
+										<p className='text-xs font-semibold text-offering-muted uppercase tracking-wider mb-1'>
 											{item.label}
 										</p>
-										<p className='text-slate-900 font-semibold text-sm'>
+										<p className='text-offering-ink font-semibold text-sm'>
 											{item.value}
 										</p>
 									</div>
 								))}
 							</div>
 
-							<p className='text-xs text-slate-500 italic'>
+							<p className='text-xs text-offering-muted italic'>
 								*Held in a bank in Belize or in a Zone A Bank
 							</p>
 						</motion.section>
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								General Information and Advantages
 							</h3>
-							<div className='space-y-4 text-slate-700 leading-relaxed'>
+							<div className='space-y-4 text-offering-body leading-relaxed'>
 								<p>
 									Belize is a well-established jurisdiction for international
 									banking, offering a recognised regulatory framework under the
@@ -158,11 +159,11 @@ export default function BelizeBankingProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Procedural Timeline
 							</h3>
@@ -181,12 +182,12 @@ export default function BelizeBankingProposalPage() {
 								].map((step, idx) => (
 									<div
 										key={idx}
-										className='flex items-start gap-4 p-3 rounded-lg bg-slate-50 border border-slate-200'
+										className='flex items-start gap-4 p-3 rounded-sm bg-offering-tint border border-offering-line'
 									>
-										<span className='flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold text-sm flex-shrink-0'>
+										<span className='flex items-center justify-center w-8 h-8 rounded-full bg-offering-ink text-white font-semibold text-sm flex-shrink-0'>
 											{idx + 1}
 										</span>
-										<p className='text-slate-700 leading-relaxed'>{step}</p>
+										<p className='text-offering-body leading-relaxed'>{step}</p>
 									</div>
 								))}
 							</div>
@@ -194,40 +195,40 @@ export default function BelizeBankingProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Key Requirements
 							</h3>
 							<div className='space-y-6'>
-								<div className='bg-orange-50 border-l-4 border-orange-500 rounded-r-xl p-6'>
-									<h4 className='font-bold text-slate-900 mb-3'>
+								<div className='bg-offering-tint border-l-4 border-offering-gold rounded-r-sm p-6'>
+									<h4 className='font-semibold text-offering-ink mb-3'>
 										Minimum Capital Structure
 									</h4>
-									<p className='text-slate-700 text-sm'>
+									<p className='text-offering-body text-sm'>
 										USD 500,000 held in a bank in Belize or in a Zone A Bank
 									</p>
 								</div>
 
-								<div className='bg-slate-50 rounded-lg p-6 border border-slate-200'>
-									<h4 className='font-bold text-slate-900 mb-3'>
+								<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-3'>
 										Documents Required
 									</h4>
-									<ul className='text-slate-700 space-y-2 list-disc list-inside'>
+									<ul className='text-offering-body space-y-2 list-disc list-inside'>
 										<li>Passport</li>
 										<li>Proof of address</li>
 										<li>Bank statement of the ultimate beneficial owner</li>
 									</ul>
 								</div>
 
-								<div className='bg-blue-50 rounded-lg p-6 border border-blue-200'>
-									<h4 className='font-bold text-slate-900 mb-3'>
+								<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-3'>
 										Staffing Requirements
 									</h4>
-									<p className='text-slate-700 text-sm'>
+									<p className='text-offering-body text-sm'>
 										At least 1 compliance officer with a proven track record
 									</p>
 								</div>
@@ -236,31 +237,31 @@ export default function BelizeBankingProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Services and Pricing
 							</h3>
-							<div className='bg-amber-50 border-2 border-amber-200 rounded-xl p-6 mb-6'>
-								<h4 className='font-bold text-slate-900 mb-3'>Pricing</h4>
-								<p className='text-slate-700 text-sm mb-3'>
+							<div className='bg-offering-tint border-2 border-offering-line rounded-sm p-6 mb-6'>
+								<h4 className='font-semibold text-offering-ink mb-3'>Pricing</h4>
+								<p className='text-offering-body text-sm mb-3'>
 									Available at the time of enquiry.
 								</p>
-								<p className='text-slate-700 text-sm'>
+								<p className='text-offering-body text-sm'>
 									Pricing may be subject to change due to optional correspondent
 									banking arrangements, SWIFT connectivity, card issuing, or
 									acquiring solutions.
 								</p>
 							</div>
 
-							<div className='bg-blue-50 rounded-lg p-6 border border-blue-200'>
-								<h4 className='font-bold text-slate-900 mb-4'>
+							<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+								<h4 className='font-semibold text-offering-ink mb-4'>
 									Scope of Services Includes:
 								</h4>
-								<ul className='text-slate-700 space-y-2 list-disc list-inside'>
+								<ul className='text-offering-body space-y-2 list-disc list-inside'>
 									<li>Bank incorporation and structuring</li>
 									<li>
 										Drafting of all legal, regulatory, and financial
@@ -277,7 +278,7 @@ export default function BelizeBankingProposalPage() {
 								</ul>
 							</div>
 
-							<p className='text-slate-600 text-sm italic mt-6'>
+							<p className='text-offering-muted text-sm italic mt-6'>
 								Services executed via licensed partner teams and local
 								professionals.
 							</p>
@@ -285,37 +286,37 @@ export default function BelizeBankingProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Taxation and Reporting
 							</h3>
 							<div className='grid grid-cols-1 gap-6 mb-8'>
-								<div className='bg-slate-50 rounded-lg p-6 border border-slate-200'>
-									<h4 className='font-bold text-slate-900 mb-3'>Taxation</h4>
-									<p className='text-slate-700 text-sm'>
+								<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-3'>Taxation</h4>
+									<p className='text-offering-body text-sm'>
 										International banks in Belize are generally tax-neutral on
 										qualifying international activities.
 									</p>
 								</div>
 
-								<div className='bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-6'>
-									<h4 className='font-bold text-slate-900 mb-2'>Reporting</h4>
-									<p className='text-slate-700 text-sm'>
+								<div className='bg-offering-tint border-l-4 border-offering-gold rounded-r-sm p-6'>
+									<h4 className='font-semibold text-offering-ink mb-2'>Reporting</h4>
+									<p className='text-offering-body text-sm'>
 										Ongoing regulatory reporting and compliance filings are
 										required in accordance with IFSC regulations.
 									</p>
 								</div>
 							</div>
 
-							<div className='bg-amber-50 rounded-lg p-6 border border-amber-200'>
-								<h4 className='font-bold text-slate-900 mb-2'>
+							<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+								<h4 className='font-semibold text-offering-ink mb-2'>
 									Annual Renewal Fee
 								</h4>
-								<p className='text-slate-900 font-bold text-lg'>USD 25,000</p>
+								<p className='text-offering-ink font-semibold text-lg'>USD 25,000</p>
 							</div>
 						</motion.section>
 					</motion.div>

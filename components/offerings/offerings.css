@@ -1,0 +1,74 @@
+.offering-page {
+  position: relative;
+  font-family: var(--font-avenir);
+  color: #102e42;
+  background-color: white;
+}
+
+.offering-page :is(h1, h2) {
+  letter-spacing: -0.022em;
+  font-weight: 500;
+}
+
+.offering-page .offering-masthead {
+  background: #102e42 url("/images/offerings/navy-wave.webp") center 52% / cover no-repeat;
+  border-bottom: 1px solid #b68b58;
+  color: white;
+  box-shadow: none;
+}
+
+.offering-page .offering-masthead :is(h1, button, button span, .header-badge, .uppercase) {
+  color: white;
+}
+
+.offering-page .offering-masthead button:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.24em;
+}
+
+.offering-mark {
+  display: block;
+  width: 5rem;
+  height: auto;
+  max-width: 100%;
+}
+
+.offering-masthead .offering-mark {
+  filter: brightness(0) invert(1);
+}
+
+/* Anchor the wordmark in the existing spacer, preserving the title's alignment. */
+.offering-mark-slot {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.offering-mark-slot .offering-mark {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: none;
+}
+
+.offering-floating-mark {
+  position: absolute;
+  right: max(2rem, calc((100% - 76rem) / 2));
+  top: 1rem;
+}
+
+.offering-page :where(button, a, input, select):focus-visible {
+  outline: 2px solid #006cad;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .offering-mark-slot .offering-mark { width: 100%; }
+  .offering-floating-mark { right: 1.5rem; }
+  .offering-page .offering-masthead h1 {
+    padding-inline: 0.35rem;
+    font-size: 1.1rem;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+}

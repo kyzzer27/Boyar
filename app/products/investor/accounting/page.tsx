@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -11,24 +12,24 @@ export default function AccountingPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-white text-slate-900'>
+			<div className='offering-page relative min-h-screen bg-white text-offering-ink'>
 				{/* Header */}
-				<header className='sticky top-0 bg-white/95  border-b border-slate-200 z-30'>
+				<header className='offering-masthead sticky top-0 bg-white/95  border-b border-offering-line z-30'>
 					<div className='mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='text-sm text-slate-600 hover:text-slate-900 transition flex items-center gap-2 font-medium'
+							className='text-sm text-offering-muted hover:text-offering-ink transition flex items-center gap-2 font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							← Back
 						</button>
 						<h1
-							className='text-2xl sm:text-3xl font-semibold text-slate-900'
+							className='text-2xl sm:text-3xl font-semibold text-offering-ink'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							Accounting & Financial Reporting Services
 						</h1>
-						<div className='w-8'></div>
+						<div className='offering-mark-slot w-8'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -42,19 +43,19 @@ export default function AccountingPage() {
 							transition={{ duration: 0.5 }}
 						>
 							<p
-								className='text-sm uppercase tracking-[0.2em] text-blue-600 mb-3 font-semibold'
+								className='text-sm uppercase tracking-[0.2em] text-offering-blue mb-3 font-semibold'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Outsourced / Supervised Function
 							</p>
 							<h2
-								className='text-3xl sm:text-4xl font-semibold text-slate-900 mb-4'
+								className='text-3xl sm:text-4xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Accounting, Financial Reporting, and Payroll Oversight
 							</h2>
 							<p
-								className='text-base text-slate-700 leading-relaxed mb-4'
+								className='text-base text-offering-body leading-relaxed mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Boyar Partners provides outsourced accounting, financial
@@ -65,7 +66,7 @@ export default function AccountingPage() {
 								coordination and supervisory framework.
 							</p>
 							<div
-								className='bg-blue-50 border border-blue-200 rounded-lg p-6 text-sm text-slate-800 leading-relaxed'
+								className='bg-offering-tint border border-offering-line rounded-sm p-6 text-sm text-offering-ink leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								The objective is to maintain accurate books, defensible
@@ -82,16 +83,16 @@ export default function AccountingPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.05 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-3'
+								className='text-2xl font-semibold text-offering-ink mb-3'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Jurisdictional Coverage
 							</h3>
 							<p
-								className='text-sm text-slate-700 leading-relaxed'
+								className='text-sm text-offering-body leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Services are provided for entities operating in or structured
@@ -115,24 +116,24 @@ export default function AccountingPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.1 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									01
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Bookkeeping & Day‑to‑Day Accounting
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Ongoing bookkeeping and transactional accounting
@@ -142,15 +143,15 @@ export default function AccountingPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Scope Includes
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Recording of income and expenditure</li>
@@ -163,15 +164,15 @@ export default function AccountingPage() {
 										<li>Intercompany transaction tracking</li>
 									</ul>
 								</div>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Assurance
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Books maintained in audit‑ready form</li>
@@ -191,24 +192,24 @@ export default function AccountingPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.15 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									02
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Preparation of Financial Documents & Statements
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Coordination of periodic and annual financial statements in
@@ -218,15 +219,15 @@ export default function AccountingPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Deliverables May Include
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Trial balances</li>
@@ -237,15 +238,15 @@ export default function AccountingPage() {
 										</li>
 									</ul>
 								</div>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Standards Applied
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>International Financial Reporting Standards (IFRS)</li>
@@ -255,9 +256,9 @@ export default function AccountingPage() {
 								</div>
 							</div>
 
-							<div className='bg-blue-50 border border-blue-200 rounded p-5 mt-6'>
+							<div className='bg-offering-tint border border-offering-line rounded p-5 mt-6'>
 								<p
-									className='text-sm text-slate-700'
+									className='text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									The applicable standard is determined based on jurisdiction,
@@ -273,24 +274,24 @@ export default function AccountingPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.2 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									03
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Financial Controller Support (Outsourced)
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Enhanced oversight for entities that require disciplined
@@ -300,15 +301,15 @@ export default function AccountingPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Responsibilities
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Oversight of bookkeeping and accounting providers</li>
@@ -320,15 +321,15 @@ export default function AccountingPage() {
 										</li>
 									</ul>
 								</div>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Relevant For
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Holding companies</li>
@@ -347,24 +348,24 @@ export default function AccountingPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.25 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									04
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Audit Supervision & Coordination
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Supervision and coordination of statutory or voluntary
@@ -373,9 +374,9 @@ export default function AccountingPage() {
 								</div>
 							</div>
 
-							<div className='bg-white border border-slate-200 rounded p-5'>
+							<div className='bg-white border border-offering-line rounded p-5'>
 								<ul
-									className='space-y-2 text-sm text-slate-700'
+									className='space-y-2 text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									<li>Audit readiness assessment</li>
@@ -394,24 +395,24 @@ export default function AccountingPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.3 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									05
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Payroll Services (Select Jurisdictions)
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Jurisdiction‑dependent payroll support aligned with local
@@ -421,15 +422,15 @@ export default function AccountingPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Services Include
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Payroll calculation and processing</li>
@@ -439,9 +440,9 @@ export default function AccountingPage() {
 										<li>Payroll reporting support</li>
 									</ul>
 								</div>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Scope is jurisdiction‑dependent and tailored to local
@@ -458,18 +459,18 @@ export default function AccountingPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.35 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-4'
+								className='text-2xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Compliance & Regulatory Alignment
 							</h3>
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Accurate and complete financial records</li>
@@ -481,9 +482,9 @@ export default function AccountingPage() {
 										<li>Well‑documented, low‑risk compliance posture</li>
 									</ul>
 								</div>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Support for corporate registry requirements</li>
@@ -502,17 +503,17 @@ export default function AccountingPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.4 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-3'
+								className='text-2xl font-semibold text-offering-ink mb-3'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Delivery & Oversight Model
 							</h3>
-							<div className='bg-white border border-slate-200 rounded p-5'>
+							<div className='bg-white border border-offering-line rounded p-5'>
 								<ul
-									className='space-y-2 text-sm text-slate-700'
+									className='space-y-2 text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									<li>
@@ -542,10 +543,10 @@ export default function AccountingPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.45 }}
-							className='bg-blue-50 border border-blue-300 rounded-lg p-10 text-center'
+							className='bg-offering-tint border border-offering-line rounded-sm p-10 text-center'
 						>
 							<p
-								className='text-xl text-slate-900 mb-4 font-semibold'
+								className='text-xl text-offering-ink mb-4 font-semibold'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								“Boyar Partners provides outsourced accounting, financial

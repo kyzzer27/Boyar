@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -34,12 +35,12 @@ export default function CanadaMSBProposalPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50'>
-				<header className='sticky top-0 bg-white/95 border-b border-slate-200 z-50 shadow-sm'>
+			<div className='offering-page relative min-h-screen bg-white'>
+				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line z-50 shadow-none'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='group flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors font-medium'
+							className='group flex items-center gap-2 text-sm text-offering-muted hover:text-offering-ink transition-colors font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							<span className='group-hover:-translate-x-1 transition-transform duration-300'>
@@ -48,12 +49,12 @@ export default function CanadaMSBProposalPage() {
 							Back
 						</button>
 						<h1
-							className='text-2xl font-bold text-slate-900'
-							style={{ fontFamily: "var(--font-benzin)" }}
+							className='text-2xl font-semibold text-offering-ink'
+							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							MSB LICENSE — CANADA
 						</h1>
-						<div className='w-16' aria-hidden='true'></div>
+						<div className='offering-mark-slot w-16'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -66,11 +67,11 @@ export default function CanadaMSBProposalPage() {
 					>
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-6'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-3xl font-semibold text-offering-ink mb-6'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Canada Money Services Business License
 							</h2>
@@ -110,19 +111,19 @@ export default function CanadaMSBProposalPage() {
 								].map((item, idx) => (
 									<div
 										key={idx}
-										className='bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-4 border border-slate-200'
+										className='bg-offering-tint rounded-sm p-4 border border-offering-line'
 									>
-										<p className='text-xs font-bold text-slate-600 uppercase tracking-wider mb-1'>
+										<p className='text-xs font-semibold text-offering-muted uppercase tracking-wider mb-1'>
 											{item.label}
 										</p>
-										<p className='text-slate-900 font-semibold text-sm'>
+										<p className='text-offering-ink font-semibold text-sm'>
 											{item.value}
 										</p>
 									</div>
 								))}
 							</div>
 
-							<p className='text-xs text-slate-500 italic'>
+							<p className='text-xs text-offering-muted italic'>
 								*Sufficient paid-up capital to support operational scope and
 								banking relationships
 							</p>
@@ -130,15 +131,15 @@ export default function CanadaMSBProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								General Information and Advantages
 							</h3>
-							<div className='space-y-4 text-slate-700 leading-relaxed'>
+							<div className='space-y-4 text-offering-body leading-relaxed'>
 								<p>
 									Canada is regarded as one of the most reliable and
 									well-regulated financial systems globally. It is a major G7
@@ -166,43 +167,43 @@ export default function CanadaMSBProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Company Structure
 							</h3>
 							<div className='space-y-4'>
-								<div className='bg-slate-50 rounded-lg p-6 border border-slate-200'>
-									<h4 className='font-bold text-slate-900 mb-2'>Shareholder</h4>
-									<p className='text-slate-700'>
+								<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-2'>Shareholder</h4>
+									<p className='text-offering-body'>
 										1 shareholder (natural person or legal entity), with no
 										restrictions on nationality or residency.
 									</p>
 								</div>
 
-								<div className='bg-slate-50 rounded-lg p-6 border border-slate-200'>
-									<h4 className='font-bold text-slate-900 mb-2'>Directors</h4>
-									<p className='text-slate-700'>
+								<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-2'>Directors</h4>
+									<p className='text-offering-body'>
 										At least 1 director. The director may also be the
 										shareholder if the shareholder is a natural person.
 									</p>
 								</div>
 
-								<div className='bg-slate-50 rounded-lg p-6 border border-slate-200'>
-									<h4 className='font-bold text-slate-900 mb-2'>
+								<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-2'>
 										Registered Local Office
 									</h4>
-									<p className='text-slate-700'>Mandatory.</p>
+									<p className='text-offering-body'>Mandatory.</p>
 								</div>
 
-								<div className='bg-slate-50 rounded-lg p-6 border border-slate-200'>
-									<h4 className='font-bold text-slate-900 mb-2'>
+								<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-2'>
 										Anti-Money Laundering Officer
 									</h4>
-									<p className='text-slate-700'>
+									<p className='text-offering-body'>
 										Recommended. An experienced AML Compliance Officer may be
 										appointed internally or externally.
 									</p>
@@ -212,19 +213,19 @@ export default function CanadaMSBProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Incorporation and Licensing Timeline
 							</h3>
-							<div className='bg-amber-50 border-l-4 border-amber-500 rounded-r-xl p-6 mb-6'>
-								<h4 className='font-bold text-slate-900 mb-3'>
+							<div className='bg-offering-tint border-l-4 border-offering-gold rounded-r-sm p-6 mb-6'>
+								<h4 className='font-semibold text-offering-ink mb-3'>
 									Total Timeframe: 4–5 weeks
 								</h4>
-								<ul className='text-slate-700 space-y-2 list-disc list-inside'>
+								<ul className='text-offering-body space-y-2 list-disc list-inside'>
 									<li>4–5 business days for company incorporation</li>
 									<li>
 										Approximately 3 weeks for MSB registration with FINTRAC
@@ -232,11 +233,11 @@ export default function CanadaMSBProposalPage() {
 								</ul>
 							</div>
 
-							<div className='bg-orange-50 border-l-4 border-orange-500 rounded-r-xl p-6'>
-								<h4 className='font-bold text-slate-900 mb-2'>
+							<div className='bg-offering-tint border-l-4 border-offering-gold rounded-r-sm p-6'>
+								<h4 className='font-semibold text-offering-ink mb-2'>
 									Minimum Capital Requirements
 								</h4>
-								<p className='text-slate-700 text-sm'>
+								<p className='text-offering-body text-sm'>
 									There is no formally prescribed minimum share capital.
 									However, it is recommended that the company maintain
 									sufficient paid-up capital to support its operational scope
@@ -247,21 +248,21 @@ export default function CanadaMSBProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Procedure and Requirements
 							</h3>
 							<div className='space-y-6'>
 								<div>
-									<h4 className='font-bold text-slate-900 mb-3'>
+									<h4 className='font-semibold text-offering-ink mb-3'>
 										Documents Required from Individuals (Directors,
 										Shareholders, Beneficial Owners)
 									</h4>
-									<ul className='text-slate-700 space-y-2 list-disc list-inside'>
+									<ul className='text-offering-body space-y-2 list-disc list-inside'>
 										<li>Notarised passport copy</li>
 										<li>
 											Notarised utility bill issued within the last 3 months
@@ -271,11 +272,11 @@ export default function CanadaMSBProposalPage() {
 								</div>
 
 								<div>
-									<h4 className='font-bold text-slate-900 mb-3'>
+									<h4 className='font-semibold text-offering-ink mb-3'>
 										Documents Required from Corporate Shareholders (if
 										applicable)
 									</h4>
-									<ul className='text-slate-700 space-y-2 list-disc list-inside'>
+									<ul className='text-offering-body space-y-2 list-disc list-inside'>
 										<li>Articles of Association</li>
 										<li>Registered office address document</li>
 										<li>Register of directors</li>
@@ -290,30 +291,30 @@ export default function CanadaMSBProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Services and Pricing
 							</h3>
-							<div className='bg-amber-50 border-2 border-amber-200 rounded-xl p-6 mb-6'>
-								<h4 className='font-bold text-slate-900 mb-3'>Pricing</h4>
-								<p className='text-slate-700 text-sm mb-3'>
+							<div className='bg-offering-tint border-2 border-offering-line rounded-sm p-6 mb-6'>
+								<h4 className='font-semibold text-offering-ink mb-3'>Pricing</h4>
+								<p className='text-offering-body text-sm mb-3'>
 									Available at the time of enquiry.
 								</p>
-								<p className='text-slate-700 text-sm'>
+								<p className='text-offering-body text-sm'>
 									Pricing may vary depending on activity scope, compliance
 									framework complexity, and optional services.
 								</p>
 							</div>
 
 							<div className='mb-6'>
-								<h4 className='font-bold text-slate-900 mb-4'>
+								<h4 className='font-semibold text-offering-ink mb-4'>
 									Scope of Services Includes:
 								</h4>
-								<ul className='text-slate-700 space-y-2 list-disc list-inside'>
+								<ul className='text-offering-body space-y-2 list-disc list-inside'>
 									<li>
 										Incorporation of a Canadian company (typically British
 										Columbia Limited Liability Company)
@@ -336,11 +337,11 @@ export default function CanadaMSBProposalPage() {
 								</ul>
 							</div>
 
-							<div className='bg-blue-50 rounded-lg p-6 border border-blue-200'>
-								<h4 className='font-bold text-slate-900 mb-3'>
+							<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+								<h4 className='font-semibold text-offering-ink mb-3'>
 									Optional Services:
 								</h4>
-								<ul className='text-slate-700 space-y-2 list-disc list-inside'>
+								<ul className='text-offering-body space-y-2 list-disc list-inside'>
 									<li>Nominee Director or Shareholder services</li>
 									<li>
 										Swiss or EU banking introductions (subject to feasibility)
@@ -349,7 +350,7 @@ export default function CanadaMSBProposalPage() {
 								</ul>
 							</div>
 
-							<p className='text-slate-600 text-sm italic mt-6'>
+							<p className='text-offering-muted text-sm italic mt-6'>
 								Services executed via licensed partner teams and local
 								professionals.
 							</p>
@@ -357,35 +358,35 @@ export default function CanadaMSBProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Confidentiality and Taxation
 							</h3>
 							<div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8'>
-								<div className='bg-slate-50 rounded-lg p-6 border border-slate-200'>
-									<h4 className='font-bold text-slate-900 mb-3'>
+								<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-3'>
 										Beneficial Owner
 									</h4>
-									<p className='text-slate-700'>Disclosed to authorities.</p>
+									<p className='text-offering-body'>Disclosed to authorities.</p>
 								</div>
 
-								<div className='bg-slate-50 rounded-lg p-6 border border-slate-200'>
-									<h4 className='font-bold text-slate-900 mb-3'>Shareholder</h4>
-									<p className='text-slate-700'>Disclosed to authorities.</p>
+								<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-3'>Shareholder</h4>
+									<p className='text-offering-body'>Disclosed to authorities.</p>
 								</div>
 
-								<div className='bg-slate-50 rounded-lg p-6 border border-slate-200'>
-									<h4 className='font-bold text-slate-900 mb-3'>Directors</h4>
-									<p className='text-slate-700'>Disclosed to authorities.</p>
+								<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-3'>Directors</h4>
+									<p className='text-offering-body'>Disclosed to authorities.</p>
 								</div>
 							</div>
 
 							<div>
-								<h3 className='text-xl font-bold text-slate-900 mb-4'>
+								<h3 className='text-xl font-semibold text-offering-ink mb-4'>
 									Taxation
 								</h3>
 								<div className='space-y-3 mb-6'>
@@ -401,25 +402,25 @@ export default function CanadaMSBProposalPage() {
 									].map((item, idx) => (
 										<div
 											key={idx}
-											className='flex justify-between items-center bg-slate-50 rounded-lg p-4 border border-slate-200'
+											className='flex justify-between items-center bg-offering-tint rounded-sm p-4 border border-offering-line'
 										>
-											<p className='font-semibold text-slate-900'>
+											<p className='font-semibold text-offering-ink'>
 												{item.label}
 											</p>
-											<p className='text-slate-700 font-bold'>{item.value}</p>
+											<p className='text-offering-body font-semibold'>{item.value}</p>
 										</div>
 									))}
 								</div>
 
-								<p className='text-xs text-slate-500 italic mb-6'>
+								<p className='text-xs text-offering-muted italic mb-6'>
 									*Lower rate applies up to the British Columbia small business
 									threshold of CAD 500,000
 								</p>
 							</div>
 
-							<div className='bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-6'>
-								<h4 className='font-bold text-slate-900 mb-2'>Reporting</h4>
-								<p className='text-slate-700 text-sm'>
+							<div className='bg-offering-tint border-l-4 border-offering-gold rounded-r-sm p-6'>
+								<h4 className='font-semibold text-offering-ink mb-2'>Reporting</h4>
+								<p className='text-offering-body text-sm'>
 									Annual financial statements and ongoing regulatory reporting
 									to FINTRAC are required.
 								</p>

@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -11,24 +12,24 @@ export default function RedomiciliationPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-white text-slate-900'>
+			<div className='offering-page relative min-h-screen bg-white text-offering-ink'>
 				{/* Header */}
-				<header className='sticky top-0 bg-white/95  border-b border-slate-200 z-30'>
+				<header className='offering-masthead sticky top-0 bg-white/95  border-b border-offering-line z-30'>
 					<div className='mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='text-sm text-slate-600 hover:text-slate-900 transition flex items-center gap-2 font-medium'
+							className='text-sm text-offering-muted hover:text-offering-ink transition flex items-center gap-2 font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							← Back
 						</button>
 						<h1
-							className='text-2xl sm:text-3xl font-semibold text-slate-900'
+							className='text-2xl sm:text-3xl font-semibold text-offering-ink'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							Redomiciliation (Continuation) Services
 						</h1>
-						<div className='w-8'></div>
+						<div className='offering-mark-slot w-8'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -42,19 +43,19 @@ export default function RedomiciliationPage() {
 							transition={{ duration: 0.5 }}
 						>
 							<p
-								className='text-sm uppercase tracking-[0.2em] text-blue-600 mb-3 font-semibold'
+								className='text-sm uppercase tracking-[0.2em] text-offering-blue mb-3 font-semibold'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Outbound & Inbound Corporate Migration
 							</p>
 							<h2
-								className='text-3xl sm:text-4xl font-semibold text-slate-900 mb-4'
+								className='text-3xl sm:text-4xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								End-to-End Continuation Across Jurisdictions
 							</h2>
 							<p
-								className='text-base text-slate-700 leading-relaxed mb-4'
+								className='text-base text-offering-body leading-relaxed mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Boyar Partners provides end-to-end redomiciliation
@@ -63,7 +64,7 @@ export default function RedomiciliationPage() {
 								history, and continuity of operations—where permitted by law.
 							</p>
 							<div
-								className='bg-blue-50 border border-blue-200 rounded-lg p-6 text-sm text-slate-800 leading-relaxed'
+								className='bg-offering-tint border border-offering-line rounded-sm p-6 text-sm text-offering-ink leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Redomiciliation is jurisdiction-specific. Requirements depend on
@@ -80,16 +81,16 @@ export default function RedomiciliationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.05 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-3'
+								className='text-2xl font-semibold text-offering-ink mb-3'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Jurisdictional Coverage
 							</h3>
 							<p
-								className='text-sm text-slate-700 leading-relaxed'
+								className='text-sm text-offering-body leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Services are provided for entities migrating from or into:
@@ -114,24 +115,24 @@ export default function RedomiciliationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.1 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									A
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Pre-Migration Assessment & Feasibility
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Structured feasibility review before initiating migration.
@@ -140,15 +141,15 @@ export default function RedomiciliationPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Assessment Areas
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Statutory permissibility of continuation out/in</li>
@@ -159,9 +160,9 @@ export default function RedomiciliationPage() {
 										<li>Banking and counterparty impact</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Establishes a clear migration pathway and identifies
@@ -178,24 +179,24 @@ export default function RedomiciliationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.15 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									B
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Outbound Redomiciliation (Exporting Jurisdiction)
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Assistance to commence and complete migration out of the
@@ -204,9 +205,9 @@ export default function RedomiciliationPage() {
 								</div>
 							</div>
 
-							<div className='bg-white border border-slate-200 rounded p-5'>
+							<div className='bg-white border border-offering-line rounded p-5'>
 								<ul
-									className='space-y-2 text-sm text-slate-700'
+									className='space-y-2 text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									<li>
@@ -230,9 +231,9 @@ export default function RedomiciliationPage() {
 								</ul>
 							</div>
 
-							<div className='bg-blue-50 border border-blue-200 rounded p-5 mt-6'>
+							<div className='bg-offering-tint border border-offering-line rounded p-5 mt-6'>
 								<p
-									className='text-sm text-slate-700'
+									className='text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Ensures exit in good standing without residual compliance
@@ -248,24 +249,24 @@ export default function RedomiciliationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.2 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									C
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Inbound Redomiciliation (Receiving Jurisdiction)
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Manage continuation into the new jurisdiction and initial
@@ -275,15 +276,15 @@ export default function RedomiciliationPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Inbound Scope
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>
@@ -308,9 +309,9 @@ export default function RedomiciliationPage() {
 										<li>Coordinate banking setup or transition as needed</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Delivers a compliant, operational start in the receiving
@@ -327,24 +328,24 @@ export default function RedomiciliationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.25 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									D
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Post-Continuation Compliance & Integration
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Stabilize operations, align records, and update regulatory
@@ -354,15 +355,15 @@ export default function RedomiciliationPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Includes
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Alignment of statutory registers</li>
@@ -374,9 +375,9 @@ export default function RedomiciliationPage() {
 										</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Ensures full and correct operation under new jurisdictional
@@ -393,18 +394,18 @@ export default function RedomiciliationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.3 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-4'
+								className='text-2xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Compliance & Regulatory Alignment
 							</h3>
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Legal continuity maintained throughout migration</li>
@@ -420,9 +421,9 @@ export default function RedomiciliationPage() {
 										</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Steps documented and sequenced to support audit, regulatory
@@ -439,17 +440,17 @@ export default function RedomiciliationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.35 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-3'
+								className='text-2xl font-semibold text-offering-ink mb-3'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Delivery & Oversight Model
 							</h3>
-							<div className='bg-white border border-slate-200 rounded p-5'>
+							<div className='bg-white border border-offering-line rounded p-5'>
 								<ul
-									className='space-y-2 text-sm text-slate-700'
+									className='space-y-2 text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									<li>
@@ -476,10 +477,10 @@ export default function RedomiciliationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.4 }}
-							className='bg-blue-50 border border-blue-300 rounded-lg p-10 text-center'
+							className='bg-offering-tint border border-offering-line rounded-sm p-10 text-center'
 						>
 							<p
-								className='text-xl text-slate-900 mb-4 font-semibold'
+								className='text-xl text-offering-ink mb-4 font-semibold'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								“Boyar Partners provides structured outbound and inbound

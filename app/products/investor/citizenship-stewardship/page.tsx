@@ -1,5 +1,6 @@
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { useRouter } from "next/navigation";
 
@@ -8,30 +9,30 @@ export default function CitizenshipStewardshipPage() {
   
   return (
     <ProtectedRoute>
-      <div className="cs-page">
+      <div className="cs-page offering-page">
         <style dangerouslySetInnerHTML={{ __html: `
           .cs-page {
-            --font-heading: 'DM Sans', sans-serif;
-            --font-body: 'DM Sans', sans-serif;
-            --font-mono: 'DM Mono', monospace;
-            --blue-500: #3b82f6;
-            --blue-600: #2563eb;
-            --blue-300: #93c5fd;
-            --indigo-600: #4f46e5;
-            --slate-900: #0f172a;
-            --slate-800: #1e293b;
-            --slate-700: #334155;
-            --slate-600: #475569;
-            --slate-500: #64748b;
+            --font-heading: var(--font-avenir);
+            --font-body: var(--font-avenir);
+            --font-mono: var(--font-avenir);
+            --blue-500: #006cad;
+            --blue-600: #006cad;
+            --blue-300: #8aa4b2;
+            --indigo-600: #102e42;
+            --slate-900: #102e42;
+            --slate-800: #102e42;
+            --slate-700: #314e60;
+            --slate-600: #506572;
+            --slate-500: #506572;
             --slate-400: #94a3b8;
             --slate-300: #cbd5e1;
-            --slate-200: #e2e8f0;
+            --slate-200: #ccdbe2;
             --slate-100: #f1f5f9;
             --slate-50: #f8fafc;
             --white: #ffffff;
             
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--slate-50) 0%, var(--white) 50%, var(--slate-100) 100%);
+            background: white;
             color: var(--slate-900);
             font-family: var(--font-body);
             font-size: 16px;
@@ -46,7 +47,7 @@ export default function CitizenshipStewardshipPage() {
             z-index: 50;
             background: rgba(255,255,255,0.96);
             border-bottom: 1px solid var(--slate-200);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            box-shadow: none;
           }
           .cs-page .header-inner {
             max-width: 1280px;
@@ -100,7 +101,7 @@ export default function CitizenshipStewardshipPage() {
             position: absolute;
             top: -60px; right: 10%;
             width: 480px; height: 480px;
-            background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+            background: none;
             pointer-events: none;
           }
           .cs-page .hero::after {
@@ -108,7 +109,7 @@ export default function CitizenshipStewardshipPage() {
             position: absolute;
             bottom: -40px; left: 5%;
             width: 360px; height: 360px;
-            background: radial-gradient(circle, rgba(79,70,229,0.06) 0%, transparent 70%);
+            background: none;
             pointer-events: none;
           }
           .cs-page .hero-inner {
@@ -121,9 +122,9 @@ export default function CitizenshipStewardshipPage() {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 999px;
+            background: #f4f7f8;
+            border: 1px solid #ccdbe2;
+            border-radius: 2px;
             padding: 6px 14px;
             margin-bottom: 24px;
           }
@@ -137,22 +138,19 @@ export default function CitizenshipStewardshipPage() {
             font-weight: 600;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #1d4ed8;
+            color: #006cad;
           }
           .cs-page .hero h1 {
             font-family: var(--font-heading);
             font-size: clamp(36px, 5vw, 60px);
-            font-weight: 700;
+            font-weight: 600;
             color: var(--slate-900);
             line-height: 1.08;
             margin-bottom: 20px;
             max-width: 760px;
           }
           .cs-page .hero h1 .gradient {
-            background: linear-gradient(135deg, var(--blue-600), var(--indigo-600));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #006cad;
           }
           .cs-page .hero-lead {
             font-size: 17px;
@@ -188,7 +186,7 @@ export default function CitizenshipStewardshipPage() {
           .cs-page .section-title {
             font-family: var(--font-heading);
             font-size: clamp(26px, 3vw, 34px);
-            font-weight: 700;
+            font-weight: 600;
             color: var(--slate-900);
             margin-bottom: 14px;
           }
@@ -205,7 +203,7 @@ export default function CitizenshipStewardshipPage() {
           .cs-page .service-card {
             background: var(--white);
             border: 1px solid var(--slate-200);
-            border-radius: 16px;
+            border-radius: 2px;
             padding: 28px 28px 28px 24px;
             display: flex;
             gap: 24px;
@@ -213,27 +211,27 @@ export default function CitizenshipStewardshipPage() {
             transition: border-color 0.2s;
           }
           .cs-page .service-card:hover {
-            border-color: #bfdbfe;
+            border-color: #ccdbe2;
           }
           .cs-page .service-num {
             flex-shrink: 0;
             width: 52px; height: 52px;
-            background: linear-gradient(135deg, var(--blue-500), var(--indigo-600));
-            border-radius: 14px;
+            background: #102e42;
+            border-radius: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 15px;
-            font-weight: 700;
+            font-weight: 600;
             color: white;
-            box-shadow: 0 4px 14px rgba(59,130,246,0.25);
+            box-shadow: none;
             font-family: var(--font-mono);
           }
           .cs-page .service-body { flex: 1; min-width: 0; }
           .cs-page .service-title {
             font-family: var(--font-body);
             font-size: 17px;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--slate-900);
             margin-bottom: 6px;
           }
@@ -261,7 +259,7 @@ export default function CitizenshipStewardshipPage() {
           .cs-page .chip {
             background: var(--white);
             border: 1px solid var(--slate-200);
-            border-radius: 10px;
+            border-radius: 2px;
             padding: 8px 16px;
             font-size: 13px;
             font-weight: 500;
@@ -270,9 +268,9 @@ export default function CitizenshipStewardshipPage() {
             cursor: default;
           }
           .cs-page .chip:hover {
-            border-color: #93c5fd;
-            background: #eff6ff;
-            color: #1d4ed8;
+            border-color: #8aa4b2;
+            background: #f4f7f8;
+            color: #006cad;
           }
           
           /* ── 2-COL GRID ── */
@@ -289,12 +287,12 @@ export default function CitizenshipStewardshipPage() {
           .cs-page .info-card {
             background: var(--white);
             border: 1px solid var(--slate-200);
-            border-radius: 12px;
+            border-radius: 2px;
             padding: 20px;
           }
           .cs-page .info-card-title {
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--slate-900);
             margin-bottom: 12px;
           }
@@ -318,9 +316,9 @@ export default function CitizenshipStewardshipPage() {
           
           /* ── HIGHLIGHT BOX ── */
           .cs-page .highlight-box {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 12px;
+            background: #f4f7f8;
+            border: 1px solid #ccdbe2;
+            border-radius: 2px;
             padding: 20px;
             font-size: 14px;
             color: var(--slate-700);
@@ -330,15 +328,15 @@ export default function CitizenshipStewardshipPage() {
           
           /* ── STANDOUT SECTION ── */
           .cs-page .standout {
-            background: linear-gradient(135deg, #eff6ff 0%, #eef2ff 100%);
-            border: 1px solid #bfdbfe;
-            border-radius: 20px;
+            background: #f4f7f8;
+            border: 1px solid #ccdbe2;
+            border-radius: 2px;
             padding: 40px 40px;
           }
           .cs-page .standout h3 {
             font-family: var(--font-heading);
             font-size: 22px;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--slate-900);
             margin-bottom: 16px;
           }
@@ -369,9 +367,9 @@ export default function CitizenshipStewardshipPage() {
           
           /* ── CTA BLOCK ── */
           .cs-page .cta-block {
-            background: linear-gradient(135deg, #eff6ff, #eef2ff);
-            border: 1px solid #c7d2fe;
-            border-radius: 20px;
+            background: #f4f7f8;
+            border: 1px solid #ccdbe2;
+            border-radius: 2px;
             padding: 52px 44px;
             text-align: center;
           }
@@ -389,7 +387,7 @@ export default function CitizenshipStewardshipPage() {
           .cs-page .alpha-section {
             background: var(--slate-50);
             border: 1px solid var(--slate-200);
-            border-radius: 16px;
+            border-radius: 2px;
             padding: 32px;
             margin-bottom: 20px;
           }
@@ -411,7 +409,7 @@ export default function CitizenshipStewardshipPage() {
           .cs-page .alpha-title {
             font-family: var(--font-body);
             font-size: 20px;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--slate-900);
             margin-bottom: 4px;
           }
@@ -430,9 +428,10 @@ export default function CitizenshipStewardshipPage() {
         `}} />
 
         {/* HEADER */}
-        <header>
+        <header className="offering-masthead">
           <div className="header-inner">
             <button className="back-btn" onClick={() => router.back()}>← Back</button>
+            <OfferingMark />
             <div className="header-badge">
               <div className="header-dot"></div>
               Private Clients

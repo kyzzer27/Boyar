@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -12,9 +13,9 @@ const services = [
 		id: 1,
 		title: "Account Solutions",
 		icon: "01",
-		color: "from-blue-500 to-blue-600",
-		textColor: "text-blue-600",
-		borderColor: "border-blue-100",
+		color: "bg-offering-ink",
+		textColor: "text-offering-blue",
+		borderColor: "border-offering-line",
 		features: [
 			{
 				name: "Dedicated and Pooled Accounts",
@@ -38,9 +39,9 @@ const services = [
 		id: 2,
 		title: "Payment Infrastructure",
 		icon: "02",
-		color: "from-blue-500 to-blue-600",
-		textColor: "text-blue-600",
-		borderColor: "border-blue-100",
+		color: "bg-offering-ink",
+		textColor: "text-offering-blue",
+		borderColor: "border-offering-line",
 		features: [
 			{
 				name: "Global Reach",
@@ -68,9 +69,9 @@ const services = [
 		id: 3,
 		title: "Currency Support",
 		icon: "03",
-		color: "from-blue-500 to-blue-600",
-		textColor: "text-blue-600",
-		borderColor: "border-blue-100",
+		color: "bg-offering-ink",
+		textColor: "text-offering-blue",
+		borderColor: "border-offering-line",
 		features: [
 			{
 				name: "30+ Supported Currencies",
@@ -86,9 +87,9 @@ const services = [
 		id: 4,
 		title: "Card Processing",
 		icon: "04",
-		color: "from-blue-500 to-blue-600",
-		textColor: "text-blue-600",
-		borderColor: "border-blue-100",
+		color: "bg-offering-ink",
+		textColor: "text-offering-blue",
+		borderColor: "border-offering-line",
 		features: [
 			{
 				name: "Acquiring for Complex Markets",
@@ -116,9 +117,9 @@ const services = [
 		id: 5,
 		title: "Open Banking",
 		icon: "05",
-		color: "from-blue-500 to-blue-600",
-		textColor: "text-blue-600",
-		borderColor: "border-blue-100",
+		color: "bg-offering-ink",
+		textColor: "text-offering-blue",
+		borderColor: "border-offering-line",
 		features: [
 			{
 				name: "High-Risk Sector Coverage",
@@ -146,9 +147,9 @@ const services = [
 		id: 6,
 		title: "Crypto Services",
 		icon: "06",
-		color: "from-blue-500 to-blue-600",
-		textColor: "text-blue-600",
-		borderColor: "border-blue-100",
+		color: "bg-offering-ink",
+		textColor: "text-offering-blue",
+		borderColor: "border-offering-line",
 		features: [
 			{
 				name: "Digital Asset Transactions",
@@ -168,9 +169,9 @@ const services = [
 		id: 7,
 		title: "Alternative Payment Methods",
 		icon: "07",
-		color: "from-blue-500 to-blue-600",
-		textColor: "text-blue-600",
-		borderColor: "border-blue-100",
+		color: "bg-offering-ink",
+		textColor: "text-offering-blue",
+		borderColor: "border-offering-line",
 		features: [
 			{
 				name: "E-Wallets & Mobile Payments",
@@ -190,9 +191,9 @@ const services = [
 		id: 8,
 		title: "FX Services",
 		icon: "08",
-		color: "from-blue-500 to-blue-600",
-		textColor: "text-blue-600",
-		borderColor: "border-blue-100",
+		color: "bg-offering-ink",
+		textColor: "text-offering-blue",
+		borderColor: "border-offering-line",
 		features: [
 			{
 				name: "Real-Time FX Execution",
@@ -212,9 +213,9 @@ const services = [
 		id: 9,
 		title: "Banking-as-a-Service",
 		icon: "09",
-		color: "from-blue-500 to-blue-600",
-		textColor: "text-blue-600",
-		borderColor: "border-blue-100",
+		color: "bg-offering-ink",
+		textColor: "text-offering-blue",
+		borderColor: "border-offering-line",
 		features: [
 			{
 				name: "Account Issuance",
@@ -238,9 +239,9 @@ const services = [
 		id: 10,
 		title: "API Integration",
 		icon: "10",
-		color: "from-blue-500 to-blue-600",
-		textColor: "text-blue-600",
-		borderColor: "border-blue-100",
+		color: "bg-offering-ink",
+		textColor: "text-offering-blue",
+		borderColor: "border-offering-line",
 		features: [
 			{
 				name: "Mass Payment Automation",
@@ -264,9 +265,9 @@ const services = [
 		id: 11,
 		title: "PCI Compliance",
 		icon: "11",
-		color: "from-blue-500 to-blue-600",
-		textColor: "text-blue-600",
-		borderColor: "border-blue-100",
+		color: "bg-offering-ink",
+		textColor: "text-offering-blue",
+		borderColor: "border-offering-line",
 		features: [
 			{
 				name: "Tokenisation Solutions",
@@ -303,9 +304,9 @@ function ServiceCard({
 			style={{ breakInside: "avoid-column" }}
 		>
 			<div
-				className={`relative rounded-lg border ${
+				className={`relative rounded-sm border ${
 					service.borderColor
-				} bg-white cursor-pointer transition-colors duration-300 hover:border-gray-300 hover:shadow-lg ${
+				} bg-white cursor-pointer transition-colors duration-300 hover:border-offering-blue shadow-none ${
 					isExpanded ? "overflow-visible" : "overflow-hidden"
 				}`}
 				onClick={() => setIsExpanded(!isExpanded)}
@@ -316,7 +317,7 @@ function ServiceCard({
 			>
 				{/* Top accent line */}
 				<div
-					className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color}`}
+					className={`absolute top-0 left-0 right-0 h-1 ${service.color}`}
 				></div>
 
 				{/* Content */}
@@ -325,7 +326,7 @@ function ServiceCard({
 					<div className='flex items-start justify-between mb-4'>
 						<div className='flex items-center gap-4 flex-1'>
 							<div
-								className={`text-3xl font-bold ${service.textColor} flex-shrink-0`}
+								className={`text-3xl font-semibold ${service.textColor} flex-shrink-0`}
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								{service.icon}
@@ -342,7 +343,7 @@ function ServiceCard({
 						<motion.span
 							animate={{ rotate: isExpanded ? 180 : 0 }}
 							transition={{ duration: 0.3 }}
-							className='text-xl text-gray-400 flex-shrink-0 ml-2'
+							className='text-xl text-offering-muted flex-shrink-0 ml-2'
 						>
 							▼
 						</motion.span>
@@ -358,7 +359,7 @@ function ServiceCard({
 						transition={{ duration: 0.3 }}
 						className='overflow-hidden'
 					>
-						<div className='space-y-3 pt-4 border-t border-gray-100'>
+						<div className='space-y-3 pt-4 border-t border-offering-line'>
 							{service.features.map((feature, idx) => (
 								<motion.div
 									key={idx}
@@ -368,7 +369,7 @@ function ServiceCard({
 									className='flex items-start gap-3'
 								>
 									<div
-										className={`flex-shrink-0 w-5 h-5 rounded-full ${service.textColor} flex items-center justify-center mt-0.5 text-xs font-bold`}
+										className={`flex-shrink-0 w-5 h-5 rounded-full ${service.textColor} flex items-center justify-center mt-0.5 text-xs font-semibold`}
 									>
 										✓
 									</div>
@@ -382,7 +383,7 @@ function ServiceCard({
 											{feature.name}
 										</p>
 										<p
-											className='text-gray-600 text-xs mt-1 leading-relaxed'
+											className='text-offering-muted text-xs mt-1 leading-relaxed'
 											style={{
 												fontFamily: "var(--font-avenir)",
 											}}
@@ -405,29 +406,29 @@ export default function BankingForCorporatesPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50'>
+			<div className='offering-page min-h-screen bg-white'>
 				{/* Header */}
-				<header className='sticky top-0 bg-white/80 border-b border-gray-200 z-30'>
+				<header className='offering-masthead sticky top-0 bg-white/80 border-b border-offering-line z-30'>
 					<div className='mx-auto max-w-7xl px-6 py-5 sm:px-8 flex items-center justify-between'>
 						<button
 							onClick={() => router.back()}
-							className='text-sm text-gray-600 hover:text-gray-900 transition flex items-center gap-2 font-medium'
+							className='text-sm text-offering-muted hover:text-offering-ink transition flex items-center gap-2 font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							← Back
 						</button>
 						<h1
-							className='text-2xl sm:text-3xl font-bold text-slate-900'
+							className='text-2xl sm:text-3xl font-semibold text-offering-ink'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							Banking for Corporates
 						</h1>
-						<div className='w-8' aria-hidden='true'></div>
+						<div className='offering-mark-slot w-8'><OfferingMark /></div>
 					</div>
 				</header>
 
 				{/* Hero Section */}
-				<section className='relative py-16 sm:py-20 border-b border-gray-200'>
+				<section className='relative py-16 sm:py-20 border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-6 sm:px-8'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -436,17 +437,17 @@ export default function BankingForCorporatesPage() {
 							className='text-center max-w-3xl mx-auto'
 						>
 							<h2
-								className='text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight'
+								className='text-4xl sm:text-5xl lg:text-6xl font-semibold text-offering-ink mb-6 leading-tight'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Banking & Payment Solutions
 								<br />
-								<span className='bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'>
+								<span className='text-offering-ink'>
 									for Global Business
 								</span>
 							</h2>
 							<p
-								className='text-lg text-gray-600 leading-relaxed'
+								className='text-lg text-offering-muted leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Through Boyar Partners' dedicated network of banking, payment,
@@ -458,8 +459,8 @@ export default function BankingForCorporatesPage() {
 
 						{/* Decorative elements */}
 						<div className='absolute inset-0 -z-10 overflow-hidden'>
-							<div className='absolute top-20 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20'></div>
-							<div className='absolute bottom-0 left-0 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-20'></div>
+							<div className='absolute top-20 right-0 w-96 h-96 bg-offering-tint rounded-full invisible opacity-20'></div>
+							<div className='absolute bottom-0 left-0 w-96 h-96 bg-offering-tint rounded-full invisible opacity-20'></div>
 						</div>
 					</div>
 				</section>
@@ -476,7 +477,7 @@ export default function BankingForCorporatesPage() {
 						>
 							<div className='flex items-center gap-3 mb-2'>
 								<h3
-									className='text-3xl font-bold text-slate-900'
+									className='text-3xl font-semibold text-offering-ink'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Core Service Areas
@@ -487,7 +488,7 @@ export default function BankingForCorporatesPage() {
 											"/products/investor/banking-for-corporates/in-brief"
 										)
 									}
-									className='inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-medium hover:bg-blue-200 transition-colors duration-300'
+									className='inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-offering-tint text-offering-blue text-sm font-medium hover:bg-offering-line transition-colors duration-300'
 									style={{ fontFamily: "var(--font-avenir)" }}
 									title='Quick overview of all services'
 								>
@@ -495,9 +496,9 @@ export default function BankingForCorporatesPage() {
 									<span className='text-xs'>→</span>
 								</button>
 							</div>
-							<div className='h-1 w-24 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full'></div>
+							<div className='h-1 w-24 bg-offering-ink rounded-full'></div>
 							<p
-								className='text-gray-600 mt-4 max-w-2xl'
+								className='text-offering-muted mt-4 max-w-2xl'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Click on any service to explore detailed capabilities and
@@ -514,7 +515,7 @@ export default function BankingForCorporatesPage() {
 				</section>
 
 				{/* Closing Section */}
-				<section className='py-16 sm:py-20 bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-gray-200'>
+				<section className='py-16 sm:py-20 bg-offering-tint border-t border-offering-line'>
 					<div className='mx-auto max-w-4xl px-6 sm:px-8 text-center'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -523,13 +524,13 @@ export default function BankingForCorporatesPage() {
 							transition={{ duration: 0.6 }}
 						>
 							<h3
-								className='text-2xl sm:text-3xl font-bold text-slate-900 mb-4'
+								className='text-2xl sm:text-3xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Ready to Get Started?
 							</h3>
 							<p
-								className='text-gray-600 mb-8 leading-relaxed'
+								className='text-offering-muted mb-8 leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Boyar Partners acts as the structuring, onboarding, and
@@ -538,7 +539,7 @@ export default function BankingForCorporatesPage() {
 							</p>
 							<button
 								onClick={() => router.back()}
-								className='inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg transition-colors duration-300'
+								className='inline-flex items-center gap-2 px-8 py-3 rounded-full bg-offering-ink text-white font-semibold shadow-none transition-colors duration-300'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Back

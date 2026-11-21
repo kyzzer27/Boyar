@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -11,24 +12,24 @@ export default function OfficeRegistrationPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-white text-slate-900'>
+			<div className='offering-page relative min-h-screen bg-white text-offering-ink'>
 				{/* Header */}
-				<header className='sticky top-0 bg-white/95  border-b border-slate-200 z-30'>
+				<header className='offering-masthead sticky top-0 bg-white/95  border-b border-offering-line z-30'>
 					<div className='mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='text-sm text-slate-600 hover:text-slate-900 transition flex items-center gap-2 font-medium'
+							className='text-sm text-offering-muted hover:text-offering-ink transition flex items-center gap-2 font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							← Back
 						</button>
 						<h1
-							className='text-2xl sm:text-3xl font-semibold text-slate-900'
+							className='text-2xl sm:text-3xl font-semibold text-offering-ink'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							Office Registration & Operational Presence Services
 						</h1>
-						<div className='w-8'></div>
+						<div className='offering-mark-slot w-8'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -42,19 +43,19 @@ export default function OfficeRegistrationPage() {
 							transition={{ duration: 0.5 }}
 						>
 							<p
-								className='text-sm uppercase tracking-[0.2em] text-blue-600 mb-3 font-semibold'
+								className='text-sm uppercase tracking-[0.2em] text-offering-blue mb-3 font-semibold'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Outsourced / Coordinated Infrastructure Function
 							</p>
 							<h2
-								className='text-3xl sm:text-4xl font-semibold text-slate-900 mb-4'
+								className='text-3xl sm:text-4xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Registration, Operational Presence, and Inspection Readiness
 							</h2>
 							<p
-								className='text-base text-slate-700 leading-relaxed mb-4'
+								className='text-base text-offering-body leading-relaxed mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Boyar Partners provides office registration and operational
@@ -65,7 +66,7 @@ export default function OfficeRegistrationPage() {
 								readiness.
 							</p>
 							<div
-								className='bg-blue-50 border border-blue-200 rounded-lg p-6 text-sm text-slate-800 leading-relaxed'
+								className='bg-offering-tint border border-offering-line rounded-sm p-6 text-sm text-offering-ink leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Office solutions are delivered through vetted local providers
@@ -81,16 +82,16 @@ export default function OfficeRegistrationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.05 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-3'
+								className='text-2xl font-semibold text-offering-ink mb-3'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Jurisdictional Coverage
 							</h3>
 							<p
-								className='text-sm text-slate-700 leading-relaxed'
+								className='text-sm text-offering-body leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Office registration and operational presence services are
@@ -115,24 +116,24 @@ export default function OfficeRegistrationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.1 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									01
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Physical Office Registration
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Provision of physical premises required by law, regulation,
@@ -142,15 +143,15 @@ export default function OfficeRegistrationPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Scope Includes
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Registered and operational office address</li>
@@ -162,9 +163,9 @@ export default function OfficeRegistrationPage() {
 										<li>Utility and occupancy documentation support</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Solutions are proportionate to activity and risk profile,
@@ -181,24 +182,24 @@ export default function OfficeRegistrationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.15 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									02
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Virtual Office Solutions
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Virtual arrangements to satisfy registered address and
@@ -208,15 +209,15 @@ export default function OfficeRegistrationPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Scope Includes
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Registered office address</li>
@@ -228,9 +229,9 @@ export default function OfficeRegistrationPage() {
 										</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Deployed only where accepted by regulators, banks, and
@@ -247,24 +248,24 @@ export default function OfficeRegistrationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.2 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									03
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										IT & Equipment Infrastructure
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Coordinate technology and operational infrastructure
@@ -274,15 +275,15 @@ export default function OfficeRegistrationPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Includes
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>IT hardware procurement coordination</li>
@@ -292,9 +293,9 @@ export default function OfficeRegistrationPage() {
 										<li>Evidence of equipment ownership or lease</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Infrastructure aligned to activity level and governance
@@ -311,24 +312,24 @@ export default function OfficeRegistrationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.25 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									04
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Registered Office & Statutory Address Services
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Statutory registered office services in line with local
@@ -337,9 +338,9 @@ export default function OfficeRegistrationPage() {
 								</div>
 							</div>
 
-							<div className='bg-white border border-slate-200 rounded p-5'>
+							<div className='bg-white border border-offering-line rounded p-5'>
 								<ul
-									className='space-y-2 text-sm text-slate-700'
+									className='space-y-2 text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									<li>Registered office maintenance</li>
@@ -357,24 +358,24 @@ export default function OfficeRegistrationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.3 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									05
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Mail, Document & Records Management
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Controlled handling of official correspondence and statutory
@@ -383,9 +384,9 @@ export default function OfficeRegistrationPage() {
 								</div>
 							</div>
 
-							<div className='bg-white border border-slate-200 rounded p-5'>
+							<div className='bg-white border border-offering-line rounded p-5'>
 								<ul
-									className='space-y-2 text-sm text-slate-700'
+									className='space-y-2 text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									<li>Secure mail receipt and forwarding</li>
@@ -403,24 +404,24 @@ export default function OfficeRegistrationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.35 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									06
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Office Compliance & Inspection Readiness
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Maintain inspection-ready premises and documentation for
@@ -430,15 +431,15 @@ export default function OfficeRegistrationPage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Scope
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Preparation for regulator or tax authority visits</li>
@@ -447,9 +448,9 @@ export default function OfficeRegistrationPage() {
 										<li>Coordination during inspections</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Relevant for regulated entities, substance-relevant
@@ -466,24 +467,24 @@ export default function OfficeRegistrationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.4 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									07
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Local Service Coordination
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Coordinate with local vendors and service providers to
@@ -492,9 +493,9 @@ export default function OfficeRegistrationPage() {
 								</div>
 							</div>
 
-							<div className='bg-white border border-slate-200 rounded p-5'>
+							<div className='bg-white border border-offering-line rounded p-5'>
 								<ul
-									className='space-y-2 text-sm text-slate-700'
+									className='space-y-2 text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									<li>Office service provider management</li>
@@ -512,18 +513,18 @@ export default function OfficeRegistrationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.45 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-4'
+								className='text-2xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Compliance & Regulatory Alignment
 							</h3>
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Meet statutory registered office requirements</li>
@@ -537,9 +538,9 @@ export default function OfficeRegistrationPage() {
 										<li>Present a low-risk operational profile</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Office arrangements are reviewed periodically as regulations
@@ -556,17 +557,17 @@ export default function OfficeRegistrationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.5 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-3'
+								className='text-2xl font-semibold text-offering-ink mb-3'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Delivery & Oversight Model
 							</h3>
-							<div className='bg-white border border-slate-200 rounded p-5'>
+							<div className='bg-white border border-offering-line rounded p-5'>
 								<ul
-									className='space-y-2 text-sm text-slate-700'
+									className='space-y-2 text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									<li>Services delivered through approved local providers</li>
@@ -593,10 +594,10 @@ export default function OfficeRegistrationPage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.55 }}
-							className='bg-blue-50 border border-blue-300 rounded-lg p-10 text-center'
+							className='bg-offering-tint border border-offering-line rounded-sm p-10 text-center'
 						>
 							<p
-								className='text-xl text-slate-900 mb-4 font-semibold'
+								className='text-xl text-offering-ink mb-4 font-semibold'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								“Boyar Partners provides office registration and operational

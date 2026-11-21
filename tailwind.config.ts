@@ -7,7 +7,17 @@ const config: Config = {
     "./public/**/*.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "offering-ink": "#102e42",
+        "offering-body": "#314e60",
+        "offering-muted": "#506572",
+        "offering-blue": "#006cad",
+        "offering-line": "#ccdbe2",
+        "offering-tint": "#f4f7f8",
+        "offering-gold": "#ae8051",
+      },
+    },
   },
   plugins: [],
 };

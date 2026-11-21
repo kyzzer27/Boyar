@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 
@@ -87,9 +88,10 @@ const outsourcedBenefits = [
 export default function MarineServicesPage() {
 	return (
 		<ProtectedRoute>
-			<div className='min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100'>
+			<div className='offering-page min-h-screen bg-white'>
+				<div className='offering-floating-mark'><OfferingMark /></div>
 				{/* Hero Section */}
-				<section className='border-b border-slate-200'>
+				<section className='border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -97,10 +99,10 @@ export default function MarineServicesPage() {
 							transition={{ duration: 0.6 }}
 							className='space-y-6 max-w-4xl'
 						>
-							<div className='inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-1.5 border border-blue-200'>
-								<div className='h-2 w-2 rounded-full bg-blue-500'></div>
+							<div className='inline-flex items-center gap-2 rounded-sm bg-offering-tint px-4 py-1.5 border border-offering-line'>
+								<div className='h-2 w-2 rounded-full bg-offering-ink'></div>
 								<span
-									className='text-xs font-semibold text-blue-700 tracking-wide uppercase'
+									className='text-xs font-semibold text-offering-blue tracking-wide uppercase'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Marine Services
@@ -108,18 +110,18 @@ export default function MarineServicesPage() {
 							</div>
 
 							<h1
-								className='text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight'
+								className='text-4xl sm:text-5xl lg:text-6xl font-semibold text-offering-ink leading-tight'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Marine Services
 								<br />
-								<span className='bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'>
+								<span className='text-offering-ink'>
 									Yacht Ownership, Registration & Operational Support
 								</span>
 							</h1>
 
 							<p
-								className='text-lg text-slate-600 leading-relaxed'
+								className='text-lg text-offering-muted leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Marine services encompass the structuring, registration,
@@ -131,7 +133,7 @@ export default function MarineServicesPage() {
 				</section>
 
 				{/* Strategic Purpose */}
-				<section className='border-b border-slate-200 bg-white/50 '>
+				<section className='border-b border-offering-line bg-white/50 '>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -139,12 +141,12 @@ export default function MarineServicesPage() {
 							transition={{ duration: 0.6, delay: 0.2 }}
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-6'
+								className='text-3xl font-semibold text-offering-ink mb-6'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Definition & Strategic Purpose
 							</h2>
-							<div className='space-y-4 text-slate-700 leading-relaxed max-w-4xl'>
+							<div className='space-y-4 text-offering-body leading-relaxed max-w-4xl'>
 								<p style={{ fontFamily: "var(--font-avenir)" }}>
 									Yacht ownership is a highly regulated, multi-jurisdictional
 									activity involving maritime law, employment law, tax,
@@ -156,40 +158,40 @@ export default function MarineServicesPage() {
 										className='flex items-start gap-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
-										<span className='text-blue-600 font-bold'>•</span>
+										<span className='text-offering-blue font-semibold'>•</span>
 										<span>Regulatory and flag-state compliance</span>
 									</li>
 									<li
 										className='flex items-start gap-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
-										<span className='text-blue-600 font-bold'>•</span>
+										<span className='text-offering-blue font-semibold'>•</span>
 										<span>Operational continuity</span>
 									</li>
 									<li
 										className='flex items-start gap-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
-										<span className='text-blue-600 font-bold'>•</span>
+										<span className='text-offering-blue font-semibold'>•</span>
 										<span>Crew welfare and labour law adherence</span>
 									</li>
 									<li
 										className='flex items-start gap-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
-										<span className='text-blue-600 font-bold'>•</span>
+										<span className='text-offering-blue font-semibold'>•</span>
 										<span>Asset protection and ownership transparency</span>
 									</li>
 									<li
 										className='flex items-start gap-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
-										<span className='text-blue-600 font-bold'>•</span>
+										<span className='text-offering-blue font-semibold'>•</span>
 										<span>Financial and administrative efficiency</span>
 									</li>
 								</ul>
 								<p
-									className='font-semibold text-slate-900 mt-6'
+									className='font-semibold text-offering-ink mt-6'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									All marine services are delivered through specialist
@@ -203,22 +205,22 @@ export default function MarineServicesPage() {
 				</section>
 
 				{/* Jurisdictional Note */}
-				<section className='border-b border-slate-200 bg-white/50 '>
+				<section className='border-b border-offering-line bg-white/50 '>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6, delay: 0.3 }}
-							className='bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 border border-blue-200'
+							className='bg-offering-tint rounded-sm p-8 border border-offering-line'
 						>
 							<h2
-								className='text-2xl font-bold text-slate-900 mb-4'
+								className='text-2xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Jurisdictional Coverage
 							</h2>
 							<p
-								className='text-slate-700 leading-relaxed'
+								className='text-offering-body leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Yacht registration and related services are provided subject to
@@ -233,7 +235,7 @@ export default function MarineServicesPage() {
 				</section>
 
 				{/* Crew Employment & Management */}
-				<section className='border-b border-slate-200'>
+				<section className='border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -242,13 +244,13 @@ export default function MarineServicesPage() {
 							className='mb-12'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-4'
+								className='text-3xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Crew Employment & Management
 							</h2>
 							<p
-								className='text-slate-600 max-w-4xl leading-relaxed'
+								className='text-offering-muted max-w-4xl leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Crew employment is a core operational and compliance function
@@ -264,31 +266,31 @@ export default function MarineServicesPage() {
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.4, delay: 0.6 + idx * 0.05 }}
-									className='bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-blue-200 transition-colors'
+									className='bg-white rounded-sm border border-offering-line overflow-hidden hover:border-offering-blue transition-colors'
 								>
 									<div className='flex items-start gap-6 p-6'>
-										<div className='flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-lg font-bold shadow-lg shadow-blue-500/20'>
+										<div className='flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-sm bg-offering-ink text-white text-lg font-semibold shadow-none'>
 											{service.num}
 										</div>
 										<div className='flex-1 min-w-0'>
 											<h3
-												className='text-lg font-bold text-slate-900 mb-2'
+												className='text-lg font-semibold text-offering-ink mb-2'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
 												{service.title}
 											</h3>
 											<p
-												className='text-sm text-slate-600 mb-3 font-medium'
+												className='text-sm text-offering-muted mb-3 font-medium'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
-												<span className='text-blue-600'>Key Definition:</span>{" "}
+												<span className='text-offering-blue'>Key Definition:</span>{" "}
 												{service.definition}
 											</p>
 											<p
-												className='text-sm text-slate-700 leading-relaxed'
+												className='text-sm text-offering-body leading-relaxed'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
-												<span className='font-semibold text-slate-900'>
+												<span className='font-semibold text-offering-ink'>
 													Purpose:
 												</span>{" "}
 												{service.purpose}
@@ -302,7 +304,7 @@ export default function MarineServicesPage() {
 				</section>
 
 				{/* Vessel Registration & Flag Administration */}
-				<section className='border-b border-slate-200'>
+				<section className='border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -311,13 +313,13 @@ export default function MarineServicesPage() {
 							className='mb-12'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-4'
+								className='text-3xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Vessel Registration & Flag Administration
 							</h2>
 							<p
-								className='text-slate-600 max-w-4xl leading-relaxed'
+								className='text-offering-muted max-w-4xl leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Comprehensive registration services ensuring compliance with
@@ -332,31 +334,31 @@ export default function MarineServicesPage() {
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.4, delay: 0.9 + idx * 0.05 }}
-									className='bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-blue-200 transition-colors'
+									className='bg-white rounded-sm border border-offering-line overflow-hidden hover:border-offering-blue transition-colors'
 								>
 									<div className='flex items-start gap-6 p-6'>
-										<div className='flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-lg font-bold shadow-lg shadow-blue-500/20'>
+										<div className='flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-sm bg-offering-ink text-white text-lg font-semibold shadow-none'>
 											{service.num}
 										</div>
 										<div className='flex-1 min-w-0'>
 											<h3
-												className='text-lg font-bold text-slate-900 mb-2'
+												className='text-lg font-semibold text-offering-ink mb-2'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
 												{service.title}
 											</h3>
 											<p
-												className='text-sm text-slate-600 mb-3 font-medium'
+												className='text-sm text-offering-muted mb-3 font-medium'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
-												<span className='text-blue-600'>Key Definition:</span>{" "}
+												<span className='text-offering-blue'>Key Definition:</span>{" "}
 												{service.definition}
 											</p>
 											<p
-												className='text-sm text-slate-700 leading-relaxed'
+												className='text-sm text-offering-body leading-relaxed'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
-												<span className='font-semibold text-slate-900'>
+												<span className='font-semibold text-offering-ink'>
 													Purpose:
 												</span>{" "}
 												{service.purpose}
@@ -370,7 +372,7 @@ export default function MarineServicesPage() {
 				</section>
 
 				{/* Vessel Ownership Structuring & Administration */}
-				<section className='border-b border-slate-200'>
+				<section className='border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -379,13 +381,13 @@ export default function MarineServicesPage() {
 							className='mb-12'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-4'
+								className='text-3xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Vessel Ownership Structuring & Administration
 							</h2>
 							<p
-								className='text-slate-600 max-w-4xl leading-relaxed'
+								className='text-offering-muted max-w-4xl leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Corporate and fiduciary services for efficient and compliant
@@ -400,31 +402,31 @@ export default function MarineServicesPage() {
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ duration: 0.4, delay: 1.2 + idx * 0.05 }}
-									className='bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-blue-200 transition-colors'
+									className='bg-white rounded-sm border border-offering-line overflow-hidden hover:border-offering-blue transition-colors'
 								>
 									<div className='flex items-start gap-6 p-6'>
-										<div className='flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-lg font-bold shadow-lg shadow-blue-500/20'>
+										<div className='flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-sm bg-offering-ink text-white text-lg font-semibold shadow-none'>
 											{service.num}
 										</div>
 										<div className='flex-1 min-w-0'>
 											<h3
-												className='text-lg font-bold text-slate-900 mb-2'
+												className='text-lg font-semibold text-offering-ink mb-2'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
 												{service.title}
 											</h3>
 											<p
-												className='text-sm text-slate-600 mb-3 font-medium'
+												className='text-sm text-offering-muted mb-3 font-medium'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
-												<span className='text-blue-600'>Key Definition:</span>{" "}
+												<span className='text-offering-blue'>Key Definition:</span>{" "}
 												{service.definition}
 											</p>
 											<p
-												className='text-sm text-slate-700 leading-relaxed'
+												className='text-sm text-offering-body leading-relaxed'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
-												<span className='font-semibold text-slate-900'>
+												<span className='font-semibold text-offering-ink'>
 													Purpose:
 												</span>{" "}
 												{service.purpose}
@@ -438,22 +440,22 @@ export default function MarineServicesPage() {
 				</section>
 
 				{/* Outsourced Model Benefits */}
-				<section className='border-b border-slate-200'>
+				<section className='border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6, delay: 1.5 }}
-							className='bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 border border-blue-200'
+							className='bg-offering-tint rounded-sm p-8 border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6'
+								className='text-2xl font-semibold text-offering-ink mb-6'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Outsourced Marine Services Model
 							</h3>
 							<p
-								className='text-slate-700 mb-6 leading-relaxed'
+								className='text-offering-body mb-6 leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								All marine services are delivered through specialist maritime,
@@ -463,9 +465,9 @@ export default function MarineServicesPage() {
 							<ul className='space-y-3 mb-6'>
 								{outsourcedBenefits.map((benefit, idx) => (
 									<li key={idx} className='flex items-start gap-3'>
-										<span className='text-blue-600 font-bold text-lg'>✓</span>
+										<span className='text-offering-blue font-semibold text-lg'>✓</span>
 										<span
-											className='text-slate-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											{benefit}
@@ -474,7 +476,7 @@ export default function MarineServicesPage() {
 								))}
 							</ul>
 							<p
-								className='text-slate-900 font-semibold'
+								className='text-offering-ink font-semibold'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Without structured outsourcing, yacht owners would otherwise

@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -34,13 +35,13 @@ export default function VanuatuForexProposalPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50'>
+			<div className='offering-page relative min-h-screen bg-white'>
 				{/* Header */}
-				<header className='sticky top-0 bg-white/95 border-b border-slate-200 z-50 shadow-sm'>
+				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line z-50 shadow-none'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='group flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors font-medium'
+							className='group flex items-center gap-2 text-sm text-offering-muted hover:text-offering-ink transition-colors font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							<span className='group-hover:-translate-x-1 transition-transform duration-300'>
@@ -49,12 +50,12 @@ export default function VanuatuForexProposalPage() {
 							Back
 						</button>
 						<h1
-							className='text-2xl font-bold text-slate-900'
-							style={{ fontFamily: "var(--font-benzin)" }}
+							className='text-2xl font-semibold text-offering-ink'
+							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							FOREX LICENSE — VANUATU
 						</h1>
-						<div className='w-16' aria-hidden='true'></div>
+						<div className='offering-mark-slot w-16'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -68,16 +69,16 @@ export default function VanuatuForexProposalPage() {
 						{/* Overview Section */}
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-6'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-3xl font-semibold text-offering-ink mb-6'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Proposal for Vanuatu Forex License
 							</h2>
 							<p
-								className='text-base text-slate-600 leading-relaxed mb-4'
+								className='text-base text-offering-muted leading-relaxed mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								(Executed via Boyar Partners' partner team)
@@ -86,14 +87,14 @@ export default function VanuatuForexProposalPage() {
 							<div className='space-y-6'>
 								<div>
 									<h3
-										className='text-xl font-bold text-slate-900 mb-4 uppercase tracking-wide'
-										style={{ fontFamily: "var(--font-benzin)" }}
+										className='text-xl font-semibold text-offering-ink mb-4 uppercase tracking-wide'
+										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										General Information and Advantages
 									</h3>
-									<div className='bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-6 border-l-4 border-blue-500 space-y-4'>
+									<div className='bg-offering-tint rounded-sm p-6 border-l-4 border-offering-gold space-y-4'>
 										<p
-											className='text-slate-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											Vanuatu is an Island located in the Asia Pacific, and is
@@ -102,7 +103,7 @@ export default function VanuatuForexProposalPage() {
 											European banking for this company is very challenging.
 										</p>
 										<p
-											className='text-slate-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											As of 8 January 2019, Amendments of Financial Dealers
@@ -111,14 +112,14 @@ export default function VanuatuForexProposalPage() {
 										</p>
 										<div className='mt-6 space-y-4'>
 											<div>
-												<h4 className='font-bold text-slate-900 mb-2'>
+												<h4 className='font-semibold text-offering-ink mb-2'>
 													Class A Principal's License:
 												</h4>
-												<p className='text-slate-700 text-sm ml-4'>
+												<p className='text-offering-body text-sm ml-4'>
 													means to carry on or purport to carry on the business
 													of dealing in any of the following securities:
 												</p>
-												<ul className='ml-8 mt-2 space-y-1 text-sm text-slate-700'>
+												<ul className='ml-8 mt-2 space-y-1 text-sm text-offering-body'>
 													<li>• debenture stocks; or</li>
 													<li>• loan stock, bonds; or</li>
 													<li>• certificate of deposit; or</li>
@@ -126,24 +127,24 @@ export default function VanuatuForexProposalPage() {
 												</ul>
 											</div>
 											<div>
-												<h4 className='font-bold text-slate-900 mb-2'>
+												<h4 className='font-semibold text-offering-ink mb-2'>
 													Class B Principal's License:
 												</h4>
-												<p className='text-slate-700 text-sm ml-4'>
+												<p className='text-offering-body text-sm ml-4'>
 													means to carry on or purport to carry on the business
 													of dealing in future contracts and derivative products
 													but not limited to futures and options
 												</p>
 											</div>
 											<div>
-												<h4 className='font-bold text-slate-900 mb-2'>
+												<h4 className='font-semibold text-offering-ink mb-2'>
 													Class C Principal's License:
 												</h4>
-												<p className='text-slate-700 text-sm ml-4'>
+												<p className='text-offering-body text-sm ml-4'>
 													means to carry on or purport to carry on the business
 													of dealing in any of the following securities:
 												</p>
-												<ul className='ml-8 mt-2 space-y-1 text-sm text-slate-700'>
+												<ul className='ml-8 mt-2 space-y-1 text-sm text-offering-body'>
 													<li>
 														• shares in share capital of a corporation; or
 													</li>
@@ -173,11 +174,11 @@ export default function VanuatuForexProposalPage() {
 						{/* Structure Section */}
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Structure of the Company
 							</h3>
@@ -212,16 +213,16 @@ export default function VanuatuForexProposalPage() {
 								].map((item, idx) => (
 									<div
 										key={idx}
-										className='bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-6 border border-slate-200'
+										className='bg-offering-tint rounded-sm p-6 border border-offering-line'
 									>
 										<h4
-											className='font-bold text-slate-900 mb-3'
-											style={{ fontFamily: "var(--font-benzin)" }}
+											className='font-semibold text-offering-ink mb-3'
+											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											{item.title}
 										</h4>
 										<p
-											className='text-slate-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											{item.content}
@@ -234,34 +235,34 @@ export default function VanuatuForexProposalPage() {
 						{/* Incorporation and Licensing */}
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Incorporation and Licensing
 							</h3>
 							<div className='space-y-6'>
-								<div className='bg-blue-50 border-2 border-blue-200 rounded-xl p-6'>
-									<h4 className='font-bold text-slate-900 mb-2'>
+								<div className='bg-offering-tint border-2 border-offering-line rounded-sm p-6'>
+									<h4 className='font-semibold text-offering-ink mb-2'>
 										Timeframe for the incorporation of the Company and licensing
 									</h4>
-									<p className='text-slate-700 font-medium text-lg'>
+									<p className='text-offering-body font-medium text-lg'>
 										Approx. 3–5 months
 									</p>
-									<p className='text-slate-600 text-sm mt-2'>
+									<p className='text-offering-muted text-sm mt-2'>
 										(1–2 week for incorporation) | (3 months for licensing)
 									</p>
 								</div>
-								<div className='bg-emerald-50 border-2 border-emerald-200 rounded-xl p-6'>
-									<h4 className='font-bold text-slate-900 mb-2'>
+								<div className='bg-offering-tint border-2 border-offering-line rounded-sm p-6'>
+									<h4 className='font-semibold text-offering-ink mb-2'>
 										Minimum capital requirements
 									</h4>
-									<p className='text-slate-700 font-medium text-lg'>
+									<p className='text-offering-body font-medium text-lg'>
 										50,000 USD government bond
 									</p>
-									<p className='text-slate-600 text-sm mt-2'>
+									<p className='text-offering-muted text-sm mt-2'>
 										There is not a required minimum share capital, there is only
 										a 50,000 USD government bond
 									</p>
@@ -272,30 +273,30 @@ export default function VanuatuForexProposalPage() {
 						{/* Procedure and Requirements */}
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Procedure and Requirements
 							</h3>
 							<div className='space-y-6'>
 								<div>
-									<h4 className='font-bold text-slate-900 mb-4 text-lg'>
+									<h4 className='font-semibold text-offering-ink mb-4 text-lg'>
 										Application forms
 									</h4>
-									<p className='text-slate-700'>
+									<p className='text-offering-body'>
 										Provided by Boyar Partners' partner team
 									</p>
 								</div>
 								<div className='border-t pt-6'>
-									<h4 className='font-bold text-slate-900 mb-4 text-lg'>
+									<h4 className='font-semibold text-offering-ink mb-4 text-lg'>
 										Documents for company incorporation and licensing
 									</h4>
 									<div className='space-y-4'>
 										<div>
-											<h5 className='font-semibold text-slate-900 mb-3'>
+											<h5 className='font-semibold text-offering-ink mb-3'>
 												Required documents from all involved individuals
 												(directors, shareholders and beneficial owners):
 											</h5>
@@ -310,9 +311,9 @@ export default function VanuatuForexProposalPage() {
 												].map((doc, idx) => (
 													<li
 														key={idx}
-														className='flex items-start gap-3 text-slate-700'
+														className='flex items-start gap-3 text-offering-body'
 													>
-														<span className='text-blue-600 font-bold mt-1'>
+														<span className='text-offering-blue font-semibold mt-1'>
 															▪
 														</span>
 														{doc}
@@ -320,8 +321,8 @@ export default function VanuatuForexProposalPage() {
 												))}
 											</ul>
 										</div>
-										<div className='bg-slate-50 rounded-lg p-4 border border-slate-200'>
-											<h5 className='font-semibold text-slate-900 mb-3'>
+										<div className='bg-offering-tint rounded-sm p-4 border border-offering-line'>
+											<h5 className='font-semibold text-offering-ink mb-3'>
 												For a corporate shareholder required documents include:
 											</h5>
 											<ul className='space-y-2 ml-4'>
@@ -333,9 +334,9 @@ export default function VanuatuForexProposalPage() {
 												].map((doc, idx) => (
 													<li
 														key={idx}
-														className='flex items-start gap-3 text-slate-700'
+														className='flex items-start gap-3 text-offering-body'
 													>
-														<span className='text-blue-600 font-bold mt-1'>
+														<span className='text-offering-blue font-semibold mt-1'>
 															▪
 														</span>
 														{doc}
@@ -351,25 +352,25 @@ export default function VanuatuForexProposalPage() {
 						{/* Services Section */}
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Services
 							</h3>
-							<p className='text-slate-600 mb-4 italic'>
+							<p className='text-offering-muted mb-4 italic'>
 								(Delivered via Boyar Partners' partner teams)
 							</p>
-							<div className='bg-amber-50 border-2 border-amber-200 rounded-xl p-6 mb-6'>
-								<h4 className='font-bold text-slate-900 mb-2'>Pricing</h4>
-								<p className='text-slate-700 font-medium'>
+							<div className='bg-offering-tint border-2 border-offering-line rounded-sm p-6 mb-6'>
+								<h4 className='font-semibold text-offering-ink mb-2'>Pricing</h4>
+								<p className='text-offering-body font-medium'>
 									Available at the time of enquiry
 								</p>
 							</div>
 							<div>
-								<h4 className='font-bold text-slate-900 mb-4'>
+								<h4 className='font-semibold text-offering-ink mb-4'>
 									Services include:
 								</h4>
 								<ul className='space-y-3 mb-6'>
@@ -385,16 +386,16 @@ export default function VanuatuForexProposalPage() {
 									].map((service, idx) => (
 										<li
 											key={idx}
-											className='flex items-start gap-3 text-slate-700'
+											className='flex items-start gap-3 text-offering-body'
 										>
-											<span className='text-blue-600 font-bold mt-1'>✓</span>
+											<span className='text-offering-blue font-semibold mt-1'>✓</span>
 											{service}
 										</li>
 									))}
 								</ul>
 							</div>
-							<div className='bg-slate-50 rounded-xl p-6 border border-slate-200'>
-								<h4 className='font-bold text-slate-900 mb-4'>
+							<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+								<h4 className='font-semibold text-offering-ink mb-4'>
 									Optional services:
 								</h4>
 								<ul className='space-y-3'>
@@ -406,9 +407,9 @@ export default function VanuatuForexProposalPage() {
 									].map((service, idx) => (
 										<li
 											key={idx}
-											className='flex items-start gap-3 text-slate-700'
+											className='flex items-start gap-3 text-offering-body'
 										>
-											<span className='text-slate-400 font-bold mt-1'>▪</span>
+											<span className='text-offering-muted font-semibold mt-1'>▪</span>
 											{service}
 										</li>
 									))}
@@ -419,35 +420,35 @@ export default function VanuatuForexProposalPage() {
 						{/* Taxation and Reporting */}
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Taxation and Reporting
 							</h3>
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-								<div className='bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border-2 border-green-200'>
-									<h4 className='font-bold text-slate-900 mb-4 text-lg'>
+								<div className='bg-offering-tint rounded-sm p-6 border-2 border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-4 text-lg'>
 										Taxes
 									</h4>
 									<ul className='space-y-2'>
-										<li className='flex items-center gap-2 text-slate-700'>
-											<span className='text-green-600 font-bold'>✓</span>
+										<li className='flex items-center gap-2 text-offering-body'>
+											<span className='text-offering-blue font-semibold'>✓</span>
 											Corporate income tax – 0%
 										</li>
-										<li className='flex items-center gap-2 text-slate-700'>
-											<span className='text-green-600 font-bold'>✓</span>
+										<li className='flex items-center gap-2 text-offering-body'>
+											<span className='text-offering-blue font-semibold'>✓</span>
 											Other taxes – 0%
 										</li>
 									</ul>
 								</div>
-								<div className='bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border-2 border-blue-200'>
-									<h4 className='font-bold text-slate-900 mb-4 text-lg'>
+								<div className='bg-offering-tint rounded-sm p-6 border-2 border-offering-line'>
+									<h4 className='font-semibold text-offering-ink mb-4 text-lg'>
 										Reporting
 									</h4>
-									<p className='text-slate-700'>
+									<p className='text-offering-body'>
 										The proposed company will be required to file its audited
 										financial statements and tax return within 3 months from its
 										balance sheet date

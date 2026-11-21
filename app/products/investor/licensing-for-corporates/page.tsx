@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import Link from "next/link";
@@ -264,12 +265,12 @@ export default function LicensingForCorporatesPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50'>
-				<header className='sticky top-0 bg-white/95 border-b border-slate-200 z-50 shadow-sm'>
+			<div className='offering-page relative min-h-screen bg-white'>
+				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line z-50 shadow-none'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='group flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors font-medium'
+							className='group flex items-center gap-2 text-sm text-offering-muted hover:text-offering-ink transition-colors font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							<span className='group-hover:-translate-x-1 transition-transform duration-300'>
@@ -278,12 +279,12 @@ export default function LicensingForCorporatesPage() {
 							Back
 						</button>
 						<h1
-							className='text-2xl font-bold text-slate-900'
-							style={{ fontFamily: "var(--font-benzin)" }}
+							className='text-2xl font-semibold text-offering-ink'
+							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							International Licensing for Corporates
 						</h1>
-						<div className='w-16' aria-hidden='true'></div>
+						<div className='offering-mark-slot w-16'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -296,21 +297,21 @@ export default function LicensingForCorporatesPage() {
 					>
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-6'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-3xl font-semibold text-offering-ink mb-6'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Our Licensing Philosophy
 							</h2>
 							<div
-								className='space-y-4 text-slate-700'
+								className='space-y-4 text-offering-body'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								<p className='text-base leading-relaxed'>
 									At Boyar Partners, international licensing is treated as a{" "}
-									<span className='font-semibold text-slate-900'>
+									<span className='font-semibold text-offering-ink'>
 										structural decision
 									</span>{" "}
 									rather than a transactional service. Regulatory authorisation
@@ -320,14 +321,14 @@ export default function LicensingForCorporatesPage() {
 								</p>
 								<p className='text-base leading-relaxed'>
 									We advise clients across{" "}
-									<span className='font-semibold text-slate-900'>
+									<span className='font-semibold text-offering-ink'>
 										regulated financial services, digital assets, gaming,
 										banking, and investment management
 									</span>
 									, supporting them from jurisdiction selection through to
 									regulatory approval and post-licensing operational alignment.
 								</p>
-								<div className='bg-gradient-to-r from-slate-50 to-blue-50 border-l-4 border-blue-600 rounded-r-xl p-6 mt-6'>
+								<div className='bg-offering-tint border-l-4 border-offering-gold rounded-r-sm p-6 mt-6'>
 									<p className='text-sm leading-relaxed'>
 										All licensing engagements are executed in coordination with
 										licensed partner firms, local regulators, and
@@ -340,8 +341,8 @@ export default function LicensingForCorporatesPage() {
 
 						<motion.section variants={itemVariants}>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-6'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-3xl font-semibold text-offering-ink mb-6'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Delivery Framework
 							</h2>
@@ -375,11 +376,11 @@ export default function LicensingForCorporatesPage() {
 								].map((phase, idx) => (
 									<div
 										key={idx}
-										className='bg-white rounded-xl p-6 shadow-lg border border-slate-200'
+										className='bg-white rounded-sm p-6 shadow-none border border-offering-line'
 									>
 										<h3
-											className='text-lg font-bold text-slate-900 mb-4'
-											style={{ fontFamily: "var(--font-benzin)" }}
+											className='text-lg font-semibold text-offering-ink mb-4'
+											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											{phase.title}
 										</h3>
@@ -387,10 +388,10 @@ export default function LicensingForCorporatesPage() {
 											{phase.items.map((item, i) => (
 												<li
 													key={i}
-													className='flex items-start gap-2 text-sm text-slate-600'
+													className='flex items-start gap-2 text-sm text-offering-muted'
 													style={{ fontFamily: "var(--font-avenir)" }}
 												>
-													<span className='text-blue-600 mt-1'>▪</span>
+													<span className='text-offering-blue mt-1'>▪</span>
 													{item}
 												</li>
 											))}
@@ -398,27 +399,27 @@ export default function LicensingForCorporatesPage() {
 									</div>
 								))}
 							</div>
-							<div className='mt-6 bg-gradient-to-br from-slate-900 to-slate-700 rounded-2xl p-8 text-white'>
+							<div className='mt-6 bg-offering-ink rounded-sm p-8 text-white'>
 								<h3
-									className='text-xl font-bold mb-4'
-									style={{ fontFamily: "var(--font-benzin)" }}
+									className='text-xl font-semibold mb-4'
+									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Commercial Terms
 								</h3>
 								<p
-									className='text-sm text-slate-200 leading-relaxed mb-3'
+									className='text-sm text-offering-line leading-relaxed mb-3'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Licensing costs vary depending on regulatory scope, capital
 									requirements, staffing obligations, and optional
 									infrastructure.
 								</p>
-								<div className='inline-block bg-white/10  rounded-lg px-4 py-2 border border-white/20'>
+								<div className='inline-block bg-white/10  rounded-sm px-4 py-2 border border-white/20'>
 									<p className='text-sm font-medium'>
 										Pricing is available at the time of enquiry
 									</p>
 								</div>
-								<p className='text-xs text-slate-400 mt-4'>
+								<p className='text-xs text-offering-line mt-4'>
 									Any referenced estimates are indicative only and subject to
 									change due to regulatory requirements, third-party costs, or
 									optional services.
@@ -428,8 +429,8 @@ export default function LicensingForCorporatesPage() {
 
 						<motion.section variants={itemVariants}>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-6'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-3xl font-semibold text-offering-ink mb-6'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Available License Types
 							</h2>
@@ -440,10 +441,10 @@ export default function LicensingForCorporatesPage() {
 										<button
 											key={category}
 											onClick={() => setSelectedFilter(category)}
-											className={`px-5 py-2.5 rounded-lg font-medium transition-colors duration-300 ${
+											className={`px-5 py-2.5 rounded-sm font-medium transition-colors duration-300 ${
 												selectedFilter === category
-													? "bg-slate-900 text-white shadow-lg"
-													: "bg-white text-slate-600 hover:bg-slate-50 border-2 border-slate-200 hover:border-slate-300"
+													? "bg-offering-ink text-white shadow-none"
+													: "bg-white text-offering-muted hover:bg-offering-tint border-2 border-offering-line hover:border-offering-blue"
 											}`}
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
@@ -462,7 +463,7 @@ export default function LicensingForCorporatesPage() {
 									))}
 								</div>
 								<p
-									className='text-sm text-slate-500 mt-4'
+									className='text-sm text-offering-muted mt-4'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Showing {filteredLicenses.length} of {licenses.length}{" "}
@@ -482,62 +483,62 @@ export default function LicensingForCorporatesPage() {
 											href={`/products/investor/licensing-for-corporates/proposals/${license.slug}`}
 											className='block group'
 										>
-											<div className='bg-white rounded-xl p-6 shadow-lg border-2 border-slate-200 hover:border-slate-900 hover:shadow-xl transition-colors duration-300 h-full'>
+											<div className='bg-white rounded-sm p-6 shadow-none border-2 border-offering-line hover:border-offering-blue transition-colors duration-300 h-full'>
 												<div className='flex items-start justify-between mb-4'>
 													<div className='flex-1'>
 														<h3
-															className='text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors'
-															style={{ fontFamily: "var(--font-benzin)" }}
+															className='text-lg font-semibold text-offering-ink mb-2 group-hover:text-offering-blue transition-colors'
+															style={{ fontFamily: "var(--font-avenir)" }}
 														>
 															{license.title}
 														</h3>
-														<p className='text-sm text-slate-500 mb-3'>
+														<p className='text-sm text-offering-muted mb-3'>
 															{license.jurisdiction}
 														</p>
 													</div>
-													<span className='text-slate-400 group-hover:text-slate-900 transition-colors'>
+													<span className='text-offering-muted group-hover:text-offering-ink transition-colors'>
 														→
 													</span>
 												</div>
 
 												<p
-													className='text-sm text-slate-600 leading-relaxed mb-4'
+													className='text-sm text-offering-muted leading-relaxed mb-4'
 													style={{ fontFamily: "var(--font-avenir)" }}
 												>
 													{license.excerpt}
 												</p>
 
 												<div className='flex flex-wrap gap-2 mb-4'>
-													<span className='px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium'>
+													<span className='px-3 py-1 bg-offering-tint text-offering-body rounded-full text-xs font-medium'>
 														{license.category}
 													</span>
-													<span className='px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium'>
+													<span className='px-3 py-1 bg-offering-tint text-offering-blue rounded-full text-xs font-medium'>
 														{license.timeframe}
 													</span>
-													<span className='px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-medium'>
+													<span className='px-3 py-1 bg-offering-tint text-offering-blue rounded-full text-xs font-medium'>
 														{license.capital}
 													</span>
 												</div>
 
-												<div className='border-t border-slate-200 pt-4'>
-													<p className='text-xs text-slate-500 mb-2 font-semibold'>
+												<div className='border-t border-offering-line pt-4'>
+													<p className='text-xs text-offering-muted mb-2 font-semibold'>
 														Key Highlights:
 													</p>
 													<ul className='space-y-1'>
 														{license.highlights.map((highlight, i) => (
 															<li
 																key={i}
-																className='text-xs text-slate-600 flex items-start gap-2'
+																className='text-xs text-offering-muted flex items-start gap-2'
 															>
-																<span className='text-blue-600 mt-0.5'>▪</span>
+																<span className='text-offering-blue mt-0.5'>▪</span>
 																{highlight}
 															</li>
 														))}
 													</ul>
 												</div>
 
-												<div className='mt-4 pt-4 border-t border-slate-200'>
-													<span className='text-sm font-medium text-blue-600 group-hover:text-blue-700'>
+												<div className='mt-4 pt-4 border-t border-offering-line'>
+													<span className='text-sm font-medium text-offering-blue group-hover:text-offering-blue'>
 														View Full Proposal →
 													</span>
 												</div>

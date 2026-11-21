@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -122,14 +123,14 @@ export default function CorporateStructuringPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100'>
+			<div className='offering-page min-h-screen bg-white'>
 				{/* Header */}
-				<div className='border-b border-gray-100 bg-white/80 '>
+				<div className='offering-masthead border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
 						<div className='flex h-16 items-center justify-between'>
 							<button
 								onClick={() => router.back()}
-								className='inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900'
+								className='inline-flex items-center gap-2 text-sm font-medium text-offering-muted transition-colors hover:text-offering-ink'
 							>
 								<svg
 									className='h-4 w-4'
@@ -146,6 +147,7 @@ export default function CorporateStructuringPage() {
 								</svg>
 								Back
 							</button>
+							<OfferingMark />
 						</div>
 					</div>
 				</div>
@@ -160,13 +162,13 @@ export default function CorporateStructuringPage() {
 						{/* Title */}
 						<div className='mb-12'>
 							<h1
-								className='text-4xl sm:text-5xl font-bold mb-4 tracking-tight text-slate-900'
+								className='text-4xl sm:text-5xl font-semibold mb-4 tracking-tight text-offering-ink'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Corporate Structuring
 							</h1>
 							<p
-								className='text-xl text-slate-600 max-w-3xl'
+								className='text-xl text-offering-muted max-w-3xl'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Private Clients, Family Enterprises & Cross-Border Holdings
@@ -176,14 +178,14 @@ export default function CorporateStructuringPage() {
 						{/* Definition & Strategic Purpose */}
 						<div className='mb-16'>
 							<h2
-								className='text-3xl font-bold mb-6 text-slate-900'
+								className='text-3xl font-semibold mb-6 text-offering-ink'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Definition & Strategic Purpose
 							</h2>
-							<div className='bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200'>
+							<div className='bg-offering-tint rounded-sm p-8 border border-offering-line'>
 								<p
-									className='text-gray-700 leading-relaxed mb-6'
+									className='text-offering-body leading-relaxed mb-6'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Corporate structuring refers to the design, implementation,
@@ -192,7 +194,7 @@ export default function CorporateStructuringPage() {
 									clients, families, and closely held enterprises.
 								</p>
 								<p
-									className='text-gray-700 leading-relaxed mb-6'
+									className='text-offering-body leading-relaxed mb-6'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									For private clients, corporate structures are not created in
@@ -200,36 +202,36 @@ export default function CorporateStructuringPage() {
 								</p>
 								<ul className='space-y-2 ml-4 mb-6'>
 									<li className='flex items-start gap-3'>
-										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mt-2'></div>
+										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-offering-ink mt-2'></div>
 										<span
-											className='text-gray-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											Trusts and foundations
 										</span>
 									</li>
 									<li className='flex items-start gap-3'>
-										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mt-2'></div>
+										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-offering-ink mt-2'></div>
 										<span
-											className='text-gray-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											Family office frameworks
 										</span>
 									</li>
 									<li className='flex items-start gap-3'>
-										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mt-2'></div>
+										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-offering-ink mt-2'></div>
 										<span
-											className='text-gray-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											Estate and succession planning
 										</span>
 									</li>
 									<li className='flex items-start gap-3'>
-										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mt-2'></div>
+										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-offering-ink mt-2'></div>
 										<span
-											className='text-gray-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											Business continuity and exit strategies
@@ -237,7 +239,7 @@ export default function CorporateStructuringPage() {
 									</li>
 								</ul>
 								<p
-									className='text-gray-700 leading-relaxed'
+									className='text-offering-body leading-relaxed'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									A properly designed structure delivers control, protection,
@@ -250,7 +252,7 @@ export default function CorporateStructuringPage() {
 						{/* Scope of Corporate Structuring Services */}
 						<div className='mb-16'>
 							<h2
-								className='text-3xl font-bold mb-8 text-gray-900'
+								className='text-3xl font-semibold mb-8 text-offering-ink'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Scope of Corporate Structuring Services
@@ -262,29 +264,29 @@ export default function CorporateStructuringPage() {
 										initial={{ opacity: 0, y: 20 }}
 										animate={{ opacity: 1, y: 0 }}
 										transition={{ duration: 0.5, delay: index * 0.08 }}
-										className='bg-white rounded-xl border border-gray-200 p-6 hover:border-teal-200 transition-colors'
+										className='bg-white rounded-sm border border-offering-line p-6 hover:border-offering-blue transition-colors'
 									>
 										<div className='flex items-start gap-4'>
-											<div className='flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold'>
+											<div className='flex-shrink-0 w-10 h-10 rounded-sm bg-offering-ink flex items-center justify-center text-white font-semibold'>
 												{service.number}
 											</div>
 											<div className='flex-1'>
 												<h3
-													className='text-lg font-bold mb-2 text-gray-900'
+													className='text-lg font-semibold mb-2 text-offering-ink'
 													style={{ fontFamily: "var(--font-avenir)" }}
 												>
 													{service.title}
 												</h3>
 												<p
-													className='text-gray-700 leading-relaxed mb-3'
+													className='text-offering-body leading-relaxed mb-3'
 													style={{ fontFamily: "var(--font-avenir)" }}
 												>
 													{service.description}
 												</p>
 												{service.note && (
-													<div className='bg-teal-50/50 rounded-lg p-3 border border-teal-100'>
+													<div className='bg-offering-tint/50 rounded-sm p-3 border border-offering-line'>
 														<p
-															className='text-sm text-gray-700 leading-relaxed italic'
+															className='text-sm text-offering-body leading-relaxed italic'
 															style={{ fontFamily: "var(--font-avenir)" }}
 														>
 															{service.note}
@@ -301,22 +303,22 @@ export default function CorporateStructuringPage() {
 						{/* Business Succession & Sale */}
 						<div className='mb-16'>
 							<h2
-								className='text-3xl font-bold mb-8 text-gray-900'
+								className='text-3xl font-semibold mb-8 text-offering-ink'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Business Succession & Sale (Integrated Structuring)
 							</h2>
 
 							{/* Strategic Objectives */}
-							<div className='bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200 mb-8'>
+							<div className='bg-offering-tint rounded-sm p-8 border border-offering-line mb-8'>
 								<h3
-									className='text-xl font-bold mb-4 text-gray-900'
+									className='text-xl font-semibold mb-4 text-offering-ink'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Strategic Objectives
 								</h3>
 								<p
-									className='text-gray-700 leading-relaxed mb-4'
+									className='text-offering-body leading-relaxed mb-4'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Business succession and sale planning is a core pillar of
@@ -325,45 +327,45 @@ export default function CorporateStructuringPage() {
 								</p>
 								<ul className='space-y-2'>
 									<li className='flex items-start gap-3'>
-										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mt-2'></div>
+										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-offering-ink mt-2'></div>
 										<span
-											className='text-gray-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											Ensure continuity of operations
 										</span>
 									</li>
 									<li className='flex items-start gap-3'>
-										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mt-2'></div>
+										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-offering-ink mt-2'></div>
 										<span
-											className='text-gray-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											Preserve enterprise value
 										</span>
 									</li>
 									<li className='flex items-start gap-3'>
-										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mt-2'></div>
+										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-offering-ink mt-2'></div>
 										<span
-											className='text-gray-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											Facilitate orderly ownership transition or monetisation
 										</span>
 									</li>
 									<li className='flex items-start gap-3'>
-										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mt-2'></div>
+										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-offering-ink mt-2'></div>
 										<span
-											className='text-gray-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											Align family, shareholder, and management interests
 										</span>
 									</li>
 									<li className='flex items-start gap-3'>
-										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mt-2'></div>
+										<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-offering-ink mt-2'></div>
 										<span
-											className='text-gray-700 leading-relaxed'
+											className='text-offering-body leading-relaxed'
 											style={{ fontFamily: "var(--font-avenir)" }}
 										>
 											Provide liquidity in succession or exit scenarios
@@ -371,7 +373,7 @@ export default function CorporateStructuringPage() {
 									</li>
 								</ul>
 								<p
-									className='text-gray-700 leading-relaxed mt-4 text-sm italic'
+									className='text-offering-body leading-relaxed mt-4 text-sm italic'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Succession and exit planning is treated as a governance and
@@ -387,28 +389,28 @@ export default function CorporateStructuringPage() {
 										initial={{ opacity: 0, y: 20 }}
 										animate={{ opacity: 1, y: 0 }}
 										transition={{ duration: 0.5, delay: index * 0.08 }}
-										className='bg-white rounded-xl border border-gray-200 p-6 hover:border-teal-200 transition-colors'
+										className='bg-white rounded-sm border border-offering-line p-6 hover:border-offering-blue transition-colors'
 									>
 										<div className='flex items-start gap-4'>
-											<div className='flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold'>
+											<div className='flex-shrink-0 w-10 h-10 rounded-sm bg-offering-ink flex items-center justify-center text-white font-semibold'>
 												{service.number}
 											</div>
 											<div className='flex-1'>
 												<h4
-													className='text-lg font-bold mb-2 text-gray-900'
+													className='text-lg font-semibold mb-2 text-offering-ink'
 													style={{ fontFamily: "var(--font-avenir)" }}
 												>
 													{service.title}
 												</h4>
 												<p
-													className='text-gray-700 leading-relaxed'
+													className='text-offering-body leading-relaxed'
 													style={{ fontFamily: "var(--font-avenir)" }}
 												>
 													{service.description}
 												</p>
 												{service.note && (
 													<p
-														className='text-gray-600 leading-relaxed mt-3 text-sm italic'
+														className='text-offering-muted leading-relaxed mt-3 text-sm italic'
 														style={{ fontFamily: "var(--font-avenir)" }}
 													>
 														{service.note}
@@ -424,27 +426,27 @@ export default function CorporateStructuringPage() {
 						{/* Key Corporate & Succession Documentation */}
 						<div className='mb-16'>
 							<h2
-								className='text-3xl font-bold mb-8 text-gray-900'
+								className='text-3xl font-semibold mb-8 text-offering-ink'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Key Corporate & Succession Documentation
 							</h2>
 							<p
-								className='text-gray-600 leading-relaxed mb-6'
+								className='text-offering-muted leading-relaxed mb-6'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Typical documentation ensures legal clarity, enforceability, and
 								transition certainty:
 							</p>
-							<div className='bg-white rounded-xl border border-gray-200 p-8'>
+							<div className='bg-white rounded-sm border border-offering-line p-8'>
 								<ul className='space-y-3'>
 									{keyDocuments.map((doc, index) => (
 										<li key={index} className='flex items-start gap-3'>
-											<div className='flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-xs font-bold mt-0.5'>
+											<div className='flex-shrink-0 w-6 h-6 rounded-full bg-offering-ink flex items-center justify-center text-white text-xs font-semibold mt-0.5'>
 												{index + 1}
 											</div>
 											<span
-												className='text-gray-700 leading-relaxed flex-1'
+												className='text-offering-body leading-relaxed flex-1'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
 												{doc}
@@ -458,14 +460,14 @@ export default function CorporateStructuringPage() {
 						{/* Outsourced Corporate Structuring Model */}
 						<div className='mb-16'>
 							<h2
-								className='text-3xl font-bold mb-6 text-gray-900'
+								className='text-3xl font-semibold mb-6 text-offering-ink'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Outsourced Corporate Structuring Model
 							</h2>
-							<div className='bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200 mb-8'>
+							<div className='bg-offering-tint rounded-sm p-8 border border-offering-line mb-8'>
 								<p
-									className='text-gray-700 leading-relaxed mb-6'
+									className='text-offering-body leading-relaxed mb-6'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Corporate structuring, succession, and sale preparation are
@@ -475,11 +477,11 @@ export default function CorporateStructuringPage() {
 								<ul className='space-y-3'>
 									{outsourcedBenefits.map((benefit, index) => (
 										<li key={index} className='flex items-start gap-3'>
-											<div className='flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-xs font-bold'>
+											<div className='flex-shrink-0 w-6 h-6 rounded-full bg-offering-ink flex items-center justify-center text-white text-xs font-semibold'>
 												{index + 1}
 											</div>
 											<span
-												className='text-gray-700 leading-relaxed'
+												className='text-offering-body leading-relaxed'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
 												{benefit}
@@ -488,7 +490,7 @@ export default function CorporateStructuringPage() {
 									))}
 								</ul>
 								<p
-									className='text-gray-700 leading-relaxed mt-6 text-sm'
+									className='text-offering-body leading-relaxed mt-6 text-sm'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Without this model, clients would otherwise need to
@@ -502,14 +504,14 @@ export default function CorporateStructuringPage() {
 						{/* Positioning Summary */}
 						<div className='mb-16'>
 							<h2
-								className='text-3xl font-bold mb-6 text-gray-900'
+								className='text-3xl font-semibold mb-6 text-offering-ink'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Positioning Summary
 							</h2>
-							<div className='bg-white rounded-xl border border-gray-200 p-8'>
+							<div className='bg-white rounded-sm border border-offering-line p-8'>
 								<p
-									className='text-gray-700 leading-relaxed mb-6'
+									className='text-offering-body leading-relaxed mb-6'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									For private clients and family enterprises, corporate
@@ -519,9 +521,9 @@ export default function CorporateStructuringPage() {
 								<ul className='space-y-3 mb-6'>
 									{positioningSummaryPoints.map((point, index) => (
 										<li key={index} className='flex items-start gap-3'>
-											<div className='flex-shrink-0 w-2 h-2 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mt-2.5'></div>
+											<div className='flex-shrink-0 w-2 h-2 rounded-full bg-offering-ink mt-2.5'></div>
 											<span
-												className='text-gray-700 leading-relaxed'
+												className='text-offering-body leading-relaxed'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
 												{point}
@@ -530,7 +532,7 @@ export default function CorporateStructuringPage() {
 									))}
 								</ul>
 								<p
-									className='text-gray-700 leading-relaxed font-semibold'
+									className='text-offering-body leading-relaxed font-semibold'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									When designed correctly, it delivers control today and

@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -11,24 +12,24 @@ export default function EconomicSubstancePage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-white text-slate-900'>
+			<div className='offering-page relative min-h-screen bg-white text-offering-ink'>
 				{/* Header */}
-				<header className='sticky top-0 bg-white/95  border-b border-slate-200 z-30'>
+				<header className='offering-masthead sticky top-0 bg-white/95  border-b border-offering-line z-30'>
 					<div className='mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='text-sm text-slate-600 hover:text-slate-900 transition flex items-center gap-2 font-medium'
+							className='text-sm text-offering-muted hover:text-offering-ink transition flex items-center gap-2 font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							← Back
 						</button>
 						<h1
-							className='text-2xl sm:text-3xl font-semibold text-slate-900'
+							className='text-2xl sm:text-3xl font-semibold text-offering-ink'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							Economic Substance & Governance Services
 						</h1>
-						<div className='w-8'></div>
+						<div className='offering-mark-slot w-8'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -42,19 +43,19 @@ export default function EconomicSubstancePage() {
 							transition={{ duration: 0.5 }}
 						>
 							<p
-								className='text-sm uppercase tracking-[0.2em] text-blue-600 mb-3 font-semibold'
+								className='text-sm uppercase tracking-[0.2em] text-offering-blue mb-3 font-semibold'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Outsourced / Coordinated Compliance Function
 							</p>
 							<h2
-								className='text-3xl sm:text-4xl font-semibold text-slate-900 mb-4'
+								className='text-3xl sm:text-4xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Advisory, Implementation, and Ongoing Compliance Support
 							</h2>
 							<p
-								className='text-base text-slate-700 leading-relaxed mb-4'
+								className='text-base text-offering-body leading-relaxed mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Boyar Partners provides economic substance advisory,
@@ -65,7 +66,7 @@ export default function EconomicSubstancePage() {
 								and quality-control framework.
 							</p>
 							<div
-								className='bg-blue-50 border border-blue-200 rounded-lg p-6 text-sm text-slate-800 leading-relaxed'
+								className='bg-offering-tint border border-offering-line rounded-sm p-6 text-sm text-offering-ink leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								The objective is to ensure entities demonstrate adequate
@@ -82,16 +83,16 @@ export default function EconomicSubstancePage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.05 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-3'
+								className='text-2xl font-semibold text-offering-ink mb-3'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Jurisdictional Coverage
 							</h3>
 							<p
-								className='text-sm text-slate-700 leading-relaxed'
+								className='text-sm text-offering-body leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Economic substance services are provided for entities operating
@@ -115,24 +116,24 @@ export default function EconomicSubstancePage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.1 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									01
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Economic Substance Classification Assistance
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Determine substance status and classification under
@@ -142,15 +143,15 @@ export default function EconomicSubstancePage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Scope Includes
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Activity analysis against statutory categories</li>
@@ -166,9 +167,9 @@ export default function EconomicSubstancePage() {
 										</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										This assessment forms the foundation of all subsequent
@@ -185,24 +186,24 @@ export default function EconomicSubstancePage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.15 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									02
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Physical Office Space & Equipment
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Provision of adequate physical presence where required by
@@ -212,15 +213,15 @@ export default function EconomicSubstancePage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Includes
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Registered and operational office space</li>
@@ -231,9 +232,9 @@ export default function EconomicSubstancePage() {
 										<li>Evidence of ongoing use and expenditure</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Office arrangements are proportionate to activity and
@@ -250,24 +251,24 @@ export default function EconomicSubstancePage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.2 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									03
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Full-Time or Part-Time Employees
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Structure local staffing aligned with economic substance
@@ -277,15 +278,15 @@ export default function EconomicSubstancePage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Support Includes
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Determination of staffing thresholds</li>
@@ -298,9 +299,9 @@ export default function EconomicSubstancePage() {
 										</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Staffing models demonstrate real decision-making and
@@ -317,24 +318,24 @@ export default function EconomicSubstancePage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.25 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									04
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Economic Substance Notifications & Reporting
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Timely and accurate submissions to competent authorities
@@ -344,15 +345,15 @@ export default function EconomicSubstancePage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Scope
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Initial substance notifications</li>
@@ -362,9 +363,9 @@ export default function EconomicSubstancePage() {
 										<li>Liaison with registered agents or reporting portals</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										All submissions are prepared to be defensible under
@@ -381,24 +382,24 @@ export default function EconomicSubstancePage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.3 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									05
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Administration Services
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Ongoing support to sustain substance compliance and avoid
@@ -408,15 +409,15 @@ export default function EconomicSubstancePage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Includes
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Maintenance of records evidencing local activity</li>
@@ -429,9 +430,9 @@ export default function EconomicSubstancePage() {
 										<li>Ongoing monitoring of regulatory changes</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Ensures continuity of compliance and reduces operational
@@ -448,24 +449,24 @@ export default function EconomicSubstancePage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.35 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<div className='flex items-start gap-5 mb-6'>
 								<div
-									className='text-4xl font-light text-slate-300'
+									className='text-4xl font-light text-offering-muted'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									06
 								</div>
 								<div className='flex-1'>
 									<h3
-										className='text-2xl font-semibold text-slate-900 mb-2'
+										className='text-2xl font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Comprehensive Governance Services
 									</h3>
 									<p
-										className='text-sm text-slate-700 mb-3'
+										className='text-sm text-offering-body mb-3'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Governance frameworks that demonstrate effective oversight,
@@ -475,15 +476,15 @@ export default function EconomicSubstancePage() {
 							</div>
 
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<p
-										className='text-sm font-semibold text-slate-900 mb-2'
+										className='text-sm font-semibold text-offering-ink mb-2'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Governance Support Includes
 									</p>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Board and management structuring</li>
@@ -494,9 +495,9 @@ export default function EconomicSubstancePage() {
 										<li>Oversight of outsourced activities</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Governance arrangements support both economic substance and
@@ -513,18 +514,18 @@ export default function EconomicSubstancePage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.4 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-4'
+								className='text-2xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Compliance & Regulatory Alignment
 							</h3>
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-								<div className='bg-white border border-slate-200 rounded p-5'>
+								<div className='bg-white border border-offering-line rounded p-5'>
 									<ul
-										className='space-y-2 text-sm text-slate-700'
+										className='space-y-2 text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										<li>Meet statutory substance thresholds</li>
@@ -539,9 +540,9 @@ export default function EconomicSubstancePage() {
 										<li>Remain audit-ready and inspection-ready</li>
 									</ul>
 								</div>
-								<div className='bg-blue-50 border border-blue-200 rounded p-5'>
+								<div className='bg-offering-tint border border-offering-line rounded p-5'>
 									<p
-										className='text-sm text-slate-700'
+										className='text-sm text-offering-body'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										Emphasis on proportionality, documentation, and
@@ -558,17 +559,17 @@ export default function EconomicSubstancePage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.45 }}
-							className='bg-slate-50 border border-slate-200 rounded-lg p-8'
+							className='bg-offering-tint border border-offering-line rounded-sm p-8'
 						>
 							<h3
-								className='text-2xl font-semibold text-slate-900 mb-3'
+								className='text-2xl font-semibold text-offering-ink mb-3'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Delivery & Oversight Model
 							</h3>
-							<div className='bg-white border border-slate-200 rounded p-5'>
+							<div className='bg-white border border-offering-line rounded p-5'>
 								<ul
-									className='space-y-2 text-sm text-slate-700'
+									className='space-y-2 text-sm text-offering-body'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									<li>
@@ -597,10 +598,10 @@ export default function EconomicSubstancePage() {
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.5 }}
-							className='bg-blue-50 border border-blue-300 rounded-lg p-10 text-center'
+							className='bg-offering-tint border border-offering-line rounded-sm p-10 text-center'
 						>
 							<p
-								className='text-xl text-slate-900 mb-4 font-semibold'
+								className='text-xl text-offering-ink mb-4 font-semibold'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								“Boyar Partners provides economic substance advisory,

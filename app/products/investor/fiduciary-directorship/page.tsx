@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -206,13 +207,13 @@ export default function FiduciaryDirectorshipPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100'>
+			<div className='offering-page min-h-screen bg-white'>
 				{/* Header */}
-				<header className='sticky top-0 bg-white/95 border-b border-slate-200/80 z-30 shadow-sm'>
+				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line/80 z-30 shadow-none'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-5 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='group flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors'
+							className='group flex items-center gap-2 text-sm font-medium text-offering-muted hover:text-offering-ink transition-colors'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							<span className='inline-block transition-transform group-hover:-translate-x-1'>
@@ -220,10 +221,11 @@ export default function FiduciaryDirectorshipPage() {
 							</span>
 							<span>Back</span>
 						</button>
+						<OfferingMark />
 						<div className='flex items-center gap-3'>
-							<div className='h-8 w-px bg-slate-300'></div>
+							<div className='h-8 w-px bg-offering-line'></div>
 							<span
-								className='text-xs font-semibold tracking-widest text-slate-500 uppercase'
+								className='text-xs font-semibold tracking-widest text-offering-muted uppercase'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Private Clients
@@ -233,10 +235,10 @@ export default function FiduciaryDirectorshipPage() {
 				</header>
 
 				{/* Hero Section */}
-				<section className='relative overflow-hidden border-b border-slate-200'>
+				<section className='relative overflow-hidden border-b border-offering-line'>
 					<div className='absolute inset-0 -z-10'>
-						<div className='absolute top-0 right-1/4 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl'></div>
-						<div className='absolute bottom-0 left-1/4 w-96 h-96 bg-indigo-100/30 rounded-full blur-3xl'></div>
+						<div className='absolute top-0 right-1/4 w-96 h-96 bg-offering-tint/40 rounded-full invisible'></div>
+						<div className='absolute bottom-0 left-1/4 w-96 h-96 bg-offering-tint/30 rounded-full invisible'></div>
 					</div>
 
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
@@ -246,10 +248,10 @@ export default function FiduciaryDirectorshipPage() {
 							transition={{ duration: 0.6 }}
 							className='space-y-6 max-w-4xl'
 						>
-							<div className='inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-1.5 border border-blue-200'>
-								<div className='h-2 w-2 rounded-full bg-blue-500'></div>
+							<div className='inline-flex items-center gap-2 rounded-sm bg-offering-tint px-4 py-1.5 border border-offering-line'>
+								<div className='h-2 w-2 rounded-full bg-offering-ink'></div>
 								<span
-									className='text-xs font-semibold text-blue-700 tracking-wide uppercase'
+									className='text-xs font-semibold text-offering-blue tracking-wide uppercase'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Fiduciary & Directorship
@@ -257,18 +259,18 @@ export default function FiduciaryDirectorshipPage() {
 							</div>
 
 							<h1
-								className='text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight'
+								className='text-4xl sm:text-5xl lg:text-6xl font-semibold text-offering-ink leading-tight'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Fiduciary & Directorship
 								<br />
-								<span className='bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'>
+								<span className='text-offering-ink'>
 									Independent Governance & Control
 								</span>
 							</h1>
 
 							<p
-								className='text-lg text-slate-600 leading-relaxed'
+								className='text-lg text-offering-muted leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Fiduciary and directorship services exist at the intersection of
@@ -284,7 +286,7 @@ export default function FiduciaryDirectorshipPage() {
 				</section>
 
 				{/* Jurisdictional Coverage */}
-				<section className='border-b border-slate-200 bg-white/50 '>
+				<section className='border-b border-offering-line bg-white/50 '>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -292,13 +294,13 @@ export default function FiduciaryDirectorshipPage() {
 							transition={{ duration: 0.6, delay: 0.2 }}
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-4'
+								className='text-3xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Jurisdictional Coverage
 							</h2>
 							<p
-								className='text-slate-600 mb-8 max-w-3xl'
+								className='text-offering-muted mb-8 max-w-3xl'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Fiduciary and directorship appointments are coordinated through
@@ -315,7 +317,7 @@ export default function FiduciaryDirectorshipPage() {
 										initial={{ opacity: 0, scale: 0.9 }}
 										animate={{ opacity: 1, scale: 1 }}
 										transition={{ duration: 0.3, delay: 0.3 + idx * 0.03 }}
-										className='inline-flex items-center px-4 py-2 rounded-lg bg-white border border-slate-200 text-sm font-medium text-slate-700 hover:border-blue-300 hover:bg-blue-50 transition-colors'
+										className='inline-flex items-center px-4 py-2 rounded-sm bg-white border border-offering-line text-sm font-medium text-offering-body hover:border-offering-blue hover:bg-offering-tint transition-colors'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										{jurisdiction}
@@ -330,7 +332,7 @@ export default function FiduciaryDirectorshipPage() {
 				{fiduciaryServices.map((category, categoryIndex) => (
 					<section
 						key={categoryIndex}
-						className={`border-b border-slate-200 ${categoryIndex % 2 === 1 ? "bg-white/50 " : ""}`}
+						className={`border-b border-offering-line ${categoryIndex % 2 === 1 ? "bg-white/50 " : ""}`}
 					>
 						<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 							<motion.div
@@ -340,13 +342,13 @@ export default function FiduciaryDirectorshipPage() {
 								className='mb-12'
 							>
 								<h2
-									className='text-3xl font-bold text-slate-900 mb-4'
+									className='text-3xl font-semibold text-offering-ink mb-4'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									{category.section}
 								</h2>
 								<p
-									className='text-slate-600 max-w-4xl leading-relaxed'
+									className='text-offering-muted max-w-4xl leading-relaxed'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									{category.intro}
@@ -363,31 +365,31 @@ export default function FiduciaryDirectorshipPage() {
 											duration: 0.4,
 											delay: 0.3 + idx * 0.06,
 										}}
-										className='bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-blue-200 transition-colors'
+										className='bg-white rounded-sm border border-offering-line overflow-hidden hover:border-offering-blue transition-colors'
 									>
 										<div className='flex items-start gap-6 p-6'>
-											<div className='flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-lg font-bold shadow-lg shadow-blue-500/20'>
+											<div className='flex-shrink-0 flex h-14 w-14 items-center justify-center rounded-sm bg-offering-ink text-white text-lg font-semibold shadow-none'>
 												{item.num}
 											</div>
 											<div className='flex-1 min-w-0'>
 												<h3
-													className='text-lg font-bold text-slate-900 mb-2'
+													className='text-lg font-semibold text-offering-ink mb-2'
 													style={{ fontFamily: "var(--font-avenir)" }}
 												>
 													{item.title}
 												</h3>
 												<p
-													className='text-sm text-slate-600 mb-3 font-medium'
+													className='text-sm text-offering-muted mb-3 font-medium'
 													style={{ fontFamily: "var(--font-avenir)" }}
 												>
-													<span className='text-blue-600'>Key Definition:</span>{" "}
+													<span className='text-offering-blue'>Key Definition:</span>{" "}
 													{item.definition}
 												</p>
 												<p
-													className='text-sm text-slate-700 leading-relaxed'
+													className='text-sm text-offering-body leading-relaxed'
 													style={{ fontFamily: "var(--font-avenir)" }}
 												>
-													<span className='font-semibold text-slate-900'>
+													<span className='font-semibold text-offering-ink'>
 														Purpose:
 													</span>{" "}
 													{item.purpose}
@@ -402,7 +404,7 @@ export default function FiduciaryDirectorshipPage() {
 				))}
 
 				{/* Structural Benefits */}
-				<section className='border-b border-slate-200'>
+				<section className='border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -411,13 +413,13 @@ export default function FiduciaryDirectorshipPage() {
 							className='mb-12'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-4'
+								className='text-3xl font-semibold text-offering-ink mb-4'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Why Independent Fiduciary Appointments Matter
 							</h2>
 							<p
-								className='text-slate-600 max-w-4xl leading-relaxed'
+								className='text-offering-muted max-w-4xl leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								The appointment of independent fiduciaries and directors is not
@@ -435,11 +437,11 @@ export default function FiduciaryDirectorshipPage() {
 									initial={{ opacity: 0, x: -20 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ duration: 0.4, delay: 0.3 + idx * 0.06 }}
-									className='flex items-start gap-3 bg-white/70  rounded-xl p-5 border border-slate-200/60'
+									className='flex items-start gap-3 bg-white/70  rounded-sm p-5 border border-offering-line/60'
 								>
-									<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-blue-500 mt-2'></div>
+									<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-offering-ink mt-2'></div>
 									<p
-										className='text-sm text-slate-700 leading-relaxed'
+										className='text-sm text-offering-body leading-relaxed'
 										style={{ fontFamily: "var(--font-avenir)" }}
 									>
 										{benefit}
@@ -451,7 +453,7 @@ export default function FiduciaryDirectorshipPage() {
 				</section>
 
 				{/* Operational Note */}
-				<section className='border-b border-slate-200 bg-white/50 '>
+				<section className='border-b border-offering-line bg-white/50 '>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
@@ -460,15 +462,15 @@ export default function FiduciaryDirectorshipPage() {
 							className='max-w-4xl'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-6'
+								className='text-3xl font-semibold text-offering-ink mb-6'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Delivery Model
 							</h2>
 
-							<div className='bg-gradient-to-br from-slate-50 to-white rounded-xl border border-slate-200 p-8'>
+							<div className='bg-offering-tint rounded-sm border border-offering-line p-8'>
 								<p
-									className='text-slate-700 leading-relaxed mb-6'
+									className='text-offering-body leading-relaxed mb-6'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									All fiduciary and directorship services are delivered through
@@ -485,11 +487,11 @@ export default function FiduciaryDirectorshipPage() {
 									].map((benefit, idx) => (
 										<div
 											key={idx}
-											className='flex items-start gap-3 bg-white rounded-lg p-4 border border-slate-200'
+											className='flex items-start gap-3 bg-white rounded-sm p-4 border border-offering-line'
 										>
-											<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-green-500 mt-2'></div>
+											<div className='flex-shrink-0 w-1.5 h-1.5 rounded-full bg-offering-ink mt-2'></div>
 											<p
-												className='text-sm text-slate-700 leading-relaxed'
+												className='text-sm text-offering-body leading-relaxed'
 												style={{ fontFamily: "var(--font-avenir)" }}
 											>
 												{benefit}
@@ -499,7 +501,7 @@ export default function FiduciaryDirectorshipPage() {
 								</div>
 
 								<p
-									className='text-slate-700 leading-relaxed'
+									className='text-offering-body leading-relaxed'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Without a coordinated network of licensed local fiduciaries,

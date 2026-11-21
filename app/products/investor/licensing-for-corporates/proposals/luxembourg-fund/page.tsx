@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -26,12 +27,12 @@ export default function LuxembourgFundProposalPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50'>
-				<header className='sticky top-0 bg-white/95 border-b border-slate-200 z-50 shadow-sm'>
+			<div className='offering-page relative min-h-screen bg-white'>
+				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line z-50 shadow-none'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='group flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors font-medium'
+							className='group flex items-center gap-2 text-sm text-offering-muted hover:text-offering-ink transition-colors font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							<span className='group-hover:-translate-x-1 transition-transform duration-300'>
@@ -40,12 +41,12 @@ export default function LuxembourgFundProposalPage() {
 							Back
 						</button>
 						<h1
-							className='text-2xl font-bold text-slate-900'
-							style={{ fontFamily: "var(--font-benzin)" }}
+							className='text-2xl font-semibold text-offering-ink'
+							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							ALTERNATIVE INVESTMENT LICENSE — LUXEMBOURG
 						</h1>
-						<div className='w-16' aria-hidden='true'></div>
+						<div className='offering-mark-slot w-16'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -58,36 +59,36 @@ export default function LuxembourgFundProposalPage() {
 					>
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-6'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-3xl font-semibold text-offering-ink mb-6'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Proposal for Luxembourg Alternative Investment License
 							</h2>
 							<p
-								className='text-base text-slate-600 leading-relaxed mb-6'
+								className='text-base text-offering-muted leading-relaxed mb-6'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								(Executed via Boyar Partners' partner team)
 							</p>
 
-							<div className='bg-gradient-to-r from-slate-50 to-violet-50 rounded-xl p-6 border-l-4 border-violet-500 space-y-4'>
-								<h3 className='text-xl font-bold text-slate-900 uppercase tracking-wide'>
+							<div className='bg-offering-tint rounded-sm p-6 border-l-4 border-offering-gold space-y-4'>
+								<h3 className='text-xl font-semibold text-offering-ink uppercase tracking-wide'>
 									General Information and Advantages
 								</h3>
-								<p className='text-slate-700 leading-relaxed'>
+								<p className='text-offering-body leading-relaxed'>
 									Luxembourg is a top preferred destination choice for global
 									fund structures, holding over EUR 4.5 trillion in assets under
 									management.
 								</p>
-								<p className='text-slate-700 leading-relaxed'>
+								<p className='text-offering-body leading-relaxed'>
 									The Alternative Investment Fund License allows investments in
 									cryptocurrencies, private equity, real estate, stocks and
 									bonds, infrastructure projects, and more.
 								</p>
-								<p className='text-slate-700 leading-relaxed font-semibold'>
+								<p className='text-offering-body leading-relaxed font-semibold'>
 									Strong regulatory base, well-established AML policies, and
 									institutional credibility support top-tier counterparty
 									relationships.
@@ -97,11 +98,11 @@ export default function LuxembourgFundProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Investment Options
 							</h3>
@@ -116,9 +117,9 @@ export default function LuxembourgFundProposalPage() {
 								].map((option, idx) => (
 									<div
 										key={idx}
-										className='bg-gradient-to-br from-violet-50 to-purple-50 rounded-lg p-4 border border-violet-200'
+										className='bg-offering-tint rounded-sm p-4 border border-offering-line'
 									>
-										<p className='text-slate-900 font-semibold'>{option}</p>
+										<p className='text-offering-ink font-semibold'>{option}</p>
 									</div>
 								))}
 							</div>
@@ -126,11 +127,11 @@ export default function LuxembourgFundProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Why Luxembourg?
 							</h3>
@@ -147,9 +148,9 @@ export default function LuxembourgFundProposalPage() {
 								].map((reason, idx) => (
 									<li
 										key={idx}
-										className='flex items-start gap-3 text-slate-700 p-3 rounded-lg bg-slate-50 border border-slate-200'
+										className='flex items-start gap-3 text-offering-body p-3 rounded-sm bg-offering-tint border border-offering-line'
 									>
-										<span className='text-violet-600 font-bold mt-1'>✓</span>
+										<span className='text-offering-blue font-semibold mt-1'>✓</span>
 										<span>{reason}</span>
 									</li>
 								))}
@@ -158,22 +159,22 @@ export default function LuxembourgFundProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Next Steps
 							</h3>
-							<div className='bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl p-6 border-2 border-violet-200'>
-								<h4 className='font-bold text-slate-900 mb-3'>
+							<div className='bg-offering-tint rounded-sm p-6 border-2 border-offering-line'>
+								<h4 className='font-semibold text-offering-ink mb-3'>
 									Pricing and Timeline
 								</h4>
-								<p className='text-slate-700 mb-4'>
+								<p className='text-offering-body mb-4'>
 									Available at the time of enquiry
 								</p>
-								<p className='text-slate-600 text-sm'>
+								<p className='text-offering-muted text-sm'>
 									Our partner team's legal and financial experience further
 									extends beyond the aforementioned area of expertise. Please
 									get in touch with Boyar Partners to discuss any custom

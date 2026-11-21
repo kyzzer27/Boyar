@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -34,12 +35,12 @@ export default function PuertoRicoBankingProposalPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50'>
-				<header className='sticky top-0 bg-white/95 border-b border-slate-200 z-50 shadow-sm'>
+			<div className='offering-page relative min-h-screen bg-white'>
+				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line z-50 shadow-none'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='group flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors font-medium'
+							className='group flex items-center gap-2 text-sm text-offering-muted hover:text-offering-ink transition-colors font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							<span className='group-hover:-translate-x-1 transition-transform duration-300'>
@@ -48,12 +49,12 @@ export default function PuertoRicoBankingProposalPage() {
 							Back
 						</button>
 						<h1
-							className='text-2xl font-bold text-slate-900'
-							style={{ fontFamily: "var(--font-benzin)" }}
+							className='text-2xl font-semibold text-offering-ink'
+							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							BANKING LICENSE — PUERTO RICO
 						</h1>
-						<div className='w-16' aria-hidden='true'></div>
+						<div className='offering-mark-slot w-16'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -66,16 +67,16 @@ export default function PuertoRicoBankingProposalPage() {
 					>
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-6'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-3xl font-semibold text-offering-ink mb-6'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Puerto Rican International Bank License
 							</h2>
 							<p
-								className='text-base text-slate-600 leading-relaxed mb-6'
+								className='text-base text-offering-muted leading-relaxed mb-6'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								(Executed via Boyar Partners' partner team)
@@ -104,21 +105,21 @@ export default function PuertoRicoBankingProposalPage() {
 								].map((item, idx) => (
 									<div
 										key={idx}
-										className='bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-4 border border-slate-200'
+										className='bg-offering-tint rounded-sm p-4 border border-offering-line'
 									>
-										<p className='text-xs font-bold text-slate-600 uppercase tracking-wider mb-1'>
+										<p className='text-xs font-semibold text-offering-muted uppercase tracking-wider mb-1'>
 											{item.label}
 										</p>
-										<p className='text-slate-900 font-semibold'>{item.value}</p>
+										<p className='text-offering-ink font-semibold'>{item.value}</p>
 									</div>
 								))}
 							</div>
 
-							<div className='bg-orange-50 border-l-4 border-orange-500 rounded-r-xl p-6'>
-								<h4 className='font-bold text-slate-900 mb-2'>
+							<div className='bg-offering-tint border-l-4 border-offering-gold rounded-r-sm p-6'>
+								<h4 className='font-semibold text-offering-ink mb-2'>
 									Capital Structure
 								</h4>
-								<p className='text-slate-700 text-sm'>
+								<p className='text-offering-body text-sm'>
 									$300,000 blocked + $250,000 on balance sheet as working
 									capital (crypto, shares/bonds)
 								</p>
@@ -127,11 +128,11 @@ export default function PuertoRicoBankingProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Work Timeline
 							</h3>
@@ -151,12 +152,12 @@ export default function PuertoRicoBankingProposalPage() {
 								].map((step, idx) => (
 									<div
 										key={idx}
-										className='flex items-start gap-4 p-3 rounded-lg bg-slate-50 border border-slate-200'
+										className='flex items-start gap-4 p-3 rounded-sm bg-offering-tint border border-offering-line'
 									>
-										<span className='flex items-center justify-center w-8 h-8 rounded-full bg-orange-500 text-white font-bold text-sm flex-shrink-0'>
+										<span className='flex items-center justify-center w-8 h-8 rounded-full bg-offering-ink text-white font-semibold text-sm flex-shrink-0'>
 											{idx + 1}
 										</span>
-										<p className='text-slate-700 leading-relaxed'>{step}</p>
+										<p className='text-offering-body leading-relaxed'>{step}</p>
 									</div>
 								))}
 							</div>
@@ -164,25 +165,25 @@ export default function PuertoRicoBankingProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Pricing
 							</h3>
-							<div className='bg-amber-50 border-2 border-amber-200 rounded-xl p-6 mb-4'>
-								<h4 className='font-bold text-slate-900 mb-3'>
+							<div className='bg-offering-tint border-2 border-offering-line rounded-sm p-6 mb-4'>
+								<h4 className='font-semibold text-offering-ink mb-3'>
 									Available at the time of enquiry
 								</h4>
-								<p className='text-slate-700 text-sm leading-relaxed'>
+								<p className='text-offering-body text-sm leading-relaxed'>
 									Pricing may be subject to change due to optional correspondent
 									accounts, SWIFT connection, corporate cards and acquiring
 									connections to be set up for the Bank.
 								</p>
 							</div>
-							<p className='text-slate-600 text-sm italic'>
+							<p className='text-offering-muted text-sm italic'>
 								Our partner team's legal and financial experience further
 								extends beyond the aforementioned area of expertise. Please get
 								in touch with Boyar Partners to discuss any custom solutions

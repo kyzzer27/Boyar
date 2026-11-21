@@ -2,6 +2,7 @@
 
 "use client";
 
+import { OfferingMark } from "@/components/offerings/offering-mark";
 import { ProtectedRoute } from "@/components/auth/protected-route";
 import { motion } from "@/components/motion/lite-motion";
 import { useRouter } from "next/navigation";
@@ -34,12 +35,12 @@ export default function DominicaBankingProposalPage() {
 
 	return (
 		<ProtectedRoute>
-			<div className='relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-gray-50'>
-				<header className='sticky top-0 bg-white/95 border-b border-slate-200 z-50 shadow-sm'>
+			<div className='offering-page relative min-h-screen bg-white'>
+				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line z-50 shadow-none'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8'>
 						<button
 							onClick={() => router.back()}
-							className='group flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors font-medium'
+							className='group flex items-center gap-2 text-sm text-offering-muted hover:text-offering-ink transition-colors font-medium'
 							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							<span className='group-hover:-translate-x-1 transition-transform duration-300'>
@@ -48,12 +49,12 @@ export default function DominicaBankingProposalPage() {
 							Back
 						</button>
 						<h1
-							className='text-2xl font-bold text-slate-900'
-							style={{ fontFamily: "var(--font-benzin)" }}
+							className='text-2xl font-semibold text-offering-ink'
+							style={{ fontFamily: "var(--font-avenir)" }}
 						>
 							BANKING LICENSE — DOMINICA
 						</h1>
-						<div className='w-16' aria-hidden='true'></div>
+						<div className='offering-mark-slot w-16'><OfferingMark /></div>
 					</div>
 				</header>
 
@@ -66,11 +67,11 @@ export default function DominicaBankingProposalPage() {
 					>
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h2
-								className='text-3xl font-bold text-slate-900 mb-6'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-3xl font-semibold text-offering-ink mb-6'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Dominica International Banking License
 							</h2>
@@ -116,12 +117,12 @@ export default function DominicaBankingProposalPage() {
 								].map((item, idx) => (
 									<div
 										key={idx}
-										className='bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-4 border border-slate-200'
+										className='bg-offering-tint rounded-sm p-4 border border-offering-line'
 									>
-										<p className='text-xs font-bold text-slate-600 uppercase tracking-wider mb-1'>
+										<p className='text-xs font-semibold text-offering-muted uppercase tracking-wider mb-1'>
 											{item.label}
 										</p>
-										<p className='text-slate-900 font-semibold text-sm'>
+										<p className='text-offering-ink font-semibold text-sm'>
 											{item.value}
 										</p>
 									</div>
@@ -131,15 +132,15 @@ export default function DominicaBankingProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								General Information and Advantages
 							</h3>
-							<div className='space-y-4 text-slate-700 leading-relaxed'>
+							<div className='space-y-4 text-offering-body leading-relaxed'>
 								<p>
 									Dominica is an established Caribbean jurisdiction offering an
 									International Banking License under the supervision of the
@@ -160,11 +161,11 @@ export default function DominicaBankingProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Key License Information
 							</h3>
@@ -224,12 +225,12 @@ export default function DominicaBankingProposalPage() {
 								].map((item, idx) => (
 									<div
 										key={idx}
-										className='bg-slate-50 rounded-lg p-4 border border-slate-200'
+										className='bg-offering-tint rounded-sm p-4 border border-offering-line'
 									>
-										<p className='text-xs font-bold text-slate-600 uppercase tracking-wider mb-2'>
+										<p className='text-xs font-semibold text-offering-muted uppercase tracking-wider mb-2'>
 											{item.label}
 										</p>
-										<p className='text-slate-900 font-semibold'>{item.value}</p>
+										<p className='text-offering-ink font-semibold'>{item.value}</p>
 									</div>
 								))}
 							</div>
@@ -237,11 +238,11 @@ export default function DominicaBankingProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Work Timeline and Procedure
 							</h3>
@@ -266,12 +267,12 @@ export default function DominicaBankingProposalPage() {
 									<motion.div
 										key={idx}
 										variants={itemVariants}
-										className='flex items-start gap-4 bg-slate-50 rounded-lg p-4 border border-slate-200'
+										className='flex items-start gap-4 bg-offering-tint rounded-sm p-4 border border-offering-line'
 									>
-										<div className='flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700 font-bold text-sm'>
+										<div className='flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-offering-tint text-offering-blue font-semibold text-sm'>
 											{idx + 1}
 										</div>
-										<p className='pt-1 text-slate-700'>{step}</p>
+										<p className='pt-1 text-offering-body'>{step}</p>
 									</motion.div>
 								))}
 							</div>
@@ -279,30 +280,30 @@ export default function DominicaBankingProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Services and Pricing
 							</h3>
-							<div className='bg-amber-50 border-2 border-amber-200 rounded-xl p-6 mb-6'>
-								<h4 className='font-bold text-slate-900 mb-3'>Pricing</h4>
-								<p className='text-slate-700 text-sm mb-3'>
+							<div className='bg-offering-tint border-2 border-offering-line rounded-sm p-6 mb-6'>
+								<h4 className='font-semibold text-offering-ink mb-3'>Pricing</h4>
+								<p className='text-offering-body text-sm mb-3'>
 									Available at the time of enquiry.
 								</p>
-								<p className='text-slate-700 text-sm'>
+								<p className='text-offering-body text-sm'>
 									Pricing may vary depending on correspondent banking setup,
 									SWIFT connectivity, card issuing, and acquiring arrangements.
 								</p>
 							</div>
 
 							<div>
-								<h4 className='font-bold text-slate-900 mb-4'>
+								<h4 className='font-semibold text-offering-ink mb-4'>
 									Scope of Services Includes:
 								</h4>
-								<ul className='text-slate-700 space-y-2 list-disc list-inside'>
+								<ul className='text-offering-body space-y-2 list-disc list-inside'>
 									<li>Bank incorporation and structuring</li>
 									<li>
 										Drafting of all legal, regulatory, and financial
@@ -320,7 +321,7 @@ export default function DominicaBankingProposalPage() {
 								</ul>
 							</div>
 
-							<p className='text-slate-600 text-sm italic mt-6'>
+							<p className='text-offering-muted text-sm italic mt-6'>
 								Services executed via licensed partner teams and local
 								professionals.
 							</p>
@@ -328,19 +329,19 @@ export default function DominicaBankingProposalPage() {
 
 						<motion.section
 							variants={itemVariants}
-							className='bg-white rounded-2xl p-8 shadow-lg border border-slate-200'
+							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h3
-								className='text-2xl font-bold text-slate-900 mb-6 uppercase tracking-wide'
-								style={{ fontFamily: "var(--font-benzin)" }}
+								className='text-2xl font-semibold text-offering-ink mb-6 uppercase tracking-wide'
+								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Taxation and Reporting
 							</h3>
 							<div className='space-y-6'>
 								<div>
-									<h4 className='font-bold text-slate-900 mb-3'>Taxation</h4>
-									<div className='bg-slate-50 rounded-lg p-6 border border-slate-200'>
-										<p className='text-slate-700'>
+									<h4 className='font-semibold text-offering-ink mb-3'>Taxation</h4>
+									<div className='bg-offering-tint rounded-sm p-6 border border-offering-line'>
+										<p className='text-offering-body'>
 											International banking entities operate under a
 											tax-efficient regime, subject to applicable Dominica
 											regulations.
@@ -348,9 +349,9 @@ export default function DominicaBankingProposalPage() {
 									</div>
 								</div>
 
-								<div className='bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-6'>
-									<h4 className='font-bold text-slate-900 mb-2'>Reporting</h4>
-									<p className='text-slate-700 text-sm'>
+								<div className='bg-offering-tint border-l-4 border-offering-gold rounded-r-sm p-6'>
+									<h4 className='font-semibold text-offering-ink mb-2'>Reporting</h4>
+									<p className='text-offering-body text-sm'>
 										Ongoing regulatory reporting and compliance filings are
 										required in accordance with Financial Services Unit
 										guidelines.
