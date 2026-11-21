@@ -83,6 +83,7 @@ export async function POST(request: Request) {
 		BPSam27: { name: "Sam", tz: "Europe/Copenhagen" },
 		BPInvestor27: { name: "__no_name__" },
 		BPYash27: { name: "Yash", tz: "Asia/Kolkata", chatEnabled: true },
+		BPIshan27: { name: "Ishan", tz: "Asia/Kolkata", chatEnabled: true },
 	};
 
 	const namedPasswords: Record<string, string> = {};
