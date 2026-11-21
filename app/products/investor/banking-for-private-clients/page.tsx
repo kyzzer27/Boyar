@@ -541,6 +541,7 @@ export default function BankingForPrivateClientsPage() {
 	return (
 		<ProtectedRoute>
 			<div className='offering-page min-h-screen bg-white'>
+				<OfferingMark />
 				{/* Enhanced Header */}
 				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line z-40 shadow-none'>
 					<div className='mx-auto max-w-7xl px-6 py-5 sm:px-8'>
@@ -564,7 +565,7 @@ export default function BankingForPrivateClientsPage() {
 								</h1>
 								<div className='h-0.5 w-24 bg-offering-tint mx-auto mt-2'></div>
 							</div>
-							<div className='offering-mark-slot w-16'><OfferingMark /></div>
+							<div className='w-16' aria-hidden='true'></div>
 						</div>
 					</div>
 				</header>
@@ -624,7 +625,7 @@ export default function BankingForPrivateClientsPage() {
 							{/* Introduction with Enhanced Card */}
 							<div className='mb-10 bg-white rounded-sm p-8 shadow-none border border-offering-line'>
 								<p
-									className='text-base text-offering-body leading-relaxed mb-4'
+									className='offering-subject text-base text-offering-body leading-relaxed mb-4'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Boyar Partners supports private clients in accessing

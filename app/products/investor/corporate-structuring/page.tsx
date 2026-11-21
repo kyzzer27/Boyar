@@ -124,6 +124,7 @@ export default function CorporateStructuringPage() {
 	return (
 		<ProtectedRoute>
 			<div className='offering-page min-h-screen bg-white'>
+				<OfferingMark />
 				{/* Header */}
 				<div className='offering-masthead border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
@@ -147,7 +148,6 @@ export default function CorporateStructuringPage() {
 								</svg>
 								Back
 							</button>
-							<OfferingMark />
 						</div>
 					</div>
 				</div>
@@ -185,7 +185,7 @@ export default function CorporateStructuringPage() {
 							</h2>
 							<div className='bg-offering-tint rounded-sm p-8 border border-offering-line'>
 								<p
-									className='text-offering-body leading-relaxed mb-6'
+									className='offering-subject text-offering-body leading-relaxed mb-6'
 									style={{ fontFamily: "var(--font-avenir)" }}
 								>
 									Corporate structuring refers to the design, implementation,

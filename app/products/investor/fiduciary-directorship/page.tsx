@@ -208,6 +208,7 @@ export default function FiduciaryDirectorshipPage() {
 	return (
 		<ProtectedRoute>
 			<div className='offering-page min-h-screen bg-white'>
+				<OfferingMark />
 				{/* Header */}
 				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line/80 z-30 shadow-none'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-5 sm:px-8'>
@@ -221,7 +222,6 @@ export default function FiduciaryDirectorshipPage() {
 							</span>
 							<span>Back</span>
 						</button>
-						<OfferingMark />
 						<div className='flex items-center gap-3'>
 							<div className='h-8 w-px bg-offering-line'></div>
 							<span
@@ -270,7 +270,7 @@ export default function FiduciaryDirectorshipPage() {
 							</h1>
 
 							<p
-								className='text-lg text-offering-muted leading-relaxed'
+								className='offering-subject text-lg text-offering-muted leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Fiduciary and directorship services exist at the intersection of

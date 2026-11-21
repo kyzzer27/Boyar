@@ -10,6 +10,7 @@ export default function CitizenshipStewardshipPage() {
   return (
     <ProtectedRoute>
       <div className="cs-page offering-page">
+        <OfferingMark />
         <style dangerouslySetInnerHTML={{ __html: `
           .cs-page {
             --font-heading: var(--font-avenir);
@@ -431,7 +432,6 @@ export default function CitizenshipStewardshipPage() {
         <header className="offering-masthead">
           <div className="header-inner">
             <button className="back-btn" onClick={() => router.back()}>← Back</button>
-            <OfferingMark />
             <div className="header-badge">
               <div className="header-dot"></div>
               Private Clients
@@ -450,7 +450,7 @@ export default function CitizenshipStewardshipPage() {
               Citizenship & Stewardship<br/>
               <span className="gradient">Planning & Advisory</span>
             </h1>
-            <p className="hero-lead">
+            <p className="offering-subject hero-lead">
               Citizenship and stewardship planning encompasses the structured acquisition of alternative nationalities, residency rights, and long-term oversight frameworks for mobile individuals, families, and family enterprises operating across multiple jurisdictions.
             </p>
           </div>

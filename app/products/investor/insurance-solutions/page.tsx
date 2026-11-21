@@ -145,7 +145,7 @@ export default function InsuranceSolutionsPage() {
 	return (
 		<ProtectedRoute>
 			<div className='offering-page min-h-screen bg-white'>
-				<div className='offering-floating-mark'><OfferingMark /></div>
+				<OfferingMark />
 				{/* Hero Section */}
 				<section className='border-b border-offering-line'>
 					<div className='mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:py-20'>
@@ -177,7 +177,7 @@ export default function InsuranceSolutionsPage() {
 							</h1>
 
 							<p
-								className='text-lg text-offering-muted leading-relaxed'
+								className='offering-subject text-lg text-offering-muted leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Strategic insurance solutions designed to protect your wealth,

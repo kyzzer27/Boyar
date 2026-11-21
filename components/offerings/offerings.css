@@ -10,15 +10,23 @@
   font-weight: 500;
 }
 
-.offering-page .offering-masthead {
-  background: #102e42 url("/images/offerings/navy-wave.webp") center 52% / cover no-repeat;
-  border-bottom: 1px solid #b68b58;
-  color: white;
-  box-shadow: none;
+.offering-brand {
+  display: flex;
+  justify-content: center;
+  padding: clamp(1.25rem, 3vw, 2.25rem) 1rem;
+  background: white;
 }
 
-.offering-page .offering-masthead :is(h1, button, button span, .header-badge, .uppercase) {
-  color: white;
+.offering-brand img {
+  width: clamp(12rem, 18vw, 16rem);
+  height: auto;
+}
+
+.offering-page .offering-masthead {
+  color: #102e42;
+  background: white;
+  border-bottom: 1px solid #ccdbe2;
+  box-shadow: none;
 }
 
 .offering-page .offering-masthead button:hover {
@@ -26,35 +34,26 @@
   text-underline-offset: 0.24em;
 }
 
-.offering-mark {
-  display: block;
-  width: 5rem;
-  height: auto;
-  max-width: 100%;
-}
-
-.offering-masthead .offering-mark {
-  filter: brightness(0) invert(1);
-}
-
-/* Anchor the wordmark in the existing spacer, preserving the title's alignment. */
-.offering-mark-slot {
+/* Keep the subject in its original position beneath the offering title. */
+.offering-page :is(p, h2).offering-subject {
+  --subject-inset: clamp(1.1rem, 3vw, 2.25rem);
   position: relative;
-  flex-shrink: 0;
+  padding: 3.2rem var(--subject-inset) 1.25rem calc(var(--subject-inset) + 0.9rem);
+  color: white;
+  background: #102e42 url("/images/offerings/navy-wave.webp") center top / 100% 2.35rem no-repeat;
 }
 
-.offering-mark-slot .offering-mark {
+.offering-page .offering-subject::before {
+  content: "";
   position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: none;
+  top: 3.2rem;
+  bottom: 1.25rem;
+  left: var(--subject-inset);
+  border-left: 3px solid #b68b58;
 }
 
-.offering-floating-mark {
-  position: absolute;
-  right: max(2rem, calc((100% - 76rem) / 2));
-  top: 1rem;
+.offering-page .offering-subject span {
+  color: inherit;
 }
 
 .offering-page :where(button, a, input, select):focus-visible {
@@ -63,8 +62,6 @@
 }
 
 @media (max-width: 640px) {
-  .offering-mark-slot .offering-mark { width: 100%; }
-  .offering-floating-mark { right: 1.5rem; }
   .offering-page .offering-masthead h1 {
     padding-inline: 0.35rem;
     font-size: 1.1rem;

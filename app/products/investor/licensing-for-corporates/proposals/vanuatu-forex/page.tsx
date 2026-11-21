@@ -36,6 +36,7 @@ export default function VanuatuForexProposalPage() {
 	return (
 		<ProtectedRoute>
 			<div className='offering-page relative min-h-screen bg-white'>
+				<OfferingMark />
 				{/* Header */}
 				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line z-50 shadow-none'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8'>
@@ -55,7 +56,7 @@ export default function VanuatuForexProposalPage() {
 						>
 							FOREX LICENSE — VANUATU
 						</h1>
-						<div className='offering-mark-slot w-16'><OfferingMark /></div>
+						<div className='w-16' aria-hidden='true'></div>
 					</div>
 				</header>
 
@@ -72,7 +73,7 @@ export default function VanuatuForexProposalPage() {
 							className='bg-white rounded-sm p-8 shadow-none border border-offering-line'
 						>
 							<h2
-								className='text-3xl font-semibold text-offering-ink mb-6'
+								className='offering-subject text-3xl font-semibold text-offering-ink mb-6'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Proposal for Vanuatu Forex License

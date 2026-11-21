@@ -407,6 +407,7 @@ export default function BankingForCorporatesPage() {
 	return (
 		<ProtectedRoute>
 			<div className='offering-page min-h-screen bg-white'>
+				<OfferingMark />
 				{/* Header */}
 				<header className='offering-masthead sticky top-0 bg-white/80 border-b border-offering-line z-30'>
 					<div className='mx-auto max-w-7xl px-6 py-5 sm:px-8 flex items-center justify-between'>
@@ -423,7 +424,7 @@ export default function BankingForCorporatesPage() {
 						>
 							Banking for Corporates
 						</h1>
-						<div className='offering-mark-slot w-8'><OfferingMark /></div>
+						<div className='w-8' aria-hidden='true'></div>
 					</div>
 				</header>
 
@@ -447,7 +448,7 @@ export default function BankingForCorporatesPage() {
 								</span>
 							</h2>
 							<p
-								className='text-lg text-offering-muted leading-relaxed'
+								className='offering-subject text-lg text-offering-muted leading-relaxed'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Through Boyar Partners' dedicated network of banking, payment,

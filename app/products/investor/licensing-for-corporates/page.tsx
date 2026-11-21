@@ -266,6 +266,7 @@ export default function LicensingForCorporatesPage() {
 	return (
 		<ProtectedRoute>
 			<div className='offering-page relative min-h-screen bg-white'>
+				<OfferingMark />
 				<header className='offering-masthead sticky top-0 bg-white/95 border-b border-offering-line z-50 shadow-none'>
 					<div className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8'>
 						<button
@@ -284,7 +285,7 @@ export default function LicensingForCorporatesPage() {
 						>
 							International Licensing for Corporates
 						</h1>
-						<div className='offering-mark-slot w-16'><OfferingMark /></div>
+						<div className='w-16' aria-hidden='true'></div>
 					</div>
 				</header>
 
@@ -309,7 +310,7 @@ export default function LicensingForCorporatesPage() {
 								className='space-y-4 text-offering-body'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
-								<p className='text-base leading-relaxed'>
+								<p className='offering-subject text-base leading-relaxed'>
 									At Boyar Partners, international licensing is treated as a{" "}
 									<span className='font-semibold text-offering-ink'>
 										structural decision

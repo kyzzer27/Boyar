@@ -13,6 +13,7 @@ export default function InternalAuditPage() {
 	return (
 		<ProtectedRoute>
 			<div className='offering-page relative min-h-screen bg-white text-offering-ink'>
+				<OfferingMark />
 				{/* Header */}
 				<header className='offering-masthead sticky top-0 bg-white/95  border-b border-offering-line z-30'>
 					<div className='mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-8'>
@@ -29,7 +30,7 @@ export default function InternalAuditPage() {
 						>
 							Internal Audit & Regulatory Assurance
 						</h1>
-						<div className='offering-mark-slot w-8'><OfferingMark /></div>
+						<div className='w-8' aria-hidden='true'></div>
 					</div>
 				</header>
 
@@ -55,7 +56,7 @@ export default function InternalAuditPage() {
 								Internal Audit & Regulatory Assurance Services
 							</h2>
 							<p
-								className='text-base text-offering-body leading-relaxed mb-6'
+								className='offering-subject text-base text-offering-body leading-relaxed mb-6'
 								style={{ fontFamily: "var(--font-avenir)" }}
 							>
 								Boyar Partners provides outsourced internal audit and regulatory

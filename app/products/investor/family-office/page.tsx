@@ -111,7 +111,7 @@ export default function FamilyOfficePage() {
 	return (
 		<ProtectedRoute>
 			<div className='offering-page min-h-screen bg-white p-8'>
-				<div className='offering-floating-mark'><OfferingMark /></div>
+				<OfferingMark />
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -130,7 +130,7 @@ export default function FamilyOfficePage() {
 						<h1 className='text-5xl font-semibold text-offering-ink mb-4'>
 							Family Office Solutions
 						</h1>
-						<p className='text-offering-muted text-lg max-w-3xl'>
+						<p className='offering-subject text-offering-muted text-lg max-w-3xl'>
 							Comprehensive family office services designed to support
 							governance, wealth structuring, investments, reporting, and family
 							legacy planning.

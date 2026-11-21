@@ -13,6 +13,7 @@ export default function InBriefPage() {
 	return (
 		<ProtectedRoute>
 			<div className='offering-page min-h-screen bg-white'>
+				<OfferingMark />
 				{/* Header */}
 				<header className='offering-masthead sticky top-0 bg-white border-b border-offering-line z-30 shadow-none'>
 					<div className='mx-auto max-w-5xl px-6 py-5 sm:px-8 flex items-center justify-between'>
@@ -29,7 +30,7 @@ export default function InBriefPage() {
 						>
 							Service Overview
 						</h1>
-						<div className='offering-mark-slot w-8'><OfferingMark /></div>
+						<div className='w-8' aria-hidden='true'></div>
 					</div>
 				</header>
 
@@ -49,7 +50,7 @@ export default function InBriefPage() {
 							>
 								{/* Title */}
 								<div className='mb-8'>
-									<p className='text-lg font-semibold text-offering-ink mb-2'>
+									<p className='offering-subject text-lg font-semibold text-offering-ink mb-2'>
 										Boyar Partners offers:
 									</p>
 								</div>
